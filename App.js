@@ -15,6 +15,7 @@ export default FluidNavigator({
     navigationOptions: {
       title: 'Details',
       header: null,
+      mode: 'card',
     }
   },
 });

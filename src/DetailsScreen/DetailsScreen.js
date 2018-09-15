@@ -4,16 +4,20 @@ import {Dimensions, TouchableOpacity} from 'react-native';
 import {Transition} from 'react-navigation-fluid-transitions';
 
 const Title = styled.Text`
-
+    color: #eee;
+    font-size: 26px;
 `;
 
 const BackButtonText = styled.Text`
 
 `;
 
-const Preview = styled.Image`
+const Preview = styled.ImageBackground`
     width: ${Dimensions.get('window').width}px;
     height: 400px;
+    justify-content: flex-end;
+    background: #333;
+    padding: 30px;
 `;
 
 const Wrapper = styled.View`
@@ -26,7 +30,9 @@ const DetailsScreen = (props) => {
     return (
         <Wrapper>
             <Transition shared={`cover${i}`}>
-                <Preview source={{uri: url}}></Preview>
+                <Preview source={{uri: url}}>
+                    <Title>{name}</Title> 
+                </Preview>
             </Transition>
             <TouchableOpacity onPress={() => props.navigation.navigate('home')}>
                 <BackButtonText>Go back</BackButtonText>
