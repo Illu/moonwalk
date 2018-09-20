@@ -30,9 +30,7 @@ const DetailsScreen = (props) => {
     return (
         <Wrapper>
             <Transition shared={`cover${i}`}>
-                <Preview source={{uri: url}}>
-                    <Title>{name}</Title> 
-                </Preview>
+                <Preview source={{uri: url}} />
             </Transition>
             <TouchableOpacity onPress={() => props.navigation.navigate('home')}>
                 <BackButtonText>Go back</BackButtonText>

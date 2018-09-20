@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { TouchableWithoutFeedback, View, Animated, ImageBackground} from 'react-native';
+import { TouchableWithoutFeedback, Text, View, Animated, ImageBackground} from 'react-native';
 import {Transition} from 'react-navigation-fluid-transitions';
 
-const Title = styled.Text`
+const Title = styled(Animated.createAnimatedComponent(Text))`
     color: #eee;
     font-size: 26px;
 `;
@@ -26,6 +26,7 @@ class ListItem extends Component {
 
     state = {
         pushAnim: new Animated.Value(0),
+        fadeAnim: new Animated.Value(1),
     }
 
     onPressIn = () => {
@@ -40,6 +41,15 @@ class ListItem extends Component {
             toValue: 0,
             useNativeDriver: true,
         }).start()
+    }
+
+    onPress = () => {
+        const {name, url, i} = this.props;
+        this.props.navigation.navigate('details', {name, url, i})
+        Animated.timing(this.state.fadeAnim, {
+            toValue: 0,
+            useNativeDriver: true,
+        }).start();
     }
 
     render() {
@@ -58,14 +68,14 @@ class ListItem extends Component {
 
         return(
             <TouchableWithoutFeedback 
-                onPress={() => this.props.navigation.navigate('details', {name, url, i})}
+                onPress={this.onPress}
                 onPressIn={this.onPressIn}
                 onPressOut={this.onPressOut}
             >
                 <View>
                     <Transition shared={`cover${i}`}>
                         <Preview style={animStyle} source={{uri: url}}>
-                            <Title>{name}</Title>
+                            <Title style={{opacity: this.state.fadeAnim}}>{name}</Title>
                         </Preview>
                     </Transition>
                     <Sep/>

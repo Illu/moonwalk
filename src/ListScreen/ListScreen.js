@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {ScrollView } from 'react-native';
 import ListItem from './ListItem';
 
-const Wrapper = styled.View`
+const Wrapper = styled.SafeAreaView`
     background: #fff;
     flex: 1;
     margin-top: 20px;
