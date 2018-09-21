@@ -4,7 +4,6 @@ import {ScrollView } from 'react-native';
 import ListItem from './ListItem';
 
 const Wrapper = styled.SafeAreaView`
-    background: #fff;
     flex: 1;
     margin-top: 20px;
     align-items: center;
