@@ -1,3 +1,3 @@
 export default {
-    background: '#000',
+    cardBackground: '#42446f',
 }

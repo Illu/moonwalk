@@ -1,37 +1,26 @@
 import React from 'react';
+import {StatusBar} from 'react-native';
 import styled, { ThemeProvider } from 'styled-components';
-import ListScreen from './src/ListScreen';
-import {FluidNavigator} from 'react-navigation-fluid-transitions';
-import DetailsScreen from './src/DetailsScreen/DetailsScreen';
+import { FluidNavigator } from 'react-navigation-fluid-transitions';
+import DashboardScreen from './src/Dashboard/DashboardScreen';
 import theme from './src/theme';
 
-const AppWrapper = styled.View`
-  background: ${theme.background};
-  flex: 1;
-`;
 
 const Navigation = FluidNavigator({
-  home: {
-    screen: ListScreen,
+  dashboard: {
+    screen: DashboardScreen,
     navigationOptions: {
-      title: 'Home',
+      title: 'Dashboard',
       header: null,
-    }
-  },
-  details: {
-    screen: DetailsScreen,
-    navigationOptions: {
-      title: 'Details',
-      header: null,
-      mode: 'card',
     }
   },
 });
 
 export default () => (
   <ThemeProvider theme={theme}>
-    <AppWrapper>
+    <>
+      <StatusBar barStyle="light-content" />
       <Navigation />
-    </AppWrapper>
+    </>
   </ThemeProvider>
 )
