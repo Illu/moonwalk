@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "minHeight": 100,
+        "overflow": "hidden",
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 20,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    ellipsizeMode="clip"
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "color": "#aaaaaa11",
+          "fontSize": 100,
+          "fontWeight": "bold",
+          "left": 20,
+          "position": "absolute",
+          "right": 0,
+        },
+        undefined,
+      ]
+    }
+  >
+    My screen
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#eee",
+          "fontSize": 30,
+          "fontWeight": "bold",
+          "marginTop": 15,
+        },
+        undefined,
+      ]
+    }
+  >
+    My screen
+  </Text>
+</View>
+`;
+
+exports[`renders correctly without background text 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "minHeight": 100,
+        "overflow": "hidden",
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 20,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#eee",
+          "fontSize": 30,
+          "fontWeight": "bold",
+          "marginTop": 15,
+        },
+        undefined,
+      ]
+    }
+  >
+    My screen
+  </Text>
+</View>
+`;

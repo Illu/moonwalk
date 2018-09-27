@@ -1,0 +1,233 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+      "shadowColor": "#5e15ea",
+      "shadowOffset": Object {
+        "height": 0,
+        "width": 0,
+      },
+      "shadowOpacity": 0.75,
+      "shadowRadius": 5,
+    }
+  }
+>
+  <BVLinearGradient
+    colors={
+      Array [
+        4285213437,
+        4284356074,
+      ]
+    }
+    endPoint={
+      Object {
+        "x": 1,
+        "y": 0,
+      }
+    }
+    locations={null}
+    startPoint={
+      Object {
+        "x": 0,
+        "y": 0,
+      }
+    }
+    style={
+      Array [
+        Object {
+          "borderRadius": 10,
+          "marginBottom": 0,
+          "marginLeft": 5,
+          "marginRight": 5,
+          "marginTop": 0,
+          "paddingBottom": 15,
+          "paddingLeft": 30,
+          "paddingRight": 30,
+          "paddingTop": 15,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#efefef",
+            "fontSize": 20,
+            "fontWeight": "bold",
+          },
+          undefined,
+        ]
+      }
+    />
+  </BVLinearGradient>
+</View>
+`;
+
+exports[`renders with a different type style 1`] = `
+<View
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+      "shadowColor": "#2c2f53",
+      "shadowOffset": Object {
+        "height": 0,
+        "width": 0,
+      },
+      "shadowOpacity": 0.75,
+      "shadowRadius": 5,
+    }
+  }
+>
+  <BVLinearGradient
+    colors={
+      Array [
+        4282006115,
+        4281085779,
+      ]
+    }
+    endPoint={
+      Object {
+        "x": 1,
+        "y": 0,
+      }
+    }
+    locations={null}
+    startPoint={
+      Object {
+        "x": 0,
+        "y": 0,
+      }
+    }
+    style={
+      Array [
+        Object {
+          "borderRadius": 10,
+          "marginBottom": 0,
+          "marginLeft": 5,
+          "marginRight": 5,
+          "marginTop": 0,
+          "paddingBottom": 15,
+          "paddingLeft": 30,
+          "paddingRight": 30,
+          "paddingTop": 15,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#efefef",
+            "fontSize": 20,
+            "fontWeight": "bold",
+          },
+          undefined,
+        ]
+      }
+    >
+      Secondary
+    </Text>
+  </BVLinearGradient>
+</View>
+`;
+
+exports[`renders with title correctly 1`] = `
+<View
+  accessible={true}
+  isTVSelectable={true}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+      "shadowColor": "#5e15ea",
+      "shadowOffset": Object {
+        "height": 0,
+        "width": 0,
+      },
+      "shadowOpacity": 0.75,
+      "shadowRadius": 5,
+    }
+  }
+>
+  <BVLinearGradient
+    colors={
+      Array [
+        4285213437,
+        4284356074,
+      ]
+    }
+    endPoint={
+      Object {
+        "x": 1,
+        "y": 0,
+      }
+    }
+    locations={null}
+    startPoint={
+      Object {
+        "x": 0,
+        "y": 0,
+      }
+    }
+    style={
+      Array [
+        Object {
+          "borderRadius": 10,
+          "marginBottom": 0,
+          "marginLeft": 5,
+          "marginRight": 5,
+          "marginTop": 0,
+          "paddingBottom": 15,
+          "paddingLeft": 30,
+          "paddingRight": 30,
+          "paddingTop": 15,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#efefef",
+            "fontSize": 20,
+            "fontWeight": "bold",
+          },
+          undefined,
+        ]
+      }
+    >
+      Press me
+    </Text>
+  </BVLinearGradient>
+</View>
+`;

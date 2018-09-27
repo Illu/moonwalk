@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<BVLinearGradient
+  colors={
+    Array [
+      4282006115,
+      4281085778,
+    ]
+  }
+  endPoint={
+    Object {
+      "x": 1,
+      "y": 0,
+    }
+  }
+  locations={null}
+  startPoint={
+    Object {
+      "x": 0,
+      "y": 0,
+    }
+  }
+  style={
+    Array [
+      Object {
+        "borderRadius": 10,
+        "marginBottom": 0,
+        "marginLeft": 5,
+        "marginRight": 5,
+        "marginTop": 0,
+        "paddingBottom": 10,
+        "paddingLeft": 15,
+        "paddingRight": 15,
+        "paddingTop": 10,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#8183a5",
+          "fontWeight": "bold",
+        },
+        undefined,
+      ]
+    }
+  />
+</BVLinearGradient>
+`;
+
+exports[`renders with text correctly 1`] = `
+<BVLinearGradient
+  colors={
+    Array [
+      4282006115,
+      4281085778,
+    ]
+  }
+  endPoint={
+    Object {
+      "x": 1,
+      "y": 0,
+    }
+  }
+  locations={null}
+  startPoint={
+    Object {
+      "x": 0,
+      "y": 0,
+    }
+  }
+  style={
+    Array [
+      Object {
+        "borderRadius": 10,
+        "marginBottom": 0,
+        "marginLeft": 5,
+        "marginRight": 5,
+        "marginTop": 0,
+        "paddingBottom": 10,
+        "paddingLeft": 15,
+        "paddingRight": 15,
+        "paddingTop": 10,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#8183a5",
+          "fontWeight": "bold",
+        },
+        undefined,
+      ]
+    }
+  >
+    Label text
+  </Text>
+</BVLinearGradient>
+`;
