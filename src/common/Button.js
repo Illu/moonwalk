@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import LinearGradient from 'react-native-linear-gradient';
-import { TouchableOpacity } from 'react-native';
 
 const TouchableWrapper = styled.TouchableOpacity`
     shadow-opacity: 0.75;
