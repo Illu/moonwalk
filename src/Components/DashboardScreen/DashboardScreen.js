@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import ScreenBackground from '../Common/ScreenBackground';
-import Card from './Card'
-import ScreenTitle from '../Common/ScreenTitle';
+import ScreenBackground from '../../Common/ScreenBackground';
+import ScreenTitle from '../../Common/ScreenTitle';
+import Card from '../Card'
 
 const Wrapper = styled(ScreenBackground)`
     flex: 1;
@@ -10,6 +10,11 @@ const Wrapper = styled(ScreenBackground)`
 `;
 
 class DashboardScreen extends Component {
+
+    componentDidMount(){
+        this.props.loadLaunches();   
+    }
+
     render(){
         return (
             <Wrapper 
