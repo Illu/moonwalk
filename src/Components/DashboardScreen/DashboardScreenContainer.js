@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import DashboardScreen from './DashboardScreen';
-import {loadLaunches} from '../../Ducks/launches';
+import {loadNextLaunches} from '../../Ducks/launches';
 
 const mapStateToProps = state => {
   return {
@@ -9,7 +9,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  loadLaunches, 
+  loadNextLaunches, 
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardScreen)

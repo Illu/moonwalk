@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import Label from '../Common/Label';
-import Button from '../Common/Button';
+import Label from '../../Common/Label';
+import Button from '../../Common/Button';
 
 const Wrapper = styled.View`
     background: ${({theme}) => theme.cardBackground};
-    margin: 20px;
+    margin: 25px;
     border-radius: 20px
     align-items: center;
     padding: 20px;

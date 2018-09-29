@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.View`
-    padding: 20px;
+    padding: 25px;
     overflow: hidden;
     min-height: 100px;
 `;
@@ -16,7 +16,7 @@ const MainText = styled.Text`
 
 const BackgroundText = styled.Text`
     position: absolute;
-    left: 20px;
+    left: 25px;
     right: 0;
     font-size: 100px;
     color: #aaaaaa11;

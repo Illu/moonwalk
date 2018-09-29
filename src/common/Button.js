@@ -7,12 +7,14 @@ const TouchableWrapper = styled.TouchableOpacity`
     shadow-radius: 5px;
     shadow-color: ${({shadow}) => shadow};
     shadow-offset: 0px 0px;
+    margin: 0 5px;
+    border-radius: 10px;
+    background: ${({theme}) => theme.cardBackground};
 `;
 
 const Wrapper = styled(LinearGradient)`
     border-radius: 10px;
     padding: 15px 30px;
-    margin: 0 5px;
 `;
 
 const Title = styled.Text`

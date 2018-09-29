@@ -2,7 +2,7 @@ import React from 'react';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import {StatusBar} from 'react-native';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { ThemeProvider } from 'styled-components';
 import {createBottomTabNavigator} from 'react-navigation';
 import { FluidNavigator } from 'react-navigation-fluid-transitions';
