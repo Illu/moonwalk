@@ -11,6 +11,7 @@ import theme from './src/theme';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { TABS, TABBAR_ICONS } from './src/constants';
 import rootReducer from './src/Ducks/rootReducer';
+import LaunchCalendarScreen from './src/Components/LaunchCalendarScreen';
 
 const Dashboard = FluidNavigator({
   dashboard: {
@@ -22,9 +23,18 @@ const Dashboard = FluidNavigator({
   },
 });
 
+const LaunchCalendar = FluidNavigator({
+  launchCalendar: {
+    screen: LaunchCalendarScreen,
+    navigationOptions: {
+      title: 'Launch calendar',
+    }
+  }
+});
+
 const Navigation = createBottomTabNavigator({
   [TABS.Home]: Dashboard,
-  [TABS.Calendar]: Dashboard,
+  [TABS.Calendar]: LaunchCalendar,
   [TABS.Profile]: Dashboard,
 },
 {

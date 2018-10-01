@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 const Wrapper = styled(LinearGradient)`
     border-radius: 10px;
     padding: 10px 15px;
-    margin: 0 5px;
+    margin: 0 10px;
 `;
 
 const LabelText = styled.Text`
@@ -13,12 +13,12 @@ const LabelText = styled.Text`
     font-weight: bold;
 `;
 
-export default ({text}) => (
+export default ({text, numberOfLines = 1}) => (
     <Wrapper
         colors={['#3a3a63', '#2c2f52']}
         start={{x: 0.0, y: 0.0}} 
         end={{x: 1.0, y: 0.0}}
     >
-        <LabelText>{text}</LabelText>
+        <LabelText numberOfLines={numberOfLines}>{text}</LabelText>
     </Wrapper>
 )

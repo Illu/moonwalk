@@ -5,7 +5,7 @@ import {Animated, Easing, View} from 'react-native';
 const Wrapper = styled.View`
     background: ${({theme}) => theme.cardBackground};
     margin: 25px;
-    border-radius: 20px
+    border-radius: 10px
     align-items: center;
     padding: 20px;
     flex-direction: row;
@@ -51,6 +51,7 @@ export default class extends Component{
                   toValue: 1,
                   duration: 800,
                   easing: Easing.bounce,
+                  useNativeDriver: true,
                 }
               ),
             Animated.spring(
@@ -58,6 +59,7 @@ export default class extends Component{
                 {
                   toValue: 0,
                   duration: 0,
+                  useNativeDriver: true,
                 }
             )
           ]).start()
