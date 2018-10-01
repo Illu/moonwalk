@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import LinearGradient from 'react-native-linear-gradient';
-import {View} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 
 const Wrapper = styled(LinearGradient)`
     border-radius: 10px;
@@ -36,10 +36,8 @@ const ContentWrapper = styled.View`
     justify-content: space-between;
 `;
 
-export default ({data}) => {
-
-    // const launchTime = new Date(data.wsstamp);
-    return (
+export default ({data, navigateToDetails}) => (
+    <TouchableOpacity style={{flex: 1}} onPress={navigateToDetails}>
         <Wrapper
             colors={['#ffb39d', '#ff43bb']}
             start={{x: 0.0, y: 0.25}} 
@@ -56,5 +54,5 @@ export default ({data}) => {
                 </View>
             </ContentWrapper>
         </Wrapper>
-    )
-}
+    </TouchableOpacity>
+)

@@ -12,24 +12,31 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { TABS, TABBAR_ICONS } from './src/constants';
 import rootReducer from './src/Ducks/rootReducer';
 import LaunchCalendarScreen from './src/Components/LaunchCalendarScreen';
+import LaunchDetailsScreen from './src/Components/LaunchDetailsScreen';
+import {createStackNavigator} from 'react-navigation'
 
-const Dashboard = FluidNavigator({
+const Dashboard = createStackNavigator({
   dashboard: {
     screen: DashboardScreen,
     navigationOptions: {
       title: 'Dashboard',
       header: null,
+      headerBackTitle: null,
     }
   },
+  details: { screen: LaunchDetailsScreen },
 });
 
-const LaunchCalendar = FluidNavigator({
+const LaunchCalendar = createStackNavigator({
   launchCalendar: {
     screen: LaunchCalendarScreen,
     navigationOptions: {
       title: 'Launch calendar',
-    }
-  }
+      header: null,
+      headerBackTitle: null,
+    },
+  },
+  details: { screen: LaunchDetailsScreen },
 });
 
 const Navigation = createBottomTabNavigator({

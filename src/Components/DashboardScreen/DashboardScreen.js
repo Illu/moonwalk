@@ -24,6 +24,12 @@ class DashboardScreen extends Component {
         this.props.loadNextLaunches();   
     }
 
+    navigateToDetails(){
+        const {data} = this.props.launches;
+        this.props.setSelectedLaunch(data.launches[0].id);
+        this.props.navigation.navigate('details');
+    }
+
     render(){
         const {loading, error, data} = this.props.launches;
         const {loadNextLaunches} = this.props;
@@ -41,7 +47,10 @@ class DashboardScreen extends Component {
                         <ErrorCard onPress={loadNextLaunches}/>
                         : data &&
                         <>
-                            <NextLaunchCard data={data.launches[0]} />
+                            <NextLaunchCard
+                                data={data.launches[0]}
+                                navigateToDetails={() => this.navigateToDetails()}
+                            />
                             <CountdownCard data={data.launches[0]} />
                         </>
                     }

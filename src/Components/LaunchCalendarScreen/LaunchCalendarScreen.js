@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import {ScrollView} from 'react-native';
+import {ScrollView, TouchableOpacity} from 'react-native';
 import ScreenBackground from '../../Common/ScreenBackground';
 import ScreenTitle from '../../Common/ScreenTitle';
 import CalendarCard from '../CalendarCard/CalendarCard';
@@ -12,8 +12,12 @@ const Wrapper = styled(ScreenBackground)`
 
 export default class extends Component {
 
-    render(){
+    navigateToDetails({id}) {
+        this.props.setSelectedLaunch(id);
+        this.props.navigation.navigate('details');
+    }
 
+    render(){
         const {data} = this.props.launches;
         if (!data){
             return null
@@ -23,7 +27,9 @@ export default class extends Component {
                 <ScreenTitle title="Launch Calendar" />
                 <ScrollView>
                     {data.launches.map(launch => (
-                        <CalendarCard key={launch.id} data={launch} />
+                        <TouchableOpacity key={launch.id} onPress={() => this.navigateToDetails(launch)}>
+                        <CalendarCard  data={launch} />
+                        </TouchableOpacity>
                     ))}                
                 </ScrollView>
             </Wrapper>

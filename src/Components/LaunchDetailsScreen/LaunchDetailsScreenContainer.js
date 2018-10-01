@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import DashboardScreen from './DashboardScreen';
+import LaunchDetailsScreen from './LaunchDetailsScreen';
 import {loadNextLaunches, setSelectedLaunch} from '../../Ducks/launches';
 
 const mapStateToProps = state => {
@@ -13,4 +13,4 @@ const mapDispatchToProps = {
   setSelectedLaunch,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(LaunchDetailsScreen)

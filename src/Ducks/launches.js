@@ -1,6 +1,8 @@
+import { API_URL } from "../../cfg";
 const LOAD_NEXT_LAUNCHES = 'moonwalk/launches/LOAD_NEXT_LAUNCHES';
 const LOAD_NEXT_LAUNCHES_SUCCESS = 'moonwalk/launches/LOAD_NEXT_LAUNCHES_SUCCESS';
 const LOAD_NEXT_LAUNCHES_ERROR = 'moonwalk/launches/LOAD_NEXT_LAUNCHES_ERROR';
+const SET_SELECTED_LAUNCH = 'moonwalk/launches/SET_SELECTED_LAUNCH';
 
 const initialState = {
   loading: false,
@@ -28,6 +30,11 @@ export default (state = initialState, action = {}) => {
         error: true,
         data: action.payload,
       }
+    case SET_SELECTED_LAUNCH:
+      return {
+        ...state,
+        selectedLaunch: action.payload,
+      }
     default: 
       return state;
   }
@@ -47,10 +54,17 @@ const loadNextLaunchesError = payload => {
   };
 }
 
+export const setSelectedLaunch = payload => {
+  return {
+    type: SET_SELECTED_LAUNCH,
+    payload,
+  }
+}
+
 export const loadNextLaunches = (numberOfLaunches = 5) => {
   return dispatch => {
     dispatch({type: LOAD_NEXT_LAUNCHES});
-    fetch(`https://launchlibrary.net/1.4/launch/next/${numberOfLaunches}`)
+    fetch(`${API_URL}${numberOfLaunches}`)
       .then(data => data.json())
       .then(data => dispatch(loadNextLaunchesSuccess(data)))
       .catch(err => dispatch(loadNextLaunchesError(err)))
