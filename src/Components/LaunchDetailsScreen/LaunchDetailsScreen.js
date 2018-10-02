@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import ScreenBackground from '../../Common/ScreenBackground';
-import {ScrollView} from 'react-native';
+import {ScrollView, Linking, View} from 'react-native';
 import CountdownCard from '../CountdownCard/CountdownCard';
 import Button from '../../Common/Button';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const Wrapper = styled(ScreenBackground)`
     flex: 1;
@@ -39,9 +40,35 @@ const LinksWrapper = styled.View`
     margin: 20px;
 `;
 
+const ShuttleIcon = styled(Icon)`
+    align-self: center;
+`;
+
+const Row = styled.View`
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+`;
+
+const LinkButton = styled(Button)`
+    width: 80%;
+`;
+
+const ButtonLabel = styled.Text`
+    color: #bbb;
+    margin: 3px;
+`;
+
+const ButtonWrapper = styled.View`
+    flex: 1;
+    align-items: center;
+`;
+
 export default class extends Component {
     static navigationOptions = {
-        title: 'Details',
+        title: 'Launch details',
         headerStyle: {
             backgroundColor: '#222437',
           },
@@ -53,6 +80,9 @@ export default class extends Component {
         const {launches} = this.props;
         const selected = launches.data.launches.filter(launch => launch.id === launches.selectedLaunch)[0]
         console.log(selected)
+        const videoLink = selected.vidURLs.length > 0 && selected.vidURLs[0];
+        const youtubeLink = "dd";
+        const twitterLink = "dd";
         return (
             <Wrapper>
                 <ScrollView>
@@ -68,13 +98,32 @@ export default class extends Component {
                         <SectionTitle>Time</SectionTitle>
                         <InfoText>{selected.net}</InfoText>
                     </DetailsWrapper>
+                    <ShuttleIcon name="space-shuttle" size={28} color="#eee" />
                     {selected.missions.map(mission =>
                         <DescText key={mission.id} >{mission.description}</DescText>
                     )}
                     <CountdownCard data={selected} />
                     <LinksWrapper>
-                        <Button title="Livestream" onPress={() => {}} />
-                        <Button title="Twitter" onPress={() => {}} />
+                        <Row>
+                            <ButtonWrapper>
+                                <LinkButton icon="video" type='fire' disabled={!videoLink} onPress={() => Linking.openURL(videoLink)} />
+                                <ButtonLabel>Livestream</ButtonLabel>
+                            </ButtonWrapper>
+                            <ButtonWrapper>
+                                <LinkButton icon="twitter" type="blue" disabled={!twitterLink} onPress={() => Linking.openURL(twitterLink)} />
+                                <ButtonLabel>Twitter</ButtonLabel>
+                            </ButtonWrapper>
+                        </Row>
+                        <Row>
+                            <ButtonWrapper>
+                                <LinkButton icon="youtube" type="red" disabled={!youtubeLink} onPress={() => Linking.openURL(youtubeLink)} />
+                                <ButtonLabel>Youtube</ButtonLabel>
+                            </ButtonWrapper>
+                            <ButtonWrapper>
+                                <LinkButton icon="plus" disabled onPress={() => {}} />
+                                <ButtonLabel>more...</ButtonLabel>
+                            </ButtonWrapper>
+                        </Row>
                     </LinksWrapper>
                 </ScrollView>
             </Wrapper>
