@@ -83,20 +83,35 @@ export default class extends Component {
         const videoLink = selected.vidURLs.length > 0 && selected.vidURLs[0];
         const youtubeLink = "dd";
         const twitterLink = "dd";
+        const location = selected.location.name;
+        const rocket = selected.rocket.name;
+        const time = selected.net;
         return (
             <Wrapper>
                 <ScrollView>
                     <DetailsWrapper>
-                        <SectionTitle>Rocket</SectionTitle>
-                        <InfoText>{selected.rocket.name}</InfoText>
+                        {rocket && 
+                            <>
+                                <SectionTitle>Rocket</SectionTitle>
+                                <InfoText>{rocket}</InfoText>
+                            </>
+                        }
                         <SectionTitle>Mission{selected.missions.length > 1 && 's'}</SectionTitle>
                         {selected.missions.map(mission => 
                             <InfoText key={mission.id} >{mission.name}</InfoText>
                         )}
-                        <SectionTitle>Location</SectionTitle>
-                        <InfoText>{selected.location.name}</InfoText>
-                        <SectionTitle>Time</SectionTitle>
-                        <InfoText>{selected.net}</InfoText>
+                        {location && 
+                            <>
+                                <SectionTitle>Location</SectionTitle>
+                                <InfoText>{location}</InfoText>
+                            </>
+                        }
+                        {time && 
+                            <>
+                                <SectionTitle>Time</SectionTitle>
+                                <InfoText>{selected.net}</InfoText>
+                            </>
+                        }
                     </DetailsWrapper>
                     <ShuttleIcon name="space-shuttle" size={28} color="#eee" />
                     {selected.missions.map(mission =>
