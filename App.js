@@ -42,7 +42,7 @@ const LaunchCalendar = createStackNavigator({
 const Navigation = createBottomTabNavigator({
   [TABS.Home]: Dashboard,
   [TABS.Calendar]: LaunchCalendar,
-  [TABS.Profile]: Dashboard,
+  [TABS.Infos]: Dashboard,
 },
 {
   navigationOptions: ({ navigation }) => ({
@@ -55,7 +55,7 @@ const Navigation = createBottomTabNavigator({
   tabBarOptions: {
     activeTintColor: 'white',
     inactiveTintColor: theme.inactive,
-    showLabel: false,
+    showLabel: true,
     style: {
       backgroundColor: theme.cardBackground,
     }

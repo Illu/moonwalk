@@ -10,6 +10,7 @@
     "react": "16.5.0",
     "react-native": "0.57.0",
     "react-native-linear-gradient": "^2.4.2",
+    "react-native-open-maps": "^0.3.2",
     "react-native-vector-icons": "^5.0.0",
     "react-navigation": "^2.14.0",
     "react-navigation-fluid-transitions": "^0.2.6",

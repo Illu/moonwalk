@@ -1,21 +1,26 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import openMap from 'react-native-open-maps';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import ScreenBackground from '../../Common/ScreenBackground';
-import {ScrollView, Linking, View} from 'react-native';
+import { ScrollView, Linking, SafeAreaView } from 'react-native';
 import CountdownCard from '../CountdownCard/CountdownCard';
 import Button from '../../Common/Button';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import HeaderBack from '../../Common/HeaderBack';
 
 const Wrapper = styled(ScreenBackground)`
     flex: 1;
 `;
 
-
 const DetailsWrapper = styled.View`
-    background: ${({theme}) => theme.cardBackground};
+    background: ${({ theme }) => theme.cardBackground};
     margin: 25px;
-    border-radius: 20px
+    border-radius: 20px;
     padding: 20px;
+`;
+
+const ContentWrapper = styled(SafeAreaView)`
+    flex: 1;
 `;
 
 const SectionTitle = styled.Text`
@@ -71,76 +76,74 @@ export default class extends Component {
         title: 'Launch details',
         headerStyle: {
             backgroundColor: '#222437',
-          },
+        },
+        header: null,
         headerTintColor: '#fff',
-      };    
+    };
 
+    openMap({ longitude, latitude }) {
+        openMap({ longitude, latitude });
+    }
 
-    render(){
-        const {launches} = this.props;
+    render() {
+        const { launches } = this.props;
         const selected = launches.data.launches.filter(launch => launch.id === launches.selectedLaunch)[0]
-        console.log(selected)
         const videoLink = selected.vidURLs.length > 0 && selected.vidURLs[0];
-        const youtubeLink = "dd";
-        const twitterLink = "dd";
         const location = selected.location.name;
         const rocket = selected.rocket.name;
+        const pad = selected.location.pads[0];
         const time = selected.net;
+
+
+        console.log(this.props.navigation)
         return (
             <Wrapper>
-                <ScrollView>
-                    <DetailsWrapper>
-                        {rocket && 
-                            <>
-                                <SectionTitle>Rocket</SectionTitle>
-                                <InfoText>{rocket}</InfoText>
-                            </>
-                        }
-                        <SectionTitle>Mission{selected.missions.length > 1 && 's'}</SectionTitle>
-                        {selected.missions.map(mission => 
-                            <InfoText key={mission.id} >{mission.name}</InfoText>
+                <ContentWrapper>
+                    <HeaderBack ScreenTitle="Launch Details" navigateBack={() => this.props.navigation.goBack()} />
+                    <ScrollView>
+                        <DetailsWrapper>
+                            {rocket &&
+                                <>
+                                    <SectionTitle>Rocket</SectionTitle>
+                                    <InfoText>{rocket}</InfoText>
+                                </>
+                            }
+                            <SectionTitle>Mission{selected.missions.length > 1 && 's'}</SectionTitle>
+                            {selected.missions.map(mission =>
+                                <InfoText key={mission.id} >{mission.name}</InfoText>
+                            )}
+                            {location &&
+                                <>
+                                    <SectionTitle>Location</SectionTitle>
+                                    <InfoText>{location}</InfoText>
+                                </>
+                            }
+                            {time &&
+                                <>
+                                    <SectionTitle>Time</SectionTitle>
+                                    <InfoText>{selected.net}</InfoText>
+                                </>
+                            }
+                        </DetailsWrapper>
+                        <ShuttleIcon name="space-shuttle" size={28} color="#eee" />
+                        {selected.missions.map(mission =>
+                            <DescText key={mission.id} >{mission.description}</DescText>
                         )}
-                        {location && 
-                            <>
-                                <SectionTitle>Location</SectionTitle>
-                                <InfoText>{location}</InfoText>
-                            </>
-                        }
-                        {time && 
-                            <>
-                                <SectionTitle>Time</SectionTitle>
-                                <InfoText>{selected.net}</InfoText>
-                            </>
-                        }
-                    </DetailsWrapper>
-                    <ShuttleIcon name="space-shuttle" size={28} color="#eee" />
-                    {selected.missions.map(mission =>
-                        <DescText key={mission.id} >{mission.description}</DescText>
-                    )}
-                    <CountdownCard data={selected} />
-                    <LinksWrapper>
-                        <Row>
-                            <ButtonWrapper>
-                                <LinkButton icon="video" type='fire' disabled={!videoLink} onPress={() => Linking.openURL(videoLink)} />
-                                <ButtonLabel>Livestream</ButtonLabel>
-                            </ButtonWrapper>
-                            <ButtonWrapper>
-                                <LinkButton icon="twitter" type="blue" disabled={!twitterLink} onPress={() => Linking.openURL(twitterLink)} />
-                                <ButtonLabel>Twitter</ButtonLabel>
-                            </ButtonWrapper>
-                        </Row>
-                        <Row>
-                            <ButtonWrapper>
-                                <LinkButton icon="youtube" type="red" disabled={!youtubeLink} onPress={() => Linking.openURL(youtubeLink)} />
-                                <ButtonLabel>Youtube</ButtonLabel>
-                            </ButtonWrapper>
-                            <ButtonWrapper>
-                                <LinkButton icon="plus" disabled onPress={() => {}} />
-                                <ButtonLabel>more...</ButtonLabel>
-                            </ButtonWrapper>
-                        </Row>
-                    </LinksWrapper>
-                </ScrollView>
+                        <CountdownCard data={selected} />
+                        <LinksWrapper>
+                            <Row>
+                                <ButtonWrapper>
+                                    <LinkButton icon="video" type='red' disabled={!videoLink} onPress={() => Linking.openURL(videoLink)} />
+                                    <ButtonLabel>Livestream</ButtonLabel>
+                                </ButtonWrapper>
+                                <ButtonWrapper>
+                                    <LinkButton icon="map-marked-alt" type="blue" disabled={!pad} onPress={() => this.openMap(pad)} />
+                                    <ButtonLabel>Location</ButtonLabel>
+                                </ButtonWrapper>
+                            </Row>
+                        </LinksWrapper>
+                    </ScrollView>
+                </ContentWrapper>
             </Wrapper>
         )
     }

@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
-import {ScrollView, TouchableOpacity} from 'react-native';
+import { ScrollView, TouchableOpacity } from 'react-native';
 import ScreenBackground from '../../Common/ScreenBackground';
 import ScreenTitle from '../../Common/ScreenTitle';
 import CalendarCard from '../CalendarCard/CalendarCard';
@@ -12,31 +12,31 @@ const Wrapper = styled(ScreenBackground)`
 `;
 
 const LoadMoreButton = styled(Button)`
-    margin: 20px;;
+    margin: 20px;
 `;
 
 export default class extends Component {
 
-    navigateToDetails({id}) {
+    navigateToDetails({ id }) {
         this.props.setSelectedLaunch(id);
         this.props.navigation.navigate('details');
     }
 
-    render(){
-        const {data} = this.props.launches;
-        if (!data){
+    render() {
+        const { data } = this.props.launches;
+        if (!data) {
             return null
         }
         return (
-            <Wrapper contentContainerStyle={{flex: 1}}>
+            <Wrapper contentContainerStyle={{ flex: 1 }}>
                 <ScreenTitle title="Launch Calendar" />
                 <ScrollView>
                     {data.launches.map(launch => (
                         <TouchableOpacity key={launch.id} onPress={() => this.navigateToDetails(launch)}>
-                        <CalendarCard  data={launch} />
+                            <CalendarCard data={launch} />
                         </TouchableOpacity>
                     ))}
-                    <LoadMoreButton title="Load more" type="primary" onPress={() => {}} />
+                    {/* <LoadMoreButton title="Load more" type="primary" onPress={() => {}} /> */}
                 </ScrollView>
             </Wrapper>
         )
