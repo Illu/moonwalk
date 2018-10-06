@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import ScreenBackground from '../../Common/ScreenBackground';
 import ScreenTitle from '../../Common/ScreenTitle';
-import Card from '../Card'
 import NextLaunchCard from '../NextLaunchCard'
 import ErrorCard from '../ErrorCard';
 import Loader from '../../Common/Loader';
@@ -20,39 +19,39 @@ const ContentWrapper = styled.View`
 
 class DashboardScreen extends Component {
 
-    componentDidMount(){
-        this.props.loadNextLaunches();   
+    componentDidMount() {
+        this.props.loadNextLaunches();
     }
 
-    navigateToDetails(){
-        const {data} = this.props.launches;
+    navigateToDetails() {
+        const { data } = this.props.launches;
         this.props.setSelectedLaunch(data.launches[0].id);
         this.props.navigation.navigate('details');
     }
 
-    render(){
-        const {loading, error, data} = this.props.launches;
-        const {loadNextLaunches} = this.props;
+    render() {
+        const { loading, error, data } = this.props.launches;
+        const { loadNextLaunches } = this.props;
         return (
-            <Wrapper 
+            <Wrapper
                 colors={['#373468', '#222437']}
-                start={{x: 0.0, y: 0.25}} 
-                end={{x: 0.5, y: 1.0}}
+                start={{ x: 0.0, y: 0.25 }}
+                end={{ x: 0.5, y: 1.0 }}
             >
                 <ScreenTitle title="Next launch" />
                 <ContentWrapper>
-                    {loading ? 
+                    {loading ?
                         <Loader />
-                    : error ? 
-                        <ErrorCard onPress={loadNextLaunches}/>
-                        : data &&
-                        <>
-                            <NextLaunchCard
-                                data={data.launches[0]}
-                                navigateToDetails={() => this.navigateToDetails()}
-                            />
-                            <CountdownCard data={data.launches[0]} />
-                        </>
+                        : error ?
+                            <ErrorCard onPress={loadNextLaunches} />
+                            : data &&
+                            <>
+                                <NextLaunchCard
+                                    data={data.launches[0]}
+                                    navigateToDetails={() => this.navigateToDetails()}
+                                />
+                                <CountdownCard data={data.launches[0]} />
+                            </>
                     }
                 </ContentWrapper>
             </Wrapper>

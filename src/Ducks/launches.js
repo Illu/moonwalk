@@ -64,7 +64,7 @@ export const setSelectedLaunch = payload => {
 export const loadNextLaunches = (numberOfLaunches = 5) => {
   return dispatch => {
     dispatch({type: LOAD_NEXT_LAUNCHES});
-    fetch(`${API_URL}${numberOfLaunches}`)
+    fetch(`${API_URL}next/${numberOfLaunches}`)
       .then(data => data.json())
       .then(data => dispatch(loadNextLaunchesSuccess(data)))
       .catch(err => dispatch(loadNextLaunchesError(err)))

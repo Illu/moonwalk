@@ -95,7 +95,6 @@ export default class extends Component {
         const time = selected.net;
 
 
-        console.log(this.props.navigation)
         return (
             <Wrapper>
                 <ContentWrapper>
