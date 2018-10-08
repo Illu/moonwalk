@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import InfosScreen from './InfosScreen';
+import SearchScreen from './SearchScreen';
 import {loadNextLaunches, setSelectedLaunch} from '../../Ducks/launches';
 import {searchLaunches} from '../../Ducks/search';
 
@@ -15,4 +15,4 @@ const mapDispatchToProps = {
   searchLaunches,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(InfosScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(SearchScreen)

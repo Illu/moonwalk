@@ -62,7 +62,6 @@ const MONTHS = [
 export default ({data}) => {
     
     const launchTime = new Date(data.netstamp * 1000);
-    console.log(data)
     return (
         <Wrapper>
             <Row>

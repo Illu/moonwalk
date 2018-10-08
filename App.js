@@ -5,7 +5,6 @@ import {StatusBar} from 'react-native';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { ThemeProvider } from 'styled-components';
 import {createBottomTabNavigator} from 'react-navigation';
-import { FluidNavigator } from 'react-navigation-fluid-transitions';
 import DashboardScreen from './src/Components/DashboardScreen';
 import theme from './src/theme';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -14,7 +13,7 @@ import rootReducer from './src/Ducks/rootReducer';
 import LaunchCalendarScreen from './src/Components/LaunchCalendarScreen';
 import LaunchDetailsScreen from './src/Components/LaunchDetailsScreen';
 import {createStackNavigator} from 'react-navigation'
-import InfosScreen from './src/Components/InfosScreen';
+import SearchScreen from './src/Components/SearchScreen';
 
 const Dashboard = createStackNavigator({
   dashboard: {
@@ -43,7 +42,7 @@ const LaunchCalendar = createStackNavigator({
 const Navigation = createBottomTabNavigator({
   [TABS.Home]: Dashboard,
   [TABS.Calendar]: LaunchCalendar,
-  [TABS.Search]: InfosScreen,
+  [TABS.Search]: SearchScreen,
 },
 {
   navigationOptions: ({ navigation }) => ({
