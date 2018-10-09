@@ -19,6 +19,7 @@ const Footer = styled.Text`
 
 const ScrollWrapper = styled.ScrollView`
   flex: 1;
+  width: 100%;
 `;
 
 const ResultCount = styled.Text`
@@ -37,18 +38,18 @@ class InfosScreen extends Component {
     return (
       <Wrapper>
         <Searchbar launchSearch={(str) => this.launchSearch(str)}/>
-        <ScrollWrapper contentContainerStyle={{flex: 1}}>
-        {searchResults.data && (
-          <>
-            <ResultCount>{searchResults.data.total} results </ResultCount> 
-            {searchResults.data.launches.map(data => (
-              <ResultCard key={data.id} {...data}>
+        <ScrollWrapper contentContainerStyle={{alignItems: 'center'}}>
+          {searchResults.data && (
+            <>
+              <ResultCount>{searchResults.data.total || 0} results</ResultCount> 
+              {searchResults.data.launches.map(data => (
+                <ResultCard key={data.id} {...data}>
 
-              </ResultCard>
-            ))}
-          </>
-        )}
-        <Footer>Data provided</Footer>
+                </ResultCard>
+              ))}
+            </>
+          )}
+          <Footer>Data provided</Footer>
         </ScrollWrapper>
       </Wrapper>
     );

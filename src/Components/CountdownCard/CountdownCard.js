@@ -5,94 +5,83 @@ import {Animated, Easing, View} from 'react-native';
 const Wrapper = styled.View`
     background: ${({theme}) => theme.cardBackground};
     margin: 25px;
-    border-radius: 10px
+    border-radius: 10px;
     align-items: center;
     padding: 20px;
     flex-direction: row;
-    overflow: hidden;
+    justify-content: space-around;
+    
 `;
 
-const Title = styled.Text`
-    color: white;
-    font-weight: bold;
+const UnitWrapper = styled.View`
+    align-items: center;
+    justify-content: center;
+`;
+
+const Number = styled.Text`
     font-size: 26px;
+    font-weight: bold;
+    color: white;
 `;
 
-const Numbers = styled(Title)`
-    font-size: 20px;
-`;
-
-const Clock = styled(Animated.createAnimatedComponent(View))`
-    position: absolute;
-    right: -50px;
-    height: 100px;
-    width: 100px;
-    border-radius: 50px;
-    border-width: 2px;
-    border-color: white;
-    border-style: dashed;
+const Unit = styled.Text`
+    font-size: 12px;
+    font-weight: bold;
+    color: #aaa;
 `;
 
 export default class extends Component{
 
     state = {
         timeLeft: 0,
-        ticking: new Animated.Value(0),
-    }
-
-    updateTimeLeft(){
-        const now = new Date();
-        const timeLeft = this.props.data.wsstamp * 1000 - now.getTime();
-        this.setState({timeLeft})
-        Animated.sequence([
-            Animated.timing(
-                this.state.ticking,
-                {
-                  toValue: 1,
-                  duration: 800,
-                  easing: Easing.bounce,
-                  useNativeDriver: true,
-                }
-              ),
-            Animated.spring(
-                this.state.ticking,
-                {
-                  toValue: 0,
-                  duration: 0,
-                  useNativeDriver: true,
-                }
-            )
-          ]).start()
-        
     }
 
     componentDidMount(){
-        this.timer = setInterval(() => {
-            this.updateTimeLeft();
-          }, 1000);
+        console.log(this.props.data)
+        if (this.props.data.wsstamp){
+            this.timer = setInterval(() => {
+                this.updateTimeLeft();
+              }, 1000);
+        } else {
+            this.setState({timeLeft: 0});
+        }
     }
 
     componentWillUnmount(){
         clearInterval(this.timer);
     }
 
+    updateTimeLeft(){
+        const now = new Date();
+        const timeLeft = this.props.data.wsstamp * 1000 - now.getTime();
+        this.setState({timeLeft});
+    }
+
     render() {
-        const {timeLeft} = this.state
+        const {timeLeft} = this.state;
         const seconds = Math.floor(timeLeft / 1000);
         const minutes = Math.floor(seconds / 60);
         const hours = Math.floor(minutes / 60);
         const days = Math.floor(hours / 24);
+        const NoData = timeLeft === 0;
         return (
             <Wrapper>
-                <Clock style={{transform: [{
-                        rotate: this.state.ticking.interpolate({
-                          inputRange: [0, 1],
-                          outputRange: ['180deg', '200deg'],
-                          extrapolate: 'clamp',
-                        }),
-                      }]}} />
-                <Title large>T - </Title>
-                <Numbers>{days}d {hours % 24}h {minutes % 60}m {seconds % 60}s</Numbers>
+                <UnitWrapper>
+                    <Number>{NoData ? '-' : days}</Number>
+                    <Unit>days</Unit>
+                </UnitWrapper>
+                <UnitWrapper>
+                    <Number>{NoData ? '-' : hours % 24}</Number>
+                    <Unit>hours</Unit>
+                </UnitWrapper>
+                <UnitWrapper>
+                    <Number>{NoData ? '-' : minutes % 60}</Number>
+                    <Unit>minutes</Unit>
+                </UnitWrapper>
+                <UnitWrapper>
+                    <Number>{NoData ? '-' : seconds % 60}</Number>
+                    <Unit>seconds</Unit>
+                </UnitWrapper>
             </Wrapper>
         )
     }
