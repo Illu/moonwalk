@@ -7,6 +7,7 @@ const Wrapper = styled.TextInput`
   border-width: 1px;
   border-color: ${({ theme }) => theme.cardBackground};
   border-radius: 20px;
+  font-size: 20px;
   margin: 20px;
   color: white;
 `;

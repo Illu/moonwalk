@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import ScreenBackground from '../../Common/ScreenBackground';
 import Searchbar from '../../Common/Searchbar';
 import ResultCard from './ResultCard';
-import {ScrollView } from 'react-native';
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;
@@ -49,7 +48,7 @@ class InfosScreen extends Component {
               ))}
             </>
           )}
-          <Footer>Data provided</Footer>
+          <Footer>Data provided by the Launch Library</Footer>
         </ScrollWrapper>
       </Wrapper>
     );

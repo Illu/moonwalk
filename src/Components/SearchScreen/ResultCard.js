@@ -20,11 +20,7 @@ const Subtitle = styled.Text`
 `;
 
 class ResultCard extends Component {
-  
-
   render() { 
-
-    console.log(this.props)
     return (
       <Wrapper>
         <Title>{this.props.name}</Title>

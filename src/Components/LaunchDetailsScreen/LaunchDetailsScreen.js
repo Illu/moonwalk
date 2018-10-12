@@ -17,6 +17,16 @@ const DetailsWrapper = styled.View`
     margin: 25px;
     border-radius: 20px;
     padding: 20px;
+    overflow: hidden;
+`;
+
+const BackgroundImage = styled.Image`
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.3;
 `;
 
 const ContentWrapper = styled(SafeAreaView)`
@@ -94,7 +104,7 @@ export default class extends Component {
         const pad = selected.location.pads[0];
         const time = selected.net;
 
-
+        console.log(selected)
         return (
             <Wrapper>
                 <ContentWrapper>
@@ -103,6 +113,7 @@ export default class extends Component {
                         <DetailsWrapper>
                             {rocket &&
                                 <>
+                                    <BackgroundImage source={{uri: selected.rocket.imageURL}}/>
                                     <SectionTitle>Rocket</SectionTitle>
                                     <InfoText>{rocket}</InfoText>
                                 </>
