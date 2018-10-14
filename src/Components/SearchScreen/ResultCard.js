@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.View`
+const Wrapper = styled.TouchableOpacity`
   background: ${({theme}) => theme.cardBackground};
   padding: 20px;
   width: 85%;
@@ -20,9 +20,9 @@ const Subtitle = styled.Text`
 `;
 
 class ResultCard extends Component {
-  render() { 
+  render() {
     return (
-      <Wrapper>
+      <Wrapper onPress={() => this.props.showDetails(this.props.id)}>
         <Title>{this.props.name}</Title>
         <Subtitle>{this.props.net}</Subtitle>
       </Wrapper>

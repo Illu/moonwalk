@@ -14,6 +14,7 @@ const Wrapper = styled(ScreenBackground)`
 const Footer = styled.Text`
   color: #aaa;
   font-size: 14px;
+  margin: 20px 0;
 `;
 
 const ScrollWrapper = styled.ScrollView`
@@ -32,8 +33,13 @@ class InfosScreen extends Component {
     this.props.searchLaunches(str);
   }
 
+  showDetails = (id) => {
+    this.props.setSelectedLaunch(id);
+    this.props.navigation.navigate('details');
+  }
+
   render() { 
-    const {searchResults} = this.props;
+    const {searchResults, navigation} = this.props;
     return (
       <Wrapper>
         <Searchbar launchSearch={(str) => this.launchSearch(str)}/>
@@ -42,7 +48,7 @@ class InfosScreen extends Component {
             <>
               <ResultCount>{searchResults.data.total || 0} results</ResultCount> 
               {searchResults.data.launches.map(data => (
-                <ResultCard key={data.id} {...data}>
+                <ResultCard key={data.id} {...data} showDetails={this.showDetails}>
 
                 </ResultCard>
               ))}

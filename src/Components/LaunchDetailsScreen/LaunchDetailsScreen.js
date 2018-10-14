@@ -98,13 +98,21 @@ export default class extends Component {
     render() {
         const { launches } = this.props;
         const selected = launches.data.launches.filter(launch => launch.id === launches.selectedLaunch)[0]
+
+        if (!selected){
+            return (
+                <Wrapper>
+                    <HeaderBack ScreenTitle="Launch Details" navigateBack={() => this.props.navigation.goBack()} />
+                    <SectionTitle>No loaded data!</SectionTitle>
+                </Wrapper>
+            )
+        }
         const videoLink = selected.vidURLs.length > 0 && selected.vidURLs[0];
         const location = selected.location.name;
         const rocket = selected.rocket.name;
         const pad = selected.location.pads[0];
         const time = selected.net;
 
-        console.log(selected)
         return (
             <Wrapper>
                 <ContentWrapper>
