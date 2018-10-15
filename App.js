@@ -39,10 +39,22 @@ const LaunchCalendar = createStackNavigator({
   details: { screen: LaunchDetailsScreen },
 });
 
+const Search = createStackNavigator({
+  search: {
+    screen: SearchScreen,
+    navigationOptions: {
+      title: 'Search',
+      header: null,
+      headerBackTitle: null,
+    },
+  },
+  details: { screen: LaunchDetailsScreen },
+});
+
 const Navigation = createBottomTabNavigator({
   [TABS.Home]: Dashboard,
   [TABS.Calendar]: LaunchCalendar,
-  [TABS.Search]: SearchScreen,
+  [TABS.Search]: Search,
 },
 {
   navigationOptions: ({ navigation }) => ({

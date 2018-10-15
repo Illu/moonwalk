@@ -62,7 +62,7 @@ export default class extends Component{
         const minutes = Math.floor(seconds / 60);
         const hours = Math.floor(minutes / 60);
         const days = Math.floor(hours / 24);
-        const NoData = timeLeft === 0;
+        const NoData = timeLeft <= 0;
         return (
             <Wrapper>
                 <UnitWrapper>

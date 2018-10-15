@@ -7,6 +7,7 @@ import { ScrollView, Linking, SafeAreaView } from 'react-native';
 import CountdownCard from '../CountdownCard/CountdownCard';
 import Button from '../../Common/Button';
 import HeaderBack from '../../Common/HeaderBack';
+import Loader from '../../Common/Loader';
 
 const Wrapper = styled(ScreenBackground)`
     flex: 1;
@@ -91,6 +92,10 @@ export default class extends Component {
         headerTintColor: '#fff',
     };
 
+    state = {
+        hasLoaded: false,
+    }
+
     openMap({ longitude, latitude }) {
         openMap({ longitude, latitude });
     }
@@ -99,14 +104,28 @@ export default class extends Component {
         const { launches } = this.props;
         const selected = launches.data.launches.filter(launch => launch.id === launches.selectedLaunch)[0]
 
-        if (!selected){
+
+        if (!selected && !launches.loading) {
+            if (!this.state.hasLoaded){
+                this.props.loadLaunch(launches.selectedLaunch)
+                this.setState({hasLoaded: true})
+            }
             return (
                 <Wrapper>
                     <HeaderBack ScreenTitle="Launch Details" navigateBack={() => this.props.navigation.goBack()} />
-                    <SectionTitle>No loaded data!</SectionTitle>
                 </Wrapper>
             )
         }
+
+        if (launches.loading || !selected) {
+            return (
+                <Wrapper>
+                    <HeaderBack ScreenTitle="Launch Details" navigateBack={() => this.props.navigation.goBack()} />
+                    <Loader />
+                </Wrapper>
+            )
+        }
+
         const videoLink = selected.vidURLs.length > 0 && selected.vidURLs[0];
         const location = selected.location.name;
         const rocket = selected.rocket.name;
@@ -121,7 +140,7 @@ export default class extends Component {
                         <DetailsWrapper>
                             {rocket &&
                                 <>
-                                    <BackgroundImage source={{uri: selected.rocket.imageURL}}/>
+                                    <BackgroundImage source={{ uri: selected.rocket.imageURL }} />
                                     <SectionTitle>Rocket</SectionTitle>
                                     <InfoText>{rocket}</InfoText>
                                 </>

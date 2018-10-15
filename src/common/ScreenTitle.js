@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.View`
@@ -23,13 +23,19 @@ const BackgroundText = styled.Text`
     font-weight: bold;
 `;
 
-export default ({title, noBackgroundText = false}) => (
-    <Wrapper>
-        {!noBackgroundText && 
-            <BackgroundText numberOfLines={1} ellipsizeMode="clip">
-                {title}
-            </BackgroundText>
-        }
-        <MainText>{title}</MainText>
-    </Wrapper>
-)
+export default class extends Component {
+
+    render() {
+        const { title, noBackgroundText = false, style = {} } = this.props;
+        return (
+            <Wrapper style={style}>
+                {!noBackgroundText &&
+                    <BackgroundText numberOfLines={1} ellipsizeMode="clip">
+                        {title}
+                    </BackgroundText>
+                }
+                <MainText>{title}</MainText>
+            </Wrapper>
+        )
+    }
+}

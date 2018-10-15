@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ScreenBackground from '../../Common/ScreenBackground';
 import Searchbar from '../../Common/Searchbar';
 import ResultCard from './ResultCard';
+import Loader from '../../Common/Loader';
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;
@@ -39,11 +40,12 @@ class InfosScreen extends Component {
   }
 
   render() { 
-    const {searchResults, navigation} = this.props;
+    const {searchResults} = this.props;
     return (
       <Wrapper>
         <Searchbar launchSearch={(str) => this.launchSearch(str)}/>
         <ScrollWrapper contentContainerStyle={{alignItems: 'center'}}>
+          {searchResults.loading && <Loader />}
           {searchResults.data && (
             <>
               <ResultCount>{searchResults.data.total || 0} results</ResultCount> 
