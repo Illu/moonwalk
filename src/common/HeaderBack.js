@@ -8,7 +8,6 @@ const Wrapper = styled.View`
   height: 60px;
   align-items: center;
   flex-direction: row;
-  margin-top: 20px;
 `;
 
 const Title = styled.Text`
