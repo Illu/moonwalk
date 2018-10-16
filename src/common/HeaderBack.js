@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import {View} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import React from "react";
+import styled from "styled-components";
+import { View } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome5";
 
 const Wrapper = styled.View`
   width: 100%;
@@ -23,13 +23,13 @@ const BackArrowWrapper = styled.TouchableOpacity`
   align-items: center;
 `;
 
-export default ({ScreenTitle, navigateBack}) => {
-    return (
-      <Wrapper>
-        <BackArrowWrapper onPress={navigateBack}>
-          <Icon name="long-arrow-alt-left" size={25} color="white" />
-        </BackArrowWrapper>
-        <Title>{ScreenTitle}</Title>
-      </Wrapper>
-    );
-}
+export default ({ ScreenTitle, navigateBack }) => {
+  return (
+    <Wrapper>
+      <BackArrowWrapper onPress={navigateBack}>
+        <Icon name="long-arrow-alt-left" size={25} color="white" />
+      </BackArrowWrapper>
+      <Title>{ScreenTitle}</Title>
+    </Wrapper>
+  );
+};

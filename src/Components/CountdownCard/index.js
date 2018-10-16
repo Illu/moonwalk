@@ -1,2 +1,2 @@
-import CountdownCard from './CountdownCard';
+import CountdownCard from "./CountdownCard";
 export default CountdownCard;

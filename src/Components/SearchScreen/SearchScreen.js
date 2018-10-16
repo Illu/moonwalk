@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import ScreenBackground from '../../Common/ScreenBackground';
-import Searchbar from '../../Common/Searchbar';
-import ResultCard from './ResultCard';
-import Loader from '../../Common/Loader';
+import React, { Component } from "react";
+import styled from "styled-components";
+import ScreenBackground from "../../Common/ScreenBackground";
+import Searchbar from "../../Common/Searchbar";
+import ResultCard from "./ResultCard";
+import Loader from "../../Common/Loader";
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;
@@ -30,29 +30,31 @@ const ResultCount = styled.Text`
 `;
 
 class InfosScreen extends Component {
-  launchSearch (str) {
+  launchSearch(str) {
     this.props.searchLaunches(str);
   }
 
-  showDetails = (id) => {
+  showDetails = id => {
     this.props.setSelectedLaunch(id);
-    this.props.navigation.navigate('details');
-  }
+    this.props.navigation.navigate("details");
+  };
 
-  render() { 
-    const {searchResults} = this.props;
+  render() {
+    const { searchResults } = this.props;
     return (
       <Wrapper>
-        <Searchbar launchSearch={(str) => this.launchSearch(str)}/>
-        <ScrollWrapper contentContainerStyle={{alignItems: 'center'}}>
+        <Searchbar launchSearch={str => this.launchSearch(str)} />
+        <ScrollWrapper contentContainerStyle={{ alignItems: "center" }}>
           {searchResults.loading && <Loader />}
           {searchResults.data && (
             <>
-              <ResultCount>{searchResults.data.total || 0} results</ResultCount> 
+              <ResultCount>{searchResults.data.total || 0} results</ResultCount>
               {searchResults.data.launches.map(data => (
-                <ResultCard key={data.id} {...data} showDetails={this.showDetails}>
-
-                </ResultCard>
+                <ResultCard
+                  key={data.id}
+                  {...data}
+                  showDetails={this.showDetails}
+                />
               ))}
             </>
           )}
@@ -62,5 +64,5 @@ class InfosScreen extends Component {
     );
   }
 }
- 
+
 export default InfosScreen;

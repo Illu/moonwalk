@@ -1,18 +1,21 @@
-import { connect } from 'react-redux';
-import SearchScreen from './SearchScreen';
-import {loadNextLaunches, setSelectedLaunch} from '../../Ducks/launches';
-import {searchLaunches} from '../../Ducks/search';
+import { connect } from "react-redux";
+import SearchScreen from "./SearchScreen";
+import { loadNextLaunches, setSelectedLaunch } from "../../Ducks/launches";
+import { searchLaunches } from "../../Ducks/search";
 
 const mapStateToProps = state => {
   return {
-    searchResults: state.search,
-  }
-}
+    searchResults: state.search
+  };
+};
 
 const mapDispatchToProps = {
-  loadNextLaunches, 
+  loadNextLaunches,
   setSelectedLaunch,
-  searchLaunches,
-}
+  searchLaunches
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchScreen)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchScreen);

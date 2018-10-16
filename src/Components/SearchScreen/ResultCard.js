@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.TouchableOpacity`
-  background: ${({theme}) => theme.cardBackground};
+  background: ${({ theme }) => theme.cardBackground};
   padding: 20px;
   width: 85%;
   margin: 10px;
@@ -29,5 +29,5 @@ class ResultCard extends Component {
     );
   }
 }
- 
+
 export default ResultCard;

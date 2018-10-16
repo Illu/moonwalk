@@ -1,4 +1,4 @@
 export default {
-    cardBackground: '#42446f',
-    inactive: '#8183a5',
-}
+  cardBackground: "#42446f",
+  inactive: "#8183a5"
+};

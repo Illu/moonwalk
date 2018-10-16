@@ -22,7 +22,9 @@
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
+    "husky": "^1.1.2",
     "jest": "23.6.0",
+    "lint-staged": "^7.3.0",
     "metro-react-native-babel-preset": "0.45.2",
     "react-test-renderer": "16.5.0"
   },
@@ -34,5 +36,16 @@
     "moduleNameMapper": {
       "styled-components": "<rootDir>/node_modules/styled-components/dist/styled-components.native.cjs.js"
     }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

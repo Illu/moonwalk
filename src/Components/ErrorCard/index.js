@@ -1,2 +1,2 @@
-import ErrorCard from './ErrorCard';
+import ErrorCard from "./ErrorCard";
 export default ErrorCard;

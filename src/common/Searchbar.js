@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.TextInput`
   width: 80%;
@@ -16,8 +16,8 @@ class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchStr: '',
-    }
+      searchStr: ""
+    };
   }
 
   render() {
@@ -28,10 +28,11 @@ class SearchBar extends Component {
         placeholder="Search launches..."
         placeholderTextColor="#aaa"
         returnKeyType="search"
-        onChangeText={(searchStr) => this.setState({ searchStr })}
+        clearButtonMode="always"
+        onChangeText={searchStr => this.setState({ searchStr })}
         onSubmitEditing={() => this.props.launchSearch(searchStr)}
       />
-    )
+    );
   }
 }
 

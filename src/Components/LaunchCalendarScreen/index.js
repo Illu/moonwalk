@@ -1,2 +1,2 @@
-import LaunchCalendarScreenContainer from './LaunchCalendarScreenContainer';
+import LaunchCalendarScreenContainer from "./LaunchCalendarScreenContainer";
 export default LaunchCalendarScreenContainer;

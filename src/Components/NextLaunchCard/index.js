@@ -1,2 +1,2 @@
-import NextLaunchCard from './NextLaunchCard';
+import NextLaunchCard from "./NextLaunchCard";
 export default NextLaunchCard;
