@@ -51,15 +51,20 @@ const SectionTitle = styled.Text`
 @inject("launches")
 @observer
 class SettingsScreen extends Component {
+  state = {
+    secret: false
+  };
+
   render() {
     const { notifications } = this.props.launches;
+    const { secret } = this.state;
     return (
       <Wrapper>
         <ContentWrapper>
           <ScreenTitle title="Settings" />
           <SectionsWrapper>
             <Section top>
-              <SectionTitle>Notifications</SectionTitle>
+              <SectionTitle>Notify me</SectionTitle>
               <Switch
                 value={notifications.enabled}
                 onValueChange={() => this.props.launches.toggleNotifications()}
@@ -70,26 +75,32 @@ class SettingsScreen extends Component {
               disabled={!notifications.enabled}
               style={{ justifyContent: "space-around" }}
             >
-              <Icon name="minus" size={22} color="#fff" />
-              <SectionTitle>10 min ahead of launch</SectionTitle>
-              <Icon name="plus" size={22} color="#fff" />
-            </Section>
-            <Section top>
-              <SectionTitle>Give your feedback</SectionTitle>
-              <Icon name="app-store-ios" size={22} color="#fff" />
+              <Icon name="minus" size={18} color="#fff" />
+              <SectionTitle>10 min ahead of a launch</SectionTitle>
+              <Icon name="plus" size={18} color="#fff" />
             </Section>
             <Section
+              top
               onPress={() => Linking.openURL("https://twitter.com/maximenory")}
             >
               <SectionTitle>Say hi 👋</SectionTitle>
               <Icon name="twitter" size={22} color="#fff" />
             </Section>
             <Section
+              onPress={() =>
+                Linking.openURL("https://itunes.apple.com/us/app/")
+              }
+            >
+              <SectionTitle>Give your feedback</SectionTitle>
+              <Icon name="app-store-ios" size={22} color="#fff" />
+            </Section>
+
+            <Section
               bottom
               onPress={() => Linking.openURL("https://buymeacoff.ee/illu")}
             >
               <SectionTitle>Buy me a coffee</SectionTitle>
-              <Icon name="chevron-right" size={22} color="#fff" />
+              <Icon name="coffee" size={22} color="#fff" />
             </Section>
             <Section
               top
@@ -100,13 +111,24 @@ class SettingsScreen extends Component {
               <SectionTitle>Source code</SectionTitle>
               <Icon name="github" size={22} color="#fff" />
             </Section>
-            <Section bottom>
-              <SectionTitle>Libraries used</SectionTitle>
+            <Section
+              bottom
+              onPress={() => this.props.navigation.navigate("libraries")}
+            >
+              <SectionTitle>Licenses</SectionTitle>
               <Icon name="chevron-right" size={22} color="#fff" />
             </Section>
-            <Section top bottom>
+            <Section
+              top
+              bottom
+              onPress={() => this.setState({ secret: !secret })}
+            >
               <SectionTitle>About</SectionTitle>
-              <SectionTitle>Version {version}</SectionTitle>
+              {secret ? (
+                <Icon name="user-secret" size={30} color="#ffec2a" />
+              ) : (
+                <SectionTitle>Version {version}</SectionTitle>
+              )}
             </Section>
           </SectionsWrapper>
         </ContentWrapper>

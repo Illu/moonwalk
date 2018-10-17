@@ -14,6 +14,7 @@ import SearchScreen from "./src/Components/SearchScreen";
 import SettingsScreen from "./src/Components/SettingsScreen";
 import LaunchesModel from "./src/Models/LaunchesModel";
 import SearchModel from "./src/Models/SearchModel";
+import LibrariesScreen from "./src/Components/LibrariesScreen/LibrariesScreen";
 
 const Dashboard = createStackNavigator({
   dashboard: {
@@ -51,12 +52,24 @@ const Search = createStackNavigator({
   details: { screen: LaunchDetailsScreen }
 });
 
+const Settings = createStackNavigator({
+  search: {
+    screen: SettingsScreen,
+    navigationOptions: {
+      title: "Settings",
+      header: null,
+      headerBackTitle: null
+    }
+  },
+  libraries: { screen: LibrariesScreen }
+});
+
 const Navigation = createBottomTabNavigator(
   {
     [TABS.Home]: Dashboard,
     [TABS.Calendar]: LaunchCalendar,
     [TABS.Search]: Search,
-    [TABS.Settings]: SettingsScreen
+    [TABS.Settings]: Settings
   },
   {
     navigationOptions: ({ navigation }) => ({

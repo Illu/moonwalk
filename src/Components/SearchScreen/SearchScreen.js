@@ -9,9 +9,13 @@ import { observer, inject } from "mobx-react";
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;
-  padding-top: 20px;
-  align-items: center;
   width: 100%;
+`;
+
+const ContentWrapper = styled(SafeAreaView)`
+  flex: 1;
+  width: 100%;
+  align-items: center;
 `;
 
 const Footer = styled.Text`
@@ -42,23 +46,26 @@ export default class SearchScreen extends Component {
     const { results, searchLaunches, totalResults, state } = this.props.search;
     return (
       <Wrapper>
-        <Searchbar launchSearch={str => searchLaunches(str)} />
-        <ScrollWrapper contentContainerStyle={{ alignItems: "center" }}>
-          {state === "loading" && <Loader />}
-          {results.length > 0 && (
-            <>
-              <ResultCount>{totalResults || 0} results</ResultCount>
-              {results.map(data => (
-                <ResultCard
-                  key={data.id}
-                  data={data}
-                  showDetails={this.showDetails}
-                />
-              ))}
-            </>
-          )}
-          <Footer>Data provided by the Launch Library</Footer>
-        </ScrollWrapper>
+        <ContentWrapper>
+          <Searchbar launchSearch={str => searchLaunches(str)} />
+          <ScrollWrapper contentContainerStyle={{ alignItems: "center" }}>
+            {state === "loading" && <Loader />}
+            {results.length >= 0 &&
+              state === "success" && (
+                <>
+                  <ResultCount>{totalResults || 0} results</ResultCount>
+                  {results.map(data => (
+                    <ResultCard
+                      key={data.id}
+                      data={data}
+                      showDetails={this.showDetails}
+                    />
+                  ))}
+                </>
+              )}
+            <Footer>Data provided by the Launch Library</Footer>
+          </ScrollWrapper>
+        </ContentWrapper>
       </Wrapper>
     );
   }

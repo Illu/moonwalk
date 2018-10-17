@@ -72,10 +72,10 @@ export default class extends Component {
                   </PushableWrapper>
                 )
             )}
-            <LoadMoreButton
+            {/* <LoadMoreButton
               title="Load more"
               onPress={() => data.loadMoreLaunches(5)}
-            />
+            /> */}
           </ScrollView>
         )}
       </Wrapper>

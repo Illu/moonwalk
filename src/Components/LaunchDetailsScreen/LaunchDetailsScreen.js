@@ -92,10 +92,6 @@ export default class extends Component {
     headerTintColor: "#fff"
   };
 
-  state = {
-    hasLoaded: false
-  };
-
   openMap({ longitude, latitude }) {
     openMap({ longitude, latitude });
   }

@@ -24,9 +24,10 @@ const Wrapper = styled(LinearGradient)`
 
 const Title = styled.Text`
   color: #efefef;
-  font-size: 20px;
+  font-size: ${props => props.fontSize};
   font-weight: bold;
   margin-left: 10px;
+  text-align: center;
 `;
 
 const TYPES = {
@@ -58,7 +59,8 @@ export default ({
   type = "primary",
   disabled = false,
   icon,
-  style
+  style,
+  fontSize = 20
 }) => (
   <TouchableWrapper
     style={style}
@@ -72,7 +74,7 @@ export default ({
       end={{ x: 1.0, y: 0.0 }}
     >
       {icon && <Icon name={icon} size={25} color="#efefef" />}
-      {title && <Title>{title}</Title>}
+      {title && <Title fontSize={fontSize}>{title}</Title>}
     </Wrapper>
   </TouchableWrapper>
 );

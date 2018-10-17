@@ -1,0 +1,98 @@
+[
+  {
+    "@babel/plugin-proposal-decorators@7.1.2": {
+      "licenses": "MIT",
+      "repository": "https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-decorators",
+      "licenseUrl": "https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-decorators/raw/master/LICENSE",
+      "parents": "moonwalk"
+    }
+  },
+  {
+    "mobx-react@5.3.1": {
+      "licenses": "MIT",
+      "repository": "https://github.com/mobxjs/mobx-react",
+      "licenseUrl": "https://github.com/mobxjs/mobx-react/raw/master/LICENSE",
+      "parents": "moonwalk"
+    }
+  },
+  {
+    "mobx@5.5.0": {
+      "licenses": "MIT",
+      "repository": "https://github.com/mobxjs/mobx",
+      "licenseUrl": "https://github.com/mobxjs/mobx/raw/master/LICENSE",
+      "parents": "moonwalk"
+    }
+  },
+  {
+    "prettier@1.14.3": {
+      "licenses": "MIT",
+      "repository": "https://github.com/prettier/prettier",
+      "licenseUrl": "https://github.com/prettier/prettier/raw/master/LICENSE",
+      "parents": "moonwalk"
+    }
+  },
+  {
+    "react-native-linear-gradient@2.4.2": {
+      "licenses": "MIT",
+      "repository": "https://github.com/brentvatne/react-native-linear-gradient",
+      "licenseUrl": "https://github.com/brentvatne/react-native-linear-gradient/raw/master/LICENSE",
+      "parents": "moonwalk"
+    }
+  },
+  {
+    "react-native-open-maps@0.3.2": {
+      "licenses": "MIT",
+      "repository": "https://github.com/brh55/react-native-open-maps",
+      "licenseUrl": "https://github.com/brh55/react-native-open-maps/raw/master/LICENSE",
+      "parents": "moonwalk"
+    }
+  },
+  {
+    "react-native-vector-icons@5.0.0": {
+      "licenses": "MIT",
+      "repository": "https://github.com/oblador/react-native-vector-icons",
+      "licenseUrl": "https://github.com/oblador/react-native-vector-icons/raw/master/LICENSE",
+      "parents": "moonwalk"
+    }
+  },
+  {
+    "react-native@0.57.0": {
+      "licenses": "MIT",
+      "repository": "https://github.com/facebook/react-native",
+      "licenseUrl": "https://github.com/facebook/react-native/raw/master/LICENSE",
+      "parents": "moonwalk"
+    }
+  },
+  {
+    "react-navigation-fluid-transitions@0.2.6": {
+      "licenses": "MIT",
+      "repository": "https://github.com/fram-x/FluidTransitions",
+      "licenseUrl": "https://github.com/fram-x/FluidTransitions",
+      "parents": "moonwalk"
+    }
+  },
+  {
+    "react-navigation@2.14.0": {
+      "licenses": "BSD-2-Clause",
+      "repository": "https://github.com/react-navigation/react-navigation",
+      "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
+      "parents": "moonwalk"
+    }
+  },
+  {
+    "react@16.5.0": {
+      "licenses": "MIT",
+      "repository": "https://github.com/facebook/react",
+      "licenseUrl": "https://github.com/facebook/react/raw/master/LICENSE",
+      "parents": "moonwalk"
+    }
+  },
+  {
+    "styled-components@3.4.6": {
+      "licenses": "MIT",
+      "repository": "https://github.com/styled-components/styled-components",
+      "licenseUrl": "https://github.com/styled-components/styled-components/raw/master/LICENSE",
+      "parents": "moonwalk"
+    }
+  }
+]
