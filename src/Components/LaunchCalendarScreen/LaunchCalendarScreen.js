@@ -61,17 +61,14 @@ export default class extends Component {
               />
             }
           >
-            {data.launches.map(
-              launch =>
-                console.log(launch.id) || (
-                  <PushableWrapper
-                    key={launch.id}
-                    onPress={() => this.navigateToDetails(launch)}
-                  >
-                    <CalendarCard data={launch} />
-                  </PushableWrapper>
-                )
-            )}
+            {data.launches.map(launch => (
+              <PushableWrapper
+                key={launch.id}
+                onPress={() => this.navigateToDetails(launch)}
+              >
+                <CalendarCard data={launch} />
+              </PushableWrapper>
+            ))}
             {/* <LoadMoreButton
               title="Load more"
               onPress={() => data.loadMoreLaunches(5)}

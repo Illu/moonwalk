@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Switch, Linking } from "react-native";
+import { Switch, Linking, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-navigation";
 import { observer, inject } from "mobx-react";
 import Icon from "react-native-vector-icons/FontAwesome5";
@@ -48,6 +48,14 @@ const SectionTitle = styled.Text`
   color: white;
 `;
 
+const hitSlopValue = 60;
+const touchableHitSlop = {
+  top: hitSlopValue / 2,
+  left: hitSlopValue,
+  right: hitSlopValue,
+  bottom: hitSlopValue / 2
+};
+
 @inject("launches")
 @observer
 class SettingsScreen extends Component {
@@ -56,7 +64,8 @@ class SettingsScreen extends Component {
   };
 
   render() {
-    const { notifications } = this.props.launches;
+    const { launches } = this.props;
+    const { notifications } = launches;
     const { secret } = this.state;
     return (
       <Wrapper>
@@ -75,9 +84,23 @@ class SettingsScreen extends Component {
               disabled={!notifications.enabled}
               style={{ justifyContent: "space-around" }}
             >
-              <Icon name="minus" size={18} color="#fff" />
-              <SectionTitle>10 min ahead of a launch</SectionTitle>
-              <Icon name="plus" size={18} color="#fff" />
+              <TouchableOpacity
+                disabled={!notifications.enabled}
+                onPress={() => launches.changeNotificationDelay(-5)}
+                hitSlop={touchableHitSlop}
+              >
+                <Icon name="minus" size={18} color="#fff" />
+              </TouchableOpacity>
+              <SectionTitle>
+                {notifications.delay} min ahead of a launch
+              </SectionTitle>
+              <TouchableOpacity
+                disabled={!notifications.enabled}
+                onPress={() => launches.changeNotificationDelay(5)}
+                hitSlop={touchableHitSlop}
+              >
+                <Icon name="plus" size={18} color="#fff" />
+              </TouchableOpacity>
             </Section>
             <Section
               top
@@ -94,7 +117,6 @@ class SettingsScreen extends Component {
               <SectionTitle>Give your feedback</SectionTitle>
               <Icon name="app-store-ios" size={22} color="#fff" />
             </Section>
-
             <Section
               bottom
               onPress={() => Linking.openURL("https://buymeacoff.ee/illu")}

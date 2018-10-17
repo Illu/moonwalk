@@ -1,5 +1,12 @@
 import { observable, computed, action } from "mobx";
+import { PushNotificationIOS, AsyncStorage } from "react-native";
 import { API_URL } from "../../cfg";
+
+storeData = async data => {
+  try {
+    await AsyncStorage.setItem("@Moonwalk:notifications", JSON.stringify(data));
+  } catch (error) {}
+};
 
 export default class LaunchesModel {
   @observable
@@ -14,7 +21,7 @@ export default class LaunchesModel {
   @observable
   notifications = {
     enabled: false,
-    delay: 0
+    delay: 10
   };
 
   @computed
@@ -28,8 +35,61 @@ export default class LaunchesModel {
   }
 
   @action
-  toggleNotifications = () => {
+  initApp = async () => {
+    try {
+      const value = await AsyncStorage.getItem("@Moonwalk:notifications");
+      if (value !== null) {
+        this.notifications = JSON.parse(value);
+      }
+    } catch (error) {}
+  };
+
+  storeNotificationSettings = async () => {
+    try {
+      await AsyncStorage.setItem(
+        "@Moonwalk:notifications",
+        JSON.stringify(this.notifications)
+      );
+    } catch (error) {}
+  };
+
+  @action
+  changeNotificationDelay = time => {
+    if (this.notifications.delay + time >= 0) {
+      this.notifications.delay += time;
+      this.storeNotificationSettings();
+    }
+  };
+
+  @action
+  toggleNotifications = async () => {
     this.notifications.enabled = !this.notifications.enabled;
+    this.storeNotificationSettings();
+    if (this.notifications.enabled) {
+      PushNotificationIOS.requestPermissions();
+    } else {
+      PushNotificationIOS.cancelAllLocalNotifications();
+      PushNotificationIOS.removeAllDeliveredNotifications();
+    }
+  };
+
+  @action
+  scheduleNotification = data => {
+    if (this.notifications.enabled) {
+      PushNotificationIOS.getScheduledLocalNotifications(
+        plannedNotifications => {
+          if (plannedNotifications.length > 0) {
+            PushNotificationIOS.cancelAllLocalNotifications();
+          }
+          PushNotificationIOS.scheduleLocalNotification({
+            fireDate: (data.wsstamp - 5 * 60) * 1000,
+            alertBody: `🚀 ${data.name} will launch in just ${
+              this.notifications.delay
+            } minutes!`
+          });
+        }
+      );
+    }
   };
 
   @action

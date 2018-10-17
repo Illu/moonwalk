@@ -45,7 +45,7 @@ const ListItem = ({ item }) => {
     <ItemWrapper onPress={() => Linking.openURL(data.licenseUrl)}>
       <Button
         title={itemName}
-        type="red"
+        type="primary"
         fontSize={15}
         icon="github"
         onPress={() => Linking.openURL(data.licenseUrl)}

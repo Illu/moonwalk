@@ -37,25 +37,28 @@ const ContentWrapper = styled.View`
   justify-content: space-between;
 `;
 
-export default ({ data, navigateToDetails }) => (
-  <PushableWrapper style={{ flex: 1 }} onPress={navigateToDetails}>
-    <Wrapper
-      colors={["#ffb39d", "#ff43bb"]}
-      start={{ x: 0.0, y: 0.25 }}
-      end={{ x: 0.5, y: 1.0 }}
-    >
-      <BackgroundImage source={{ uri: data.rocket.imageURL }} />
-      <ContentWrapper>
-        <View>
-          <CompanyTitle>{data.lsp.name}</CompanyTitle>
-        </View>
-        <View>
-          <Title large adjustsFontSizeToFit numberOfLines={1}>
-            {data.name}
-          </Title>
-          <Title>{data.windowstart}</Title>
-        </View>
-      </ContentWrapper>
-    </Wrapper>
-  </PushableWrapper>
-);
+export default ({ data, navigateToDetails, scheduleNotification }) => {
+  scheduleNotification(data);
+  return (
+    <PushableWrapper style={{ flex: 1 }} onPress={navigateToDetails}>
+      <Wrapper
+        colors={["#ffb39d", "#ff43bb"]}
+        start={{ x: 0.0, y: 0.25 }}
+        end={{ x: 0.5, y: 1.0 }}
+      >
+        <BackgroundImage source={{ uri: data.rocket.imageURL }} />
+        <ContentWrapper>
+          <View>
+            <CompanyTitle>{data.lsp.name}</CompanyTitle>
+          </View>
+          <View>
+            <Title large adjustsFontSizeToFit numberOfLines={1}>
+              {data.name}
+            </Title>
+            <Title>{data.windowstart}</Title>
+          </View>
+        </ContentWrapper>
+      </Wrapper>
+    </PushableWrapper>
+  );
+};

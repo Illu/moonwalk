@@ -24,6 +24,7 @@ const ContentWrapper = styled(SafeAreaView)`
 class DashboardScreen extends Component {
   componentDidMount() {
     this.loadUpcomingLaunch();
+    this.props.launches.initApp();
   }
 
   loadUpcomingLaunch() {
@@ -37,7 +38,6 @@ class DashboardScreen extends Component {
 
   render() {
     const { state } = this.props.launches;
-    const { loadNextLaunches } = this.props;
     const data = this.props.launches.upcomingLaunch;
     return (
       <Wrapper>
@@ -53,6 +53,9 @@ class DashboardScreen extends Component {
                 <NextLaunchCard
                   data={data}
                   navigateToDetails={() => this.navigateToDetails()}
+                  scheduleNotification={data =>
+                    this.props.launches.scheduleNotification(data)
+                  }
                 />
                 <CountdownCard data={data} />
               </>
