@@ -1,6 +1,6 @@
 {
   "name": "moonwalk",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.1.2",
+    "@babel/runtime": "^7.1.2",
     "mobx": "^5.5.0",
     "mobx-react": "^5.3.1",
     "prettier": "^1.14.3",
