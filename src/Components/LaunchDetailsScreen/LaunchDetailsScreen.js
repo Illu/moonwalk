@@ -8,7 +8,6 @@ import { SafeAreaView } from "react-navigation";
 import CountdownCard from "../CountdownCard/CountdownCard";
 import Button from "../../Common/Button";
 import HeaderBack from "../../Common/HeaderBack";
-import Loader from "../../Common/Loader";
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;
@@ -102,43 +101,15 @@ export default class extends Component {
   }
 
   render() {
-    const { launches } = this.props;
-    const selected = launches.data.launches.filter(
-      launch => launch.id === launches.selectedLaunch
-    )[0];
+    const { navigation } = this.props;
+    const data = navigation.getParam("data", {});
 
-    if (!selected && !launches.loading) {
-      if (!this.state.hasLoaded) {
-        this.props.loadLaunch(launches.selectedLaunch);
-        this.setState({ hasLoaded: true });
-      }
-      return (
-        <Wrapper>
-          <HeaderBack
-            ScreenTitle="Launch Details"
-            navigateBack={() => this.props.navigation.goBack()}
-          />
-        </Wrapper>
-      );
-    }
-
-    if (launches.loading || !selected) {
-      return (
-        <Wrapper>
-          <HeaderBack
-            ScreenTitle="Launch Details"
-            navigateBack={() => this.props.navigation.goBack()}
-          />
-          <Loader />
-        </Wrapper>
-      );
-    }
-
-    const videoLink = selected.vidURLs.length > 0 && selected.vidURLs[0];
-    const location = selected.location.name;
-    const rocket = selected.rocket.name;
-    const pad = selected.location.pads[0];
-    const time = selected.net;
+    const videoLink = data.vidURLs.length > 0 && data.vidURLs[0];
+    const location = data.location.name;
+    const rocket = data.rocket.name;
+    const pad = data.location.pads[0];
+    const time = data.net;
+    const rocketImg = data.rocket.imageURL;
 
     return (
       <Wrapper>
@@ -151,15 +122,16 @@ export default class extends Component {
             <DetailsWrapper>
               {rocket && (
                 <>
-                  <BackgroundImage source={{ uri: selected.rocket.imageURL }} />
+                  <BackgroundImage source={{ uri: rocketImg }} />
                   <SectionTitle>Rocket</SectionTitle>
                   <InfoText>{rocket}</InfoText>
                 </>
               )}
               <SectionTitle>
-                Mission{selected.missions.length > 1 && "s"}
+                Mission
+                {data.missions.length > 1 && "s"}
               </SectionTitle>
-              {selected.missions.map(mission => (
+              {data.missions.map(mission => (
                 <InfoText key={mission.id}>{mission.name}</InfoText>
               ))}
               {location && (
@@ -171,15 +143,15 @@ export default class extends Component {
               {time && (
                 <>
                   <SectionTitle>Time</SectionTitle>
-                  <InfoText>{selected.net}</InfoText>
+                  <InfoText>{data.net}</InfoText>
                 </>
               )}
             </DetailsWrapper>
             <ShuttleIcon name="space-shuttle" size={28} color="#eee" />
-            {selected.missions.map(mission => (
+            {data.missions.map(mission => (
               <DescText key={mission.id}>{mission.description}</DescText>
             ))}
-            <CountdownCard data={selected} />
+            <CountdownCard data={data} />
             <LinksWrapper>
               <Row>
                 <ButtonWrapper>

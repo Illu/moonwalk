@@ -21,10 +21,11 @@ const Subtitle = styled.Text`
 
 class ResultCard extends Component {
   render() {
+    const { name, net } = this.props.data;
     return (
-      <Wrapper onPress={() => this.props.showDetails(this.props.id)}>
-        <Title>{this.props.name}</Title>
-        <Subtitle>{this.props.net}</Subtitle>
+      <Wrapper onPress={() => this.props.showDetails(this.props.data)}>
+        <Title>{name}</Title>
+        <Subtitle>{net}</Subtitle>
       </Wrapper>
     );
   }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { SafeAreaView } from "react-navigation";
+import { observer, inject } from "mobx-react";
 import ScreenBackground from "../../Common/ScreenBackground";
 import ScreenTitle from "../../Common/ScreenTitle";
 import NextLaunchCard from "../NextLaunchCard";
@@ -18,40 +19,42 @@ const ContentWrapper = styled(SafeAreaView)`
   justify-content: center;
 `;
 
+@inject("launches")
+@observer
 class DashboardScreen extends Component {
   componentDidMount() {
-    this.props.loadNextLaunches();
+    this.loadUpcomingLaunch();
+  }
+
+  loadUpcomingLaunch() {
+    this.props.launches.loadNextLaunches(1);
   }
 
   navigateToDetails() {
-    const { data } = this.props.launches;
-    this.props.setSelectedLaunch(data.launches[0].id);
-    this.props.navigation.navigate("details");
+    const data = this.props.launches.upcomingLaunch;
+    this.props.navigation.navigate("details", { data });
   }
 
   render() {
-    const { loading, error, data } = this.props.launches;
+    const { state } = this.props.launches;
     const { loadNextLaunches } = this.props;
+    const data = this.props.launches.upcomingLaunch;
     return (
-      <Wrapper
-        colors={["#373468", "#222437"]}
-        start={{ x: 0.0, y: 0.25 }}
-        end={{ x: 0.5, y: 1.0 }}
-      >
+      <Wrapper>
         <ScreenTitle title="Next launch" />
         <ContentWrapper>
-          {loading ? (
+          {state === "loading" ? (
             <Loader />
-          ) : error ? (
-            <ErrorCard onPress={loadNextLaunches} />
+          ) : state === "error" ? (
+            <ErrorCard onPress={() => this.loadUpcomingLaunch()} />
           ) : (
             data && (
               <>
                 <NextLaunchCard
-                  data={data.launches[0]}
+                  data={data}
                   navigateToDetails={() => this.navigateToDetails()}
                 />
-                <CountdownCard data={data.launches[0]} />
+                <CountdownCard data={data} />
               </>
             )
           )}

@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { SafeAreaView } from "react-navigation";
 import ScreenBackground from "../../Common/ScreenBackground";
 import Searchbar from "../../Common/Searchbar";
 import ResultCard from "./ResultCard";
 import Loader from "../../Common/Loader";
+import { observer, inject } from "mobx-react";
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;
@@ -29,30 +31,27 @@ const ResultCount = styled.Text`
   font-weight: bold;
 `;
 
-class InfosScreen extends Component {
-  launchSearch(str) {
-    this.props.searchLaunches(str);
-  }
-
-  showDetails = id => {
-    this.props.setSelectedLaunch(id);
-    this.props.navigation.navigate("details");
+@inject("search")
+@observer
+export default class SearchScreen extends Component {
+  showDetails = data => {
+    this.props.navigation.navigate("details", { data });
   };
 
   render() {
-    const { searchResults } = this.props;
+    const { results, searchLaunches, totalResults, state } = this.props.search;
     return (
       <Wrapper>
-        <Searchbar launchSearch={str => this.launchSearch(str)} />
+        <Searchbar launchSearch={str => searchLaunches(str)} />
         <ScrollWrapper contentContainerStyle={{ alignItems: "center" }}>
-          {searchResults.loading && <Loader />}
-          {searchResults.data && (
+          {state === "loading" && <Loader />}
+          {results.length > 0 && (
             <>
-              <ResultCount>{searchResults.data.total || 0} results</ResultCount>
-              {searchResults.data.launches.map(data => (
+              <ResultCount>{totalResults || 0} results</ResultCount>
+              {results.map(data => (
                 <ResultCard
                   key={data.id}
-                  {...data}
+                  data={data}
                   showDetails={this.showDetails}
                 />
               ))}
@@ -64,5 +63,3 @@ class InfosScreen extends Component {
     );
   }
 }
-
-export default InfosScreen;

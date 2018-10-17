@@ -1,2 +1,2 @@
-import DashboardScreenContainer from "./DashboardScreenContainer";
-export default DashboardScreenContainer;
+import DashboardScreen from "./DashboardScreen";
+export default DashboardScreen;

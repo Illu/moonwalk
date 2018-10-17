@@ -1,2 +1,2 @@
-import LaunchDetailsScreenContainer from "./LaunchDetailsScreenContainer";
-export default LaunchDetailsScreenContainer;
+import LaunchDetailsScreen from "./LaunchDetailsScreen";
+export default LaunchDetailsScreen;

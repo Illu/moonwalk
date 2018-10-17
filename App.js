@@ -1,20 +1,19 @@
 import React from "react";
-import thunk from "redux-thunk";
-import { Provider } from "react-redux";
 import { StatusBar } from "react-native";
-import { createStore, applyMiddleware, compose } from "redux";
 import { ThemeProvider } from "styled-components";
 import { createBottomTabNavigator } from "react-navigation";
+import { Provider } from "mobx-react";
 import DashboardScreen from "./src/Components/DashboardScreen";
 import theme from "./src/theme";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { TABS, TABBAR_ICONS } from "./src/constants";
-import rootReducer from "./src/Ducks/rootReducer";
 import LaunchCalendarScreen from "./src/Components/LaunchCalendarScreen";
 import LaunchDetailsScreen from "./src/Components/LaunchDetailsScreen";
 import { createStackNavigator } from "react-navigation";
 import SearchScreen from "./src/Components/SearchScreen";
 import SettingsScreen from "./src/Components/SettingsScreen";
+import LaunchesModel from "./src/Models/LaunchesModel";
+import SearchModel from "./src/Models/SearchModel";
 
 const Dashboard = createStackNavigator({
   dashboard: {
@@ -78,14 +77,11 @@ const Navigation = createBottomTabNavigator(
   }
 );
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(thunk))
-);
+const launches = new LaunchesModel();
+const search = new SearchModel();
 
 export default () => (
-  <Provider store={store}>
+  <Provider launches={launches} search={search}>
     <ThemeProvider theme={theme}>
       <>
         <StatusBar barStyle="light-content" />
@@ -94,3 +90,7 @@ export default () => (
     </ThemeProvider>
   </Provider>
 );
+
+// Access the launches data easily
+window.launches = launches;
+window.search = search;

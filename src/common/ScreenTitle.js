@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.View`
   padding: 0 25px;
-  overflow: hidden;
+  overflow: visible;
   height: 80px;
 `;
 

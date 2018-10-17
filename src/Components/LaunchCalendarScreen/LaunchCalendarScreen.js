@@ -1,41 +1,83 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { ScrollView, TouchableOpacity, Animated } from "react-native";
+import { ScrollView, TouchableOpacity, RefreshControl } from "react-native";
+import { observer, inject } from "mobx-react";
 import ScreenBackground from "../../Common/ScreenBackground";
 import ScreenTitle from "../../Common/ScreenTitle";
 import CalendarCard from "../CalendarCard/CalendarCard";
+import Loader from "../../Common/Loader";
+import ErrorCard from "../ErrorCard";
+import Button from "../../Common/Button";
+import PushableWrapper from "../../Common/PushableWrapper";
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;
   padding: 40px 0 0 0;
 `;
 
+const LoadMoreButton = styled(Button)`
+  margin: 0px 20% 20px 20%;
+`;
+
+@inject("launches")
+@observer
 export default class extends Component {
-  navigateToDetails({ id }) {
-    this.props.setSelectedLaunch(id);
-    this.props.navigation.navigate("details");
+  navigateToDetails(data) {
+    this.props.navigation.navigate("details", { data });
+  }
+
+  componentDidMount() {
+    this.refreshCalendar();
+  }
+
+  refreshCalendar() {
+    this.props.launches.loadNextLaunches(5);
   }
 
   render() {
-    const { data } = this.props.launches;
+    const data = this.props.launches;
 
-    if (!data) {
-      return null;
+    if (data.state === "error") {
+      return (
+        <Wrapper>
+          <ScreenTitle title="Launch Calendar" />
+          <ErrorCard onPress={() => this.refreshCalendar()} />
+        </Wrapper>
+      );
     }
 
     return (
-      <Wrapper contentContainerStyle={{ flex: 1 }}>
+      <Wrapper>
         <ScreenTitle title="Launch Calendar" />
-        <ScrollView>
-          {data.launches.map(launch => (
-            <TouchableOpacity
-              key={launch.id}
-              onPress={() => this.navigateToDetails(launch)}
-            >
-              <CalendarCard data={launch} />
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
+        {data.state === "loading" && data.numberOfLaunches < 5 ? (
+          <Loader />
+        ) : (
+          <ScrollView
+            refreshControl={
+              <RefreshControl
+                refreshing={data.state === "loading"}
+                onRefresh={() => this.refreshCalendar()}
+                tintColor="#fff"
+              />
+            }
+          >
+            {data.launches.map(
+              launch =>
+                console.log(launch.id) || (
+                  <PushableWrapper
+                    key={launch.id}
+                    onPress={() => this.navigateToDetails(launch)}
+                  >
+                    <CalendarCard data={launch} />
+                  </PushableWrapper>
+                )
+            )}
+            <LoadMoreButton
+              title="Load more"
+              onPress={() => data.loadMoreLaunches(5)}
+            />
+          </ScrollView>
+        )}
       </Wrapper>
     );
   }

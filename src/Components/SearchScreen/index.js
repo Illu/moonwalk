@@ -1,2 +1,2 @@
-import SearchScreenContainer from "./SearchScreenContainer";
-export default SearchScreenContainer;
+import SearchScreen from "./SearchScreen";
+export default SearchScreen;
