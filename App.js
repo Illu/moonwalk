@@ -1,5 +1,5 @@
-import React from "react";
-import { StatusBar } from "react-native";
+import React, { Component } from "react";
+import { StatusBar, AppState } from "react-native";
 import { ThemeProvider } from "styled-components";
 import { createBottomTabNavigator } from "react-navigation";
 import { Provider } from "mobx-react";
@@ -93,16 +93,44 @@ const Navigation = createBottomTabNavigator(
 const launches = new LaunchesModel();
 const search = new SearchModel();
 
-export default () => (
-  <Provider launches={launches} search={search}>
-    <ThemeProvider theme={theme}>
-      <>
-        <StatusBar barStyle="light-content" />
-        <Navigation />
-      </>
-    </ThemeProvider>
-  </Provider>
-);
+export default class extends Component {
+  state = {
+    appState: AppState.currentState
+  };
+
+  componentDidMount() {
+    AppState.addEventListener("change", this._handleAppStateChange);
+  }
+
+  componentWillUnmount() {
+    AppState.removeEventListener("change", this._handleAppStateChange);
+  }
+
+  _handleAppStateChange = nextAppState => {
+    if (
+      this.state.appState.match(/inactive|background/) &&
+      nextAppState === "active"
+    ) {
+      if (launches.numberOfLaunches > 0) {
+        launches.scheduleNotification(launches.launches[0]);
+      }
+    }
+    this.setState({ appState: nextAppState });
+  };
+
+  render() {
+    return (
+      <Provider launches={launches} search={search}>
+        <ThemeProvider theme={theme}>
+          <>
+            <StatusBar barStyle="light-content" />
+            <Navigation />
+          </>
+        </ThemeProvider>
+      </Provider>
+    );
+  }
+}
 
 // Access the launches data easily
 window.launches = launches;

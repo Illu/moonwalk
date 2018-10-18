@@ -48,6 +48,12 @@ const SectionTitle = styled.Text`
   color: white;
 `;
 
+const Credits = styled.Text`
+  color: #aaa;
+  text-align: center;
+  margin-bottom: 22px;
+`;
+
 const hitSlopValue = 60;
 const touchableHitSlop = {
   top: hitSlopValue / 2,
@@ -119,7 +125,7 @@ class SettingsScreen extends Component {
             </Section>
             <Section
               bottom
-              onPress={() => Linking.openURL("https://buymeacoff.ee/illu")}
+              onPress={() => Linking.openURL("https://paypal.me/maximenory")}
             >
               <SectionTitle>Buy me a coffee</SectionTitle>
               <Icon name="coffee" size={22} color="#fff" />
@@ -152,6 +158,7 @@ class SettingsScreen extends Component {
                 <SectionTitle>Version {version}</SectionTitle>
               )}
             </Section>
+            <Credits>2018 - Maxime Nory</Credits>
           </SectionsWrapper>
         </ContentWrapper>
       </Wrapper>
