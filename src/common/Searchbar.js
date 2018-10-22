@@ -3,10 +3,9 @@ import styled from "styled-components";
 
 const Wrapper = styled.TextInput`
   width: 80%;
-  padding: 10px 15px;
-  border-width: 1px;
-  border-color: ${({ theme }) => theme.cardBackground};
-  border-radius: 20px;
+  padding: 10px 0px;
+  border-bottom-width: 2px;
+  border-color: rgb(89, 175, 255);
   font-size: 20px;
   margin: 20px;
   color: white;
@@ -26,7 +25,7 @@ class SearchBar extends Component {
       <Wrapper
         value={searchStr}
         placeholder="Search launches..."
-        placeholderTextColor="#aaa"
+        placeholderTextColor="#777"
         returnKeyType="search"
         clearButtonMode="always"
         onChangeText={searchStr => this.setState({ searchStr })}

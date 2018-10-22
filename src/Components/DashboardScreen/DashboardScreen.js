@@ -29,7 +29,8 @@ class DashboardScreen extends Component {
   }
 
   loadUpcomingLaunch() {
-    this.props.launches.loadNextLaunches(1);
+    const { numberOfLaunches, loadNextLaunches } = this.props.launches;
+    loadNextLaunches(numberOfLaunches > 1 ? 5 : 1);
   }
 
   navigateToDetails() {
