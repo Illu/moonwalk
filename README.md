@@ -4,7 +4,7 @@
 
 A simple way to stay up to date with upcoming space launches, built with [React-Native](https://github.com/facebook/react-native), using the [Launch Library API](https://launchlibrary.net/).
 
-### Preview
+## Preview
 
 <div  style="text-align:center">
 <img  src="https://maximenory.com/public/mw1.png"  width="240" />
@@ -12,10 +12,24 @@ A simple way to stay up to date with upcoming space launches, built with [React-
 <img  src="https://maximenory.com/public/mw3.png"  width="240" />
 </div>
 
-### Installation
+## Installation
 
 If you want to test the app on a simulator running locally, there's nothing more simple:
 
 ```bash
 yarn && react-native run-ios
 ```
+
+## Stack
+
+[React-Native](https://github.com/facebook/react-native)
+
+[React-Navigation](https://reactnavigation.org/)
+
+[MobX](https://mobx.js.org/)
+
+## Licence
+
+MIT License
+
+See [LICENSE](LICENSE)
