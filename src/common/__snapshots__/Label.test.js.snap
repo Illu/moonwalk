@@ -26,8 +26,8 @@ exports[`renders correctly 1`] = `
       Object {
         "borderRadius": 10,
         "marginBottom": 0,
-        "marginLeft": 5,
-        "marginRight": 5,
+        "marginLeft": 10,
+        "marginRight": 10,
         "marginTop": 0,
         "paddingBottom": 10,
         "paddingLeft": 15,
@@ -39,6 +39,7 @@ exports[`renders correctly 1`] = `
   }
 >
   <Text
+    numberOfLines={1}
     style={
       Array [
         Object {
@@ -78,8 +79,8 @@ exports[`renders with text correctly 1`] = `
       Object {
         "borderRadius": 10,
         "marginBottom": 0,
-        "marginLeft": 5,
-        "marginRight": 5,
+        "marginLeft": 10,
+        "marginRight": 10,
         "marginTop": 0,
         "paddingBottom": 10,
         "paddingLeft": 15,
@@ -91,6 +92,7 @@ exports[`renders with text correctly 1`] = `
   }
 >
   <Text
+    numberOfLines={1}
     style={
       Array [
         Object {

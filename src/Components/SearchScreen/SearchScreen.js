@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { TouchableOpacity, Linking } from "react-native";
 import { SafeAreaView } from "react-navigation";
 import ScreenBackground from "../../Common/ScreenBackground";
 import Searchbar from "../../Common/Searchbar";
@@ -63,7 +64,11 @@ export default class SearchScreen extends Component {
                   ))}
                 </>
               )}
-            <Footer>Data provided by the Launch Library</Footer>
+            <TouchableOpacity
+              onPress={() => Linking.openURL("https://launchlibrary.net/")}
+            >
+              <Footer>Data provided by the Launch Library</Footer>
+            </TouchableOpacity>
           </ScrollWrapper>
         </ContentWrapper>
       </Wrapper>

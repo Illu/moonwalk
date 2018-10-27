@@ -5,14 +5,14 @@ exports[`renders correctly 1`] = `
   style={
     Array [
       Object {
-        "minHeight": 100,
-        "overflow": "hidden",
-        "paddingBottom": 20,
-        "paddingLeft": 20,
-        "paddingRight": 20,
-        "paddingTop": 20,
+        "height": 80,
+        "overflow": "visible",
+        "paddingBottom": 0,
+        "paddingLeft": 25,
+        "paddingRight": 25,
+        "paddingTop": 0,
       },
-      undefined,
+      Object {},
     ]
   }
 >
@@ -25,9 +25,10 @@ exports[`renders correctly 1`] = `
           "color": "#aaaaaa11",
           "fontSize": 100,
           "fontWeight": "bold",
-          "left": 20,
+          "left": 25,
           "position": "absolute",
           "right": 0,
+          "top": -20,
         },
         undefined,
       ]
@@ -58,14 +59,14 @@ exports[`renders correctly without background text 1`] = `
   style={
     Array [
       Object {
-        "minHeight": 100,
-        "overflow": "hidden",
-        "paddingBottom": 20,
-        "paddingLeft": 20,
-        "paddingRight": 20,
-        "paddingTop": 20,
+        "height": 80,
+        "overflow": "visible",
+        "paddingBottom": 0,
+        "paddingLeft": 25,
+        "paddingRight": 25,
+        "paddingTop": 0,
       },
-      undefined,
+      Object {},
     ]
   }
 >
