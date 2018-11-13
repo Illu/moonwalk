@@ -117,7 +117,9 @@ class SettingsScreen extends Component {
             </Section>
             <Section
               onPress={() =>
-                Linking.openURL("https://itunes.apple.com/us/app/")
+                Linking.openURL(
+                  "https://itunes.apple.com/us/app/moonwalk-rocket-launches/id1439376174"
+                )
               }
             >
               <SectionTitle>Give your feedback</SectionTitle>
