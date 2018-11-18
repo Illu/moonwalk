@@ -17,7 +17,13 @@ A simple way to stay up to date with upcoming space launches, built with [React-
 If you want to test the app on a simulator running locally, there's nothing more simple:
 
 ```bash
-yarn && react-native run-ios
+$ cd moonwalk
+
+$ yarn
+
+$ yarn build-ios
+
+$ react-native run-ios
 ```
 
 ## Stack
