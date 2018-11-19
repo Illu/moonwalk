@@ -34,6 +34,8 @@ $ react-native run-ios
 
 [MobX](https://mobx.js.org/)
 
+[Styled-Components](https://www.styled-components.com/)
+
 ## Licence
 
 MIT License
