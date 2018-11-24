@@ -34,6 +34,8 @@ $ react-native run-ios
 
 [MobX](https://mobx.js.org/)
 
+[Styled-Components](https://www.styled-components.com/)
+
 ## Contribute
 
 If you find a bug, feel free to open an issue or submit a pull request.
