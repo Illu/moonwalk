@@ -34,6 +34,12 @@ $ react-native run-ios
 
 [MobX](https://mobx.js.org/)
 
+## Contribute
+
+If you find a bug, feel free to open an issue or submit a pull request.
+
+New ideas are always welcome, if you have an idea to modify or add a feature, let me know by opening an issue or messaging me on [Twitter](https://twitter.com/MaximeNory).
+
 ## Licence
 
 MIT License

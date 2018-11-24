@@ -41,7 +41,7 @@ export default class extends Component {
       return (
         <Wrapper>
           <ScreenTitle title="Launch Calendar" />
-          <ErrorCard onPress={() => this.refreshCalendar()} />
+          <ErrorCard onPress={this.refreshCalendar} />
         </Wrapper>
       );
     }
@@ -56,7 +56,7 @@ export default class extends Component {
             refreshControl={
               <RefreshControl
                 refreshing={data.state === "loading"}
-                onRefresh={() => this.refreshCalendar()}
+                onRefresh={this.refreshCalendar}
                 tintColor="#fff"
               />
             }
