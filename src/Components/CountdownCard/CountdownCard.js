@@ -35,6 +35,7 @@ export default class extends Component {
   };
 
   componentDidMount() {
+    this.updateTimeLeft();
     if (this.props.data.wsstamp) {
       this.timer = setInterval(() => {
         this.updateTimeLeft();

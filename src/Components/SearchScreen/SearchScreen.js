@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { observer, inject } from "mobx-react";
 import { TouchableOpacity, Linking } from "react-native";
 import { SafeAreaView } from "react-navigation";
 import ScreenBackground from "../../Common/ScreenBackground";
 import Searchbar from "../../Common/Searchbar";
 import ResultCard from "./ResultCard";
 import Loader from "../../Common/Loader";
-import { observer, inject } from "mobx-react";
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;

@@ -82,7 +82,7 @@ export default class LaunchesModel {
             PushNotificationIOS.cancelAllLocalNotifications();
           }
           PushNotificationIOS.scheduleLocalNotification({
-            fireDate: (data.wsstamp - 5 * 60) * 1000,
+            fireDate: (data.wsstamp - this.notifications.delay * 60) * 1000,
             alertBody: `🚀 ${data.name} will launch in just ${
               this.notifications.delay
             } minutes!`

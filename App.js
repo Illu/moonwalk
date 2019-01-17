@@ -131,7 +131,3 @@ export default class extends Component {
     );
   }
 }
-
-// Access the launches data easily
-window.launches = launches;
-window.search = search;
