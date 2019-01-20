@@ -41,13 +41,18 @@ const Moon = styled.View`
 
 export default class extends Component {
   state = {
-    moonAnim: new Animated.Value(0)
+    moonAnim: new Animated.Value(0),
+    appearAnim: new Animated.Value(0)
   };
 
   componentDidMount() {
     Animated.loop(
       Animated.timing(this.state.moonAnim, { toValue: 1, duration: 1000 })
     ).start();
+    Animated.timing(this.state.appearAnim, {
+      toValue: 1,
+      duration: 400
+    }).start();
   }
 
   render() {
@@ -58,7 +63,12 @@ export default class extends Component {
 
     return (
       <FullWidthWrapper>
-        <Wrapper style={{ transform: [{ rotate: moonRotation }] }}>
+        <Wrapper
+          style={{
+            transform: [{ rotate: moonRotation }],
+            opacity: this.state.appearAnim
+          }}
+        >
           <OrbitLine>
             <Center />
           </OrbitLine>

@@ -3,8 +3,16 @@ import { Animated, TouchableOpacity, Easing } from "react-native";
 
 export default class extends Component {
   state = {
-    pressAnim: new Animated.Value(1)
+    pressAnim: new Animated.Value(1),
+    appearAnim: new Animated.Value(0)
   };
+
+  componentDidMount() {
+    Animated.timing(this.state.appearAnim, {
+      toValue: 1,
+      duration: 300
+    }).start();
+  }
 
   pressAnimation() {
     Animated.timing(this.state.pressAnim, {
@@ -30,7 +38,15 @@ export default class extends Component {
         onPress={() => this.props.onPress()}
         style={style}
       >
-        <Animated.View style={[{ transform: [{ scale: pressAnim }] }, style]}>
+        <Animated.View
+          style={[
+            {
+              transform: [{ scale: pressAnim }],
+              opacity: this.state.appearAnim
+            },
+            style
+          ]}
+        >
           {children}
         </Animated.View>
       </TouchableOpacity>

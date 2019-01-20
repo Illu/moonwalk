@@ -41,7 +41,6 @@ class DashboardScreen extends Component {
   render() {
     const { state } = this.props.launches;
     const data = this.props.launches.upcomingLaunch;
-
     return (
       <Wrapper>
         <ScreenTitle title="Next launch" />

@@ -67,7 +67,7 @@ export default ({ data }) => {
           end={{ x: 0.5, y: 1.0 }}
         >
           {data.netstamp === 0 ? (
-            <Day large>?</Day>
+            <Day>TBD</Day>
           ) : (
             <>
               <Day>{launchTime.getDate()}</Day>
