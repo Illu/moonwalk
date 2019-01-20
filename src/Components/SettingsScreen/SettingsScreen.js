@@ -7,6 +7,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import { version } from "../../../package.json";
 import ScreenBackground from "../../Common/ScreenBackground";
 import ScreenTitle from "../../Common/ScreenTitle";
+import * as StoreReview from "react-native-store-review";
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;
@@ -116,11 +117,15 @@ class SettingsScreen extends Component {
               <Icon name="twitter" size={22} color="#fff" />
             </Section>
             <Section
-              onPress={() =>
-                Linking.openURL(
-                  "https://itunes.apple.com/us/app/moonwalk-rocket-launches/id1439376174"
-                )
-              }
+              onPress={() => {
+                if (StoreReview.isAvailable) {
+                  StoreReview.requestReview();
+                } else {
+                  Linking.openURL(
+                    "https://itunes.apple.com/us/app/moonwalk-rocket-launches/id1439376174"
+                  );
+                }
+              }}
             >
               <SectionTitle>Give your feedback</SectionTitle>
               <Icon name="app-store-ios" size={22} color="#fff" />
