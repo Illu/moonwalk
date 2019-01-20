@@ -30,9 +30,9 @@ export default class extends Component {
     this.refreshCalendar();
   }
 
-  refreshCalendar() {
+  refreshCalendar = () => {
     this.props.launches.loadNextLaunches(5);
-  }
+  };
 
   render() {
     const data = this.props.launches;
