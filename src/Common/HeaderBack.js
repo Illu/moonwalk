@@ -11,7 +11,8 @@ const Wrapper = styled.View`
 `;
 
 const Title = styled.Text`
-  color: white;
+  color: ${({ theme }) => theme.textColor};
+  font-family: Quicksand;
   font-size: 20px;
   font-weight: bold;
   width: 50%;
@@ -27,7 +28,7 @@ export default ({ ScreenTitle, navigateBack }) => {
   return (
     <Wrapper>
       <BackArrowWrapper onPress={navigateBack}>
-        <Icon name="long-arrow-alt-left" size={25} color="white" />
+        <Icon name="chevron-left" size={25} color="rgb(46, 80, 130)" />
       </BackArrowWrapper>
       <Title>{ScreenTitle}</Title>
     </Wrapper>

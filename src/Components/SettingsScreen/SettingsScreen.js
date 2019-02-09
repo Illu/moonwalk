@@ -6,14 +6,14 @@ import { observer, inject } from "mobx-react";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { version } from "../../../package.json";
 import ScreenBackground from "../../Common/ScreenBackground";
-import ScreenTitle from "../../Common/ScreenTitle";
 import * as StoreReview from "react-native-store-review";
+import HeaderBack from "../../Common/HeaderBack.js";
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;
 `;
 
-const ContentWrapper = styled(SafeAreaView)`
+const ContentWrapper = styled.View`
   padding-top: 30px;
   flex: 1;
 `;
@@ -45,8 +45,13 @@ const Section = styled.TouchableOpacity`
   ${props => props.disabled && `opacity: 0.3;`};
 `;
 
+const ShadowWrapper = styled.View`
+  box-shadow: 0px 0px 20px #ddd;
+`;
+
 const SectionTitle = styled.Text`
-  color: white;
+  color: ${({ theme }) => theme.textColor};
+  font-family: Quicksand;
 `;
 
 const Credits = styled.Text`
@@ -77,95 +82,110 @@ class SettingsScreen extends Component {
     return (
       <Wrapper>
         <ContentWrapper>
-          <ScreenTitle title="Settings" />
           <SectionsWrapper>
-            <Section top>
-              <SectionTitle>Notify me</SectionTitle>
-              <Switch
-                value={notifications.enabled}
-                onValueChange={() => this.props.launches.toggleNotifications()}
-              />
-            </Section>
-            <Section
-              bottom
-              disabled={!notifications.enabled}
-              style={{ justifyContent: "space-around" }}
-            >
-              <TouchableOpacity
+            <HeaderBack
+              ScreenTitle="Settings"
+              navigateBack={() => this.props.navigation.goBack()}
+            />
+            <ShadowWrapper>
+              <Section top>
+                <SectionTitle>Notify me</SectionTitle>
+                <Switch
+                  value={notifications.enabled}
+                  onValueChange={() =>
+                    this.props.launches.toggleNotifications()
+                  }
+                />
+              </Section>
+              <Section
+                bottom
                 disabled={!notifications.enabled}
-                onPress={() => launches.changeNotificationDelay(-5)}
-                hitSlop={touchableHitSlop}
+                style={{ justifyContent: "space-around" }}
               >
-                <Icon name="minus" size={18} color="#fff" />
-              </TouchableOpacity>
-              <SectionTitle>
-                {notifications.delay} min ahead of a launch
-              </SectionTitle>
-              <TouchableOpacity
-                disabled={!notifications.enabled}
-                onPress={() => launches.changeNotificationDelay(5)}
-                hitSlop={touchableHitSlop}
-              >
-                <Icon name="plus" size={18} color="#fff" />
-              </TouchableOpacity>
-            </Section>
-            <Section
-              top
-              onPress={() => Linking.openURL("https://twitter.com/maximenory")}
-            >
-              <SectionTitle>Say hi 👋</SectionTitle>
-              <Icon name="twitter" size={22} color="#fff" />
-            </Section>
-            <Section
-              onPress={() => {
-                if (StoreReview.isAvailable) {
-                  StoreReview.requestReview();
-                } else {
-                  Linking.openURL(
-                    "https://itunes.apple.com/us/app/moonwalk-rocket-launches/id1439376174"
-                  );
+                <TouchableOpacity
+                  disabled={!notifications.enabled}
+                  onPress={() => launches.changeNotificationDelay(-5)}
+                  hitSlop={touchableHitSlop}
+                >
+                  <Icon name="minus" size={18} color="rgb(46, 80, 130)" />
+                </TouchableOpacity>
+                <SectionTitle>
+                  {notifications.delay} min ahead of a launch
+                </SectionTitle>
+                <TouchableOpacity
+                  disabled={!notifications.enabled}
+                  onPress={() => launches.changeNotificationDelay(5)}
+                  hitSlop={touchableHitSlop}
+                >
+                  <Icon name="plus" size={18} color="rgb(46, 80, 130)" />
+                </TouchableOpacity>
+              </Section>
+            </ShadowWrapper>
+            <ShadowWrapper>
+              <Section
+                top
+                onPress={() =>
+                  Linking.openURL("https://twitter.com/maximenory")
                 }
-              }}
-            >
-              <SectionTitle>Give your feedback</SectionTitle>
-              <Icon name="app-store-ios" size={22} color="#fff" />
-            </Section>
-            <Section
-              bottom
-              onPress={() => Linking.openURL("https://paypal.me/maximenory")}
-            >
-              <SectionTitle>Buy me a coffee</SectionTitle>
-              <Icon name="coffee" size={22} color="#fff" />
-            </Section>
-            <Section
-              top
-              onPress={() =>
-                Linking.openURL("https://github.com/Illu/moonwalk")
-              }
-            >
-              <SectionTitle>Source code</SectionTitle>
-              <Icon name="github" size={22} color="#fff" />
-            </Section>
-            <Section
-              bottom
-              onPress={() => this.props.navigation.navigate("libraries")}
-            >
-              <SectionTitle>Licenses</SectionTitle>
-              <Icon name="chevron-right" size={22} color="#fff" />
-            </Section>
-            <Section
-              top
-              bottom
-              onPress={() => this.setState({ secret: !secret })}
-            >
-              <SectionTitle>About</SectionTitle>
-              {secret ? (
-                <Icon name="user-secret" size={30} color="#ffec2a" />
-              ) : (
-                <SectionTitle>Version {version}</SectionTitle>
-              )}
-            </Section>
-            <Credits>2018 - Maxime Nory</Credits>
+              >
+                <SectionTitle>Say hi 👋</SectionTitle>
+                <Icon name="twitter" size={22} color="rgb(46, 80, 130)" />
+              </Section>
+              <Section
+                onPress={() => {
+                  if (StoreReview.isAvailable) {
+                    StoreReview.requestReview();
+                  } else {
+                    Linking.openURL(
+                      "https://itunes.apple.com/us/app/moonwalk-rocket-launches/id1439376174"
+                    );
+                  }
+                }}
+              >
+                <SectionTitle>Give your feedback</SectionTitle>
+                <Icon name="app-store-ios" size={22} color="rgb(46, 80, 130)" />
+              </Section>
+              <Section
+                bottom
+                onPress={() => Linking.openURL("https://paypal.me/maximenory")}
+              >
+                <SectionTitle>Buy me a coffee</SectionTitle>
+                <Icon name="coffee" size={22} color="rgb(46, 80, 130)" />
+              </Section>
+            </ShadowWrapper>
+            <ShadowWrapper>
+              <Section
+                top
+                onPress={() =>
+                  Linking.openURL("https://github.com/Illu/moonwalk")
+                }
+              >
+                <SectionTitle>Source code</SectionTitle>
+                <Icon name="github" size={22} color="rgb(46, 80, 130)" />
+              </Section>
+              <Section
+                bottom
+                onPress={() => this.props.navigation.navigate("libraries")}
+              >
+                <SectionTitle>Licenses</SectionTitle>
+                <Icon name="chevron-right" size={22} color="rgb(46, 80, 130)" />
+              </Section>
+            </ShadowWrapper>
+            <ShadowWrapper>
+              <Section
+                top
+                bottom
+                onPress={() => this.setState({ secret: !secret })}
+              >
+                <SectionTitle>About</SectionTitle>
+                {secret ? (
+                  <Icon name="laugh" size={20} color="rgb(252, 195, 133)" />
+                ) : (
+                  <SectionTitle>Version {version}</SectionTitle>
+                )}
+              </Section>
+            </ShadowWrapper>
+            <Credits>2019 - Maxime Nory</Credits>
           </SectionsWrapper>
         </ContentWrapper>
       </Wrapper>

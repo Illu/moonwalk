@@ -16,7 +16,7 @@ import LaunchesModel from "./src/Models/LaunchesModel";
 import SearchModel from "./src/Models/SearchModel";
 import LibrariesScreen from "./src/Components/LibrariesScreen/LibrariesScreen";
 
-const Dashboard = createStackNavigator({
+const Navigation = createStackNavigator({
   dashboard: {
     screen: DashboardScreen,
     navigationOptions: {
@@ -25,7 +25,15 @@ const Dashboard = createStackNavigator({
       headerBackTitle: null
     }
   },
-  details: { screen: LaunchDetailsScreen }
+  details: { screen: LaunchDetailsScreen },
+  settings: {
+    screen: SettingsScreen,
+    navigationOptions: {
+      title: "Settings",
+      header: null,
+      headerBackTitle: null
+    }
+  }
 });
 
 const LaunchCalendar = createStackNavigator({
@@ -64,31 +72,41 @@ const Settings = createStackNavigator({
   libraries: { screen: LibrariesScreen }
 });
 
-const Navigation = createBottomTabNavigator(
-  {
-    [TABS.Home]: Dashboard,
-    [TABS.Calendar]: LaunchCalendar,
-    [TABS.Search]: Search,
-    [TABS.Settings]: Settings
-  },
-  {
-    navigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, tintColor }) => {
-        const { routeName } = navigation.state;
-        const iconName = TABBAR_ICONS[routeName];
-        return <Icon name={iconName} size={20} color={tintColor} />;
-      }
-    }),
-    tabBarOptions: {
-      activeTintColor: "white",
-      inactiveTintColor: theme.inactive,
-      showLabel: true,
-      style: {
-        backgroundColor: theme.cardBackground
-      }
-    }
-  }
-);
+// const Navigation = createBottomTabNavigator(
+//   {
+//     [TABS.Home]: Dashboard,
+//     [TABS.Calendar]: LaunchCalendar,
+//     [TABS.Search]: Search,
+//     [TABS.Settings]: Settings
+//   },
+//   {
+//     navigationOptions: ({ navigation }) => ({
+//       tabBarIcon: ({ focused, tintColor }) => {
+//         const { routeName } = navigation.state;
+//         const iconName = TABBAR_ICONS[routeName];
+//         return <Icon name={iconName} size={20} color={tintColor} />;
+//       }
+//     }),
+//     tabBarOptions: {
+//       activeTintColor: "white",
+//       inactiveTintColor: theme.inactive,
+//       showLabel: true,
+//       style: {
+//         backgroundColor: theme.cardBackground
+//       }
+//     }
+//   }
+// );
+
+// const Navigation = createStackNavigator(
+//   {
+//     Home: Dashboard,
+//     Calendar: LaunchCalendar,
+//     Search: Search,
+//     Settings: Settings
+//   },
+
+// )
 
 const launches = new LaunchesModel();
 const search = new SearchModel();
@@ -123,7 +141,7 @@ export default class extends Component {
       <Provider launches={launches} search={search}>
         <ThemeProvider theme={theme}>
           <>
-            <StatusBar barStyle="light-content" />
+            <StatusBar barStyle="dark-content" />
             <Navigation />
           </>
         </ThemeProvider>

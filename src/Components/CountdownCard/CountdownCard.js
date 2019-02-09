@@ -3,13 +3,14 @@ import styled from "styled-components";
 import { Animated, Easing, View } from "react-native";
 
 const Wrapper = styled.View`
-  background: ${({ theme }) => theme.cardBackground};
+  background: white;
   margin: 25px;
   border-radius: 10px;
   align-items: center;
   padding: 20px;
   flex-direction: row;
   justify-content: space-around;
+  box-shadow: 0px 0px 20px #dfdfdf;
 `;
 
 const UnitWrapper = styled.View`
@@ -20,7 +21,7 @@ const UnitWrapper = styled.View`
 const Number = styled.Text`
   font-size: 26px;
   font-weight: bold;
-  color: white;
+  color: ${({ theme }) => theme.textColor};
 `;
 
 const Unit = styled.Text`

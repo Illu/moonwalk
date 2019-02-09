@@ -35,19 +35,19 @@ const ContentWrapper = styled(SafeAreaView)`
 `;
 
 const SectionTitle = styled.Text`
-  color: white;
+  color: ${({ theme }) => theme.textColor};
   font-weight: bold;
 `;
 
 const InfoText = styled.Text`
-  color: white;
+  color: ${({ theme }) => theme.textColor};
   font-size: 16px;
   margin-bottom: 15px;
   margin-left: 5px;
 `;
 
 const DescText = styled.Text`
-  color: white;
+  color: ${({ theme }) => theme.textColor};
   text-align: justify;
   margin: 25px;
 `;

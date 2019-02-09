@@ -56,6 +56,10 @@
 		ECA4BA41CC1F46C18786700E /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 140761E85BB14142B84140C3 /* Feather.ttf */; };
 		EE656E6B543D4413AE1F024D /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F39607157EFB4ED59F582D38 /* Zocial.ttf */; };
 		799597666E64423AA4E7FA5C /* libRNStoreReview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B54DF159F5FD4F22BA42CFE4 /* libRNStoreReview.a */; };
+		A8E3FC2185244DEAA4F99541 /* Quicksand.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21DE2BE5876946EB87EFE3CA /* Quicksand.ttf */; };
+		6D268DC7F3BE41A7B6509938 /* QuicksandBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0643CEBBDB22434989E6B90C /* QuicksandBold.ttf */; };
+		C133CE53D4244D73B61D3B05 /* QuicksandLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E237C4F478DE4409A7CA2F11 /* QuicksandLight.ttf */; };
+		B3E254319075463B86911D59 /* QuicksandMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6FAD9F3464B48C1AB683EAD /* QuicksandMedium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -418,6 +422,10 @@
 		FC900B8182654461B08D71B6 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		5CC48AE0A9CF4740810CEE4D /* RNStoreReview.xcodeproj */ = {isa = PBXFileReference; name = "RNStoreReview.xcodeproj"; path = "../node_modules/react-native-store-review/ios/RNStoreReview.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		B54DF159F5FD4F22BA42CFE4 /* libRNStoreReview.a */ = {isa = PBXFileReference; name = "libRNStoreReview.a"; path = "libRNStoreReview.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		21DE2BE5876946EB87EFE3CA /* Quicksand.ttf */ = {isa = PBXFileReference; name = "Quicksand.ttf"; path = "../assets/fonts/Quicksand.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0643CEBBDB22434989E6B90C /* QuicksandBold.ttf */ = {isa = PBXFileReference; name = "QuicksandBold.ttf"; path = "../assets/fonts/QuicksandBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E237C4F478DE4409A7CA2F11 /* QuicksandLight.ttf */ = {isa = PBXFileReference; name = "QuicksandLight.ttf"; path = "../assets/fonts/QuicksandLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F6FAD9F3464B48C1AB683EAD /* QuicksandMedium.ttf */ = {isa = PBXFileReference; name = "QuicksandMedium.ttf"; path = "../assets/fonts/QuicksandMedium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -741,6 +749,10 @@
 				63879123E634488592C640EE /* Octicons.ttf */,
 				0807305AB95741108778DAF0 /* SimpleLineIcons.ttf */,
 				F39607157EFB4ED59F582D38 /* Zocial.ttf */,
+				21DE2BE5876946EB87EFE3CA /* Quicksand.ttf */,
+				0643CEBBDB22434989E6B90C /* QuicksandBold.ttf */,
+				E237C4F478DE4409A7CA2F11 /* QuicksandLight.ttf */,
+				F6FAD9F3464B48C1AB683EAD /* QuicksandMedium.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1262,6 +1274,10 @@
 				738DC3E8B84A44E9A74DC05B /* Octicons.ttf in Resources */,
 				00ABE33513EC45B3AC7DB5D3 /* SimpleLineIcons.ttf in Resources */,
 				EE656E6B543D4413AE1F024D /* Zocial.ttf in Resources */,
+				A8E3FC2185244DEAA4F99541 /* Quicksand.ttf in Resources */,
+				6D268DC7F3BE41A7B6509938 /* QuicksandBold.ttf in Resources */,
+				C133CE53D4244D73B61D3B05 /* QuicksandLight.ttf in Resources */,
+				B3E254319075463B86911D59 /* QuicksandMedium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

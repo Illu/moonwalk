@@ -1,4 +1,5 @@
 export default {
-  cardBackground: "#42446f",
-  inactive: "#8183a5"
+  cardBackground: "white",
+  inactive: "#8183a5",
+  textColor: "rgb(46, 80, 130)"
 };
