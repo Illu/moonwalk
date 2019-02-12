@@ -1,6 +1,7 @@
 import { observable, computed, action } from "mobx";
 import { PushNotificationIOS, AsyncStorage, Platform } from "react-native";
 import { API_URL } from "../../cfg";
+import PushNotification from "react-native-push-notification";
 
 storeData = async data => {
   try {
@@ -95,7 +96,17 @@ export default class LaunchesModel {
         );
       }
     },
-    android: () => console.log("scheduleNotification")
+    android: data => {
+      if (this.notifications.enabled) {
+        PushNotification.cancelAllLocalNotifications();
+        PushNotification.localNotificationSchedule({
+          date: new Date(data.isostart),
+          message: `🚀 ${data.name} will launch in just ${
+            this.notifications.delay
+          } minutes!`
+        });
+      }
+    }
   });
 
   @action
