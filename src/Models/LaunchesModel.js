@@ -1,6 +1,7 @@
 import { observable, computed, action } from "mobx";
-import { PushNotificationIOS, AsyncStorage } from "react-native";
+import { PushNotificationIOS, AsyncStorage, Platform } from "react-native";
 import { API_URL } from "../../cfg";
+import PushNotification from "react-native-push-notification";
 
 storeData = async data => {
   try {
@@ -62,35 +63,54 @@ export default class LaunchesModel {
   };
 
   @action
-  toggleNotifications = async () => {
-    this.notifications.enabled = !this.notifications.enabled;
-    this.storeNotificationSettings();
-    if (this.notifications.enabled) {
-      PushNotificationIOS.requestPermissions();
-    } else {
-      PushNotificationIOS.cancelAllLocalNotifications();
-      PushNotificationIOS.removeAllDeliveredNotifications();
+  toggleNotifications = Platform.select({
+    ios: async () => {
+      this.notifications.enabled = !this.notifications.enabled;
+      this.storeNotificationSettings();
+      if (this.notifications.enabled) {
+        PushNotificationIOS.requestPermissions();
+      } else {
+        PushNotificationIOS.cancelAllLocalNotifications();
+        PushNotificationIOS.removeAllDeliveredNotifications();
+      }
+    },
+    android: () => {
+      this.notifications.enabled = !this.notifications.enabled;
+      this.storeNotificationSettings();
     }
-  };
+  });
 
   @action
-  scheduleNotification = data => {
-    if (this.notifications.enabled) {
-      PushNotificationIOS.getScheduledLocalNotifications(
-        plannedNotifications => {
-          if (plannedNotifications.length > 0) {
-            PushNotificationIOS.cancelAllLocalNotifications();
+  scheduleNotification = Platform.select({
+    ios: data => {
+      if (this.notifications.enabled) {
+        PushNotificationIOS.getScheduledLocalNotifications(
+          plannedNotifications => {
+            if (plannedNotifications.length > 0) {
+              PushNotificationIOS.cancelAllLocalNotifications();
+            }
+            PushNotificationIOS.scheduleLocalNotification({
+              fireDate: (data.wsstamp - this.notifications.delay * 60) * 1000,
+              alertBody: `🚀 ${data.name} will launch in just ${
+                this.notifications.delay
+              } minutes!`
+            });
           }
-          PushNotificationIOS.scheduleLocalNotification({
-            fireDate: (data.wsstamp - this.notifications.delay * 60) * 1000,
-            alertBody: `🚀 ${data.name} will launch in just ${
-              this.notifications.delay
-            } minutes!`
-          });
-        }
-      );
+        );
+      }
+    },
+    android: data => {
+      if (this.notifications.enabled) {
+        PushNotification.cancelAllLocalNotifications();
+        PushNotification.localNotificationSchedule({
+          date: new Date(data.isostart),
+          message: `🚀 ${data.name} will launch in just ${
+            this.notifications.delay
+          } minutes!`
+        });
+      }
     }
-  };
+  });
 
   @action
   loadNextLaunches = numberOfLaunches => {

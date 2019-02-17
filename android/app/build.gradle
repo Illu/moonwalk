@@ -136,7 +136,14 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        force 'org.webkit:android-jsc:r236355'
+    }
+}
+
 dependencies {
+    compile project(':react-native-push-notification')
     compile project(':react-native-vector-icons')
     compile project(':react-native-linear-gradient')
     implementation fileTree(dir: "libs", include: ["*.jar"])
