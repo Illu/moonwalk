@@ -76,6 +76,7 @@ export default class LaunchesModel {
     },
     android: () => {
       this.notifications.enabled = !this.notifications.enabled;
+      this.storeNotificationSettings();
     }
   });
 
