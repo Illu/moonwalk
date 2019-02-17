@@ -15,7 +15,7 @@ import SettingsScreen from "./src/Components/SettingsScreen";
 import LaunchesModel from "./src/Models/LaunchesModel";
 import SearchModel from "./src/Models/SearchModel";
 import LibrariesScreen from "./src/Components/LibrariesScreen/LibrariesScreen";
-import { configureRNPushNotifications } from "./cfg";
+import { configureRNPushNotifications } from "./src/helpers";
 
 configureRNPushNotifications();
 
