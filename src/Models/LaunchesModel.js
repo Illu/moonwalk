@@ -74,7 +74,9 @@ export default class LaunchesModel {
         PushNotificationIOS.removeAllDeliveredNotifications();
       }
     },
-    android: (this.notifications.enabled = !this.notifications.enabled)
+    android: () => {
+      this.notifications.enabled = !this.notifications.enabled;
+    }
   });
 
   @action
