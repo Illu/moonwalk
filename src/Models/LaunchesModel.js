@@ -74,7 +74,7 @@ export default class LaunchesModel {
         PushNotificationIOS.removeAllDeliveredNotifications();
       }
     },
-    android: () => console.log("toggleNotifications")
+    android: (this.notifications.enabled = !this.notifications.enabled)
   });
 
   @action
