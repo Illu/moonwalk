@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`screenTitle renders correctly 1`] = `
 <View
   style={
     Array [
@@ -54,7 +54,7 @@ exports[`renders correctly 1`] = `
 </View>
 `;
 
-exports[`renders correctly without background text 1`] = `
+exports[`screenTitle renders correctly without background text 1`] = `
 <View
   style={
     Array [

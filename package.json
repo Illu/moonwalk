@@ -40,7 +40,10 @@
     },
     "moduleNameMapper": {
       "styled-components": "<rootDir>/node_modules/styled-components/dist/styled-components.native.cjs.js"
-    }
+    },
+    "setupFiles": [
+      "./src/mocks.js"
+    ]
   },
   "husky": {
     "hooks": {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`label renders correctly 1`] = `
 <BVLinearGradient
   colors={
     Array [
@@ -53,7 +53,7 @@ exports[`renders correctly 1`] = `
 </BVLinearGradient>
 `;
 
-exports[`renders with text correctly 1`] = `
+exports[`label renders with text correctly 1`] = `
 <BVLinearGradient
   colors={
     Array [

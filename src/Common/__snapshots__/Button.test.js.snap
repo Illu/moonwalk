@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`Button renders correctly 1`] = `
 <View
   accessible={true}
   isTVSelectable={true}
@@ -12,6 +12,12 @@ exports[`renders correctly 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
+      "backgroundColor": "#42446f",
+      "borderRadius": 10,
+      "marginBottom": 0,
+      "marginLeft": 5,
+      "marginRight": 5,
+      "marginTop": 0,
       "opacity": 1,
       "shadowColor": "#5e15ea",
       "shadowOffset": Object {
@@ -46,11 +52,10 @@ exports[`renders correctly 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "borderRadius": 10,
-          "marginBottom": 0,
-          "marginLeft": 5,
-          "marginRight": 5,
-          "marginTop": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
           "paddingBottom": 15,
           "paddingLeft": 30,
           "paddingRight": 30,
@@ -59,24 +64,11 @@ exports[`renders correctly 1`] = `
         undefined,
       ]
     }
-  >
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#efefef",
-            "fontSize": 20,
-            "fontWeight": "bold",
-          },
-          undefined,
-        ]
-      }
-    />
-  </BVLinearGradient>
+  />
 </View>
 `;
 
-exports[`renders with a different type style 1`] = `
+exports[`Button renders with a different type style 1`] = `
 <View
   accessible={true}
   isTVSelectable={true}
@@ -88,6 +80,12 @@ exports[`renders with a different type style 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
+      "backgroundColor": "#42446f",
+      "borderRadius": 10,
+      "marginBottom": 0,
+      "marginLeft": 5,
+      "marginRight": 5,
+      "marginTop": 0,
       "opacity": 1,
       "shadowColor": "#2c2f53",
       "shadowOffset": Object {
@@ -122,11 +120,10 @@ exports[`renders with a different type style 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "borderRadius": 10,
-          "marginBottom": 0,
-          "marginLeft": 5,
-          "marginRight": 5,
-          "marginTop": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
           "paddingBottom": 15,
           "paddingLeft": 30,
           "paddingRight": 30,
@@ -137,12 +134,15 @@ exports[`renders with a different type style 1`] = `
     }
   >
     <Text
+      fontSize={20}
       style={
         Array [
           Object {
             "color": "#efefef",
             "fontSize": 20,
             "fontWeight": "bold",
+            "marginLeft": 10,
+            "textAlign": "center",
           },
           undefined,
         ]
@@ -154,7 +154,7 @@ exports[`renders with a different type style 1`] = `
 </View>
 `;
 
-exports[`renders with title correctly 1`] = `
+exports[`Button renders with title correctly 1`] = `
 <View
   accessible={true}
   isTVSelectable={true}
@@ -166,6 +166,12 @@ exports[`renders with title correctly 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
+      "backgroundColor": "#42446f",
+      "borderRadius": 10,
+      "marginBottom": 0,
+      "marginLeft": 5,
+      "marginRight": 5,
+      "marginTop": 0,
       "opacity": 1,
       "shadowColor": "#5e15ea",
       "shadowOffset": Object {
@@ -200,11 +206,10 @@ exports[`renders with title correctly 1`] = `
     style={
       Array [
         Object {
+          "alignItems": "center",
           "borderRadius": 10,
-          "marginBottom": 0,
-          "marginLeft": 5,
-          "marginRight": 5,
-          "marginTop": 0,
+          "flexDirection": "row",
+          "justifyContent": "center",
           "paddingBottom": 15,
           "paddingLeft": 30,
           "paddingRight": 30,
@@ -215,12 +220,15 @@ exports[`renders with title correctly 1`] = `
     }
   >
     <Text
+      fontSize={20}
       style={
         Array [
           Object {
             "color": "#efefef",
             "fontSize": 20,
             "fontWeight": "bold",
+            "marginLeft": 10,
+            "textAlign": "center",
           },
           undefined,
         ]
