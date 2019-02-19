@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Searchbar renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "white",
+        "borderRadius": 40,
+        "color": "white",
+        "flexDirection": "row",
+        "fontSize": 20,
+        "marginBottom": 20,
+        "marginLeft": 20,
+        "marginRight": 20,
+        "marginTop": 20,
+        "paddingBottom": 15,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 15,
+        "width": "80%",
+      },
+      undefined,
+    ]
+  }
+>
+  <Icon
+    color="#42446f"
+    name="search"
+    size={20}
+  />
+  <TextInput
+    allowFontScaling={true}
+    clearButtonMode="always"
+    onChangeText={[Function]}
+    onSubmitEditing={[Function]}
+    placeholder="Search launches..."
+    placeholderTextColor="#777"
+    returnKeyType="search"
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "marginLeft": 10,
+        },
+        undefined,
+      ]
+    }
+    underlineColorAndroid="transparent"
+    value=""
+  />
+</View>
+`;
