@@ -47,14 +47,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && jest"
     }
   },
   "lint-staged": {
     "*.{js,json,css,md}": [
       "prettier --write",
-      "git add",
-      "jest"
+      "git add"
     ]
   }
 }

@@ -19,6 +19,8 @@ const DetailsWrapper = styled.View`
   border-radius: 20px;
   padding: 20px;
   overflow: hidden;
+  flex: 1;
+  justify-content: flex-end;
 `;
 
 const BackgroundImage = styled.Image`
@@ -114,7 +116,7 @@ export default class extends Component {
             ScreenTitle="Launch Details"
             navigateBack={() => this.props.navigation.goBack()}
           />
-          <ScrollView>
+          <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <DetailsWrapper>
               {rocket && (
                 <>
