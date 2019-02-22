@@ -2,13 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import LinearGradient from "react-native-linear-gradient";
 import Label from "../../Common/Label";
+import { MONTHS } from "../../constants";
 
 const Wrapper = styled.View`
-    background: ${({ theme }) => theme.cardBackground};
-    margin: 20px;
-    border-radius: 15px
-    padding: 20px;
-    padding-right: 15px;
+  background: ${({ theme }) => theme.cardBackground};
+  margin: 20px;
+  border-radius: 15px;
+  padding: 20px;
+  padding-right: 15px;
 `;
 
 const DateWrapper = styled(LinearGradient)`
@@ -25,11 +26,8 @@ const Day = styled.Text`
   font-size: ${({ large }) => (large ? 20 : 13)}px;
 `;
 
-const LabelWrapper = styled.View``;
-
 const Row = styled.View`
   flex-direction: row;
-  flex: 1;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
@@ -40,21 +38,6 @@ const Desc = styled.Text`
   font-size: 15px;
   ${({ bold }) => bold && "font-weight: bold;"} margin-top: 5px;
 `;
-
-const MONTHS = [
-  "JAN",
-  "FEB",
-  "MAR",
-  "APR",
-  "MAY",
-  "JUN",
-  "JUL",
-  "AUG",
-  "SEP",
-  "OCT",
-  "NOV",
-  "DEC"
-];
 
 export default ({ data }) => {
   const launchTime = new Date(data.netstamp * 1000);
@@ -75,9 +58,7 @@ export default ({ data }) => {
             </>
           )}
         </DateWrapper>
-        <LabelWrapper>
-          <Label numberOfLines={2} text={data.lsp.abbrev} />
-        </LabelWrapper>
+        <Label numberOfLines={2} text={data.lsp.abbrev} />
       </Row>
       <Desc bold>{data.name}</Desc>
       <Desc numberOfLines={1}>{data.location.name}</Desc>

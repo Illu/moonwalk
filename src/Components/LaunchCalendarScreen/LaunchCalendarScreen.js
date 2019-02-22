@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { ScrollView, TouchableOpacity, RefreshControl } from "react-native";
+import {
+  ActivityIndicator,
+  RefreshControl,
+  FlatList,
+  View
+} from "react-native";
 import { observer, inject } from "mobx-react";
 import ScreenBackground from "../../Common/ScreenBackground";
 import ScreenTitle from "../../Common/ScreenTitle";
@@ -22,6 +27,10 @@ const LoadMoreButton = styled(Button)`
 @inject("launches")
 @observer
 export default class extends Component {
+  state = {
+    page: 0
+  };
+
   navigateToDetails(data) {
     this.props.navigation.navigate("details", { data });
   }
@@ -31,11 +40,19 @@ export default class extends Component {
   }
 
   refreshCalendar = () => {
+    this.setState({ page: 0 });
     this.props.launches.loadNextLaunches(5);
+  };
+
+  loadMore = () => {
+    const newPage = this.state.page + 1;
+    this.setState({ page: newPage });
+    this.props.launches.loadMoreLaunches(5);
   };
 
   render() {
     const data = this.props.launches;
+    const showMoreEnabled = this.state.page < 5;
 
     if (data.state === "error") {
       return (
@@ -52,28 +69,36 @@ export default class extends Component {
         {data.state === "loading" && data.numberOfLaunches < 5 ? (
           <Loader />
         ) : (
-          <ScrollView
+          <FlatList
+            data={data.launches}
+            keyExtractor={item => item.id.toString()}
+            renderItem={({ item }) => (
+              <PushableWrapper onPress={() => this.navigateToDetails(item)}>
+                <CalendarCard data={item} />
+              </PushableWrapper>
+            )}
+            ListFooterComponent={() => (
+              <>
+                {showMoreEnabled &&
+                  (data.state === "loading" ? (
+                    <ActivityIndicator size="large" />
+                  ) : (
+                    <LoadMoreButton
+                      title="Load more"
+                      onPress={this.loadMore}
+                      disabled={data.state === "loading"}
+                    />
+                  ))}
+              </>
+            )}
             refreshControl={
               <RefreshControl
-                refreshing={data.state === "loading"}
+                refreshing={data.state === "loading" && this.state.page === 0}
                 onRefresh={this.refreshCalendar}
                 tintColor="#fff"
               />
             }
-          >
-            {data.launches.map(launch => (
-              <PushableWrapper
-                key={launch.id}
-                onPress={() => this.navigateToDetails(launch)}
-              >
-                <CalendarCard data={launch} />
-              </PushableWrapper>
-            ))}
-            {/* <LoadMoreButton
-              title="Load more"
-              onPress={() => data.loadMoreLaunches(5)}
-            /> */}
-          </ScrollView>
+          />
         )}
       </Wrapper>
     );

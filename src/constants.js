@@ -11,3 +11,18 @@ export const TABBAR_ICONS = {
   [TABS.Search]: "search",
   [TABS.Settings]: "cog"
 };
+
+export const MONTHS = [
+  "JAN",
+  "FEB",
+  "MAR",
+  "APR",
+  "MAY",
+  "JUN",
+  "JUL",
+  "AUG",
+  "OCT",
+  "SEP",
+  "NOV",
+  "DEC"
+];

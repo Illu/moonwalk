@@ -132,7 +132,7 @@ export default class LaunchesModel {
     fetch(`${API_URL}next/${numberOfLaunches}?offset=${this.launches.length}`)
       .then(data => data.json())
       .then(data => {
-        this.launches = [...this.launches, ...data.launches];
+        this.launches = this.launches.concat(data.launches);
         this.state = "success";
       })
       .catch(err => {
