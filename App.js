@@ -14,8 +14,10 @@ import SearchScreen from "./src/Components/SearchScreen";
 import SettingsScreen from "./src/Components/SettingsScreen";
 import LaunchesModel from "./src/Models/LaunchesModel";
 import SearchModel from "./src/Models/SearchModel";
+import NewsModel from "./src/Models/NewsModel";
 import LibrariesScreen from "./src/Components/LibrariesScreen/LibrariesScreen";
 import { configureRNPushNotifications } from "./src/helpers";
+import NewsScreen from "./src/Components/NewsScreen/NewsScreen";
 
 configureRNPushNotifications();
 
@@ -41,6 +43,17 @@ const LaunchCalendar = createStackNavigator({
     }
   },
   details: { screen: LaunchDetailsScreen }
+});
+
+const News = createStackNavigator({
+  news: {
+    screen: NewsScreen,
+    navigationOptions: {
+      title: "News",
+      header: null,
+      headerBackTitle: null
+    }
+  }
 });
 
 const Search = createStackNavigator({
@@ -71,6 +84,7 @@ const Navigation = createBottomTabNavigator(
   {
     [TABS.Home]: Dashboard,
     [TABS.Calendar]: LaunchCalendar,
+    [TABS.News]: News,
     [TABS.Search]: Search,
     [TABS.Settings]: Settings
   },
@@ -95,6 +109,7 @@ const Navigation = createBottomTabNavigator(
 
 const launches = new LaunchesModel();
 const search = new SearchModel();
+const news = new NewsModel();
 
 export default class extends Component {
   state = {
@@ -123,7 +138,7 @@ export default class extends Component {
 
   render() {
     return (
-      <Provider launches={launches} search={search}>
+      <Provider launches={launches} search={search} news={news}>
         <ThemeProvider theme={theme}>
           <>
             <StatusBar barStyle="light-content" />

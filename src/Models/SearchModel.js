@@ -7,7 +7,7 @@ export default class SearchModel {
   @observable
   state = "idle";
   @observable
-  totalResults = "ASDASD";
+  totalResults = "";
 
   @action
   searchLaunches = str => {

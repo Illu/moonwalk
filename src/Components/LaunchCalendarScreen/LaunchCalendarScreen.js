@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import {
-  ActivityIndicator,
-  RefreshControl,
-  FlatList,
-  View
-} from "react-native";
+import { ActivityIndicator, RefreshControl, FlatList } from "react-native";
 import { observer, inject } from "mobx-react";
 import ScreenBackground from "../../Common/ScreenBackground";
 import ScreenTitle from "../../Common/ScreenTitle";
