@@ -7,7 +7,7 @@ A simple way to stay up to date with upcoming space launches, built with [React-
 ## Preview
 
 <p align="center">
-  <img  src="https://maximenory.com/public/mwpreview.png" height="500"/>
+  <img src="https://maximenory.com/public/mwpreview.png" />
 </p>
 
 ## Installation

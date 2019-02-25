@@ -117,6 +117,7 @@ class SettingsScreen extends Component {
               <Icon name="twitter" size={22} color="#fff" />
             </Section>
             <Section
+              bottom
               onPress={() => {
                 if (StoreReview.isAvailable) {
                   StoreReview.requestReview();
@@ -129,13 +130,6 @@ class SettingsScreen extends Component {
             >
               <SectionTitle>Give your feedback</SectionTitle>
               <Icon name="app-store-ios" size={22} color="#fff" />
-            </Section>
-            <Section
-              bottom
-              onPress={() => Linking.openURL("https://paypal.me/maximenory")}
-            >
-              <SectionTitle>Buy me a coffee</SectionTitle>
-              <Icon name="coffee" size={22} color="#fff" />
             </Section>
             <Section
               top
