@@ -26,6 +26,8 @@ $ yarn build-ios
 $ react-native run-ios
 ```
 
+Although not deployed on the Google Play Store yet, the app is able to run on Android devices. To run the app, simply use the `react-native run-android` command. (This is an ongoing feature, expect some layout issues).
+
 ## Stack
 
 [React-Native](https://github.com/facebook/react-native)
