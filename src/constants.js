@@ -43,3 +43,10 @@ export const MONTHS_FULL = [
   "November",
   "December"
 ];
+
+export const STATES = {
+  IDLE: "idle",
+  LOADING: "loading",
+  SUCCESS: "success",
+  ERROR: "error"
+};

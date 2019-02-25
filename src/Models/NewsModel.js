@@ -1,12 +1,13 @@
 import { observable, computed, action } from "mobx";
 import { NEWS_API_URL } from "../../cfg";
+import { STATES } from "../constants";
 
 export default class NewsModel {
   @observable
   articles = [];
 
   @observable
-  state = "idle"; // @TODO: use constant instead of strings
+  state = STATES.IDLE;
 
   @computed
   get numberOfArticles() {
@@ -15,15 +16,15 @@ export default class NewsModel {
 
   @action
   getNews = (numberOfArticles = 12) => {
-    this.state = "loading";
+    this.state = STATES.LOADING;
     fetch(`${NEWS_API_URL}/articles?limit=${numberOfArticles}`)
       .then(data => data.json())
       .then(data => {
         this.articles = data || [];
-        this.state = "success";
+        this.state = STATES.SUCCESS;
       })
       .catch(err => {
-        this.state = "error";
+        this.state = STATES.ERROR;
       });
   };
 }

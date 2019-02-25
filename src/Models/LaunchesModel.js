@@ -2,6 +2,7 @@ import { observable, computed, action } from "mobx";
 import { PushNotificationIOS, AsyncStorage, Platform } from "react-native";
 import { API_URL } from "../../cfg";
 import PushNotification from "react-native-push-notification";
+import { STATES } from "../constants";
 
 storeData = async data => {
   try {
@@ -17,7 +18,7 @@ export default class LaunchesModel {
   nextLaunch = [];
 
   @observable
-  state = "idle";
+  state = STATES.IDLE;
 
   @observable
   notifications = {
@@ -114,29 +115,29 @@ export default class LaunchesModel {
 
   @action
   loadNextLaunches = numberOfLaunches => {
-    this.state = "loading";
+    this.state = STATES.LOADING;
     fetch(`${API_URL}next/${numberOfLaunches}`)
       .then(data => data.json())
       .then(data => {
         this.launches = data.launches;
-        this.state = "success";
+        this.state = STATES.SUCCESS;
       })
       .catch(err => {
-        this.state = "error";
+        this.state = STATES.ERROR;
       });
   };
 
   @action
   loadMoreLaunches = numberOfLaunches => {
-    this.state = "loading";
+    this.state = STATES.LOADING;
     fetch(`${API_URL}next/${numberOfLaunches}?offset=${this.launches.length}`)
       .then(data => data.json())
       .then(data => {
         this.launches = this.launches.concat(data.launches);
-        this.state = "success";
+        this.state = STATES.SUCCESS;
       })
       .catch(err => {
-        this.state = "error";
+        this.state = STATES.ERROR;
       });
   };
 }

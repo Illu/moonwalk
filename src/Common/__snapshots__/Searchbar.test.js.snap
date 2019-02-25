@@ -5,6 +5,7 @@ exports[`Searchbar renders correctly 1`] = `
   style={
     Array [
       Object {
+        "alignItems": "center",
         "backgroundColor": "white",
         "borderRadius": 40,
         "color": "white",

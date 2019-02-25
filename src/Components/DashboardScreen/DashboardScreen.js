@@ -9,6 +9,7 @@ import NextLaunchCard from "../NextLaunchCard";
 import ErrorCard from "../ErrorCard";
 import Loader from "../../Common/Loader";
 import CountdownCard from "../CountdownCard/CountdownCard";
+import { STATES } from "../../constants";
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;
@@ -45,9 +46,10 @@ class DashboardScreen extends Component {
       <Wrapper>
         <ScreenTitle title="Next launch" />
         <ContentWrapper>
-          {state === "loading" && this.props.launches.numberOfLaunches === 0 ? (
+          {state === STATES.LOADING &&
+          this.props.launches.numberOfLaunches === 0 ? (
             <Loader />
-          ) : state === "error" ? (
+          ) : state === STATES.ERROR ? (
             <ErrorCard onPress={() => this.loadUpcomingLaunch()} />
           ) : (
             data && (
@@ -55,7 +57,7 @@ class DashboardScreen extends Component {
                 contentContainerStyle={{ flex: 1 }}
                 refreshControl={
                   <RefreshControl
-                    refreshing={data.state === "loading"}
+                    refreshing={data.state === STATES.LOADING}
                     onRefresh={() => this.loadUpcomingLaunch()}
                     tintColor="#fff"
                   />

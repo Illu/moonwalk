@@ -165,7 +165,7 @@ class SettingsScreen extends Component {
                 <SectionTitle>Version {version}</SectionTitle>
               )}
             </Section>
-            <Credits>2018 - Maxime Nory</Credits>
+            <Credits>2019 - Maxime Nory</Credits>
           </SectionsWrapper>
         </ContentWrapper>
       </Wrapper>

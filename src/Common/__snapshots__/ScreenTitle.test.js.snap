@@ -20,18 +20,16 @@ exports[`screenTitle renders correctly 1`] = `
     ellipsizeMode="clip"
     numberOfLines={1}
     style={
-      Array [
-        Object {
-          "color": "#aaaaaa11",
-          "fontSize": 100,
-          "fontWeight": "bold",
-          "left": 25,
-          "position": "absolute",
-          "right": 0,
-          "top": -20,
-        },
-        undefined,
-      ]
+      Object {
+        "color": "#aaaaaa",
+        "fontSize": 100,
+        "fontWeight": "bold",
+        "left": 100,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": -20,
+      }
     }
   >
     My screen

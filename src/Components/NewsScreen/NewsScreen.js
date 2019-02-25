@@ -7,7 +7,7 @@ import { observer, inject } from "mobx-react";
 import NewsCard from "../NewsCard/NewsCard";
 import ErrorCard from "../ErrorCard";
 import Loader from "../../Common/Loader";
-import { MONTHS_FULL } from "../../constants";
+import { MONTHS_FULL, STATES } from "../../constants";
 
 const Wrapper = styled(ScreenBackground)`
   padding: 40px 0 0 0;
@@ -41,7 +41,7 @@ class NewsScreen extends Component {
     const dateTS = new Date();
     const date = `${MONTHS_FULL[dateTS.getMonth()]} ${dateTS.getDate()}`;
 
-    if (news.state === "error") {
+    if (news.state === STATES.ERROR) {
       return (
         <Wrapper>
           <ScreenTitle title="News" />
@@ -53,7 +53,7 @@ class NewsScreen extends Component {
     return (
       <Wrapper>
         <ScreenTitle title="News" />
-        {news.state === "loading" && news.numberOfArticles <= 0 ? (
+        {news.state === STATES.LOADING && news.numberOfArticles <= 0 ? (
           <Loader />
         ) : (
           <ScrollWrapper
@@ -64,7 +64,7 @@ class NewsScreen extends Component {
             }}
             refreshControl={
               <RefreshControl
-                refreshing={news.state === "loading"}
+                refreshing={news.state === STATES.LOADING}
                 onRefresh={this.loadNews}
                 tintColor="#fff"
               />

@@ -11,6 +11,7 @@ const Wrapper = styled.View`
   color: white;
   background: white;
   flex-direction: row;
+  align-items: center;
 `;
 
 const StyledInput = styled.TextInput`

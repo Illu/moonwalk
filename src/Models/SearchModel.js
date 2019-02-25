@@ -1,26 +1,29 @@
 import { observable, computed, action } from "mobx";
 import { API_URL } from "../../cfg";
+import { STATES } from "../constants";
 
 export default class SearchModel {
   @observable
   results = [];
+
   @observable
-  state = "idle";
+  state = STATES.IDLE;
+
   @observable
   totalResults = "";
 
   @action
   searchLaunches = str => {
-    this.state = "loading";
+    this.state = STATES.LOADING;
     fetch(`${API_URL}/${str}`)
       .then(data => data.json())
       .then(data => {
         this.results = data.launches || [];
         this.totalResults = data.total;
-        this.state = "success";
+        this.state = STATES.SUCCESS;
       })
       .catch(err => {
-        this.state = "error";
+        this.state = STATES.ERROR;
       });
   };
 }

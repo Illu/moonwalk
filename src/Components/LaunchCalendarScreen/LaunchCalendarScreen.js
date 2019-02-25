@@ -9,6 +9,7 @@ import Loader from "../../Common/Loader";
 import ErrorCard from "../ErrorCard";
 import Button from "../../Common/Button";
 import PushableWrapper from "../../Common/PushableWrapper";
+import { STATES } from "../../constants";
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;
@@ -49,7 +50,7 @@ export default class extends Component {
     const data = this.props.launches;
     const showMoreEnabled = this.state.page < 5;
 
-    if (data.state === "error") {
+    if (data.state === STATES.ERROR) {
       return (
         <Wrapper>
           <ScreenTitle title="Launch Calendar" />
@@ -61,7 +62,7 @@ export default class extends Component {
     return (
       <Wrapper>
         <ScreenTitle title="Launch Calendar" />
-        {data.state === "loading" && data.numberOfLaunches < 5 ? (
+        {data.state === STATES.LOADING && data.numberOfLaunches < 5 ? (
           <Loader />
         ) : (
           <FlatList
@@ -75,20 +76,22 @@ export default class extends Component {
             ListFooterComponent={() => (
               <>
                 {showMoreEnabled &&
-                  (data.state === "loading" ? (
+                  (data.state === STATES.LOADING ? (
                     <ActivityIndicator size="large" />
                   ) : (
                     <LoadMoreButton
                       title="Load more"
                       onPress={this.loadMore}
-                      disabled={data.state === "loading"}
+                      disabled={data.state === STATES.LOADING}
                     />
                   ))}
               </>
             )}
             refreshControl={
               <RefreshControl
-                refreshing={data.state === "loading" && this.state.page === 0}
+                refreshing={
+                  data.state === STATES.LOADING && this.state.page === 0
+                }
                 onRefresh={this.refreshCalendar}
                 tintColor="#fff"
               />
