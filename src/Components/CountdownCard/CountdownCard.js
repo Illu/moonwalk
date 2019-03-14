@@ -67,19 +67,19 @@ export default class extends Component {
       <Wrapper>
         <UnitWrapper>
           <Number>{NoData ? "-" : days}</Number>
-          <Unit>days</Unit>
+          <Unit>{`day${days !== 1 ? "s" : ""}`}</Unit>
         </UnitWrapper>
         <UnitWrapper>
           <Number>{NoData ? "-" : hours % 24}</Number>
-          <Unit>hours</Unit>
+          <Unit>{`hour${minutes % 24 !== 1 ? "s" : ""}`}</Unit>
         </UnitWrapper>
         <UnitWrapper>
           <Number>{NoData ? "-" : minutes % 60}</Number>
-          <Unit>minutes</Unit>
+          <Unit>{`minute${minutes % 60 !== 1 ? "s" : ""}`}</Unit>
         </UnitWrapper>
         <UnitWrapper>
           <Number>{NoData ? "-" : seconds % 60}</Number>
-          <Unit>seconds</Unit>
+          <Unit>{`second${seconds % 60 !== 1 ? "s" : " "}`}</Unit>
         </UnitWrapper>
       </Wrapper>
     );
