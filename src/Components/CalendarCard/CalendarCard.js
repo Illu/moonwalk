@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import LinearGradient from "react-native-linear-gradient";
-import Label from "../../Common/Label";
-import { MONTHS } from "../../constants";
+import Label from "common/Label";
+import { MONTHS } from "src/constants";
 
 const Wrapper = styled.View`
   background: ${({ theme }) => theme.cardBackground};

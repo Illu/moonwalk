@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import ScreenTitle from "../../Common/ScreenTitle";
-import ScreenBackground from "../../Common/ScreenBackground";
+import ScreenTitle from "common/ScreenTitle";
+import ScreenBackground from "common/ScreenBackground";
 import { RefreshControl } from "react-native";
 import { observer, inject } from "mobx-react";
-import NewsCard from "../NewsCard/NewsCard";
-import ErrorCard from "../ErrorCard";
-import Loader from "../../Common/Loader";
-import { MONTHS_FULL, STATES } from "../../constants";
+import NewsCard from "components/NewsCard";
+import ErrorCard from "components/ErrorCard";
+import Loader from "common/Loader";
+import { MONTHS_FULL, STATES } from "src/constants";
 
 const Wrapper = styled(ScreenBackground)`
   padding: 40px 0 0 0;

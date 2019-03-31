@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Animated, View, Easing } from "react-native";
-import Button from "../../Common/Button";
+import Button from "common/Button";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 const Wrapper = styled(Animated.createAnimatedComponent(View))`

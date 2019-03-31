@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Animated, Easing, View } from "react-native";
 
 const Wrapper = styled.View`
   background: ${({ theme }) => theme.cardBackground};

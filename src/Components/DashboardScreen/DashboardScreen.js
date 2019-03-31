@@ -3,13 +3,13 @@ import styled from "styled-components";
 import { SafeAreaView } from "react-navigation";
 import { ScrollView, RefreshControl } from "react-native";
 import { observer, inject } from "mobx-react";
-import ScreenBackground from "../../Common/ScreenBackground";
-import ScreenTitle from "../../Common/ScreenTitle";
-import NextLaunchCard from "../NextLaunchCard";
-import ErrorCard from "../ErrorCard";
-import Loader from "../../Common/Loader";
-import CountdownCard from "../CountdownCard/CountdownCard";
-import { STATES } from "../../constants";
+import ScreenBackground from "common/ScreenBackground";
+import ScreenTitle from "common/ScreenTitle";
+import NextLaunchCard from "components/NextLaunchCard";
+import ErrorCard from "components/ErrorCard";
+import Loader from "common/Loader";
+import CountdownCard from "components/CountdownCard";
+import { STATES } from "src/constants";
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;

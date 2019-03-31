@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { observer, inject } from "mobx-react";
 import { TouchableOpacity, Linking } from "react-native";
 import { SafeAreaView } from "react-navigation";
-import ScreenBackground from "../../Common/ScreenBackground";
-import Searchbar from "../../Common/Searchbar";
+import ScreenBackground from "common/ScreenBackground";
+import Searchbar from "common/Searchbar";
 import ResultCard from "./ResultCard";
-import Loader from "../../Common/Loader";
-import { STATES } from "../../constants";
+import Loader from "common/Loader";
+import { STATES } from "src/constants";
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;
@@ -52,19 +52,18 @@ export default class SearchScreen extends Component {
           <Searchbar launchSearch={str => searchLaunches(str)} />
           <ScrollWrapper contentContainerStyle={{ alignItems: "center" }}>
             {state === STATES.LOADING && <Loader />}
-            {results.length >= 0 &&
-              state === STATES.SUCCESS && (
-                <>
-                  <ResultCount>{totalResults || 0} results</ResultCount>
-                  {results.map(data => (
-                    <ResultCard
-                      key={data.id}
-                      data={data}
-                      showDetails={this.showDetails}
-                    />
-                  ))}
-                </>
-              )}
+            {results.length >= 0 && state === STATES.SUCCESS && (
+              <>
+                <ResultCount>{totalResults || 0} results</ResultCount>
+                {results.map(data => (
+                  <ResultCard
+                    key={data.id}
+                    data={data}
+                    showDetails={this.showDetails}
+                  />
+                ))}
+              </>
+            )}
             <TouchableOpacity
               onPress={() => Linking.openURL("https://launchlibrary.net/")}
             >

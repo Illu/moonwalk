@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import LinearGradient from "react-native-linear-gradient";
 import { View, TouchableOpacity } from "react-native";
-import PushableWrapper from "../../Common/PushableWrapper";
+import PushableWrapper from "common/PushableWrapper";
 
 const Wrapper = styled(LinearGradient)`
   border-radius: 10px;

@@ -2,7 +2,7 @@ import { observable, computed, action } from "mobx";
 import { PushNotificationIOS, AsyncStorage, Platform } from "react-native";
 import { API_URL } from "../../cfg";
 import PushNotification from "react-native-push-notification";
-import { STATES } from "../constants";
+import { STATES } from "src/constants";
 
 storeData = async data => {
   try {

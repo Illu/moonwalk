@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { ActivityIndicator, RefreshControl, FlatList } from "react-native";
 import { observer, inject } from "mobx-react";
-import ScreenBackground from "../../Common/ScreenBackground";
-import ScreenTitle from "../../Common/ScreenTitle";
-import CalendarCard from "../CalendarCard/CalendarCard";
-import Loader from "../../Common/Loader";
-import ErrorCard from "../ErrorCard";
-import Button from "../../Common/Button";
-import PushableWrapper from "../../Common/PushableWrapper";
-import { STATES } from "../../constants";
+import ScreenBackground from "common/ScreenBackground";
+import ScreenTitle from "common/ScreenTitle";
+import CalendarCard from "components/CalendarCard";
+import Loader from "common/Loader";
+import ErrorCard from "components/ErrorCard";
+import Button from "common/Button";
+import PushableWrapper from "common/PushableWrapper";
+import { STATES } from "src/constants";
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;

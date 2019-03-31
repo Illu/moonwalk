@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Label from "../../Common/Label";
-import Button from "../../Common/Button";
+import Label from "common/Label";
+import Button from "common/Button";
 
 const Wrapper = styled.View`
     background: ${({ theme }) => theme.cardBackground};

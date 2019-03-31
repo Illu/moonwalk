@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Animated, TouchableOpacity, Easing } from "react-native";
+import { Animated, TouchableOpacity } from "react-native";
 
 export default class extends Component {
   state = {

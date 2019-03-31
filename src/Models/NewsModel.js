@@ -1,6 +1,6 @@
 import { observable, computed, action } from "mobx";
 import { NEWS_API_URL } from "../../cfg";
-import { STATES } from "../constants";
+import { STATES } from "src/constants";
 
 export default class NewsModel {
   @observable

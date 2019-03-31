@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { FlatList, Linking } from "react-native";
 import { SafeAreaView } from "react-navigation";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import ScreenBackground from "../../Common/ScreenBackground";
-import licenses from "../../licenses";
-import HeaderBack from "../../Common/HeaderBack";
-import Button from "../../Common/Button";
+import ScreenBackground from "common/ScreenBackground";
+import licenses from "src/licenses";
+import HeaderBack from "common/HeaderBack";
+import Button from "common/Button";
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Switch, Linking, TouchableOpacity } from "react-native";
-import { SafeAreaView } from "react-navigation";
 import { observer, inject } from "mobx-react";
+import { SafeAreaView } from "react-navigation";
+import * as StoreReview from "react-native-store-review";
+import { Switch, Linking, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { version } from "../../../package.json";
-import ScreenBackground from "../../Common/ScreenBackground";
-import ScreenTitle from "../../Common/ScreenTitle";
-import * as StoreReview from "react-native-store-review";
+import ScreenBackground from "common/ScreenBackground";
+import ScreenTitle from "common/ScreenTitle";
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;

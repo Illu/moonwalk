@@ -1,13 +1,13 @@
 import React, { Component } from "react";
+import { SafeAreaView } from "react-navigation";
+import { ScrollView, Linking } from "react-native";
 import styled from "styled-components";
 import openMap from "react-native-open-maps";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import ScreenBackground from "../../Common/ScreenBackground";
-import { ScrollView, Linking } from "react-native";
-import { SafeAreaView } from "react-navigation";
-import CountdownCard from "../CountdownCard/CountdownCard";
-import Button from "../../Common/Button";
-import HeaderBack from "../../Common/HeaderBack";
+import ScreenBackground from "common/ScreenBackground";
+import CountdownCard from "components/CountdownCard";
+import Button from "common/Button";
+import HeaderBack from "common/HeaderBack";
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;
