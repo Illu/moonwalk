@@ -1,4 +1,4 @@
-import { observable, computed, action } from "mobx";
+import { observable, action } from "mobx";
 import { API_URL } from "../../cfg";
 import { STATES } from "src/constants";
 
