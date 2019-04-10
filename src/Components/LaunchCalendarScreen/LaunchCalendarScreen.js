@@ -54,7 +54,10 @@ export default class extends Component {
       return (
         <Wrapper>
           <ScreenTitle title="Launch Calendar" />
-          <ErrorCard onPress={this.refreshCalendar} />
+          <ErrorCard
+            onPress={this.refreshCalendar}
+            details="Error while fetching upcoming launches"
+          />
         </Wrapper>
       );
     }

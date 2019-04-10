@@ -45,7 +45,10 @@ class NewsScreen extends Component {
       return (
         <Wrapper>
           <ScreenTitle title="News" />
-          <ErrorCard onPress={this.loadNews} />
+          <ErrorCard
+            onPress={this.loadNews}
+            details="Error while retrieving Space News articles"
+          />
         </Wrapper>
       );
     }

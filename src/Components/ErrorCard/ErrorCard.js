@@ -39,7 +39,7 @@ export default class extends Component {
   }
 
   render() {
-    const { onPress } = this.props;
+    const { onPress, details = "Error while fetching data" } = this.props;
     const { appearAnim } = this.state;
     return (
       <Wrapper
@@ -57,7 +57,7 @@ export default class extends Component {
       >
         <Icon name="exclamation" size={35} color="white" />
         <Title>Something's wrong</Title>
-        <Subtitle>Error while fetching launch data</Subtitle>
+        <Subtitle>{details}</Subtitle>
         <Button onPress={onPress} type="secondary" title="Retry" />
       </Wrapper>
     );

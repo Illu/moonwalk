@@ -50,7 +50,10 @@ class DashboardScreen extends Component {
           this.props.launches.numberOfLaunches === 0 ? (
             <Loader />
           ) : state === STATES.ERROR ? (
-            <ErrorCard onPress={() => this.loadUpcomingLaunch()} />
+            <ErrorCard
+              onPress={() => this.loadUpcomingLaunch()}
+              details="Error while fetching launch data"
+            />
           ) : (
             data && (
               <ScrollView
