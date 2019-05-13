@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start": "node node_modules/react-native/local-cli/cli.js start --reset-cache",
     "test": "jest",
     "build-ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/moonwalk/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
   },
