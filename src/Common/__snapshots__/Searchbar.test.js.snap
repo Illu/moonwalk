@@ -37,6 +37,7 @@ exports[`Searchbar renders correctly 1`] = `
     onSubmitEditing={[Function]}
     placeholder="Search launches..."
     placeholderTextColor="#777"
+    rejectResponderTermination={true}
     returnKeyType="search"
     style={
       Array [
