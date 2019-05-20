@@ -19,7 +19,7 @@ const UnitWrapper = styled.View`
 const Number = styled.Text`
   font-size: 26px;
   font-weight: bold;
-  color: white;
+  color: #444;
 `;
 
 const Unit = styled.Text`

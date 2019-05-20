@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import LinearGradient from "react-native-linear-gradient";
-import { View, TouchableOpacity } from "react-native";
+import { View } from "react-native";
 import PushableWrapper from "common/PushableWrapper";
+import { BlurView } from "@react-native-community/blur";
 
 const Wrapper = styled(LinearGradient)`
   border-radius: 10px;
@@ -32,7 +33,6 @@ const BackgroundImage = styled.Image`
 `;
 
 const ContentWrapper = styled.View`
-  padding: 20px;
   flex: 1;
   justify-content: space-between;
 `;
@@ -48,15 +48,15 @@ export default ({ data, navigateToDetails, scheduleNotification }) => {
       >
         <BackgroundImage source={{ uri: data.rocket.imageURL }} />
         <ContentWrapper>
-          <View>
+          <View style={{ margin: 20 }}>
             <CompanyTitle>{data.lsp.name}</CompanyTitle>
           </View>
-          <View>
+          <BlurView blurType="dark" blurAmount={10} style={{ padding: 20 }}>
             <Title large adjustsFontSizeToFit numberOfLines={1}>
               {data.name}
             </Title>
             <Title>{data.windowstart}</Title>
-          </View>
+          </BlurView>
         </ContentWrapper>
       </Wrapper>
     </PushableWrapper>

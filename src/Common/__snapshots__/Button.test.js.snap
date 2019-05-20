@@ -12,7 +12,7 @@ exports[`Button renders correctly 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "#42446f",
+      "backgroundColor": "#fff",
       "borderRadius": 10,
       "marginBottom": 0,
       "marginLeft": 5,
@@ -80,7 +80,7 @@ exports[`Button renders with a different type style 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "#42446f",
+      "backgroundColor": "#fff",
       "borderRadius": 10,
       "marginBottom": 0,
       "marginLeft": 5,
@@ -166,7 +166,7 @@ exports[`Button renders with title correctly 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "#42446f",
+      "backgroundColor": "#fff",
       "borderRadius": 10,
       "marginBottom": 0,
       "marginLeft": 5,

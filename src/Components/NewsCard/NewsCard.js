@@ -18,16 +18,21 @@ const TextWrapper = styled.View`
   margin: 10px;
 `;
 
-const ContentWrapper = styled(LinearGradient)`
-  flex: 1;
-  justify-content: flex-end;
-`;
+// const ContentWrapper = styled(LinearGradient)`
+//   flex: 1;
+//   justify-content: flex-end;
+// `;
 
-const Image = styled.ImageBackground`
+const Image = styled.Image`
   margin-top: 5px;
   height: 250px;
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "49%")};
   align-self: stretch;
+`;
+
+const Wrapper = styled.TouchableOpacity`
+  flex: 1;
+  justify-content: flex-end;
 `;
 
 const NewsCard = ({ data, fullWidth }) => {
@@ -39,29 +44,15 @@ const NewsCard = ({ data, fullWidth }) => {
   const timePosted = daysDiff > 0 ? `${daysDiff}d ago` : "Today";
 
   return (
-    <Image
-      resizeMode="cover"
-      source={{ uri: featured_image }}
-      fullWidth={fullWidth}
-    >
-      <TouchableOpacity
-        onPress={() => Linking.openURL(url)}
-        style={{ flex: 1 }}
-      >
-        <ContentWrapper
-          colors={["#37346800", "#222437"]}
-          start={{ x: 0.0, y: 0.4 }}
-          end={{ x: 0.0, y: 0.95 }}
-        >
-          <TextWrapper>
-            <Title>{title}</Title>
-            <NewsSite>
-              {news_site_long} - {timePosted}
-            </NewsSite>
-          </TextWrapper>
-        </ContentWrapper>
-      </TouchableOpacity>
-    </Image>
+    <Wrapper onPress={() => Linking.openURL(url)} style={{ flex: 1 }}>
+      <Image fullWidth={fullWidth} source={{ uri: featured_image }} />
+      <TextWrapper>
+        <Title>{title}</Title>
+        <NewsSite>
+          {news_site_long} - {timePosted}
+        </NewsSite>
+      </TextWrapper>
+    </Wrapper>
   );
 };
 

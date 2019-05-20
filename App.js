@@ -25,9 +25,8 @@ const Dashboard = createStackNavigator({
   dashboard: {
     screen: DashboardScreen,
     navigationOptions: {
-      title: "Dashboard",
-      header: null,
-      headerBackTitle: null
+      title: "Next launch",
+      header: null
     }
   },
   details: { screen: LaunchDetailsScreen }
@@ -97,11 +96,11 @@ const Navigation = createBottomTabNavigator(
       }
     }),
     tabBarOptions: {
-      activeTintColor: "white",
+      activeTintColor: "blue",
       inactiveTintColor: theme.inactive,
       showLabel: true,
       style: {
-        backgroundColor: theme.cardBackground
+        backgroundColor: "white"
       }
     }
   }

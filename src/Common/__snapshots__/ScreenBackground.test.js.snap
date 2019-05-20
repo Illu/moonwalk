@@ -1,25 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`screenBackground renders correctly 1`] = `
-<BVLinearGradient
-  colors={
+<View
+  style={
     Array [
-      4281807976,
-      4280427575,
+      Object {
+        "backgroundColor": "#fff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+      undefined,
     ]
-  }
-  endPoint={
-    Object {
-      "x": 0.5,
-      "y": 1,
-    }
-  }
-  locations={null}
-  startPoint={
-    Object {
-      "x": 0,
-      "y": 0.25,
-    }
   }
 />
 `;

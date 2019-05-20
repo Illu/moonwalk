@@ -10,6 +10,7 @@ import ErrorCard from "components/ErrorCard";
 import Loader from "common/Loader";
 import CountdownCard from "components/CountdownCard";
 import { STATES } from "src/constants";
+import Separator from "common/Separator";
 
 const Wrapper = styled(ScreenBackground)`
   flex: 1;
@@ -44,7 +45,7 @@ class DashboardScreen extends Component {
     const data = this.props.launches.upcomingLaunch;
     return (
       <Wrapper>
-        <ScreenTitle title="Next launch" />
+        {/* <ScreenTitle title="Next launch" /> */}
         <ContentWrapper>
           {state === STATES.LOADING &&
           this.props.launches.numberOfLaunches === 0 ? (
@@ -73,6 +74,7 @@ class DashboardScreen extends Component {
                     this.props.launches.scheduleNotification(data)
                   }
                 />
+                <Separator />
                 <CountdownCard data={data} />
               </ScrollView>
             )

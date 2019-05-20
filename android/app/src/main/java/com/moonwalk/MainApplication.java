@@ -3,6 +3,7 @@ package com.moonwalk;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.cmcewen.blurview.BlurViewPackage;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new BlurViewPackage(),
             new ReactNativePushNotificationPackage(),
             new VectorIconsPackage(),
             new LinearGradientPackage()
