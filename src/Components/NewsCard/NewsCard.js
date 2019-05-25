@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import LinearGradient from "react-native-linear-gradient";
 import { TouchableOpacity, Linking } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome5";
 
 const Title = styled.Text`
   color: white;
@@ -30,6 +31,14 @@ const Image = styled.ImageBackground`
   align-self: stretch;
 `;
 
+const PlaceholderWrapper = styled.View`
+  align-items: center;
+  margin: 10%;
+  opacity: 0.3;
+  flex: 1;
+  justify-content: center;
+`;
+
 const NewsCard = ({ data, fullWidth }) => {
   const { title, featured_image, news_site_long, date_published, url } = data;
 
@@ -48,6 +57,11 @@ const NewsCard = ({ data, fullWidth }) => {
         onPress={() => Linking.openURL(url)}
         style={{ flex: 1 }}
       >
+        {!featured_image && (
+          <PlaceholderWrapper>
+            <Icon name="eye-slash" size={60} color="#eee" />
+          </PlaceholderWrapper>
+        )}
         <ContentWrapper
           colors={["#37346800", "#222437"]}
           start={{ x: 0.0, y: 0.4 }}
