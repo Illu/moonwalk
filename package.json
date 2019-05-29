@@ -28,7 +28,7 @@
   "devDependencies": {
     "babel-jest": "23.6.0",
     "babel-plugin-module-resolver": "^3.2.0",
-    "husky": "^1.1.2",
+    "husky": "^2.3.0",
     "jest": "23.6.0",
     "lint-staged": "^7.3.0",
     "metro-react-native-babel-preset": "0.45.2",
