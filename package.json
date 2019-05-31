@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.4.4",
-    "@babel/runtime": "^7.1.2",
+    "@babel/runtime": "^7.4.5",
     "jsc-android": "236355.x.x",
     "mobx": "^5.5.0",
     "mobx-react": "^5.3.1",
