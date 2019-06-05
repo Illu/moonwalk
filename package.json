@@ -20,7 +20,7 @@
     "react-native-open-maps": "^0.3.2",
     "react-native-push-notification": "^3.1.2",
     "react-native-store-review": "^0.1.5",
-    "react-native-vector-icons": "^5.0.0",
+    "react-native-vector-icons": "^6.4.2",
     "react-navigation": "2.17.0",
     "react-navigation-fluid-transitions": "^0.2.6",
     "styled-components": "^4.0.0"
