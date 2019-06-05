@@ -13,7 +13,7 @@
     "jsc-android": "236355.x.x",
     "mobx": "^5.5.0",
     "mobx-react": "^5.3.1",
-    "prettier": "^1.14.3",
+    "prettier": "^1.17.1",
     "react": "16.8.6",
     "react-native": "0.59.8",
     "react-native-linear-gradient": "^2.4.2",
