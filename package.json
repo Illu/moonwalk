@@ -23,7 +23,7 @@
     "react-native-vector-icons": "^5.0.0",
     "react-navigation": "2.17.0",
     "react-navigation-fluid-transitions": "^0.2.6",
-    "styled-components": "^3.4.6"
+    "styled-components": "^4.0.0"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
