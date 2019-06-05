@@ -12,7 +12,7 @@
     "@babel/runtime": "^7.4.5",
     "jsc-android": "236355.x.x",
     "mobx": "^5.5.0",
-    "mobx-react": "^5.3.1",
+    "mobx-react": "^6.0.3",
     "prettier": "^1.17.1",
     "react": "16.8.6",
     "react-native": "0.59.8",
