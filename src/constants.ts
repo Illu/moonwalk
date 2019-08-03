@@ -8,7 +8,7 @@ export const TABS = {
 
 export const TABBAR_ICONS = {
   [TABS.Home]: "rocket",
-  [TABS.Calendar]: "calendar",
+  [TABS.Calendar]: "calendar-alt",
   [TABS.News]: "newspaper",
   [TABS.Search]: "search",
   [TABS.Settings]: "cog"
@@ -48,5 +48,5 @@ export enum STATES {
   IDLE,
   LOADING,
   SUCCESS,
-  ERROR,
-};
+  ERROR
+}

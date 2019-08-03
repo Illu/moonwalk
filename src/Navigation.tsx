@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-
+import React from "react";
+import Icon from "react-native-vector-icons/FontAwesome5";
 import {
   createStackNavigator,
   createBottomTabNavigator,
@@ -23,20 +23,20 @@ const DashboardNavigator = createStackNavigator({
 
 const Navigator = createBottomTabNavigator(
   {
-    [TABS.Home]: DashboardNavigator
-    // [TABS.Calendar]: LaunchCalendar,
-    // [TABS.News]: News,
-    // [TABS.Search]: Search,
-    // [TABS.Settings]: Settings
+    [TABS.Home]: DashboardNavigator,
+    [TABS.Calendar]: DashboardNavigator,
+    [TABS.News]: DashboardNavigator,
+    [TABS.Search]: DashboardNavigator,
+    // [TABS.Settings]: DashboardNavigator
   },
   {
-    // navigationOptions: ({ navigation }) => ({
-    //   tabBarIcon: ({ focused, tintColor }) => {
-    //     const { routeName } = navigation.state;
-    //     const iconName = TABBAR_ICONS[routeName];
-    //     return <Icon name={iconName} size={20} color={tintColor} />;
-    //   }
-    // }),
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, tintColor }) => {
+        const { routeName } = navigation.state;
+        const iconName = TABBAR_ICONS[routeName];
+        return <Icon name={iconName} size={20} color={tintColor} />;
+      }
+    }),
     tabBarOptions: {
       activeTintColor: theme.secondary,
       inactiveTintColor: theme.inactive,
