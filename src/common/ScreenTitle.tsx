@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 const Wrapper = styled.View`
-  padding: 40px 15px;
+  padding: 40px 0;
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
@@ -29,7 +29,7 @@ export const ScreenTitle = ({title}: Props) => (
   <Wrapper>
     <Title>{title}</Title>
     <IconWrapper>
-    <Icon name="cog" size={20} color="#fff" />
+    <Icon name="wrench" size={20} color="#fff" />
     </IconWrapper>
 
   </Wrapper>

@@ -1,18 +1,31 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components/native';
-import { ScreenTitle } from '../common';
+import { observer, inject } from "mobx-react";
+import { ScreenTitle, NextLaunchCard } from '../common';
 
-const Wrapper = styled.SafeAreaView`
-
+const SafeWrapper = styled.SafeAreaView`
+  flex: 1;
 `;
 
-export class Dashboard extends Component {
+const Wrapper = styled.View`
+  padding: 0 30px;
+  flex: 1;
+`;
 
-  render(){
+class Dashboard extends Component {
+
+  render() {
+    console.log(this.props)
+
     return (
-      <Wrapper>
-        <ScreenTitle title="Next Launch" />
-      </Wrapper>
-      );
+      <SafeWrapper>
+        <Wrapper>
+          <ScreenTitle title="Upcoming" />
+          <NextLaunchCard />
+        </Wrapper>
+      </SafeWrapper>
+    );
   }
 }
+
+export default inject("launches")(observer(Dashboard));

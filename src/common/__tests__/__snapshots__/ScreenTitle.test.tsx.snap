@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScreenTitle renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "paddingBottom": 40,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 40,
+      },
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 30,
+          "fontWeight": "500",
+          "letterSpacing": 1.5,
+        },
+      ]
+    }
+  >
+    SAMPLE_TITLE
+  </Text>
+  <View
+    accessible={true}
+    clickable={false}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#00adf1",
+        "borderRadius": 10,
+        "opacity": 1,
+        "paddingBottom": 7,
+        "paddingLeft": 7,
+        "paddingRight": 7,
+        "paddingTop": 7,
+      }
+    }
+  >
+    <Text
+      allowFontScaling={false}
+      style={
+        Array [
+          Object {
+            "color": "#fff",
+            "fontSize": 20,
+          },
+          undefined,
+          Object {
+            "fontFamily": "FontAwesome5Free-Solid",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          Object {
+            "fontWeight": "900",
+          },
+        ]
+      }
+    >
+      
+    </Text>
+  </View>
+</View>
+`;
