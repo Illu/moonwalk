@@ -20,7 +20,7 @@ exports[`ScreenTitle renders correctly 1`] = `
     style={
       Array [
         Object {
-          "fontSize": 30,
+          "fontSize": 35,
           "fontWeight": "500",
           "letterSpacing": 1.5,
         },

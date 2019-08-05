@@ -1,6 +1,7 @@
 import React from 'react';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
 import styled from 'styled-components/native';
-import Icon from "react-native-vector-icons/FontAwesome5";
 
 const Wrapper = styled.View`
   padding: 40px 0;
@@ -10,7 +11,7 @@ const Wrapper = styled.View`
 `;
 
 const Title = styled.Text`
-  font-size: 30px;
+  font-size: 35px;
   font-weight: 500;
   letter-spacing: 1.5px;
 `;
