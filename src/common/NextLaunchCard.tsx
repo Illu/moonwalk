@@ -1,34 +1,60 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import { Countdown } from './Countdown';
 
 const Wrapper = styled.View`
-  padding: 40px 0;
   flex: 1;
-  margin: 40px 0;
+  margin: 16px 0 22px 0;
   border-radius: 40px;
   overflow: hidden;
-  background: ${({theme}) => theme.secondary};
+  background: ${({ theme }) => theme.secondary};
+  justify-content: space-between;
 `;
 
 const BackgroundImage = styled.Image`
   position: absolute;
-  opacity: .9;
+  opacity: .95;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
 `;
 
+const Label = styled.View`
+  background: ${({ theme }) => theme.primary};
+  padding: 7px 10px;
+  margin: 20px;
+  border-radius: 10px;
+  align-self: flex-end;
+`;
+
+const LabelText = styled.Text`
+  color: ${({ theme }) => theme.secondary};
+  font-size: 20px;
+`;
+
 interface Props {
-  imgUrl?: string
+  imgUrl?: string;
+  lspName: string;
+  lspAbbrev: string;
+  wsstamp: string;
 }
 
 export const NextLaunchCard = (props: Props) => {
-  const { imgUrl } = props;
+  const { imgUrl, lspName, lspAbbrev, wsstamp } = props;
+
+  const lspLabelText = lspName.length > 20 ? lspAbbrev : lspName;
 
   return (
     <Wrapper>
-      <BackgroundImage source={{ uri: "http://live.staticflickr.com/967/42025498972_d022e2bf29_k.jpg" }} />
+      {/* @TODO display another image if we don't have any */}
+      {imgUrl && <BackgroundImage source={{ uri: imgUrl }} />}
+      <Label>
+        <LabelText>
+          {lspLabelText}
+        </LabelText>
+      </Label>
+      <Countdown wsstamp={wsstamp} />
     </Wrapper>
   )
 }

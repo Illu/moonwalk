@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { StatusBar, AppState } from "react-native";
 import { Provider } from "mobx-react";
-import {LaunchesModel} from './src/models'
+import { LaunchesModel } from './src/models'
 import { ThemeProvider } from "styled-components";
 import theme from "./src/theme";
 import Navigation from './src/Navigation';
@@ -35,7 +35,7 @@ class App extends Component {
     this.setState({ appState: nextAppState });
   };
 
-  render(){
+  render() {
     return (
       <Provider launches={launches}>
         <ThemeProvider theme={theme}>

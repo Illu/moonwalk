@@ -8,7 +8,7 @@ exports[`ScreenTitle renders correctly 1`] = `
         "alignItems": "center",
         "flexDirection": "row",
         "justifyContent": "space-between",
-        "paddingBottom": 40,
+        "paddingBottom": 20,
         "paddingLeft": 0,
         "paddingRight": 0,
         "paddingTop": 40,

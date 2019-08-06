@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NextLaunchCard renders correctly with an image 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#00adf1",
+        "borderRadius": 40,
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "marginBottom": 40,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 16,
+        "overflow": "hidden",
+        "paddingBottom": 40,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 40,
+      },
+    ]
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "https://example.com/img.jpg",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "opacity": 0.9,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`NextLaunchCard renders correctly without an image 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#00adf1",
+        "borderRadius": 40,
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "marginBottom": 40,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 16,
+        "overflow": "hidden",
+        "paddingBottom": 40,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 40,
+      },
+    ]
+  }
+/>
+`;

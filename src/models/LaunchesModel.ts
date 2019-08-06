@@ -9,9 +9,6 @@ export class LaunchesModel {
   launches = [];
 
   @observable
-  nextLaunch = [];
-
-  @observable
   state = STATES.IDLE;
 
   @observable
@@ -86,9 +83,7 @@ export class LaunchesModel {
             }
             PushNotificationIOS.scheduleLocalNotification({
               fireDate: (data.wsstamp - this.notifications.delay * 60) * 1000,
-              alertBody: `🚀 ${data.name} will launch in just ${
-                this.notifications.delay
-              } minutes!`
+              alertBody: `🚀 ${data.name} will launch in just ${this.notifications.delay} minutes!`
             });
           }
         );
@@ -99,9 +94,7 @@ export class LaunchesModel {
         PushNotification.cancelAllLocalNotifications();
         PushNotification.localNotificationSchedule({
           date: new Date(data.isostart),
-          message: `🚀 ${data.name} will launch in just ${
-            this.notifications.delay
-          } minutes!`
+          message: `🚀 ${data.name} will launch in just ${this.notifications.delay} minutes!`
         });
       }
     }
@@ -109,10 +102,12 @@ export class LaunchesModel {
 
   @action
   loadNextLaunches = (numberOfLaunches: number) => {
+    console.log("ASD");
     this.state = STATES.LOADING;
     fetch(`${API_URL}next/${numberOfLaunches}`)
       .then(data => data.json())
       .then(data => {
+        console.log("ASD", data);
         this.launches = data.launches;
         this.state = STATES.SUCCESS;
       })

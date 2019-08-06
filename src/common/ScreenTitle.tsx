@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import styled from 'styled-components/native';
 
 const Wrapper = styled.View`
-  padding: 40px 0;
+  padding: 40px 0 20px 0;
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
@@ -17,7 +17,7 @@ const Title = styled.Text`
 `;
 
 const IconWrapper = styled.TouchableOpacity`
-  background: ${({theme}) => theme.secondary};
+  background: ${({ theme }) => theme.secondary};
   padding: 7px;
   border-radius: 10px;
 `;
@@ -26,11 +26,11 @@ interface Props {
   title: string
 }
 
-export const ScreenTitle = ({title}: Props) => (
+export const ScreenTitle = ({ title }: Props) => (
   <Wrapper>
     <Title>{title}</Title>
     <IconWrapper>
-    <Icon name="wrench" size={20} color="#fff" />
+      <Icon name="wrench" size={20} color="#fff" />
     </IconWrapper>
 
   </Wrapper>

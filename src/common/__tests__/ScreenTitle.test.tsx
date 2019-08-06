@@ -1,11 +1,6 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import { ScreenTitle } from "../";
-import renderer from "react-test-renderer";
-import { ThemeProvider } from "styled-components/native";
-import theme from "../../theme";
-
-const renderWithTheme = (component: ReactElement) =>
-  renderer.create(<ThemeProvider theme={theme}>{component}</ThemeProvider>);
+import {renderWithTheme} from '../../helpers/testHelpers'
 
 describe("ScreenTitle", () => {
   it("renders correctly", () => {

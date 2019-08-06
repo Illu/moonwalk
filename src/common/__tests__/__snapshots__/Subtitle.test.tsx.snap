@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Subtitle renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#828c94",
+          "fontSize": 20,
+        },
+      ]
+    }
+  >
+    SAMPLE_SUBTITLE
+  </Text>
+</View>
+`;
