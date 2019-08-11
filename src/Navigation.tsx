@@ -6,7 +6,7 @@ import {
   createAppContainer
 } from "react-navigation";
 import { TABS, TABBAR_ICONS } from "./constants";
-import { Dashboard } from "./screens";
+import { Dashboard, Calendar } from "./screens";
 import theme from "./theme";
 
 const DashboardNavigator = createStackNavigator({
@@ -21,10 +21,22 @@ const DashboardNavigator = createStackNavigator({
   // details: { screen: LaunchDetailsScreen }
 });
 
+const CalendarNavigator = createStackNavigator({
+  dashboard: {
+    screen: Calendar,
+    navigationOptions: {
+      title: "Dashboard",
+      header: null,
+      headerBackTitle: null
+    }
+  }
+  // details: { screen: LaunchDetailsScreen }
+});
+
 const Navigator = createBottomTabNavigator(
   {
     [TABS.Home]: DashboardNavigator,
-    [TABS.Calendar]: DashboardNavigator,
+    [TABS.Calendar]: CalendarNavigator,
     [TABS.News]: DashboardNavigator,
     [TABS.Search]: DashboardNavigator,
     // [TABS.Settings]: DashboardNavigator

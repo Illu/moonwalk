@@ -2,6 +2,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import styled from 'styled-components/native';
+import { StyleProp, ViewStyle } from 'react-native';
 
 const Wrapper = styled.View`
   padding: 40px 0 20px 0;
@@ -23,11 +24,12 @@ const IconWrapper = styled.TouchableOpacity`
 `;
 
 interface Props {
-  title: string
+  title: string;
+  style?: StyleProp<ViewStyle>;
 }
 
-export const ScreenTitle = ({ title }: Props) => (
-  <Wrapper>
+export const ScreenTitle = ({ title, style }: Props) => (
+  <Wrapper style={style}>
     <Title>{title}</Title>
     <IconWrapper>
       <Icon name="wrench" size={20} color="#fff" />
