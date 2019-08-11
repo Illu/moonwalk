@@ -8,6 +8,7 @@ const Wrapper = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   align-self: center;
+  margin: 10px 0;
 `;
 
 const Title = styled.Text`

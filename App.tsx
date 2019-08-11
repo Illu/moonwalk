@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { StatusBar, AppState } from "react-native";
 import { Provider } from "mobx-react";
-import { LaunchesModel } from './src/models'
+import { LaunchesModel, NewsModel } from './src/models'
 import { ThemeProvider } from "styled-components";
 import theme from "./src/theme";
 import Navigation from './src/Navigation';
 
 const launches = new LaunchesModel();
 // const search = new SearchModel();
-// const news = new NewsModel();
+const news = new NewsModel();
 
 class App extends Component {
   state = {
@@ -23,7 +23,7 @@ class App extends Component {
     AppState.removeEventListener("change", this._handleAppStateChange);
   }
 
-  _handleAppStateChange = nextAppState => {
+  _handleAppStateChange = (nextAppState: string) => {
     if (
       this.state.appState.match(/inactive|background/) &&
       nextAppState === "active"
@@ -37,7 +37,7 @@ class App extends Component {
 
   render() {
     return (
-      <Provider launches={launches}>
+      <Provider launches={launches} news={news}>
         <ThemeProvider theme={theme}>
           <>
             <StatusBar barStyle="dark-content" />

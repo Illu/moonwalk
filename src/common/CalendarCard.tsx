@@ -5,7 +5,7 @@ import { MONTHS } from '../constants';
 
 const Wrapper = styled.View`
   flex: 1;
-  margin: 16px 0 22px 0;
+  margin: 16px 30px
   border-radius: 20px;
   padding: 20px;
   border-width: 2px;
@@ -18,7 +18,7 @@ const Wrapper = styled.View`
 const Day = styled.Text`
   color: ${({ theme }) => theme.primary};
   font-weight: bold;
-  font-size: ${({ large }) => (large ? 20 : 13)}px;
+  font-size: 13px;
 `;
 
 const Row = styled.View`
