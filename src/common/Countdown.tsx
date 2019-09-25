@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 const Wrapper = styled.View`
   align-items: center;
-  padding: 5px 10px;
+  padding: 15px 10px;
   flex-direction: row;
   border-radius: 50px;
   justify-content: space-around;

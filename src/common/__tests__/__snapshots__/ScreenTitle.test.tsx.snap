@@ -20,6 +20,7 @@ exports[`ScreenTitle renders correctly 1`] = `
     style={
       Array [
         Object {
+          "color": "#222",
           "fontSize": 35,
           "fontWeight": "500",
           "letterSpacing": 1.5,
@@ -42,7 +43,7 @@ exports[`ScreenTitle renders correctly 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00adf1",
+        "backgroundColor": "#c6ced9",
         "borderRadius": 10,
         "opacity": 1,
         "paddingBottom": 7,

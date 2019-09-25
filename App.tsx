@@ -1,22 +1,33 @@
+import { Provider } from 'mobx-react';
 import React, { Component } from 'react';
-import { StatusBar, AppState } from "react-native";
-import { Provider } from "mobx-react";
-import { LaunchesModel, NewsModel } from './src/models'
-import { ThemeProvider } from "styled-components";
-import theme from "./src/theme";
-import Navigation from './src/Navigation';
+import { AppState, StatusBar } from 'react-native';
+import { eventEmitter, initialMode } from 'react-native-dark-mode';
+import { ThemeProvider } from 'styled-components';
+
+import { LaunchesModel, NewsModel } from './src/models';
+import generateNavigation from './src/Navigation';
+import themes from './src/theme';
 
 const launches = new LaunchesModel();
 // const search = new SearchModel();
 const news = new NewsModel();
 
+enum modes {
+  dark = 'dark',
+  light = 'light'
+}
+
 class App extends Component {
   state = {
-    appState: AppState.currentState
+    appState: AppState.currentState,
+    theme: initialMode
   };
 
   componentDidMount() {
     AppState.addEventListener("change", this._handleAppStateChange);
+    eventEmitter.on('currentModeChanged', (theme) => {
+      this.setState({theme})
+    })
   }
 
   componentWillUnmount() {
@@ -36,12 +47,13 @@ class App extends Component {
   };
 
   render() {
+    const Navigation = generateNavigation(themes[this.state.theme])
     return (
       <Provider launches={launches} news={news}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={themes[this.state.theme]}>
           <>
             <StatusBar barStyle="dark-content" />
-            <Navigation />
+            <Navigation theme={this.state.theme} />
           </>
         </ThemeProvider>
       </Provider>

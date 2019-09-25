@@ -1,8 +1,7 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-
-import styled from 'styled-components/native';
 import { StyleProp, ViewStyle } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import styled from 'styled-components/native';
 
 const Wrapper = styled.View`
   padding: 40px 0 20px 0;
@@ -15,10 +14,11 @@ const Title = styled.Text`
   font-size: 35px;
   font-weight: 500;
   letter-spacing: 1.5px;
+  color: ${({ theme }) => theme.textPrimary};
 `;
 
 const IconWrapper = styled.TouchableOpacity`
-  background: ${({ theme }) => theme.secondary};
+  background: ${({ theme }) => theme.light};
   padding: 7px;
   border-radius: 10px;
 `;
