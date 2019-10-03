@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components/native";
-import { TouchableOpacity, Linking } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome5";
+import React from 'react';
+import { Linking, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import styled from 'styled-components/native';
 
 const Title = styled.Text`
   color: white;

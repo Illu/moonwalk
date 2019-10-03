@@ -1,23 +1,26 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { createAppContainer } from 'react-navigation';
+import { createFluidNavigator } from 'react-navigation-fluid-transitions';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import { TABBAR_ICONS, TABS } from './constants';
 import { Calendar, Dashboard, News } from './screens';
+import Details from './screens/Details';
 
 const generateNavigation = (theme: any) => {
-  const DashboardNavigator = createStackNavigator({
+  const DashboardNavigator = createFluidNavigator({
     dashboard: {
       screen: Dashboard,
       navigationOptions: {
         title: "Dashboard",
         header: null,
-        headerBackTitle: null
+        headerBackTitle: null,
+        theme: 'dark'
       }
-    }
-    // details: { screen: LaunchDetailsScreen }
+    },
+    details: { screen: Details }
   });
   
   const CalendarNavigator = createStackNavigator({
@@ -28,8 +31,8 @@ const generateNavigation = (theme: any) => {
         header: null,
         headerBackTitle: null
       }
-    }
-    // details: { screen: LaunchDetailsScreen }
+    },
+    details: { screen: Details }
   });
   
   const NewsNavigator = createStackNavigator({

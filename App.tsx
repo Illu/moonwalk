@@ -4,13 +4,14 @@ import { AppState, StatusBar } from 'react-native';
 import { eventEmitter, initialMode } from 'react-native-dark-mode';
 import { ThemeProvider } from 'styled-components';
 
-import { LaunchesModel, NewsModel } from './src/models';
+import { AppStateModel, LaunchesModel, NewsModel } from './src/models';
 import generateNavigation from './src/Navigation';
 import themes from './src/theme';
 
 const launches = new LaunchesModel();
 // const search = new SearchModel();
 const news = new NewsModel();
+const appState = new AppStateModel();
 
 enum modes {
   dark = 'dark',
@@ -25,7 +26,9 @@ class App extends Component {
 
   componentDidMount() {
     AppState.addEventListener("change", this._handleAppStateChange);
+    appState.setTheme(initialMode);
     eventEmitter.on('currentModeChanged', (theme) => {
+      appState.setTheme(theme);
       this.setState({theme})
     })
   }
@@ -47,13 +50,15 @@ class App extends Component {
   };
 
   render() {
-    const Navigation = generateNavigation(themes[this.state.theme])
+    const currentTheme = this.state.theme;
+    const Navigation = generateNavigation(themes[currentTheme])
+        
     return (
-      <Provider launches={launches} news={news}>
-        <ThemeProvider theme={themes[this.state.theme]}>
+      <Provider launches={launches} news={news} appState={appState}>
+        <ThemeProvider theme={themes[currentTheme]}>
           <>
             <StatusBar barStyle="dark-content" />
-            <Navigation theme={this.state.theme} />
+            <Navigation theme={currentTheme} />
           </>
         </ThemeProvider>
       </Provider>

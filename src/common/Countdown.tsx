@@ -1,14 +1,13 @@
+import { BlurView } from '@react-native-community/blur';
+import { inject } from 'mobx-react';
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
 
-const Wrapper = styled.View`
+const Wrapper = styled(BlurView)`
   align-items: center;
-  padding: 15px 10px;
+  padding: 25px 10px;
   flex-direction: row;
-  border-radius: 50px;
   justify-content: space-around;
-  background: ${({ theme }) => theme.secondary};
-  margin: 10px 25px;
 `;
 
 const UnitWrapper = styled.View`
@@ -20,7 +19,7 @@ const UnitWrapper = styled.View`
 const Number = styled.Text`
   font-size: 22px;
   font-weight: bold;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.textPrimary};
 `;
 
 const Unit = styled.Text`
@@ -29,6 +28,7 @@ const Unit = styled.Text`
   color: ${({ theme }) => theme.light};
 `;
 
+@inject("appState")
 export class Countdown extends Component {
   state = {
     timeLeft: 0
@@ -62,9 +62,9 @@ export class Countdown extends Component {
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
     const NoData = timeLeft <= 0;
-
+    const {theme} = this.props.appState;
     return (
-      <Wrapper>
+      <Wrapper blurType={theme} blurAmount={10}>
         <UnitWrapper>
           <Number>{NoData ? "-" : days}</Number>
           <Unit>{`day${days !== 1 ? "s" : ""}`}</Unit>
