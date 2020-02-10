@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import styled from 'styled-components/native';
-import { useTheme } from '@react-navigation/native';
+import { useTheme, useNavigation } from '@react-navigation/native';
 import { observer } from 'mobx-react';
 import Launches from '../stores/Launches';
 import Carousel from '../components/Carousel';
@@ -26,6 +26,7 @@ const Dashboard = observer(() => {
   const launchesStore = useContext(Launches);
   const newsStore = useContext(News);
   const inset = useSafeArea();
+  const navigation = useNavigation();
 
   useEffect(() => {
     launchesStore.loadNextLaunches();
@@ -36,7 +37,7 @@ const Dashboard = observer(() => {
     <Wrapper>
       <ScrollView contentContainerStyle={{paddingBottom: inset.bottom + 60}}>
         <Header title="Upcoming" />
-        <Carousel launches={launchesStore.launches} />
+        <Carousel launches={launchesStore.launches} onItemPress={(data) => navigation.navigate('Details', {data})} />
         <BigTitle title="Latest news" />
         <NewsWrapper>
           {newsStore.news.map((article, index) => (
