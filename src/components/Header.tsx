@@ -6,14 +6,15 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Wrapper = styled.View`
   padding: 0 20px;
-  height: 80px;
+  height: 50px;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
 `;
 
 const Title = styled.Text`
-  font-size: 25px;
+  font-size: 30px;
   font-weight: bold;
   font-family: Quicksand;
 `;

@@ -5,12 +5,13 @@ import { observer } from 'mobx-react';
 import Launches from '../stores/Launches';
 import Carousel from '../components/Carousel';
 import News from '../stores/News';
-import { ScrollView } from 'react-native';
+import { ScrollView, RefreshControl } from 'react-native';
 import ArticlePreview from '../components/ArticlePreview';
 import BigTitle from '../common/BigTitle';
 import SearchBar from '../components/SearchBar';
 import Header from '../components/Header';
 import { useSafeArea } from 'react-native-safe-area-context';
+import { STATES } from '../constants';
 
 const Wrapper = styled.SafeAreaView`
   align-items: center;
@@ -27,17 +28,27 @@ const Dashboard = observer(() => {
   const newsStore = useContext(News);
   const inset = useSafeArea();
   const navigation = useNavigation();
+  const { colors } = useTheme();
 
-  useEffect(() => {
+  const loadData = () => {
     launchesStore.loadNextLaunches();
     newsStore.loadArticles();
+  }
+
+  useEffect(() => {
+    loadData();
   }, [])
+
+  const isLoading = newsStore.state === STATES.LOADING || launchesStore.state === STATES.LOADING;
 
   return (
     <Wrapper>
-      <ScrollView contentContainerStyle={{paddingBottom: inset.bottom + 60}}>
-        <Header title="Moonwalk" />
-        <Carousel launches={launchesStore.launches} onItemPress={(data) => navigation.navigate('Details', {data})} />
+      <Header title="Moonwalk" />
+      <ScrollView contentContainerStyle={{ paddingBottom: inset.bottom + 60 }} refreshControl={
+        <RefreshControl refreshing={isLoading} onRefresh={loadData} tintColor={colors.text}/>}
+      >
+        <BigTitle title="Upcoming" />
+        <Carousel launches={launchesStore.launches} onItemPress={(data) => navigation.navigate('Details', { data })} />
         <BigTitle title="Latest news" />
         <NewsWrapper>
           {newsStore.news.map((article, index) => (

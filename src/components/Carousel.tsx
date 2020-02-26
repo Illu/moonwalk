@@ -52,7 +52,7 @@ const Carousel: React.FC<Props> = ({ launches, onItemPress }) => {
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
     const finalTime = timeLeft < 0 ? 'TBD' : `${days > 0 ? days + " days" : ''} ${hours % 24} hour${minutes % 24 !== 1 ? 's' : ''}`
-  
+
     return (
       <ItemWrapper onPress={() => onItemPress(item)}>
         <ParallaxImage
@@ -69,19 +69,19 @@ const Carousel: React.FC<Props> = ({ launches, onItemPress }) => {
   }
 
   return (
-  <SnapCarousel
-    data={launches}
-    renderItem={renderItem}
-    sliderWidth={screenWidth}
-    itemWidth={screenWidth - 70}
-    hasParallaxImages
-    activeSlideAlignment="start"
-    inactiveSlideScale={0.9}
-    inactiveSlideOpacity={0.5}
-  />
-)
+    <SnapCarousel
+      data={launches}
+      renderItem={renderItem}
+      sliderWidth={screenWidth}
+      itemWidth={screenWidth - 70}
+      hasParallaxImages
+      activeSlideAlignment="start"
+      inactiveSlideScale={0.9}
+      inactiveSlideOpacity={0.5}
+    />
+  )
 
-  }
+}
 const styles = StyleSheet.create({
   imageContainer: {
     position: 'absolute',

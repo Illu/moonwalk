@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useTheme } from '@react-navigation/native';
 
 const TitleText = styled.Text`
-  font-size: 26px;
+  font-size: 22px;
   font-weight: bold;
   margin: 10px 20px;
   font-family: Quicksand;
