@@ -27,6 +27,7 @@ const SearchInput = styled.TextInput`
   margin: 0 30px;
   font-size: 20px;
   text-align: center;
+  font-family: Quicksand;
 `;
 
 

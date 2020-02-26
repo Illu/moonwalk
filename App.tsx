@@ -5,6 +5,7 @@ import Dashboard from './src/screens/Dashboard';
 import { darkTheme, lightTheme } from './theme';
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 import Details from './src/screens/Details';
+import Settings from './src/screens/Settings';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +18,7 @@ const App = () => {
         <Stack.Navigator headerMode="none">
           <Stack.Screen name="Dashboard" component={Dashboard} />
           <Stack.Screen name="Details" component={Details} />
+          <Stack.Screen name="Settings" component={Settings} />
         </Stack.Navigator>
       </NavigationContainer>
     </AppearanceProvider>

@@ -22,6 +22,7 @@ const Title = styled.Text`
   align-self: flex-end;
   text-align: center;
   background: rgba(0, 0, 0, 0.8);
+  font-family: Quicksand;
 `;
 
 interface Props {
