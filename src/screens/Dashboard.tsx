@@ -36,7 +36,7 @@ const Dashboard = observer(() => {
   return (
     <Wrapper>
       <ScrollView contentContainerStyle={{paddingBottom: inset.bottom + 60}}>
-        <Header title="Upcoming" />
+        <Header title="Moonwalk" />
         <Carousel launches={launchesStore.launches} onItemPress={(data) => navigation.navigate('Details', {data})} />
         <BigTitle title="Latest news" />
         <NewsWrapper>

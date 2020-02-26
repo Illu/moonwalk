@@ -1,38 +1,66 @@
 import styled from 'styled-components/native';
 import React from 'react';
-import {Dimensions} from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
-const screenWidth = Dimensions.get('window').width;
+const Wrapper = styled.View`
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+`;
 
 const Thumbnail = styled.ImageBackground`
-  max-width: 50%;
-  align-items: center;
-  height: ${(screenWidth / 2) + 40}px;
-  width: ${(screenWidth / 2) - 32}px;
-  border-radius: 30px;
+  height: 100px;
+  width: 100px;
+  border-radius: 10px;
   overflow: hidden;
-  justify-content: flex-end;
-  margin: 10px 0;
+  margin-right: 10px;
 `;
 
 const Title = styled.Text`
-  padding: 10px 5px;
-  width: 100%;
-  color: white;
-  align-self: flex-end;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.8);
+  text-align: left;
   font-family: Quicksand;
+  padding-bottom: 5px;
+  font-weight: 700;
 `;
+
+const Subtitle = styled.Text`
+    font-family: Quicksand;
+`;
+
+const DetailsWrapper = styled.View`
+  flex: 1;
+  padding: 10px 5px;
+`;
+
+const Dot = styled.View`
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+`;
+
 
 interface Props {
   article: any;
 }
 
-const ArticlePreview: React.FC<Props> = ({article}) => (
-    <Thumbnail source={{uri: article.featured_image}}>
-      <Title>{article.title}</Title>  
-    </Thumbnail>
-)
+const ArticlePreview: React.FC<Props> = ({ article }) => {
+  const { colors } = useTheme();
+  const currentTime = new Date().getTime() / 1000;
+  const timeDiff = currentTime - article.date_published;
+  const daysDiff = Math.floor(timeDiff / 60 / 60 / 24);
+  const timePosted = daysDiff > 0 ? `${daysDiff}d ago` : "Today";
+
+  return (
+    <Wrapper>
+      <Thumbnail source={{ uri: article.featured_image }} />
+      <DetailsWrapper>
+        <Title style={{ color: colors.text }}>{article.title}</Title>
+        <Subtitle style={{ color: colors.secondaryText }}>{article.news_site_long} <Dot style={{ backgroundColor: colors.accent }} /> {timePosted}</Subtitle>
+      </DetailsWrapper>
+    </Wrapper>
+  )
+}
 
 export default ArticlePreview;
