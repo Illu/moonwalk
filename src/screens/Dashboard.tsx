@@ -46,9 +46,9 @@ const Dashboard = observer(() => {
       <ScrollView contentContainerStyle={{ paddingBottom: inset.bottom + 100 }} refreshControl={
         <RefreshControl refreshing={isLoading} onRefresh={loadData} tintColor={colors.text}/>}
       >
-        <BigTitle title="Upcoming" />
+        <BigTitle title="Upcoming" onSeeMore={() => navigation.navigate('Calendar')} />
         <Carousel launches={launchesStore.launches} onItemPress={(data) => navigation.navigate('Details', { data })} />
-        <BigTitle title="Latest news" />
+        <BigTitle title="Latest news" onSeeMore={() => navigation.navigate('News')}/>
         <NewsWrapper>
           {newsStore.news.map((article, index) => index <= 3 && (
             <ArticlePreview key={article.id + index} article={article} />

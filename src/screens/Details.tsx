@@ -29,6 +29,7 @@ const ContentWrapper = styled.View`
 const Location = styled.Text`
   margin-left: 10px;
   font-size: 13px;
+  font-family: Quicksand;
 `;
 
 const Row = styled.View`
@@ -40,6 +41,7 @@ const DescText = styled.Text`
   text-align: justify;
   margin-bottom: 16px;
   font-size: 17px;
+  font-family: Quicksand;
 `;
 
 const LinkButton = styled.TouchableOpacity`
@@ -50,6 +52,7 @@ const LinkButton = styled.TouchableOpacity`
 
 const ButtonTitle = styled.Text`
   margin-left: 10px;
+  font-family: Quicksand;
 `;
 
 const CloseIconWrapper = styled.TouchableOpacity`

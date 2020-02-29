@@ -9,6 +9,7 @@ const Wrapper = styled.View`
 
 const LabelText = styled.Text`
   color: #8183a5;
+  font-family: Quicksand;
   font-weight: bold;
 `;
 

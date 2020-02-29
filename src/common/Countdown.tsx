@@ -27,6 +27,7 @@ const Unit = styled.Text`
   font-size: 12px;
   font-weight: bold;
   color: #aaa;
+  font-family: Quicksand;
 `;
 
 let timer;

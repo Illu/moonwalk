@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Animated, Dimensions } from 'react-native';
 import { useSafeArea } from 'react-native-safe-area-context';
 import { useTheme } from '@react-navigation/native';
@@ -45,17 +45,6 @@ const TabbarComponent = ({ props }) => {
   const [switchAnim] = useState(new Animated.Value(0))
   const { width } = Dimensions.get('window');
 
-  const switchTab = (tabName, index) => {
-    Animated.spring(
-      switchAnim,
-      {
-        toValue: index,
-        duration: 250,
-      }
-    ).start();
-    props.navigation.navigate(tabName);
-  }
-
   const tabbarWidth = width - 32;
 
   const indicatorPosition = switchAnim.interpolate({
@@ -63,10 +52,20 @@ const TabbarComponent = ({ props }) => {
     outputRange: [0, tabbarWidth - tabbarWidth / 4],
   });
 
+  useEffect(() => {
+    Animated.spring(
+      switchAnim,
+      {
+        toValue: props.state.index,
+        duration: 250,
+      }
+    ).start();
+  }, [props.state.index])
+
   return (
     <Wrapper style={{ backgroundColor: colors.secondary }} insetBottom={insets.bottom}>
       {props.state.routeNames.map((route, index) => (
-        <TouchableWithoutFeedback key={route} onPress={() => switchTab(route, index)}>
+        <TouchableWithoutFeedback key={route} onPress={() => props.navigation.navigate(route)}>
           <IconWrapper style={{ width: tabbarWidth / 4 }} >
             <Icon name={route} />
           </IconWrapper>
