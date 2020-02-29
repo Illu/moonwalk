@@ -8,7 +8,6 @@ import News from '../stores/News';
 import { ScrollView, RefreshControl } from 'react-native';
 import ArticlePreview from '../components/ArticlePreview';
 import BigTitle from '../common/BigTitle';
-import SearchBar from '../components/SearchBar';
 import Header from '../components/Header';
 import { useSafeArea } from 'react-native-safe-area-context';
 import { STATES } from '../constants';
@@ -44,7 +43,7 @@ const Dashboard = observer(() => {
   return (
     <Wrapper>
       <Header title="Moonwalk" />
-      <ScrollView contentContainerStyle={{ paddingBottom: inset.bottom + 60 }} refreshControl={
+      <ScrollView contentContainerStyle={{ paddingBottom: inset.bottom + 100 }} refreshControl={
         <RefreshControl refreshing={isLoading} onRefresh={loadData} tintColor={colors.text}/>}
       >
         <BigTitle title="Upcoming" />
@@ -56,7 +55,6 @@ const Dashboard = observer(() => {
           ))}
         </NewsWrapper>
       </ScrollView>
-      <SearchBar />
     </Wrapper>
   );
 })

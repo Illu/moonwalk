@@ -6,18 +6,30 @@ import BigTitle from '../common/BigTitle';
 import Svg, { Path, Circle } from 'react-native-svg';
 
 const Wrapper = styled.View`
-
 `;
 
 const Image = styled.Image`
   height: 400px;
   width: 100%;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+`;
+
+const Title = styled.Text`
+  font-family: Quicksand;
+  margin: 16px 0;
+  font-weight: bold;
+  font-size: 28px;
+`;
+
+const ContentWrapper = styled.View`
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  margin-top: -30px;
+  padding: 16px;
 `;
 
 const Location = styled.Text`
   margin: 0 10px;
+  font-size: 12px;
 `;
 
 const Row = styled.View`
@@ -36,28 +48,30 @@ const Details: React.FC<Props> = ({ route }) => {
   const { data } = route.params;
   console.log(data);
 
-
   return (
     <ScrollView>
       <Wrapper style={{ backgroundColor: colors.background }}>
         <Image source={{ uri: data.rocket.imageURL }} />
-        <BigTitle title={data.name} />
-        <Row>
-        <Svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          stroke={colors.text}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-        >
-          <Path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></Path>
-          <Circle cx="12" cy="10" r="3"></Circle>
-        </Svg><Location>{data.location.name}</Location>
-        </Row>
+        <ContentWrapper style={{ backgroundColor: colors.background }}>
+          <Title style={{ color: colors.text }}>{data.name}</Title>
+          <Row>
+            <Svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              stroke={colors.text}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <Path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></Path>
+              <Circle cx="12" cy="10" r="3"></Circle>
+            </Svg>
+            <Location style={{ color: colors.secondaryText }}>{data.location.name}</Location>
+          </Row>
+        </ContentWrapper>
       </Wrapper>
     </ScrollView>
   )

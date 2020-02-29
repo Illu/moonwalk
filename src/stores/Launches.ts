@@ -6,7 +6,7 @@ class Launches {
   state = STATES.IDLE;
   launches = [];
 
-  loadNextLaunches = (numberOfLaunches = 5) => {
+  loadNextLaunches = (numberOfLaunches = 10) => {
     this.state = STATES.LOADING;
     fetch(`${API_URL}next/${numberOfLaunches}`)
       .then(data => data.json())

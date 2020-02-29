@@ -12,6 +12,7 @@ export const lightTheme = {
     placeholderText: '#666',
     secondaryText: '#666',
     accent: 'rgb(254, 202, 82)',
+    accentBackground: 'rgb(45, 42, 83)',
   },
 };
 
@@ -25,5 +26,6 @@ export const darkTheme = {
     secondaryText: '#999',
     secondary: '#333',
     accent: 'rgb(254, 202, 82)',
+    accentBackground: 'rgb(45, 42, 83)',
   },
 };

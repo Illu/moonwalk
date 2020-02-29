@@ -51,7 +51,7 @@ const Carousel: React.FC<Props> = ({ launches, onItemPress }) => {
     const minutes = Math.floor(seconds / 60);
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
-    const finalTime = timeLeft < 0 ? 'TBD' : `${days > 0 ? days + " days" : ''} ${hours % 24} hour${minutes % 24 !== 1 ? 's' : ''}`
+    const finalTime = timeLeft < 0 ? 'TBD' : `${days > 0 ? days + " days" : ''} ${hours % 24} hour${hours % 24 !== 1 ? 's' : ''}`
 
     return (
       <ItemWrapper onPress={() => onItemPress(item)}>

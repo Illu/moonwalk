@@ -1,53 +1,84 @@
 import styled from 'styled-components/native';
-import React from 'react';
-import { useTheme, useNavigation } from '@react-navigation/native';
-import {Svg, Circle, Path} from 'react-native-svg';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import React, { useState } from 'react';
+import { Animated, Dimensions } from 'react-native';
+import { useSafeArea } from 'react-native-safe-area-context';
+import { useTheme } from '@react-navigation/native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import Icon from '../common/Icon';
 
 const Wrapper = styled.View`
-  padding: 0 20px;
-  height: 80px;
+  height: 70px;
+  border-radius: 35px;
   align-items: center;
-  justify-content: space-between;
   flex-direction: row;
+  position: absolute;
+  bottom: ${({ insetBottom }) => insetBottom + 8}px;
+  left: 16px;
+  right: 16px;
+  shadow-color: #000000;
+  shadow-offset: 0 0;
+  shadow-opacity: 0.38;
+  shadow-radius: 20px;
 `;
 
-const Title = styled.Text`
-  font-size: 25px;
-  font-weight: bold;
-  font-family: Quicksand;
+const IconWrapper = styled.View`
+  height: 40px;
+  align-items: center;
+  justify-content: center;
 `;
 
-interface Props {
-  title: string;
-}
+const TabIndicatorWrapper = styled(Animated.View)`
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+`;
 
-const Tabbar: React.FC<Props> = ({ title }) => {
+const TabIndicator = styled.View`
+  height: 4px;
+  width: 50%;
+  border-radius: 2px;
+`;
 
+const TabbarComponent = ({ props }) => {
+  const insets = useSafeArea();
   const { colors } = useTheme();
-  const navigation = useNavigation();
+  const [switchAnim] = useState(new Animated.Value(0))
+  const { width } = Dimensions.get('window');
+
+  const switchTab = (tabName, index) => {
+    Animated.timing(
+      switchAnim,
+      {
+        toValue: index,
+        duration: 250,
+      }
+    ).start();
+    props.navigation.navigate(tabName);
+  }
+
+  const tabbarWidth = width - 32;
+
+  const indicatorPosition = switchAnim.interpolate({
+    inputRange: [0, props.state.routeNames.length - 1],
+    outputRange: [0, tabbarWidth - tabbarWidth / 4],
+  });
 
   return (
-    <Wrapper style={{ color: colors.background }}>
-      <Title style={{ color: colors.text }}>{title}</Title>
-      <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
-      <Svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        fill="none"
-        stroke={colors.text}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-      >
-        <Circle cx="12" cy="12" r="3"></Circle>
-        <Path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></Path>
-      </Svg>
-      </TouchableOpacity>
+    <Wrapper style={{ backgroundColor: colors.accentBackground }} insetBottom={insets.bottom}>
+      {props.state.routeNames.map((route, index) => (
+        <TouchableWithoutFeedback onPress={() => switchTab(route, index)}>
+          <IconWrapper style={{ width: tabbarWidth / 4 }} >
+            <Icon name={route} />
+          </IconWrapper>
+        </TouchableWithoutFeedback>
+      ))}
+      <TabIndicatorWrapper style={{ left: indicatorPosition, width: tabbarWidth / 4 }}>
+        <TabIndicator style={{ backgroundColor: colors.accent }} />
+      </TabIndicatorWrapper>
     </Wrapper>
   )
 }
+
+const Tabbar: React.FC = routeProps => <TabbarComponent props={routeProps} />;
 
 export default Tabbar;

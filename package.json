@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.6",
+    "@react-navigation/bottom-tabs": "^5.1.0",
     "@react-navigation/native": "^5.0.0",
     "@react-navigation/stack": "^5.0.0",
     "mobx": "^5.15.4",
@@ -24,6 +25,7 @@
     "react-native-screens": "^2.0.0-beta.2",
     "react-native-snap-carousel": "^3.8.4",
     "react-native-svg": "^11.0.1",
+    "react-native-svg-transformer": "^0.14.3",
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
