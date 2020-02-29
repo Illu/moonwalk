@@ -10,6 +10,7 @@ import Settings from './src/screens/Settings';
 import Tabbar from './src/components/Tabbar';
 import Calendar from './src/screens/Calendar';
 import News from './src/screens/News';
+import Search from './src/screens/Search';
 
 const Main = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -19,7 +20,7 @@ const TabNavigator = () => (
     <Tab.Screen name="Home" component={Dashboard} />
     <Tab.Screen name="Calendar" component={Calendar} />
     <Tab.Screen name="News" component={News} />
-    <Tab.Screen name="Search" component={Dashboard} />
+    <Tab.Screen name="Search" component={Search} />
   </Tab.Navigator>
 )
 

@@ -86,7 +86,7 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
             <Icon name="X" size={30} />
           </CloseIconWrapper>
         </Image>
-        <ContentWrapper style={{ backgroundColor: colors.background }}>
+        <ContentWrapper style={{ backgroundColor: colors.background, paddingBottom: inset.bottom }}>
           <Title style={{ color: colors.text }}>{data.name}</Title>
           <Row>
             <Icon name="Pin" />
