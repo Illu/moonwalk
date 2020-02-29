@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { NavigationContainer, ThemeProvider } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -9,6 +9,7 @@ import Details from './src/screens/Details';
 import Settings from './src/screens/Settings';
 import Tabbar from './src/components/Tabbar';
 import Calendar from './src/screens/Calendar';
+import News from './src/screens/News';
 
 const Main = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -17,7 +18,7 @@ const TabNavigator = () => (
   <Tab.Navigator tabBar={Tabbar}>
     <Tab.Screen name="Home" component={Dashboard} />
     <Tab.Screen name="Calendar" component={Calendar} />
-    <Tab.Screen name="News" component={Dashboard} />
+    <Tab.Screen name="News" component={News} />
     <Tab.Screen name="Search" component={Dashboard} />
   </Tab.Navigator>
 )

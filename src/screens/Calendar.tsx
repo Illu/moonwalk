@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import { useTheme } from '@react-navigation/native';
 import { FlatList, Text, RefreshControl, TouchableOpacity, ActivityIndicator, Button } from 'react-native';
 import { STATES } from '../constants';
-import BigTitle from '../common/BigTitle';
+import Header from '../components/Header';
 import CalendarCard from '../components/CalendarCard';
 import { useSafeArea } from 'react-native-safe-area-context';
 import { observer } from 'mobx-react';
@@ -51,7 +51,7 @@ const Calendar: React.FC<Props> = observer(({navigation}) => {
 
   return (
     <Wrapper>
-      <BigTitle title="Launch Calendar" />
+      <Header title="Launch Calendar" />
       {launchesStore.state === STATES.LOADING && launchesStore.numberOfLaunches < 5 ? (
         <Text>Loading</Text>
       ) : (

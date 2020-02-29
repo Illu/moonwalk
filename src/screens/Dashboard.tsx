@@ -50,7 +50,7 @@ const Dashboard = observer(() => {
         <Carousel launches={launchesStore.launches} onItemPress={(data) => navigation.navigate('Details', { data })} />
         <BigTitle title="Latest news" />
         <NewsWrapper>
-          {newsStore.news.map((article, index) => (
+          {newsStore.news.map((article, index) => index <= 3 && (
             <ArticlePreview key={article.id + index} article={article} />
           ))}
         </NewsWrapper>

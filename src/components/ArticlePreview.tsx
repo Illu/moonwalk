@@ -40,7 +40,6 @@ const Dot = styled.View`
   border-radius: 5px;
 `;
 
-
 interface Props {
   article: any;
 }
@@ -57,7 +56,7 @@ const ArticlePreview: React.FC<Props> = ({ article }) => {
       <Thumbnail source={{ uri: article.featured_image }} />
       <DetailsWrapper>
         <Title style={{ color: colors.text }}>{article.title}</Title>
-        <Subtitle style={{ color: colors.secondaryText }}>{article.news_site_long} <Dot style={{ backgroundColor: colors.accent }} /> {timePosted}</Subtitle>
+        <Subtitle style={{ color: colors.secondaryText }}>{article.news_site_long}  <Dot style={{ backgroundColor: colors.accent }} />  {timePosted}</Subtitle>
       </DetailsWrapper>
     </Wrapper>
   )
