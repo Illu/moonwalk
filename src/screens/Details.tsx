@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { useTheme } from '@react-navigation/native';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import BigTitle from '../common/BigTitle';
-import Svg, { Path, Circle } from 'react-native-svg';
+import Icon from '../common/Icon';
+import { useSafeArea } from 'react-native-safe-area-context';
+import Label from '../common/Label';
+import Countdown from '../common/Countdown';
 
-const Wrapper = styled.View`
-`;
-
-const Image = styled.Image`
+const Image = styled.ImageBackground`
   height: 400px;
   width: 100%;
 `;
@@ -28,51 +28,73 @@ const ContentWrapper = styled.View`
 `;
 
 const Location = styled.Text`
-  margin: 0 10px;
-  font-size: 12px;
+  margin-left: 10px;
+  font-size: 13px;
 `;
 
 const Row = styled.View`
   flex-direction: row;
   align-items: center;
-  padding: 0 16px;
+`;
+
+const DescText = styled.Text`
+  text-align: justify;
+  margin-bottom: 16px;
+  font-size: 17px;
+`;
+
+const CloseIconWrapper = styled.TouchableOpacity`
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  position: absolute;
+  right: 16px;
+  align-items: center;
+  justify-content: center;
 `;
 
 interface Props {
   route: any;
 }
 
-const Details: React.FC<Props> = ({ route }) => {
+const Details: React.FC<Props> = ({ route, navigation }) => {
 
   const { colors } = useTheme();
   const { data } = route.params;
+  const inset = useSafeArea();
   console.log(data);
 
   return (
     <ScrollView>
-      <Wrapper style={{ backgroundColor: colors.background }}>
-        <Image source={{ uri: data.rocket.imageURL }} />
+      <View style={{ backgroundColor: colors.background }}>
+        <Image source={{ uri: data.rocket.imageURL }}>
+          <CloseIconWrapper style={{ backgroundColor: colors.background, top: inset.top + 8 }} onPress={navigation.goBack}>
+            <Icon name="X" size={30} />
+          </CloseIconWrapper>
+        </Image>
         <ContentWrapper style={{ backgroundColor: colors.background }}>
           <Title style={{ color: colors.text }}>{data.name}</Title>
           <Row>
-            <Svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              stroke={colors.text}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <Path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></Path>
-              <Circle cx="12" cy="10" r="3"></Circle>
-            </Svg>
+            <Icon name="Pin" />
             <Location style={{ color: colors.secondaryText }}>{data.location.name}</Location>
           </Row>
+          {data.location.typeName && (
+          <Row>
+            <Icon name="Pin" />
+            <Location style={{ color: colors.secondaryText }}>{data.location.typeName}</Location>
+          </Row>
+          )}
+          {data.missions.map(mission => (
+            <View key={mission.id} style={{marginTop: 16}}>
+            {mission.typeName && (
+              <Label text={mission.typeName}/>
+            )}
+            <DescText style={{ color: colors.text }} key={mission.id}>{mission.description}</DescText>
+            </View>
+          ))}
+          <Countdown wsstamp={data.wsstamp} />
         </ContentWrapper>
-      </Wrapper>
+      </View>
     </ScrollView>
   )
 }

@@ -46,7 +46,7 @@ const TabbarComponent = ({ props }) => {
   const { width } = Dimensions.get('window');
 
   const switchTab = (tabName, index) => {
-    Animated.timing(
+    Animated.spring(
       switchAnim,
       {
         toValue: index,
@@ -64,7 +64,7 @@ const TabbarComponent = ({ props }) => {
   });
 
   return (
-    <Wrapper style={{ backgroundColor: colors.accentBackground }} insetBottom={insets.bottom}>
+    <Wrapper style={{ backgroundColor: colors.secondary }} insetBottom={insets.bottom}>
       {props.state.routeNames.map((route, index) => (
         <TouchableWithoutFeedback key={route} onPress={() => switchTab(route, index)}>
           <IconWrapper style={{ width: tabbarWidth / 4 }} >
