@@ -18,6 +18,21 @@ class Launches {
         this.state = STATES.ERROR;
       });
   }
+
+  loadMoreLaunches = numberOfLaunches => {
+    this.state = STATES.LOADING;
+    fetch(`${API_URL}next/${numberOfLaunches}?offset=${this.launches.length}`)
+      .then(data => data.json())
+      .then(data => {
+        this.launches = this.launches.concat(data.launches);
+        this.state = STATES.SUCCESS;
+        console.log("XD")
+      })
+      .catch(err => {
+        this.state = STATES.ERROR;
+      });
+  };
+
 }
 
 decorate(Launches, {

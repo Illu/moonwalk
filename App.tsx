@@ -8,6 +8,7 @@ import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 import Details from './src/screens/Details';
 import Settings from './src/screens/Settings';
 import Tabbar from './src/components/Tabbar';
+import Calendar from './src/screens/Calendar';
 
 const Main = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -15,7 +16,7 @@ const Tab = createBottomTabNavigator();
 const TabNavigator = () => (
   <Tab.Navigator tabBar={Tabbar}>
     <Tab.Screen name="Home" component={Dashboard} />
-    <Tab.Screen name="Calendar" component={Dashboard} />
+    <Tab.Screen name="Calendar" component={Calendar} />
     <Tab.Screen name="News" component={Dashboard} />
     <Tab.Screen name="Search" component={Dashboard} />
   </Tab.Navigator>
