@@ -21,7 +21,7 @@
 		67972AC594724E01BFAA4A4B /* Quicksand-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9ED045F782AE487C87436AC8 /* Quicksand-SemiBold.ttf */; };
 		6CE12614E387450A94D9D6EE /* libPods-moonwalk-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3555F528CF8CBA0E6DE789FB /* libPods-moonwalk-tvOSTests.a */; };
 		87FAA3ED61884E6496A7BAA4 /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 038ADF0CC6D54B91AA7EB6CA /* Quicksand-Regular.ttf */; };
-		9C3BAECF2406FACF00453671 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C3BAECE2406FACF00453671 /* GoogleService-Info.plist */; };
+		9C697327240C518500E12C34 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C697326240C518400E12C34 /* GoogleService-Info.plist */; };
 		AA54D96F065F2118686B7E23 /* libPods-moonwalk-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1025A40BE1E294078E076384 /* libPods-moonwalk-tvOS.a */; };
 		AADC7F1D198A025EFDB8DEF7 /* libPods-moonwalk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 554FF0BF5C86F4F90CBA6227 /* libPods-moonwalk.a */; };
 		BC481920048245AD848BF5C1 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DF28AF6EC2F47089F5F8A93 /* Quicksand-Bold.ttf */; };
@@ -69,7 +69,7 @@
 		70F1D56C625C1DAD02FC1AAA /* Pods-moonwalkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moonwalkTests.debug.xcconfig"; path = "Target Support Files/Pods-moonwalkTests/Pods-moonwalkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7DC88DBDB1BA7FA91BBB132B /* Pods-moonwalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moonwalk.debug.xcconfig"; path = "Target Support Files/Pods-moonwalk/Pods-moonwalk.debug.xcconfig"; sourceTree = "<group>"; };
 		931F241EEFA54D361B361815 /* libPods-moonwalkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-moonwalkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C3BAECE2406FACF00453671 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9C697326240C518400E12C34 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9ED045F782AE487C87436AC8 /* Quicksand-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Quicksand-SemiBold.ttf"; path = "../assets/fonts/Quicksand-SemiBold.ttf"; sourceTree = "<group>"; };
 		A33801C76B272BE6ED216303 /* Pods-moonwalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moonwalk.release.xcconfig"; path = "Target Support Files/Pods-moonwalk/Pods-moonwalk.release.xcconfig"; sourceTree = "<group>"; };
 		C1DC288B7F4116E9A221750D /* Pods-moonwalk-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moonwalk-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-moonwalk-tvOSTests/Pods-moonwalk-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 		13B07FAE1A68108700A75B9A /* moonwalk */ = {
 			isa = PBXGroup;
 			children = (
-				9C3BAECE2406FACF00453671 /* GoogleService-Info.plist */,
+				9C697326240C518400E12C34 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -367,7 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				9C3BAECF2406FACF00453671 /* GoogleService-Info.plist in Resources */,
+				9C697327240C518500E12C34 /* GoogleService-Info.plist in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				BC481920048245AD848BF5C1 /* Quicksand-Bold.ttf in Resources */,
 				64A2F1B2416A49E2A2DDC90F /* Quicksand-Light.ttf in Resources */,
