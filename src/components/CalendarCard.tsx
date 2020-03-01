@@ -5,7 +5,7 @@ import { MONTHS } from "../constants";
 import { useTheme } from "@react-navigation/native";
 
 const Wrapper = styled.View`
-  margin: 20px;
+  margin: 10px 20px;
   border-radius: 15px;
   padding: 20px;
   padding-right: 15px;
@@ -20,7 +20,6 @@ const DateWrapper = styled.View`
 `;
 
 const Day = styled.Text`
-  color: white;
   font-weight: bold;
   font-size: ${({ large }) => (large ? 20 : 13)}px;
 `;
@@ -49,15 +48,15 @@ export default ({ data }) => {
             <Day>TBD</Day>
           ) : (
             <>
-              <Day>{launchTime.getDate()}</Day>
-              <Day>{MONTHS[launchTime.getMonth()]}</Day>
+              <Day style={{color: colors.text}}>{launchTime.getDate()}</Day>
+              <Day style={{color: colors.text}}>{MONTHS[launchTime.getMonth()]}</Day>
             </>
           )}
         </DateWrapper>
         <Label numberOfLines={2} text={data.lsp.abbrev} />
       </Row>
-      <Desc bold>{data.name}</Desc>
-      <Desc numberOfLines={1}>{data.location.name}</Desc>
+      <Desc bold style={{color: colors.text}}>{data.name}</Desc>
+      <Desc numberOfLines={1} style={{color: colors.text}}>{data.location.name}</Desc>
     </Wrapper>
   );
 };

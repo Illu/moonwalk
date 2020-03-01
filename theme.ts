@@ -7,12 +7,12 @@ export const lightTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    secondary: '#ddd',
+    secondary: '#f5f5f5',
     background: 'rgb(241, 256, 254)',
     placeholderText: '#666',
     secondaryText: '#666',
     accent: 'rgb(254, 202, 82)',
-    accentBackground: 'rgb(45, 42, 83)',
+    accentBackground: '#333',
   },
 };
 
@@ -26,6 +26,6 @@ export const darkTheme = {
     secondaryText: '#999',
     secondary: '#333',
     accent: 'rgb(254, 202, 82)',
-    accentBackground: 'rgb(45, 42, 83)',
+    accentBackground: '#333',
   },
 };

@@ -61,6 +61,7 @@ const CloseIconWrapper = styled.TouchableOpacity`
   border-radius: 20px;
   position: absolute;
   right: 16px;
+  z-index: 2;
   align-items: center;
   justify-content: center;
 `;
@@ -79,44 +80,47 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
   console.log(data);
 
   return (
-    <ScrollView>
-      <View style={{ backgroundColor: colors.background }}>
-        <Image source={{ uri: data.rocket.imageURL }}>
-          <CloseIconWrapper style={{ backgroundColor: colors.background, top: inset.top + 8 }} onPress={navigation.goBack}>
-            <Icon name="X" size={30} />
-          </CloseIconWrapper>
-        </Image>
-        <ContentWrapper style={{ backgroundColor: colors.background, paddingBottom: inset.bottom }}>
-          <Title style={{ color: colors.text }}>{data.name}</Title>
-          <Row>
-            <Icon name="Pin" />
-            <Location style={{ color: colors.secondaryText }}>{data.location.name}</Location>
-          </Row>
-          {data.location.typeName && (
+    <>
+      <CloseIconWrapper style={{ backgroundColor: colors.text, top: inset.top + 8 }} onPress={navigation.goBack}>
+        <Icon name="X" size={30} color={colors.background} />
+      </CloseIconWrapper>
+      <ScrollView>
+        <View style={{ backgroundColor: colors.background }}>
+          <Image source={{ uri: data.rocket.imageURL }}>
+
+          </Image>
+          <ContentWrapper style={{ backgroundColor: colors.background, paddingBottom: inset.bottom }}>
+            <Title style={{ color: colors.text }}>{data.name}</Title>
             <Row>
               <Icon name="Pin" />
-              <Location style={{ color: colors.secondaryText }}>{data.location.typeName}</Location>
+              <Location style={{ color: colors.secondaryText }}>{data.location.name}</Location>
             </Row>
-          )}
-          {data.missions.map(mission => (
-            <View key={mission.id} style={{ marginTop: 16 }}>
-              {mission.typeName && (
-                <Label text={mission.typeName} />
-              )}
-              <DescText style={{ color: colors.text }} key={mission.id}>{mission.description}</DescText>
-            </View>
-          ))}
-          <Countdown wsstamp={data.wsstamp} />
+            {data.location.typeName && (
+              <Row>
+                <Icon name="Pin" />
+                <Location style={{ color: colors.secondaryText }}>{data.location.typeName}</Location>
+              </Row>
+            )}
+            {data.missions.map(mission => (
+              <View key={mission.id} style={{ marginTop: 16 }}>
+                {mission.typeName && (
+                  <Label text={mission.typeName} />
+                )}
+                <DescText style={{ color: colors.text }} key={mission.id}>{mission.description}</DescText>
+              </View>
+            ))}
+            <Countdown wsstamp={data.wsstamp} />
             <LinkButton
               disabled={!videoLink}
               onPress={() => Linking.openURL(videoLink)}
             >
               <Icon name={videoLink ? "Video" : "VideoOff"} />
-            <ButtonTitle style={{color: colors.text}}>{videoLink ? "Watch Livestream" : "Livestream unavailable"}</ButtonTitle>
+              <ButtonTitle style={{ color: colors.text }}>{videoLink ? "Watch Livestream" : "Livestream unavailable"}</ButtonTitle>
             </LinkButton>
-        </ContentWrapper>
-      </View>
-    </ScrollView>
+          </ContentWrapper>
+        </View>
+      </ScrollView>
+    </>
   )
 }
 

@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     marginBottom: Platform.select({ ios: 0, android: 1 }), // Prevent a random Android rendering issue
     backgroundColor: '#000',
     borderRadius: 30,
-    opacity: 0.5
+    opacity: 0.8
   },
   image: {
     ...StyleSheet.absoluteFillObject,

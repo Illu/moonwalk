@@ -63,7 +63,7 @@ const TabbarComponent = ({ props }) => {
   }, [props.state.index])
 
   return (
-    <Wrapper style={{ backgroundColor: colors.secondary }} insetBottom={insets.bottom}>
+    <Wrapper style={{ backgroundColor: colors.accentBackground }} insetBottom={insets.bottom}>
       {props.state.routeNames.map(route => (
         <TouchableWithoutFeedback key={route} onPress={() => props.navigation.navigate(route)}>
           <IconWrapper style={{ width: tabbarWidth / 4 }} >

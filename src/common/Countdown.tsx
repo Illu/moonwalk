@@ -64,7 +64,7 @@ const Countdown = ({wsstamp}: {wsstamp: number}) => {
   const NoData = timeLeft <= 0;
   
   return (
-    <Wrapper style={{backgroundColor: colors.secondary}}>
+    <Wrapper style={{backgroundColor: colors.accentBackground}}>
       <UnitWrapper>
         <Number>{NoData ? "-" : days}</Number>
         <Unit>{`day${days !== 1 ? "s" : ""}`}</Unit>

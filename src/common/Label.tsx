@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useTheme } from "@react-navigation/native";
 
 const Wrapper = styled.View`
   border-radius: 10px;
@@ -8,13 +9,16 @@ const Wrapper = styled.View`
 `;
 
 const LabelText = styled.Text`
-  color: #8183a5;
   font-family: Quicksand;
   font-weight: bold;
 `;
 
-export default ({ text, numberOfLines = 1 }) => (
-  <Wrapper>
-    <LabelText numberOfLines={numberOfLines}>{text}</LabelText>
+export default ({ text, numberOfLines = 1 }) => {
+
+  const {colors} = useTheme();
+
+  return (
+  <Wrapper style={{backgroundColor: colors.secondary}}>
+    <LabelText style={{color: colors.secondaryText}} numberOfLines={numberOfLines}>{text}</LabelText>
   </Wrapper>
-);
+)};
