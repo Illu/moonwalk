@@ -1,16 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components/native';
-import { useTheme } from '@react-navigation/native';
-import { ScrollView, Linking, View } from 'react-native';
-import Icon from '../common/Icon';
-import { useSafeArea, SafeAreaView } from 'react-native-safe-area-context';
+import { useTheme, RouteProp } from '@react-navigation/native';
+import { ScrollView, RefreshControl } from 'react-native';
+import { useSafeArea } from 'react-native-safe-area-context';
 import Header from '../components/Header';
 import { observer } from 'mobx-react';
 import NewsStore from '../stores/News';
 import ArticlePreview from '../components/ArticlePreview';
+import { STATES } from '../constants';
 
-
-const Wrapper = styled.SafeAreaView`
+const Wrapper = styled.View`
   flex: 1;
 `
 
@@ -24,13 +23,24 @@ const News: React.FC<Props> = observer(() => {
   const newsStore = useContext(NewsStore);
   const inset = useSafeArea();
 
+  const isLoading = newsStore.state === STATES.LOADING;
+
+  const loadData = () => {
+    newsStore.loadArticles();
+  }
+
+  useEffect(() => {
+    loadData();
+  }, [])
+
   return (
-    <Wrapper>
-        <Header title="News" />
-      <ScrollView contentContainerStyle={{ paddingBottom: inset.bottom + 100 }}>
+    <Wrapper style={{paddingTop: inset.top}}>
+      <Header title="News" />
+      <ScrollView contentContainerStyle={{ paddingBottom: inset.bottom + 100 }} refreshControl={
+        <RefreshControl refreshing={isLoading} onRefresh={loadData} tintColor={colors.text} />} >
         {newsStore.news.map((article, index) => (
-            <ArticlePreview key={article.id + index} article={article} />
-          ))}
+          <ArticlePreview key={article.id + index} article={article} />
+        ))}
       </ScrollView>
     </Wrapper>
   )
