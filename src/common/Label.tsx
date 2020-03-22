@@ -14,12 +14,12 @@ const LabelText = styled.Text`
   font-size: 12px;
 `;
 
-export default ({ text, numberOfLines = 1 }) => {
+export default ({ text, numberOfLines = 1, color, style }) => {
 
   const {colors} = useTheme();
 
   return (
-  <Wrapper style={{backgroundColor: colors.accent}}>
+  <Wrapper style={[{backgroundColor: color || colors.accent}, {...style}]}>
     <LabelText style={{color: colors.secondary}} numberOfLines={numberOfLines}>{text}</LabelText>
   </Wrapper>
 )};

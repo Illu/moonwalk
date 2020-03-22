@@ -1,15 +1,23 @@
 import React, {useContext} from 'react';
 import { ScrollView, View, Linking } from 'react-native';
 import ActionMenu from '../common/ActionMenu';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useTheme } from '@react-navigation/native';
 import { observer } from 'mobx-react';
 import Launches from '../stores/Launches';
 import AppState from '../stores/AppState';
 import { Themes } from '../types';
 import * as StoreReview from "react-native-store-review";
+import styled from 'styled-components/native';
+import Package from '../../package.json';
+
+const BottomText = styled.Text`
+  text-align: center;
+  margin-bottom: 10px;
+`;
 
 const Settings = observer(() => {
   const navigation = useNavigation();
+  const {colors} = useTheme();
   const launchesStore = useContext(Launches);
   const appStateStore = useContext(AppState);
   const items = [
@@ -60,11 +68,18 @@ const Settings = observer(() => {
       {
         title: 'Licenses',
         icon: 'ChevronRight',
+        action: () => navigation.navigate("Licenses")
       },
       {
         title: 'Source code',
         icon: 'Github',
         action: () => Linking.openURL("https://github.com/Illu/moonwalk"),
+      },
+      {
+        title: 'About',
+        icon: 'ChevronRight',
+        action: () => Linking.openURL("https://maximenory.com/moonwalk/"),
+        preview: `v${Package.version}`,
       },
     ],
   ]
@@ -73,6 +88,7 @@ const Settings = observer(() => {
     <View style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <ActionMenu items={items} />
+        <BottomText style={{color: colors.secondaryText}}>2020 - Maxime Nory</BottomText>
       </ScrollView>
     </View>
   )
