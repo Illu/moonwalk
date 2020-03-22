@@ -1,11 +1,15 @@
 import React from "react";
-import styled from "styled-components";
+import { ActivityIndicator } from 'react-native'
+import styled from 'styled-components/native';
 
-const LoadingText = styled.Text`
-  color: #8183a5;
-  font-weight: bold;
+const Wrapper = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
 `;
 
 export default () => (
-    <LoadingText>Loading...</LoadingText>
+  <Wrapper>
+    <ActivityIndicator />
+  </Wrapper>
 );

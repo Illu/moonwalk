@@ -1,8 +1,9 @@
 import styled from 'styled-components/native';
 import React from 'react';
+import {Linking} from 'react-native';
 import { useTheme } from '@react-navigation/native';
 
-const Wrapper = styled.View`
+const Wrapper = styled.TouchableOpacity`
   width: 100%;
   flex-direction: row;
   align-items: center;
@@ -46,9 +47,9 @@ interface Props {
 
 const ArticlePreview: React.FC<Props> = ({ article, timePosted }) => {
   const { colors } = useTheme();
-
+  
   return (
-    <Wrapper style={{backgroundColor: colors.secondary, borderColor: colors.inputBackground}}>
+    <Wrapper style={{backgroundColor: colors.secondary, borderColor: colors.inputBackground}} onPress={() => Linking.openURL(article.url)}>
       <Thumbnail source={{ uri: article.featured_image }} />
       <DetailsWrapper>
         <Title style={{ color: colors.text }}>{article.title}</Title>

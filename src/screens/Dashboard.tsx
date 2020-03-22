@@ -8,6 +8,7 @@ import { ScrollView, RefreshControl, View } from 'react-native';
 import Countdown from '../common/Countdown';
 import { STATES } from '../constants';
 import Preview from '../components/Preview';
+import Loader from '../common/Loader';
 
 const Wrapper = styled.SafeAreaView`
   align-items: center;
@@ -30,9 +31,9 @@ const Dashboard = observer(() => {
     launchesStore.initApp();
   }, [])
 
-  const isLoading = newsStore.state !== STATES.SUCCESS || launchesStore.state !== STATES.SUCCESS;
+  const isLoading = newsStore.state === STATES.LOADING || launchesStore.state === STATES.LOADING;
 
-  const data = launchesStore.launches[0];
+  const data = launchesStore.launches.length > 0 && launchesStore.launches[0];
 
   return (
     <Wrapper>
@@ -40,7 +41,7 @@ const Dashboard = observer(() => {
         <RefreshControl refreshing={isLoading} onRefresh={loadData} tintColor={colors.text} />}
       >
         <View style={{ flex: 1 }}>
-          {isLoading ? null : (
+          {isLoading || !data ? <Loader /> : (
             <>
               <Preview data={data} onPress={() => navigation.navigate('Details', { data })} />
               <Countdown wsstamp={data.wsstamp} />

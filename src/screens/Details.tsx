@@ -3,10 +3,10 @@ import styled from 'styled-components/native';
 import { useTheme } from '@react-navigation/native';
 import { ScrollView, Linking, View } from 'react-native';
 import Icon from '../common/Icon';
-import { useSafeArea } from 'react-native-safe-area-context';
 import Label from '../common/Label';
 import Countdown from '../common/Countdown';
 import ActionMenu from '../common/ActionMenu';
+import openMap from "react-native-open-maps";
 
 const IMAGE_HEIGHT = 400;
 
@@ -61,7 +61,6 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
   const { data } = route.params;
   const videoLink = data.vidURLs.length > 0 && data.vidURLs[0];
   const wikiLink = data.missions[0].wikiURL;
-  console.log(data);
 
   const actionItems = [
     [
@@ -79,9 +78,12 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
         icon: 'ChevronRight',
         thumbIcon: 'Pin',
         thumbColor: '#2dcd55',
-        action: () => { },
-        disabled: !data.location.typeName,
-        preview: !data.location.typeName && 'Unavailable'
+        action: () => { 
+          const {longitude, latitude} = data.location.pads[0]
+          openMap({longitude, latitude})
+        },
+        disabled: !data.location.pads[0],
+        preview: !data.location.pads[0] && 'Unavailable'
       },
       {
         title: 'Wikipedia',
@@ -102,9 +104,7 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
         <View style={{ backgroundColor: colors.background }}>
           <ContentWrapper style={{ backgroundColor: colors.background }}>
             <Title style={{ color: colors.text }}>{data.name}</Title>
-
             <Countdown wsstamp={data.wsstamp} />
-
             <DescWrapper style={{ backgroundColor: colors.secondary }}>
               <Row>
                 <Icon name="Pin" color={colors.accent} />

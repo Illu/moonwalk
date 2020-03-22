@@ -53,6 +53,7 @@ const Calendar: React.FC<Props> = observer(({ navigation }) => {
         <Text>Loading</Text>
       ) : (
           <FlatList
+            style={{paddingTop: 20}}
             data={launchesStore.launches}
             keyExtractor={item => item.id.toString()}
             renderItem={({ item }) => (
@@ -64,7 +65,7 @@ const Calendar: React.FC<Props> = observer(({ navigation }) => {
               <View style={{ margin: 20 }}>
                 {showMoreEnabled &&
                   (launchesStore.state === STATES.LOADING ? (
-                    <ActivityIndicator size="large" />
+                    <ActivityIndicator />
                   ) : (
                       <Button
                         title="Load more"

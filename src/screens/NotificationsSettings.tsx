@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { ScrollView, Switch } from 'react-native';
 import { useTheme } from '@react-navigation/native';
@@ -14,6 +14,14 @@ const ToggleWrapper = styled.View`
   justify-content: space-between;
 `;
 
+const NotifWrapper = styled.View`
+  flex-direction: row;
+  height: 80px;
+  margin: 15px 20px;
+  border-radius: 10px;
+  align-items: center;
+`;
+
 const ToggleTitle = styled.Text`
   font-size: 16px;
 `;
@@ -23,18 +31,64 @@ const Notice = styled.Text`
   font-size: 13px;
 `;
 
+const Title = styled.Text`
+  margin: 20px 20px 0 20px;
+  font-size: 20px;
+  font-weight: bold;
+`
+
+const Row = styled.View`
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+`;
+
+const Button = styled.TouchableOpacity`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ButtonText = styled.Text`
+  font-size: 30px;
+`;
+
+const DelayText = styled.Text`
+  font-size: 16px;
+`;
+
 const NotificationsSettings = observer(() => {
 
   const { colors } = useTheme();
   const launchesStore = useContext(Launches);
 
+  const hitSlopValue = 60;
+  const touchableHitSlop = {
+    top: hitSlopValue / 2,
+    left: hitSlopValue,
+    right: hitSlopValue,
+    bottom: hitSlopValue / 2
+  };
+
   return (
     <ScrollView>
       <ToggleWrapper style={{ backgroundColor: colors.secondary }}>
         <ToggleTitle style={{ color: colors.text }}>Enable Notifications</ToggleTitle>
-        <Switch value={launchesStore.notifications.enabled} onValueChange={launchesStore.toggleNotifications}/>
+        <Switch value={launchesStore.notifications.enabled} onValueChange={launchesStore.toggleNotifications} />
       </ToggleWrapper>
       <Notice style={{ color: colors.placeholderText }}>Moonwalk is an ad-free App, and will only send notifications about upcoming rocket launches.</Notice>
+      <Title>Notify me...</Title>
+      <NotifWrapper style={{ backgroundColor: colors.secondary }}>
+        <Row>
+          <Button hitSlop={touchableHitSlop} onPress={() => launchesStore.changeNotificationDelay(-5)}>
+            <ButtonText style={{ color: colors.accent }}>-</ButtonText>
+          </Button>
+          <DelayText>{`${launchesStore.notifications.delay} minutes before launch`}</DelayText>
+          <Button hitSlop={touchableHitSlop} onPress={() => launchesStore.changeNotificationDelay(5)}>
+            <ButtonText style={{ color: colors.accent }}>+</ButtonText>
+          </Button>
+        </Row>
+      </NotifWrapper>
     </ScrollView>
   )
 })
