@@ -6,6 +6,7 @@ import { observer } from 'mobx-react';
 import Launches from '../stores/Launches';
 import AppState from '../stores/AppState';
 import { Themes } from '../types';
+import * as StoreReview from "react-native-store-review";
 
 const Settings = observer(() => {
   const navigation = useNavigation();
@@ -34,6 +35,15 @@ const Settings = observer(() => {
       {
         title: 'Rate the App',
         icon: 'ChevronRight',
+        action: () => {
+            if (StoreReview.isAvailable) {
+              StoreReview.requestReview();
+            } else {
+              Linking.openURL(
+                "https://itunes.apple.com/us/app/moonwalk-rocket-launches/id1439376174"
+              );
+            }
+          },
       },
       {
         title: 'Say hi 👋',
