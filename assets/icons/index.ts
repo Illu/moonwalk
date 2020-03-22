@@ -12,3 +12,5 @@ export {default as Settings} from './settings.svg';
 export {default as Twitter} from './twitter.svg';
 export {default as Globe} from './globe.svg';
 export {default as Github} from './github.svg';
+export {default as Circle} from './circle.svg';
+export {default as CheckCircle} from './check-circle.svg';

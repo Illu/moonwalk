@@ -77,14 +77,14 @@ const NotificationsSettings = observer(() => {
         <Switch value={launchesStore.notifications.enabled} onValueChange={launchesStore.toggleNotifications} />
       </ToggleWrapper>
       <Notice style={{ color: colors.placeholderText }}>Moonwalk is an ad-free App, and will only send notifications about upcoming rocket launches.</Notice>
-      <Title>Notify me...</Title>
-      <NotifWrapper style={{ backgroundColor: colors.secondary }}>
+      <Title style={{opacity: launchesStore.notifications.enabled ? 1 : 0.3}}>Send a notification</Title>
+      <NotifWrapper style={{ backgroundColor: colors.secondary, opacity: launchesStore.notifications.enabled ? 1 : 0.3 }}>
         <Row>
-          <Button hitSlop={touchableHitSlop} onPress={() => launchesStore.changeNotificationDelay(-5)}>
+          <Button disabled={!launchesStore.notifications.enabled} hitSlop={touchableHitSlop} onPress={() => launchesStore.changeNotificationDelay(-5)}>
             <ButtonText style={{ color: colors.accent }}>-</ButtonText>
           </Button>
           <DelayText>{`${launchesStore.notifications.delay} minutes before launch`}</DelayText>
-          <Button hitSlop={touchableHitSlop} onPress={() => launchesStore.changeNotificationDelay(5)}>
+          <Button disabled={!launchesStore.notifications.enabled} hitSlop={touchableHitSlop} onPress={() => launchesStore.changeNotificationDelay(5)}>
             <ButtonText style={{ color: colors.accent }}>+</ButtonText>
           </Button>
         </Row>

@@ -4,10 +4,13 @@ import ActionMenu from '../common/ActionMenu';
 import { useNavigation } from '@react-navigation/native';
 import { observer } from 'mobx-react';
 import Launches from '../stores/Launches';
+import AppState from '../stores/AppState';
+import { Themes } from '../types';
 
 const Settings = observer(() => {
   const navigation = useNavigation();
   const launchesStore = useContext(Launches);
+  const appStateStore = useContext(AppState);
   const items = [
     [
       {
@@ -19,6 +22,8 @@ const Settings = observer(() => {
       {
         title: 'Appearance',
         icon: 'ChevronRight',
+        preview: appStateStore.theme === Themes.automatic ? "Automatic" : appStateStore.theme === Themes.light ? "Light" : "Dark",
+        action: () => navigation.navigate("Appearance")
       },
       {
         title: 'App Icon',

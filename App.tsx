@@ -14,6 +14,10 @@ import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import { enableScreens } from 'react-native-screens';
 import HeaderSettingsButton from './src/components/HeaderSettingsButton';
 import NotificationsSettings from './src/screens/NotificationsSettings';
+import AppearanceSettings from './src/screens/AppearanceSettings';
+import AppState from './src/stores/AppState';
+import { Themes } from './src/types';
+import { observer } from 'mobx-react';
 
 enableScreens();
 
@@ -35,6 +39,7 @@ const HomeStack = () => (
     <HomeNav.Screen name="Details" component={Details} />
     <HomeNav.Screen name="Settings" component={Settings} />
     <HomeNav.Screen name="Notifications" component={NotificationsSettings} />
+    <HomeNav.Screen name="Appearance" component={AppearanceSettings} />
   </HomeNav.Navigator>
 )
 
@@ -70,10 +75,18 @@ const SearchStack = () => (
   </SearchNav.Navigator>
 )
 
-const App = () => {
+const App = observer(() => {
   const scheme = useColorScheme();
-
-  const theme = scheme === 'dark' ? darkTheme : lightTheme
+  const appStateStore = useContext(AppState);
+  
+  let theme;
+  if (appStateStore.theme === Themes.automatic) {
+    theme = scheme === 'dark' ? darkTheme : lightTheme
+  } else if (appStateStore.theme === Themes.light) {
+    theme = lightTheme;
+  } else if (appStateStore.theme === Themes.dark) {
+    theme = darkTheme;
+  }
 
   return (
     <AppearanceProvider>
@@ -89,6 +102,6 @@ const App = () => {
       </ThemeProvider>
     </AppearanceProvider>
   );
-};
+});
 
 export default App;

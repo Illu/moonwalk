@@ -10,6 +10,6 @@ const Wrapper = styled.View`
 
 export default () => (
   <Wrapper>
-    <ActivityIndicator />
+    <ActivityIndicator size="large" />
   </Wrapper>
 );
