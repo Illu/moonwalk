@@ -8,6 +8,7 @@ import CalendarCard from '../components/CalendarCard';
 import Loader from '../common/Loader';
 import { observer } from 'mobx-react';
 import ErrorCard from '../common/ErrorCard';
+import firebase from 'react-native-firebase'
 
 const Wrapper = styled.View`
   flex: 1;
@@ -18,7 +19,7 @@ interface Props {
 }
 
 const Calendar: React.FC<Props> = observer(({ navigation }) => {
-
+  firebase.analytics().setCurrentScreen('CALENDAR');
   const { colors } = useTheme();
 
   const [page, setPage] = useState(0);

@@ -10,6 +10,7 @@ import { STATES } from '../constants';
 import Preview from '../components/Preview';
 import Loader from '../common/Loader';
 import ErrorCard from '../common/ErrorCard';
+import firebase from 'react-native-firebase'
 
 const Wrapper = styled.SafeAreaView`
   align-items: center;
@@ -17,6 +18,8 @@ const Wrapper = styled.SafeAreaView`
 `;
 
 const Dashboard = observer(() => {
+  firebase.analytics().setCurrentScreen('DASHBOARD');
+
   const launchesStore = useContext(Launches);
   const navigation = useNavigation();
   const { colors } = useTheme();

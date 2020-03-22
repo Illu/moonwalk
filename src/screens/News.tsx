@@ -8,6 +8,7 @@ import ArticlePreview from '../components/ArticlePreview';
 import { STATES } from '../constants';
 import Loader from '../common/Loader';
 import ErrorCard from '../common/ErrorCard';
+import firebase from 'react-native-firebase'
 
 const Title = styled.Text`
   margin: 20px 16px 10px 16px;
@@ -20,6 +21,7 @@ interface Props {
 }
 
 const News: React.FC<Props> = observer(() => {
+  firebase.analytics().setCurrentScreen('NEWS');
 
   const { colors } = useTheme();
   const newsStore = useContext(NewsStore);

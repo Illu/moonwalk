@@ -9,6 +9,7 @@ import { Themes } from '../types';
 import * as StoreReview from "react-native-store-review";
 import styled from 'styled-components/native';
 import Package from '../../package.json';
+import firebase from 'react-native-firebase'
 
 const BottomText = styled.Text`
   text-align: center;
@@ -16,6 +17,7 @@ const BottomText = styled.Text`
 `;
 
 const Settings = observer(() => {
+  firebase.analytics().setCurrentScreen('SETTINGS');
   const navigation = useNavigation();
   const {colors} = useTheme();
   const launchesStore = useContext(Launches);

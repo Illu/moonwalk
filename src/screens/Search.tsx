@@ -7,8 +7,8 @@ import ResultCard from "../components/ResultCard";
 import Loader from "../common/Loader";
 import { STATES } from "../constants";
 import Search from "../stores/Search";
-import { useSafeArea } from "react-native-safe-area-context";
 import { useTheme } from "@react-navigation/native";
+import firebase from 'react-native-firebase'
 
 const ContentWrapper = styled.SafeAreaView`
   flex: 1;
@@ -32,6 +32,7 @@ const ResultCount = styled.Text`
 `;
 
 const SearchScreen = observer(({ navigation }) => {
+  firebase.analytics().setCurrentScreen('SEARCH');
   const showDetails = data => {
     navigation.navigate("Details", { data });
   };
