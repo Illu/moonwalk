@@ -4,7 +4,7 @@ import { useTheme } from "@react-navigation/native";
 
 const Wrapper = styled.View`
   background: red;
-  margin: 25px;
+  margin: 0px 20px;
   border-radius: 10px;
   align-items: center;
   padding: 20px;
@@ -20,14 +20,13 @@ const UnitWrapper = styled.View`
 const Number = styled.Text`
   font-size: 26px;
   font-weight: bold;
-  color: white;
+  color: #333;
 `;
 
 const Unit = styled.Text`
   font-size: 12px;
   font-weight: bold;
   color: #aaa;
-  font-family: Quicksand;
 `;
 
 let timer;
@@ -64,7 +63,7 @@ const Countdown = ({wsstamp}: {wsstamp: number}) => {
   const NoData = timeLeft <= 0;
   
   return (
-    <Wrapper style={{backgroundColor: colors.accentBackground}}>
+    <Wrapper style={{backgroundColor: colors.secondary}}>
       <UnitWrapper>
         <Number>{NoData ? "-" : days}</Number>
         <Unit>{`day${days !== 1 ? "s" : ""}`}</Unit>

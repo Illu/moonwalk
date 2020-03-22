@@ -2,14 +2,13 @@ import React, { useState, useEffect, useContext } from 'react';
 import Launches from '../stores/Launches';
 import styled from 'styled-components/native';
 import { useTheme } from '@react-navigation/native';
-import { FlatList, Text, RefreshControl, TouchableOpacity, ActivityIndicator, Button } from 'react-native';
+import { FlatList, Text, RefreshControl, TouchableOpacity, ActivityIndicator, Button, View } from 'react-native';
 import { STATES } from '../constants';
-import Header from '../components/Header';
 import CalendarCard from '../components/CalendarCard';
 import { useSafeArea } from 'react-native-safe-area-context';
 import { observer } from 'mobx-react';
 
-const Wrapper = styled.SafeAreaView`
+const Wrapper = styled.View`
   flex: 1;
 `;
 
@@ -17,10 +16,9 @@ interface Props {
   route: any;
 }
 
-const Calendar: React.FC<Props> = observer(({navigation}) => {
+const Calendar: React.FC<Props> = observer(({ navigation }) => {
 
   const { colors } = useTheme();
-  const inset = useSafeArea();
 
   const [page, setPage] = useState(0);
   const launchesStore = useContext(Launches);
@@ -51,12 +49,10 @@ const Calendar: React.FC<Props> = observer(({navigation}) => {
 
   return (
     <Wrapper>
-      <Header title="Launch Calendar" />
       {launchesStore.state === STATES.LOADING && launchesStore.numberOfLaunches < 5 ? (
         <Text>Loading</Text>
       ) : (
           <FlatList
-            contentContainerStyle={{ paddingBottom: inset.bottom + 80 }}
             data={launchesStore.launches}
             keyExtractor={item => item.id.toString()}
             renderItem={({ item }) => (
@@ -65,7 +61,7 @@ const Calendar: React.FC<Props> = observer(({navigation}) => {
               </TouchableOpacity>
             )}
             ListFooterComponent={() => (
-              <>
+              <View style={{ margin: 20 }}>
                 {showMoreEnabled &&
                   (launchesStore.state === STATES.LOADING ? (
                     <ActivityIndicator size="large" />
@@ -76,7 +72,7 @@ const Calendar: React.FC<Props> = observer(({navigation}) => {
                         disabled={launchesStore.state === STATES.LOADING}
                       />
                     ))}
-              </>
+              </View>
             )}
             refreshControl={
               <RefreshControl

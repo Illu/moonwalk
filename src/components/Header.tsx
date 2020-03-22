@@ -3,10 +3,11 @@ import React from 'react';
 import { useTheme, useNavigation } from '@react-navigation/native';
 import {Svg, Circle, Path} from 'react-native-svg';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { HEADER_HEIGHT } from '../constants';
 
 const Wrapper = styled.View`
   padding: 0 20px;
-  height: 50px;
+  height: ${HEADER_HEIGHT}px;
   width: 100%;
   align-items: center;
   justify-content: space-between;
@@ -16,7 +17,6 @@ const Wrapper = styled.View`
 const Title = styled.Text`
   font-size: 30px;
   font-weight: bold;
-  font-family: Quicksand;
 `;
 
 const Accent = styled.View`
@@ -24,7 +24,7 @@ const Accent = styled.View`
   height: 4px;
   border-radius: 2px;
   position: absolute;
-  bottom: 5px;
+  bottom: 0;
   left: 20px;
 `;
 

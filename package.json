@@ -26,6 +26,8 @@
     "react-native-snap-carousel": "^3.8.4",
     "react-native-svg": "^11.0.1",
     "react-native-svg-transformer": "^0.14.3",
+    "react-navigation": "^4.3.2",
+    "react-navigation-stack": "^2.3.4",
     "styled-components": "^5.0.1"
   },
   "devDependencies": {

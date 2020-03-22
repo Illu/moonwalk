@@ -1,6 +1,5 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { NavigationContainer, ThemeProvider } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Dashboard from './src/screens/Dashboard';
 import { darkTheme, lightTheme } from './theme';
@@ -11,33 +10,81 @@ import Tabbar from './src/components/Tabbar';
 import Calendar from './src/screens/Calendar';
 import News from './src/screens/News';
 import Search from './src/screens/Search';
+import { createNativeStackNavigator } from 'react-native-screens/native-stack';
+import { enableScreens } from 'react-native-screens';
+import HeaderSettingsButton from './src/components/HeaderSettingsButton';
+import NotificationsSettings from './src/screens/NotificationsSettings';
 
-const Main = createStackNavigator();
+enableScreens();
+
 const Tab = createBottomTabNavigator();
+const HomeNav = createNativeStackNavigator();
+const CalendarNav = createNativeStackNavigator();
+const NewsNav = createNativeStackNavigator();
+const SearchNav = createNativeStackNavigator();
 
-const TabNavigator = () => (
-  <Tab.Navigator tabBar={Tabbar}>
-    <Tab.Screen name="Home" component={Dashboard} />
-    <Tab.Screen name="Calendar" component={Calendar} />
-    <Tab.Screen name="News" component={News} />
-    <Tab.Screen name="Search" component={Search} />
-  </Tab.Navigator>
+const HomeStack = () => (
+  <HomeNav.Navigator >
+    <HomeNav.Screen options={{
+      headerTranslucent: true,
+      headerHideShadow: true,
+      headerStyle: { backgroundColor: '#f1f2f7' },
+      headerRight: HeaderSettingsButton,
+    }}
+    name="Dashboard" component={Dashboard} />
+    <HomeNav.Screen name="Details" component={Details} />
+    <HomeNav.Screen name="Settings" component={Settings} />
+    <HomeNav.Screen name="Notifications" component={NotificationsSettings} />
+  </HomeNav.Navigator>
+)
+
+const CalendarStack = () => (
+  <CalendarNav.Navigator>
+    <CalendarNav.Screen options={{
+      headerLargeTitle: true,
+      headerHideShadow: true,
+      headerStyle: { backgroundColor: '#f1f2f7' },
+    }} name="Calendar" component={Calendar} />
+    <CalendarNav.Screen name="Details" component={Details} />
+  </CalendarNav.Navigator>
+)
+
+const NewsStack = () => (
+  <NewsNav.Navigator>
+    <NewsNav.Screen options={{
+      headerLargeTitle: true,
+      headerHideShadow: true,
+      headerStyle: { backgroundColor: '#f1f2f7' },
+    }} name="News" component={News} />
+  </NewsNav.Navigator>
+)
+
+const SearchStack = () => (
+  <SearchNav.Navigator>
+    <SearchNav.Screen options={{
+      headerLargeTitle: true,
+      headerHideShadow: true,
+      headerStyle: { backgroundColor: '#f1f2f7' },
+    }} name="Search" component={Search} />
+    <SearchNav.Screen name="Details" component={Details} />
+  </SearchNav.Navigator>
 )
 
 const App = () => {
   const scheme = useColorScheme();
 
   const theme = scheme === 'dark' ? darkTheme : lightTheme
-  
+
   return (
     <AppearanceProvider>
       <ThemeProvider theme={theme.colors}>
         <NavigationContainer theme={theme}>
-          <Main.Navigator headerMode="none" mode="modal">
-            <Main.Screen name="Root" component={TabNavigator} />
-            <Main.Screen name="Details" component={Details} />
-            <Main.Screen name="Settings" component={Settings} />
-          </Main.Navigator>
+          <Tab.Navigator tabBar={Tabbar}>
+            <Tab.Screen name="Home" component={HomeStack} />
+            <Tab.Screen name="Calendar" component={CalendarStack} />
+            <Tab.Screen name="News" component={NewsStack} />
+            <Tab.Screen name="Search" component={SearchStack} />
+          </Tab.Navigator>
         </NavigationContainer>
       </ThemeProvider>
     </AppearanceProvider>

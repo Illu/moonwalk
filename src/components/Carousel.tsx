@@ -7,7 +7,7 @@ const ItemWrapper = styled.TouchableOpacity`
   border-radius: 30px;
   background: #000000;
   height: 400px;
-  shadow-color: #000000;
+  shadow-color: #999;
   shadow-offset: 0 0;
   shadow-opacity: 0.48;
   shadow-radius: 10px;
@@ -21,7 +21,6 @@ const Title = styled.Text`
   font-weight: bold;
   font-size: 20px;
   margin: 20px;
-  font-family: Quicksand;
 `;
 
 const Time = styled.Text`
@@ -30,10 +29,7 @@ const Time = styled.Text`
   font-size: 20px;
   margin: 20px;
   align-self: flex-end;
-  font-family: Quicksand;
 `;
-
-
 
 interface Props {
   launches: any[];

@@ -13,11 +13,10 @@ const Wrapper = styled.View`
 const TitleText = styled.Text`
   font-size: 22px;
   font-weight: bold;
-  font-family: Quicksand;
 `;
 
 const SeeMoreText = styled.Text`
-  font-family: Quicksand;
+
 `;
 
 const BigTitle = ({ title, onSeeMore }: { title: string, onSeeMore?: () => void }) => {

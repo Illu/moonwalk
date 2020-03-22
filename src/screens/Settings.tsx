@@ -1,45 +1,61 @@
-import React from 'react';
-import styled from 'styled-components/native';
-import { useTheme } from '@react-navigation/native';
-import { ScrollView } from 'react-native';
-import BigTitle from '../common/BigTitle';
-import Svg, { Path, Circle } from 'react-native-svg';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import React, {useContext} from 'react';
+import { ScrollView, View, Linking } from 'react-native';
+import ActionMenu from '../common/ActionMenu';
+import { useNavigation } from '@react-navigation/native';
+import { observer } from 'mobx-react';
+import Launches from '../stores/Launches';
 
-const Wrapper = styled.View`
-
-`;
-
-const Image = styled.Image`
-  height: 400px;
-  width: 100%;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-`;
-
-const Location = styled.Text`
-  margin: 0 10px;
-`;
-
-const Row = styled.View`
-  flex-direction: row;
-  align-items: center;
-  padding: 0 16px;
-`;
-
-const Settings: React.FC<Props> = () => {
-
-  const { colors } = useTheme();
+const Settings = observer(() => {
+  const navigation = useNavigation();
+  const launchesStore = useContext(Launches);
+  const items = [
+    [
+      {
+        title: 'Push Notifications',
+        preview: !launchesStore.notifications.enabled ? 'None' : `${launchesStore.notifications.delay} minutes`,
+        icon: 'ChevronRight',
+        action: () => navigation.navigate("Notifications")
+      },
+      {
+        title: 'Appearance',
+        icon: 'ChevronRight',
+      },
+      {
+        title: 'App Icon',
+        icon: 'ChevronRight',
+      },
+    ],
+    [
+      {
+        title: 'Rate the App',
+        icon: 'ChevronRight',
+      },
+      {
+        title: 'Say hi 👋',
+        icon: 'Twitter',
+        action: () => Linking.openURL("https://twitter.com/MaximeNory"),
+      }
+    ],
+    [
+      {
+        title: 'Licenses',
+        icon: 'ChevronRight',
+      },
+      {
+        title: 'Source code',
+        icon: 'Github',
+        action: () => Linking.openURL("https://github.com/Illu/moonwalk"),
+      },
+    ],
+  ]
 
   return (
-    <SafeAreaView>
-    <ScrollView>
-      <Wrapper style={{ backgroundColor: colors.background }}>
-        <BigTitle title="Settings" />
-      </Wrapper>
-    </ScrollView>
-    </SafeAreaView>
+    <View style={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <ActionMenu items={items} />
+      </ScrollView>
+    </View>
   )
-}
+})
 
 export default Settings;

@@ -5,10 +5,8 @@ import { MONTHS } from "../constants";
 import { useTheme } from "@react-navigation/native";
 
 const Wrapper = styled.View`
-  margin: 10px 20px;
-  border-radius: 15px;
-  padding: 20px;
-  padding-right: 15px;
+  padding: 30px 20px;
+  border-bottom-width: 1px;
 `;
 
 const DateWrapper = styled.View`
@@ -24,26 +22,30 @@ const Day = styled.Text`
   font-size: ${({ large }) => (large ? 20 : 13)}px;
 `;
 
+const ContentWrapper = styled.View`
+  flex: 1;
+  margin-left: 20px;
+`;
+
 const Row = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
 `;
 
 const Desc = styled.Text`
   color: white;
   font-size: 15px;
-  ${({ bold }) => bold && "font-weight: bold;"} margin-top: 5px;
+  ${({ bold }) => bold && "font-weight: bold;"}
 `;
 
 export default ({ data }) => {
   const launchTime = new Date(data.netstamp * 1000);
   const {colors} = useTheme();
+  console.log("XD", data)
   return (
-    <Wrapper style={{backgroundColor: colors.secondary}}>
+    <Wrapper style={{backgroundColor: colors.secondary, borderBottomColor: colors.inputBackground}}>
       <Row>
-        <DateWrapper>
+        <DateWrapper style={{backgroundColor: colors.accentBackground}}>
           {data.netstamp === 0 ? (
             <Day>TBD</Day>
           ) : (
@@ -53,10 +55,13 @@ export default ({ data }) => {
             </>
           )}
         </DateWrapper>
-        <Label numberOfLines={2} text={data.lsp.abbrev} />
+        <ContentWrapper>
+          <Desc bold style={{color: colors.text}}>{data.name}</Desc>
+          <Desc numberOfLines={1} style={{color: colors.text}}>{data.location.name}</Desc>
+          <Label numberOfLines={2} text={data.lsp.name.length < 50 ? data.lsp.name : data.lsp.abbrev} />
+        </ContentWrapper>
       </Row>
-      <Desc bold style={{color: colors.text}}>{data.name}</Desc>
-      <Desc numberOfLines={1} style={{color: colors.text}}>{data.location.name}</Desc>
+      
     </Wrapper>
   );
 };

@@ -8,6 +8,7 @@ const Wrapper = styled.View`
   align-items: center;
   justify-content: center;
   padding: 10px 16px;
+  border-bottom-width: 1px;
 `;
 
 const Thumbnail = styled.ImageBackground`
@@ -20,13 +21,11 @@ const Thumbnail = styled.ImageBackground`
 
 const Title = styled.Text`
   text-align: left;
-  font-family: Quicksand;
   padding-bottom: 5px;
   font-weight: 700;
 `;
 
 const Subtitle = styled.Text`
-    font-family: Quicksand;
 `;
 
 const DetailsWrapper = styled.View`
@@ -42,17 +41,14 @@ const Dot = styled.View`
 
 interface Props {
   article: any;
+  timePosted: number;
 }
 
-const ArticlePreview: React.FC<Props> = ({ article }) => {
+const ArticlePreview: React.FC<Props> = ({ article, timePosted }) => {
   const { colors } = useTheme();
-  const currentTime = new Date().getTime() / 1000;
-  const timeDiff = currentTime - article.date_published;
-  const daysDiff = Math.floor(timeDiff / 60 / 60 / 24);
-  const timePosted = daysDiff > 0 ? `${daysDiff}d ago` : "Today";
 
   return (
-    <Wrapper>
+    <Wrapper style={{backgroundColor: colors.secondary, borderColor: colors.inputBackground}}>
       <Thumbnail source={{ uri: article.featured_image }} />
       <DetailsWrapper>
         <Title style={{ color: colors.text }}>{article.title}</Title>

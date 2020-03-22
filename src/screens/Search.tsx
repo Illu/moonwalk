@@ -42,7 +42,7 @@ const SearchScreen = observer(({ navigation }) => {
   return (
     <ContentWrapper>
       <Searchbar launchSearch={str => searchLaunches(str)} />
-      <ScrollWrapper contentContainerStyle={{ alignItems: "center", paddingBottom: inset.bottom + 60 }}>
+      <ScrollWrapper contentContainerStyle={{ alignItems: "center"}}>
         {state === STATES.LOADING && <Loader />}
         {results.length >= 0 && state === STATES.SUCCESS && (
           <>

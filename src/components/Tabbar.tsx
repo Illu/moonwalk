@@ -1,24 +1,19 @@
 import styled from 'styled-components/native';
 import React, { useState, useEffect } from 'react';
-import { Animated, Dimensions } from 'react-native';
+import { Animated, Dimensions, View } from 'react-native';
 import { useSafeArea } from 'react-native-safe-area-context';
 import { useTheme } from '@react-navigation/native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Icon from '../common/Icon';
+import { TABBAR_HEIGHT } from '../constants';
 
 const Wrapper = styled.View`
-  height: 70px;
-  border-radius: 35px;
+  height: ${TABBAR_HEIGHT}px;
   align-items: center;
   flex-direction: row;
-  position: absolute;
-  bottom: ${({ insetBottom }) => insetBottom + 8}px;
-  left: 16px;
-  right: 16px;
-  shadow-color: #000000;
-  shadow-offset: 0 0;
-  shadow-opacity: 0.38;
-  shadow-radius: 20px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: ${({ insetBottom }) => insetBottom}px;
 `;
 
 const IconWrapper = styled.View`
@@ -63,18 +58,20 @@ const TabbarComponent = ({ props }) => {
   }, [props.state.index])
 
   return (
-    <Wrapper style={{ backgroundColor: colors.accentBackground }} insetBottom={insets.bottom}>
+    <View style={{backgroundColor: colors.background}}>
+    <Wrapper insetBottom={insets.bottom}>
       {props.state.routeNames.map(route => (
         <TouchableWithoutFeedback key={route} onPress={() => props.navigation.navigate(route)}>
           <IconWrapper style={{ width: tabbarWidth / 4 }} >
-            <Icon name={route} />
+            <Icon color={colors.text} name={route} />
           </IconWrapper>
         </TouchableWithoutFeedback>
       ))}
-      <TabIndicatorWrapper style={{ left: indicatorPosition, width: tabbarWidth / 4 }}>
+      <TabIndicatorWrapper style={{ left: indicatorPosition, width: tabbarWidth / 4 }} insetBottom={insets.bottom}>
         <TabIndicator style={{ backgroundColor: colors.accent }} />
       </TabIndicatorWrapper>
     </Wrapper>
+    </View>
   )
 }
 

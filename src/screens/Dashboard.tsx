@@ -3,29 +3,20 @@ import styled from 'styled-components/native';
 import { useTheme, useNavigation } from '@react-navigation/native';
 import { observer } from 'mobx-react';
 import Launches from '../stores/Launches';
-import Carousel from '../components/Carousel';
 import News from '../stores/News';
-import { ScrollView, RefreshControl } from 'react-native';
-import ArticlePreview from '../components/ArticlePreview';
-import BigTitle from '../common/BigTitle';
-import Header from '../components/Header';
-import { useSafeArea } from 'react-native-safe-area-context';
+import { ScrollView, RefreshControl, View } from 'react-native';
+import Countdown from '../common/Countdown';
 import { STATES } from '../constants';
+import Preview from '../components/Preview';
 
 const Wrapper = styled.SafeAreaView`
   align-items: center;
-`;
-
-const NewsWrapper = styled.View`
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex: 1;
 `;
 
 const Dashboard = observer(() => {
   const launchesStore = useContext(Launches);
   const newsStore = useContext(News);
-  const inset = useSafeArea();
   const navigation = useNavigation();
   const { colors } = useTheme();
 
@@ -38,22 +29,23 @@ const Dashboard = observer(() => {
     loadData();
   }, [])
 
-  const isLoading = newsStore.state === STATES.LOADING || launchesStore.state === STATES.LOADING;
+  const isLoading = newsStore.state !== STATES.SUCCESS || launchesStore.state !== STATES.SUCCESS;
+
+  const data = launchesStore.launches[0];
 
   return (
     <Wrapper>
-      <Header title="Moonwalk" />
-      <ScrollView contentContainerStyle={{ paddingBottom: inset.bottom + 100 }} refreshControl={
-        <RefreshControl refreshing={isLoading} onRefresh={loadData} tintColor={colors.text}/>}
+      <ScrollView scrollEnabled={false} style={{ width: "100%" }} contentContainerStyle={{ flex: 1 }} refreshControl={
+        <RefreshControl refreshing={isLoading} onRefresh={loadData} tintColor={colors.text} />}
       >
-        <BigTitle title="Upcoming" onSeeMore={() => navigation.navigate('Calendar')} />
-        <Carousel launches={launchesStore.launches} onItemPress={(data) => navigation.navigate('Details', { data })} />
-        <BigTitle title="Latest news" onSeeMore={() => navigation.navigate('News')}/>
-        <NewsWrapper>
-          {newsStore.news.map((article, index) => index <= 3 && (
-            <ArticlePreview key={article.id + index} article={article} />
-          ))}
-        </NewsWrapper>
+        <View style={{ flex: 1 }}>
+          {isLoading ? null : (
+            <>
+              <Preview data={data} onPress={() => navigation.navigate('Details', { data })} />
+              <Countdown wsstamp={data.wsstamp} />
+            </>
+          )}
+        </View>
       </ScrollView>
     </Wrapper>
   );
