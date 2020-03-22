@@ -22,14 +22,16 @@ export const darkTheme = {
   ...DarkTheme,
   colors: {
     ...DarkTheme.colors,
-    text: '#eeeeee',
-    background: '#2d2d2d',
+    text: '#fff',
+    background: '#000',
     placeholderText: '#666',
-    inputBackground: '#dee1e7',
+    inputBackground: '#1e2022',
     secondaryText: '#999',
-    secondary: '#333',
-    accent: '#feca52',
-    accentBackground: '#333',
-    uiAccent: '#c3c4c6',
+    secondary: '#1a1d1e',
+    accent: '#0a84ff',
+    accentBackground: 'rgba(10, 132, 255, 0.1)',
+    uiAccent: '#68707e',
   },
 };
+
+// accent: '#feca52',

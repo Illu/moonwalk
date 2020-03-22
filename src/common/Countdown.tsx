@@ -20,7 +20,6 @@ const UnitWrapper = styled.View`
 const Number = styled.Text`
   font-size: 26px;
   font-weight: bold;
-  color: #333;
 `;
 
 const Unit = styled.Text`
@@ -65,19 +64,19 @@ const Countdown = ({wsstamp}: {wsstamp: number}) => {
   return (
     <Wrapper style={{backgroundColor: colors.secondary}}>
       <UnitWrapper>
-        <Number>{NoData ? "-" : days}</Number>
+        <Number style={{color: colors.text}}>{NoData ? "-" : days}</Number>
         <Unit>{`day${days !== 1 ? "s" : ""}`}</Unit>
       </UnitWrapper>
       <UnitWrapper>
-        <Number>{NoData ? "-" : hours % 24}</Number>
+        <Number style={{color: colors.text}}>{NoData ? "-" : hours % 24}</Number>
         <Unit>{`hour${minutes % 24 !== 1 ? "s" : ""}`}</Unit>
       </UnitWrapper>
       <UnitWrapper>
-        <Number>{NoData ? "-" : minutes % 60}</Number>
+        <Number style={{color: colors.text}}>{NoData ? "-" : minutes % 60}</Number>
         <Unit>{`minute${minutes % 60 !== 1 ? "s" : ""}`}</Unit>
       </UnitWrapper>
       <UnitWrapper>
-        <Number>{NoData ? "-" : seconds % 60}</Number>
+        <Number style={{color: colors.text}}>{NoData ? "-" : seconds % 60}</Number>
         <Unit>{`second${seconds % 60 !== 1 ? "s" : " "}`}</Unit>
       </UnitWrapper>
     </Wrapper>

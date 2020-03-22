@@ -8,6 +8,7 @@ import Loader from "../common/Loader";
 import { STATES } from "../constants";
 import Search from "../stores/Search";
 import { useSafeArea } from "react-native-safe-area-context";
+import { useTheme } from "@react-navigation/native";
 
 const ContentWrapper = styled.SafeAreaView`
   flex: 1;
@@ -15,7 +16,6 @@ const ContentWrapper = styled.SafeAreaView`
 `;
 
 const Footer = styled.Text`
-  color: #aaa;
   font-size: 14px;
   margin: 20px 0;
 `;
@@ -26,9 +26,9 @@ const ScrollWrapper = styled.ScrollView`
 `;
 
 const ResultCount = styled.Text`
-  color: #eee;
   font-size: 16px;
   font-weight: bold;
+  margin: 10px 0;
 `;
 
 const SearchScreen = observer(({ navigation }) => {
@@ -36,8 +36,7 @@ const SearchScreen = observer(({ navigation }) => {
     navigation.navigate("Details", { data });
   };
   const searchStore = useContext(Search);
-  const inset = useSafeArea();
-
+  const {colors} = useTheme();
   const { results, searchLaunches, totalResults, state } = searchStore;
   return (
     <ContentWrapper>
@@ -46,7 +45,7 @@ const SearchScreen = observer(({ navigation }) => {
         {state === STATES.LOADING && <Loader />}
         {results.length >= 0 && state === STATES.SUCCESS && (
           <>
-            <ResultCount>{totalResults || 0} results</ResultCount>
+            <ResultCount style={{color: colors.text}}>{totalResults || 0} results</ResultCount>
             {results.map(data => (
               <ResultCard
                 key={data.id}
@@ -59,7 +58,7 @@ const SearchScreen = observer(({ navigation }) => {
         <TouchableOpacity
           onPress={() => Linking.openURL("https://launchlibrary.net/")}
         >
-          <Footer>Data provided by the Launch Library</Footer>
+          <Footer style={{color: colors.secondaryText}}>Data provided by the Launch Library</Footer>
         </TouchableOpacity>
       </ScrollWrapper>
     </ContentWrapper>

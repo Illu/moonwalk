@@ -29,10 +29,10 @@ const SearchBar = ({ launchSearch }) => {
   const { colors } = useTheme();
   return (
     <Wrapper insetBottom={insets.bottom} >
-      <SearchInput onSubmitEditing={({ nativeEvent }) => launchSearch(nativeEvent.text)} placeholder="Search" placeholderTextColor={colors.placeholderText} style={{ backgroundColor: colors.inputBackground }} />
+      <SearchInput onSubmitEditing={({ nativeEvent }) => launchSearch(nativeEvent.text)} placeholder="Search" placeholderTextColor={colors.placeholderText} style={{ backgroundColor: colors.inputBackground, color: colors.text }} />
       <IconWrapper >
-            <Icon color={colors.text} name="Search" color={colors.placeholderText} size={20}/>
-          </IconWrapper>
+        <Icon color={colors.text} name="Search" color={colors.placeholderText} size={20} />
+      </IconWrapper>
     </Wrapper>
   )
 }

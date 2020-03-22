@@ -60,7 +60,7 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
   const { colors } = useTheme();
   const { data } = route.params;
   const videoLink = data.vidURLs.length > 0 && data.vidURLs[0];
-  const wikiLink = data.missions[0].wikiURL;
+  const wikiLink = data.missions[0]?.wikiURL;
 
   const actionItems = [
     [

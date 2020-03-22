@@ -71,7 +71,7 @@ const ActionMenu = ({ items }: Props) => {
                       <Icon name={item.thumbIcon} size={18} />
                     </ThumbWrapper>
                   )}
-                  <Title>{item.title}</Title>
+                  <Title style={{color: colors.text}}>{item.title}</Title>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   {item.preview && <PreviewText style={{ color: colors.uiAccent }}>{item.preview}</PreviewText>}

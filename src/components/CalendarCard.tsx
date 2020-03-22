@@ -41,13 +41,12 @@ const Desc = styled.Text`
 export default ({ data }) => {
   const launchTime = new Date(data.netstamp * 1000);
   const {colors} = useTheme();
-  console.log("XD", data)
   return (
-    <Wrapper style={{backgroundColor: colors.secondary, borderBottomColor: colors.inputBackground}}>
+    <Wrapper style={{backgroundColor: colors.secondary, borderBottomColor: colors.uiAccent}}>
       <Row>
         <DateWrapper style={{backgroundColor: colors.accentBackground}}>
           {data.netstamp === 0 ? (
-            <Day>TBD</Day>
+            <Day style={{color: colors.text}}>TBD</Day>
           ) : (
             <>
               <Day style={{color: colors.text}}>{launchTime.getDate()}</Day>
