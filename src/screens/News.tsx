@@ -1,9 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components/native';
 import { useTheme, RouteProp } from '@react-navigation/native';
-import { ScrollView, RefreshControl } from 'react-native';
-import { useSafeArea } from 'react-native-safe-area-context';
-import Header from '../components/Header';
+import { ScrollView, RefreshControl, View } from 'react-native';
 import { observer } from 'mobx-react';
 import NewsStore from '../stores/News';
 import ArticlePreview from '../components/ArticlePreview';
@@ -49,10 +47,10 @@ const News: React.FC<Props> = observer(() => {
           lastTime = daysDiff;
         }
         return (
-          <>
+          <View key={article.id + index}>
             {showTitle && <Title>{daysDiff === 0 ? "Today" : daysDiff === 1 ? "Yesterday" : "Older"}</Title>}
-            <ArticlePreview key={article.id + index} article={article} timePosted={timePosted} />
-          </>
+            <ArticlePreview article={article} timePosted={timePosted} />
+          </View>
         )
       }
       )}

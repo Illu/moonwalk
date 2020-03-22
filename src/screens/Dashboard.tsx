@@ -27,6 +27,7 @@ const Dashboard = observer(() => {
 
   useEffect(() => {
     loadData();
+    launchesStore.initApp();
   }, [])
 
   const isLoading = newsStore.state !== STATES.SUCCESS || launchesStore.state !== STATES.SUCCESS;
