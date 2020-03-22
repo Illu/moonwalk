@@ -14,3 +14,4 @@ export {default as Globe} from './globe.svg';
 export {default as Github} from './github.svg';
 export {default as Circle} from './circle.svg';
 export {default as CheckCircle} from './check-circle.svg';
+export {default as Alert} from './alert-circle.svg';

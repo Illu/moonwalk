@@ -9,6 +9,7 @@ import Countdown from '../common/Countdown';
 import { STATES } from '../constants';
 import Preview from '../components/Preview';
 import Loader from '../common/Loader';
+import ErrorCard from '../common/ErrorCard';
 
 const Wrapper = styled.SafeAreaView`
   align-items: center;
@@ -17,13 +18,11 @@ const Wrapper = styled.SafeAreaView`
 
 const Dashboard = observer(() => {
   const launchesStore = useContext(Launches);
-  const newsStore = useContext(News);
   const navigation = useNavigation();
   const { colors } = useTheme();
 
   const loadData = () => {
     launchesStore.loadNextLaunches();
-    newsStore.loadArticles();
   }
 
   useEffect(() => {
@@ -31,22 +30,31 @@ const Dashboard = observer(() => {
     launchesStore.initApp();
   }, [])
 
-  const isLoading = newsStore.state === STATES.LOADING || launchesStore.state === STATES.LOADING;
-
   const data = launchesStore.launches.length > 0 && launchesStore.launches[0];
+  const renderScreenContent = () => {
+    switch (launchesStore.state) {
+      case STATES.IDLE:
+      case STATES.LOADING:
+        return <Loader />
+      case STATES.ERROR:
+        return <ErrorCard message="Something went wrong while retrieving launch data" onRetry={() => loadData()} />
+      default:
+        return (
+          <>
+            <Preview data={data} onPress={() => navigation.navigate('Details', { data })} />
+            <Countdown wsstamp={data.wsstamp} />
+          </>
+        )
+    }
+  }
 
   return (
     <Wrapper>
-      <ScrollView scrollEnabled={false} style={{ width: "100%" }} contentContainerStyle={{ flex: 1 }} refreshControl={
-        <RefreshControl refreshing={isLoading} onRefresh={loadData} tintColor={colors.text} />}
+      <ScrollView scrollEnabled={true} style={{ width: "100%" }} contentContainerStyle={{ flex: 1 }} refreshControl={
+        <RefreshControl refreshing={launchesStore.state === STATES.LOADING} onRefresh={loadData} tintColor={colors.text} />}
       >
         <View style={{ flex: 1 }}>
-          {isLoading || !data ? <Loader /> : (
-            <>
-              <Preview data={data} onPress={() => navigation.navigate('Details', { data })} />
-              <Countdown wsstamp={data.wsstamp} />
-            </>
-          )}
+          {renderScreenContent()}
         </View>
       </ScrollView>
     </Wrapper>

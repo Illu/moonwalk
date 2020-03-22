@@ -39,6 +39,11 @@ const Settings = observer(() => {
         title: 'Say hi 👋',
         icon: 'Twitter',
         action: () => Linking.openURL("https://twitter.com/MaximeNory"),
+      },
+      {
+        title: 'Report an issue',
+        icon: 'ChevronRight',
+        action: () => Linking.openURL("https://github.com/Illu/moonwalk/issues/new")
       }
     ],
     [

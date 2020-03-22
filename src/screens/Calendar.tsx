@@ -5,8 +5,9 @@ import { useTheme } from '@react-navigation/native';
 import { FlatList, Text, RefreshControl, TouchableOpacity, ActivityIndicator, Button, View } from 'react-native';
 import { STATES } from '../constants';
 import CalendarCard from '../components/CalendarCard';
-import { useSafeArea } from 'react-native-safe-area-context';
+import Loader from '../common/Loader';
 import { observer } from 'mobx-react';
+import ErrorCard from '../common/ErrorCard';
 
 const Wrapper = styled.View`
   flex: 1;
@@ -42,7 +43,7 @@ const Calendar: React.FC<Props> = observer(({ navigation }) => {
   if (launchesStore.state === STATES.ERROR) {
     return (
       <Wrapper>
-        <Text>Error</Text>
+        <ErrorCard onRetry={() => refreshCalendar()} message="Could not retrieve upcoming launches, make sure your device is online. If you think this is a bug, go to settings and tap 'Report an issue', or send me a message on Twitter." />
       </Wrapper>
     );
   }
@@ -50,10 +51,10 @@ const Calendar: React.FC<Props> = observer(({ navigation }) => {
   return (
     <Wrapper>
       {launchesStore.state === STATES.LOADING && launchesStore.numberOfLaunches < 5 ? (
-        <Text>Loading</Text>
+        <Loader />
       ) : (
           <FlatList
-            style={{paddingTop: 20}}
+            style={{ paddingTop: 20 }}
             data={launchesStore.launches}
             keyExtractor={item => item.id.toString()}
             renderItem={({ item }) => (

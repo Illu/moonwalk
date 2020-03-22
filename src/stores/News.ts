@@ -1,5 +1,5 @@
 import { decorate, observable } from "mobx"
-import { STATES, API_URL, NEWS_API_URL } from '../constants';
+import { STATES, NEWS_API_URL } from '../constants';
 import { createContext } from "react";
 
 class News {
