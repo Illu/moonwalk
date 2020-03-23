@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/native';
 import { useTheme } from '@react-navigation/native';
-import { ScrollView, Linking, View } from 'react-native';
+import { ScrollView, Linking, View, Animated } from 'react-native';
 import Icon from '../common/Icon';
 import Label from '../common/Label';
 import Countdown from '../common/Countdown';
@@ -11,7 +11,7 @@ import firebase from 'react-native-firebase'
 
 const IMAGE_HEIGHT = 400;
 
-const Image = styled.Image`
+const Image = styled(Animated.Image)`
   height: ${IMAGE_HEIGHT + 50}px;
   width: 100%;
   position: absolute;
@@ -65,9 +65,11 @@ interface Props {
 const Details: React.FC<Props> = ({ route, navigation }) => {
 
   useEffect(() => {
-    firebase.analytics().logEvent("SEE_DETAILS", {value: data.name});
+    firebase.analytics().logEvent("SEE_DETAILS", { value: data.name });
   }, [])
 
+
+  const [scrollY] = useState(new Animated.Value(0));
   const { colors } = useTheme();
   const { data } = route.params;
   const videoLink = data.vidURLs.length > 0 && data.vidURLs[0];
@@ -83,7 +85,7 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
         thumbColor: '#fa8435',
         disabled: !videoLink,
         action: () => {
-          firebase.analytics().logEvent("OPEN_LIVESTREAM", {value: data.name});
+          firebase.analytics().logEvent("OPEN_LIVESTREAM", { value: data.name });
           Linking.openURL(videoLink);
         },
       },
@@ -92,10 +94,10 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
         icon: 'ChevronRight',
         thumbIcon: 'Pin',
         thumbColor: '#2dcd55',
-        action: () => { 
-          const {longitude, latitude} = data.location.pads[0];
-          firebase.analytics().logEvent("OPEN_MAPS", {value: data.name});
-          openMap({longitude, latitude});
+        action: () => {
+          const { longitude, latitude } = data.location.pads[0];
+          firebase.analytics().logEvent("OPEN_MAPS", { value: data.name });
+          openMap({ longitude, latitude });
         },
         disabled: !data.location.pads[0],
         preview: !data.location.pads[0] && 'Unavailable'
@@ -109,16 +111,30 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
         disabled: !wikiLink,
         action: () => {
           Linking.openURL(wikiLink),
-          firebase.analytics().logEvent("OPEN_WIKI", {value: data.name});
-        }, 
+            firebase.analytics().logEvent("OPEN_WIKI", { value: data.name });
+        },
       },
     ],
   ]
 
+  const ImageScale = scrollY.interpolate({
+    inputRange: [-100, 0, 200],
+    outputRange: [1.4, 1.2, 1],
+    extrapolate: 'clamp'
+  })
+
   return (
     <>
-      <Image source={{ uri: data.rocket.imageURL }}></Image>
-      <ScrollView contentContainerStyle={{ paddingTop: IMAGE_HEIGHT }}>
+      <Image source={{ uri: data.rocket.imageURL }} style={{ transform: [{ scale: ImageScale }] }}></Image>
+      <Animated.ScrollView
+        contentContainerStyle={{ paddingTop: IMAGE_HEIGHT }}
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+          {
+            useNativeDriver: true,
+          }
+        )}
+      >
         <View style={{ backgroundColor: colors.background }}>
           <ContentWrapper style={{ backgroundColor: colors.background }}>
             <Title style={{ color: colors.text }}>{data.name}</Title>
@@ -127,7 +143,7 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
             <DescWrapper style={{ backgroundColor: colors.secondary }}>
               <Row>
                 <Icon name="Pin" color={colors.accent} />
-                <Location numberOfLines={2} style={{color: colors.text}}>{data.location.name}</Location>
+                <Location numberOfLines={2} style={{ color: colors.text }}>{data.location.name}</Location>
               </Row>
               {data.missions.map(mission => (
                 <View key={mission.id}>
@@ -143,7 +159,7 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
             <ActionMenu items={actionItems} />
           </ContentWrapper>
         </View>
-      </ScrollView>
+      </Animated.ScrollView>
     </>
   )
 }
