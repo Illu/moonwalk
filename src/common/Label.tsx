@@ -14,7 +14,7 @@ const LabelText = styled.Text`
   font-size: 12px;
 `;
 
-export default ({ text, numberOfLines = 1, color, style }) => {
+export default ({ text, numberOfLines = 1, color = null, style = null }) => {
 
   const {colors} = useTheme();
 

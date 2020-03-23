@@ -52,6 +52,12 @@ const DescWrapper = styled.View`
   margin: 16px 0;
 `;
 
+const Subtitle = styled.Text`
+  margin: 30px 0 0 20px;
+  font-size: 25px;
+  font-weight: bold;
+`;
+
 interface Props {
   route: any;
 }
@@ -117,6 +123,7 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
           <ContentWrapper style={{ backgroundColor: colors.background }}>
             <Title style={{ color: colors.text }}>{data.name}</Title>
             <Countdown wsstamp={data.wsstamp} />
+            <Subtitle style={{ color: colors.text }}>Mission</Subtitle>
             <DescWrapper style={{ backgroundColor: colors.secondary }}>
               <Row>
                 <Icon name="Pin" color={colors.accent} />
