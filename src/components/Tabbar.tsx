@@ -1,11 +1,11 @@
 import styled from 'styled-components/native';
 import React, { useState, useEffect } from 'react';
-import { Animated, Dimensions, View } from 'react-native';
+import { Animated, Dimensions, View, TouchableOpacity } from 'react-native';
 import { useSafeArea } from 'react-native-safe-area-context';
 import { useTheme } from '@react-navigation/native';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Icon from '../common/Icon';
 import { TABBAR_HEIGHT } from '../constants';
+import Pushable from '../common/Pushable';
 
 const Wrapper = styled.View`
   height: ${TABBAR_HEIGHT}px;
@@ -58,19 +58,30 @@ const TabbarComponent = ({ props }) => {
   }, [props.state.index])
 
   return (
-    <View style={{backgroundColor: colors.background}}>
-    <Wrapper insetBottom={insets.bottom}>
-      {props.state.routeNames.map(route => (
-        <TouchableWithoutFeedback key={route} onPress={() => props.navigation.navigate(route)}>
-          <IconWrapper style={{ width: tabbarWidth / 4 }} >
-            <Icon color={colors.text} name={route} />
-          </IconWrapper>
-        </TouchableWithoutFeedback>
-      ))}
-      <TabIndicatorWrapper style={{ left: indicatorPosition, width: tabbarWidth / 4 }} insetBottom={insets.bottom}>
-        <TabIndicator style={{ backgroundColor: colors.accent }} />
-      </TabIndicatorWrapper>
-    </Wrapper>
+    <View style={{ backgroundColor: colors.background }}>
+      <Wrapper insetBottom={insets.bottom}>
+        {props.state.routeNames.map((route, index) => (
+          <Pushable key={route} onPress={() => {
+            const isFocused = props.state.index === index;
+            const event = props.navigation.emit({
+              type: 'tabPress',
+              target: route.key,
+              canPreventDefault: true,
+            });
+            if (!isFocused && !event.defaultPrevented) {
+              props.navigation.navigate(route);
+            }
+          }
+          }>
+            <IconWrapper style={{ width: tabbarWidth / 4 }} >
+              <Icon color={colors.text} name={route} />
+            </IconWrapper>
+          </Pushable>
+        ))}
+        <TabIndicatorWrapper style={{ left: indicatorPosition, width: tabbarWidth / 4 }} insetBottom={insets.bottom}>
+          <TabIndicator style={{ backgroundColor: colors.accent }} />
+        </TabIndicatorWrapper>
+      </Wrapper>
     </View>
   )
 }
