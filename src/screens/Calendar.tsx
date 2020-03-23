@@ -14,13 +14,18 @@ const Wrapper = styled.View`
   flex: 1;
 `;
 
+const Title = styled.Text`
+  margin: 20px 16px 10px 16px;
+  font-size: 20px;
+  font-weight: bold;
+`
+
 interface Props {
   route: any;
 }
 
 const Calendar: React.FC<Props> = observer(({ navigation }) => {
   const { colors } = useTheme();
-
   const [page, setPage] = useState(0);
   const launchesStore = useContext(Launches);
   const refreshCalendar = () => {
@@ -49,6 +54,9 @@ const Calendar: React.FC<Props> = observer(({ navigation }) => {
     );
   }
 
+  let titleIndex = 0;
+  const sectionTitles = ["Scheduled", "To be defined"];
+
   return (
     <Wrapper>
       {launchesStore.state === STATES.LOADING && launchesStore.numberOfLaunches < 5 ? (
@@ -58,11 +66,20 @@ const Calendar: React.FC<Props> = observer(({ navigation }) => {
             style={{ paddingTop: 20 }}
             data={launchesStore.launches}
             keyExtractor={item => item.id.toString()}
-            renderItem={({ item }) => (
-              <TouchableOpacity key={item.id} onPress={() => navigation.navigate('Details', { data: item })}>
-                <CalendarCard data={item} />
-              </TouchableOpacity>
-            )}
+            renderItem={({ item }) => {
+
+              const showTitle = titleIndex === 0 || (item.netstamp === 0 && titleIndex === 1);
+              if (showTitle) titleIndex++;
+
+              return (
+                <>
+                  {showTitle && <Title style={{ color: colors.text }}>{sectionTitles[titleIndex - 1]}</Title>}
+                  <TouchableOpacity key={item.id} onPress={() => navigation.navigate('Details', { data: item })}>
+                    <CalendarCard data={item} />
+                  </TouchableOpacity>
+                </>
+              )
+            }}
             ListFooterComponent={() => (
               <View style={{ margin: 20 }}>
                 {showMoreEnabled &&
