@@ -19,7 +19,6 @@ interface Props {
 }
 
 const Calendar: React.FC<Props> = observer(({ navigation }) => {
-  firebase.analytics().setCurrentScreen('CALENDAR');
   const { colors } = useTheme();
 
   const [page, setPage] = useState(0);
@@ -31,6 +30,7 @@ const Calendar: React.FC<Props> = observer(({ navigation }) => {
 
   useEffect(() => {
     refreshCalendar();
+    firebase.analytics().setCurrentScreen('CALENDAR');
   }, [])
 
   const loadMore = () => {

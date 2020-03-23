@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import { ScrollView, View, Linking } from 'react-native';
 import ActionMenu from '../common/ActionMenu';
 import { useNavigation, useTheme } from '@react-navigation/native';
@@ -17,7 +17,11 @@ const BottomText = styled.Text`
 `;
 
 const Settings = observer(() => {
-  firebase.analytics().setCurrentScreen('SETTINGS');
+
+  useEffect(() => {
+    firebase.analytics().setCurrentScreen('SETTINGS');
+  }, [])
+
   const navigation = useNavigation();
   const {colors} = useTheme();
   const launchesStore = useContext(Launches);
@@ -46,9 +50,11 @@ const Settings = observer(() => {
         title: 'Rate the App',
         icon: 'ChevronRight',
         action: () => {
-            if (StoreReview.isAvailable) {
+          if (StoreReview.isAvailable) {
+              firebase.analytics().logEvent("OPEN_REVIEW", {mode: "in-app"});
               StoreReview.requestReview();
             } else {
+              firebase.analytics().logEvent("OPEN_REVIEW", {mode: "link"});
               Linking.openURL(
                 "https://itunes.apple.com/us/app/moonwalk-rocket-launches/id1439376174"
               );
@@ -58,12 +64,18 @@ const Settings = observer(() => {
       {
         title: 'Say hi 👋',
         icon: 'Twitter',
-        action: () => Linking.openURL("https://twitter.com/MaximeNory"),
+        action: () => {
+          firebase.analytics().logEvent("OPEN_TWITTER", {});
+          Linking.openURL("https://twitter.com/MaximeNory");
+        },
       },
       {
         title: 'Report an issue',
         icon: 'ChevronRight',
-        action: () => Linking.openURL("https://github.com/Illu/moonwalk/issues/new")
+        action: () => {
+          firebase.analytics().logEvent("OPEN_ISSUE", {});
+          Linking.openURL("https://github.com/Illu/moonwalk/issues/new");
+        }
       }
     ],
     [
@@ -75,12 +87,18 @@ const Settings = observer(() => {
       {
         title: 'Source code',
         icon: 'Github',
-        action: () => Linking.openURL("https://github.com/Illu/moonwalk"),
+        action: () => {
+          firebase.analytics().logEvent("OPEN_SOURCECODE", {});
+          Linking.openURL("https://github.com/Illu/moonwalk")
+        },
       },
       {
         title: 'About',
         icon: 'ChevronRight',
-        action: () => Linking.openURL("https://maximenory.com/moonwalk/"),
+        action: () => {
+          firebase.analytics().logEvent("OPEN_TOS", {});
+          Linking.openURL("https://maximenory.com/moonwalk/")
+        },
         preview: `v${Package.version}`,
       },
     ],

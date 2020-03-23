@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 import React from 'react';
 import {Linking} from 'react-native';
 import { useTheme } from '@react-navigation/native';
+import firebase from 'react-native-firebase'
 
 const Wrapper = styled.TouchableOpacity`
   width: 100%;
@@ -47,9 +48,14 @@ interface Props {
 
 const ArticlePreview: React.FC<Props> = ({ article, timePosted }) => {
   const { colors } = useTheme();
+
+  const onArticlePress = () => {
+    firebase.analytics().logEvent("OPEN_NEWS_ARTICLE", {title: article.title, site: article.news_site_long});
+    Linking.openURL(article.url)
+  }
   
   return (
-    <Wrapper style={{backgroundColor: colors.secondary, borderColor: colors.uiAccent}} onPress={() => Linking.openURL(article.url)}>
+    <Wrapper style={{backgroundColor: colors.secondary, borderColor: colors.uiAccent}} onPress={onArticlePress}>
       <Thumbnail source={{ uri: article.featured_image }} />
       <DetailsWrapper>
         <Title style={{ color: colors.text }}>{article.title}</Title>

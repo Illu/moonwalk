@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components/native';
 import { useTheme } from '@react-navigation/native';
 import { ScrollView, View, Linking } from 'react-native';
 import LicensesData from '../Licenses.json';
 import Icon from '../common/Icon';
 import Label from '../common/Label';
+import firebase from 'react-native-firebase'
 
 const ItemWrapper = styled.TouchableOpacity`
   border-bottom-width: 0.5px;
@@ -29,6 +30,10 @@ const Row = styled.View`
 `;
 
 const Licenses = () => {
+
+  useEffect(() => {
+    firebase.analytics().setCurrentScreen('LICENSES');
+  }, [])
 
   const { colors } = useTheme();
 

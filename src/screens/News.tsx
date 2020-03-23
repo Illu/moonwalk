@@ -21,7 +21,6 @@ interface Props {
 }
 
 const News: React.FC<Props> = observer(() => {
-  firebase.analytics().setCurrentScreen('NEWS');
 
   const { colors } = useTheme();
   const newsStore = useContext(NewsStore);
@@ -34,6 +33,7 @@ const News: React.FC<Props> = observer(() => {
 
   useEffect(() => {
     loadData();
+    firebase.analytics().setCurrentScreen('NEWS');
   }, [])
 
   const currentTime = new Date().getTime() / 1000;

@@ -34,7 +34,7 @@ const HomeStack = () => {
   return (
     <HomeNav.Navigator >
       <HomeNav.Screen options={{
-        headerTranslucent: true,
+        headerTranslucent: false,
         headerHideShadow: true,
         headerStyle: { backgroundColor: colors.background },
         headerRight: HeaderSettingsButton,
@@ -44,7 +44,9 @@ const HomeStack = () => {
       <HomeNav.Screen name="Settings" component={Settings} />
       <HomeNav.Screen name="Notifications" component={NotificationsSettings} />
       <HomeNav.Screen name="Appearance" component={AppearanceSettings} />
-      <HomeNav.Screen name="Licenses" options={{headerLargeTitle: true, headerHideShadow: true,}} component={Licenses} />
+      <HomeNav.Screen name="Licenses" options={{
+        headerLargeTitle: true, headerHideShadow: true,
+      }} component={Licenses} />
     </HomeNav.Navigator>
   )
 }

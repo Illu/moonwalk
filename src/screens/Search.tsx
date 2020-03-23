@@ -1,6 +1,6 @@
-import React, { Component, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import styled from "styled-components";
-import { observer, inject } from "mobx-react";
+import { observer } from "mobx-react";
 import { TouchableOpacity, Linking } from "react-native";
 import Searchbar from "../components/SearchBar";
 import ResultCard from "../components/ResultCard";
@@ -32,16 +32,26 @@ const ResultCount = styled.Text`
 `;
 
 const SearchScreen = observer(({ navigation }) => {
-  firebase.analytics().setCurrentScreen('SEARCH');
+
+  useEffect(() => {
+    firebase.analytics().setCurrentScreen('SEARCH');
+  }, [])
+
   const showDetails = data => {
     navigation.navigate("Details", { data });
   };
   const searchStore = useContext(Search);
   const {colors} = useTheme();
   const { results, searchLaunches, totalResults, state } = searchStore;
+
+  const launchSearch = (text: string) => {
+    firebase.analytics().logEvent("SEARCH", {value: text});
+    searchLaunches(text)
+  }
+
   return (
     <ContentWrapper>
-      <Searchbar launchSearch={str => searchLaunches(str)} />
+      <Searchbar launchSearch={launchSearch} />
       <ScrollWrapper contentContainerStyle={{ alignItems: "center"}}>
         {state === STATES.LOADING && <Loader />}
         {results.length >= 0 && state === STATES.SUCCESS && (

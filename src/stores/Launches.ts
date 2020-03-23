@@ -5,6 +5,7 @@ import { Platform } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import PushNotification from "react-native-push-notification";
 import PushNotificationIOS from "@react-native-community/push-notification-ios"
+import firebase from 'react-native-firebase'
 
 class Launches {
   state = STATES.IDLE;
@@ -32,20 +33,22 @@ class Launches {
         this.state = STATES.SUCCESS;
       })
       .catch(err => {
+        firebase.analytics().logEvent("LOAD_LAUNCHES_ERROR", {});
         this.state = STATES.ERROR;
       });
   }
 
   loadMoreLaunches = numberOfLaunches => {
+    firebase.analytics().logEvent("LOAD_MORE_LAUNCHES", {value: numberOfLaunches});
     this.state = STATES.LOADING;
     fetch(`${API_URL}next/${numberOfLaunches}?offset=${this.launches.length}`)
       .then(data => data.json())
       .then(data => {
         this.launches = this.launches.concat(data.launches);
         this.state = STATES.SUCCESS;
-        console.log("XD")
       })
       .catch(err => {
+        firebase.analytics().logEvent("LOAD_LAUNCHES_ERROR", {});
         this.state = STATES.ERROR;
       });
   };
@@ -62,6 +65,7 @@ class Launches {
   toggleNotifications = Platform.select({
     ios: async () => {
       this.notifications.enabled = !this.notifications.enabled;
+      firebase.analytics().logEvent("TOGGLE_NOTIFICATIONS", {value: this.notifications.enabled});
       this.storeNotificationSettings();
       if (this.notifications.enabled) {
         PushNotificationIOS.requestPermissions();
@@ -79,6 +83,7 @@ class Launches {
   changeNotificationDelay = (time: number) => {
     if (this.notifications.delay + time >= 0) {
       this.notifications.delay += time;
+      firebase.analytics().logEvent("SET_NOTIFICATION_DELAY", {value: this.notifications.delay});
       this.storeNotificationSettings();
     }
   };
@@ -91,8 +96,11 @@ class Launches {
             if (plannedNotifications.length > 0) {
               PushNotificationIOS.cancelAllLocalNotifications();
             }
+            const fireDate = new Date((data.wsstamp - this.notifications.delay * 60) * 1000)
+            console.log("fireDate", fireDate);
+            console.log("fireDateXD", fireDate.toISOString);
             PushNotificationIOS.scheduleLocalNotification({
-              fireDate: ((data.wsstamp - this.notifications.delay * 60) * 1000).toString(),
+              fireDate: fireDate.toISOString(),
               alertBody: `🚀 ${data.name} will launch in just ${
                 this.notifications.delay
               } minutes!`

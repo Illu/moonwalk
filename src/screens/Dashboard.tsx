@@ -3,7 +3,6 @@ import styled from 'styled-components/native';
 import { useTheme, useNavigation } from '@react-navigation/native';
 import { observer } from 'mobx-react';
 import Launches from '../stores/Launches';
-import News from '../stores/News';
 import { ScrollView, RefreshControl, View } from 'react-native';
 import Countdown from '../common/Countdown';
 import { STATES } from '../constants';
@@ -18,7 +17,6 @@ const Wrapper = styled.SafeAreaView`
 `;
 
 const Dashboard = observer(() => {
-  firebase.analytics().setCurrentScreen('DASHBOARD');
 
   const launchesStore = useContext(Launches);
   const navigation = useNavigation();
@@ -30,6 +28,7 @@ const Dashboard = observer(() => {
 
   useEffect(() => {
     loadData();
+    firebase.analytics().setCurrentScreen('DASHBOARD');
     launchesStore.initApp();
   }, [])
 
@@ -49,6 +48,10 @@ const Dashboard = observer(() => {
           </>
         )
     }
+  }
+
+  if (data) {
+    launchesStore.scheduleNotification(data);
   }
 
   return (

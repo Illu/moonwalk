@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components/native';
 import { useTheme } from '@react-navigation/native';
 import { ScrollView, Linking, View } from 'react-native';
@@ -7,6 +7,7 @@ import Label from '../common/Label';
 import Countdown from '../common/Countdown';
 import ActionMenu from '../common/ActionMenu';
 import openMap from "react-native-open-maps";
+import firebase from 'react-native-firebase'
 
 const IMAGE_HEIGHT = 400;
 
@@ -57,6 +58,10 @@ interface Props {
 
 const Details: React.FC<Props> = ({ route, navigation }) => {
 
+  useEffect(() => {
+    firebase.analytics().logEvent("SEE_DETAILS", {value: data.name});
+  }, [])
+
   const { colors } = useTheme();
   const { data } = route.params;
   const videoLink = data.vidURLs.length > 0 && data.vidURLs[0];
@@ -71,7 +76,10 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
         thumbIcon: !videoLink ? 'VideoOff' : 'Video',
         thumbColor: '#fa8435',
         disabled: !videoLink,
-        action: () => Linking.openURL(videoLink),
+        action: () => {
+          firebase.analytics().logEvent("OPEN_LIVESTREAM", {value: data.name});
+          Linking.openURL(videoLink);
+        },
       },
       {
         title: 'Location',
@@ -79,8 +87,9 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
         thumbIcon: 'Pin',
         thumbColor: '#2dcd55',
         action: () => { 
-          const {longitude, latitude} = data.location.pads[0]
-          openMap({longitude, latitude})
+          const {longitude, latitude} = data.location.pads[0];
+          firebase.analytics().logEvent("OPEN_MAPS", {value: data.name});
+          openMap({longitude, latitude});
         },
         disabled: !data.location.pads[0],
         preview: !data.location.pads[0] && 'Unavailable'
@@ -92,7 +101,10 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
         thumbIcon: 'Globe',
         thumbColor: '#1889ff',
         disabled: !wikiLink,
-        action: () => Linking.openURL(wikiLink),
+        action: () => {
+          Linking.openURL(wikiLink),
+          firebase.analytics().logEvent("OPEN_WIKI", {value: data.name});
+        }, 
       },
     ],
   ]

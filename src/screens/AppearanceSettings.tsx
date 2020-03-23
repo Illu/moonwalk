@@ -6,34 +6,34 @@ import ActionMenu from '../common/ActionMenu';
 import AppState from '../stores/AppState';
 import { observer } from 'mobx-react';
 import { Themes } from '../types';
-
-const Wrapper = styled.View`
-  margin: 30px 20px;
-  border-radius: 10px;
-  padding: 20px;
-`;
+import firebase from 'react-native-firebase'
 
 const AppearanceSettings = observer(() => {
 
   const {colors} = useTheme();
   const appStateStore = useContext(AppState);
 
+  const switchTheme = (newTheme: Themes) => {
+    appStateStore.setTheme(newTheme);
+    firebase.analytics().logEvent("SWITCH_THEME", {value: newTheme})
+  }
+
   const items = [
     [
       {
         title: 'Automatic',
         icon: appStateStore.theme === Themes.automatic ? 'CheckCircle' : 'Circle',
-        action: () => appStateStore.setTheme(Themes.automatic),
+        action: () => switchTheme(Themes.automatic),
       },
       {
         title: 'Light',
         icon: appStateStore.theme === Themes.light ? 'CheckCircle' : 'Circle',
-        action: () => appStateStore.setTheme(Themes.light),
+        action: () => switchTheme(Themes.light),
       },
       {
         title: 'Dark',
         icon: appStateStore.theme === Themes.dark ? 'CheckCircle' : 'Circle',
-        action: () => appStateStore.setTheme(Themes.dark),
+        action: () => switchTheme(Themes.dark),
       },
     ],
   ]
