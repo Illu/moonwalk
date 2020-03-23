@@ -20,6 +20,7 @@ import Licenses from './src/screens/Licenses';
 import AppState from './src/stores/AppState';
 import { Themes } from './src/types';
 import { observer } from 'mobx-react';
+import AppIconSettings from './src/screens/AppIconSettings';
 
 enableScreens();
 
@@ -44,6 +45,7 @@ const HomeStack = () => {
       <HomeNav.Screen name="Settings" component={Settings} />
       <HomeNav.Screen name="Notifications" component={NotificationsSettings} />
       <HomeNav.Screen name="Appearance" component={AppearanceSettings} />
+      <HomeNav.Screen name="Icon" component={AppIconSettings} />
       <HomeNav.Screen name="Licenses" options={{
         headerLargeTitle: true, headerHideShadow: true,
       }} component={Licenses} />

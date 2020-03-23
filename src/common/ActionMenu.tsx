@@ -40,6 +40,13 @@ const ThumbWrapper = styled.View`
   justify-content: center;
 `;
 
+const ThumbImage = styled.Image`
+  border-radius: 10px;
+  height: 70px;
+  width: 70px;
+  margin-right: 20px;
+`;
+
 type Item = {
   title: string,
   icon: string,
@@ -48,6 +55,7 @@ type Item = {
   thumbIcon?: string,
   thumbColor?: string,
   disabled?: boolean,
+  thumbImage?: any,
 }
 
 interface Props {
@@ -71,7 +79,10 @@ const ActionMenu = ({ items }: Props) => {
                       <Icon name={item.thumbIcon} size={18} />
                     </ThumbWrapper>
                   )}
-                  <Title style={{color: colors.text}}>{item.title}</Title>
+                  {item.thumbImage && (
+                    <ThumbImage source={{ uri: item.thumbImage }} />
+                  )}
+                  <Title style={{ color: colors.text }}>{item.title}</Title>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   {item.preview && <PreviewText style={{ color: colors.uiAccent }}>{item.preview}</PreviewText>}

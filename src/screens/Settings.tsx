@@ -43,6 +43,7 @@ const Settings = observer(() => {
       {
         title: 'App Icon',
         icon: 'ChevronRight',
+        action: () => navigation.navigate("Icon")
       },
     ],
     [

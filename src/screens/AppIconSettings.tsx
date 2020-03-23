@@ -6,31 +6,28 @@ import { observer } from 'mobx-react';
 import { Themes } from '../types';
 import firebase from 'react-native-firebase'
 
-const AppearanceSettings = observer(() => {
+const AppIconSettings = observer(() => {
 
   const appStateStore = useContext(AppState);
 
-  const switchTheme = (newTheme: Themes) => {
-    appStateStore.setTheme(newTheme);
-    firebase.analytics().logEvent("SWITCH_THEME", {value: newTheme})
+  const switchIcon = (newIcon: string) => {
+    
+    // firebase.analytics().logEvent("SWITCH_ICON", {value: newIcon})
   }
 
   const items = [
     [
       {
-        title: 'Automatic',
-        icon: appStateStore.theme === Themes.automatic ? 'CheckCircle' : 'Circle',
-        action: () => switchTheme(Themes.automatic),
-      },
-      {
         title: 'Light',
         icon: appStateStore.theme === Themes.light ? 'CheckCircle' : 'Circle',
-        action: () => switchTheme(Themes.light),
+        thumbImage: 'https://placekitten.com/400/400',
+        action: () => switchIcon(),
       },
       {
         title: 'Dark',
         icon: appStateStore.theme === Themes.dark ? 'CheckCircle' : 'Circle',
-        action: () => switchTheme(Themes.dark),
+        thumbImage: 'https://placekitten.com/400/400',
+        action: () => switchIcon(),
       },
     ],
   ]
@@ -42,4 +39,4 @@ const AppearanceSettings = observer(() => {
   )
 })
 
-export default AppearanceSettings;
+export default AppIconSettings;

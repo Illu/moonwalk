@@ -67,10 +67,8 @@ const Calendar: React.FC<Props> = observer(({ navigation }) => {
             data={launchesStore.launches}
             keyExtractor={item => item.id.toString()}
             renderItem={({ item }) => {
-
               const showTitle = titleIndex === 0 || (item.netstamp === 0 && titleIndex === 1);
               if (showTitle) titleIndex++;
-
               return (
                 <>
                   {showTitle && <Title style={{ color: colors.text }}>{sectionTitles[titleIndex - 1]}</Title>}
