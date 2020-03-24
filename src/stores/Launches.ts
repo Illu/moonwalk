@@ -97,8 +97,6 @@ class Launches {
               PushNotificationIOS.cancelAllLocalNotifications();
             }
             const fireDate = new Date((data.wsstamp - this.notifications.delay * 60) * 1000)
-            console.log("fireDate", fireDate);
-            console.log("fireDateXD", fireDate.toISOString);
             PushNotificationIOS.scheduleLocalNotification({
               fireDate: fireDate.toISOString(),
               alertBody: `🚀 ${data.name} will launch in just ${

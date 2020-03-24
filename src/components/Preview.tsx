@@ -50,6 +50,7 @@ const Preview = ({ data, onPress }) => {
     <ItemWrapper onPress={onPress}>
       <Thumbnail
         source={{ uri: data.rocket.imageURL }}
+        imageStyle={{opacity: 0.9}}
       >
         <Title>{data.name}</Title>
         <Time>{data.windowstart}</Time>

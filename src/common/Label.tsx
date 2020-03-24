@@ -12,6 +12,7 @@ const Wrapper = styled.View`
 const LabelText = styled.Text`
   font-weight: bold;
   font-size: 12px;
+  color : #FFFFFF;
 `;
 
 export default ({ text, numberOfLines = 1, color = null, style = null }) => {
@@ -20,6 +21,6 @@ export default ({ text, numberOfLines = 1, color = null, style = null }) => {
 
   return (
   <Wrapper style={[{backgroundColor: color || colors.accent}, {...style}]}>
-    <LabelText style={{color: colors.secondary}} numberOfLines={numberOfLines}>{text}</LabelText>
+    <LabelText numberOfLines={numberOfLines}>{text}</LabelText>
   </Wrapper>
 )};
