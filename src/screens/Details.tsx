@@ -124,7 +124,7 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
   })
 
   return (
-    <>
+    <View style={{overflow: 'hidden'}}>
       <Image source={{ uri: data.rocket.imageURL }} style={{ transform: [{ scale: ImageScale }] }}></Image>
       <Animated.ScrollView
         contentContainerStyle={{ paddingTop: IMAGE_HEIGHT }}
@@ -160,7 +160,7 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
           </ContentWrapper>
         </View>
       </Animated.ScrollView>
-    </>
+    </View>
   )
 }
 

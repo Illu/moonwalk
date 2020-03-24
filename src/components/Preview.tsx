@@ -38,13 +38,13 @@ interface Props {
 
 const Preview = ({ data, onPress }) => {
 
-  const now = new Date();
-  const timeLeft = data.wsstamp * 1000 - now.getTime();
-  const seconds = Math.floor(timeLeft / 1000);
-  const minutes = Math.floor(seconds / 60);
-  const hours = Math.floor(minutes / 60);
-  const days = Math.floor(hours / 24);
-  const finalTime = timeLeft < 0 ? 'TBD' : `${days > 0 ? days + " days" : ''} ${hours % 24} hour${hours % 24 !== 1 ? 's' : ''}`
+  // const now = new Date();
+  // const timeLeft = data.wsstamp * 1000 - now.getTime();
+  // const seconds = Math.floor(timeLeft / 1000);
+  // const minutes = Math.floor(seconds / 60);
+  // const hours = Math.floor(minutes / 60);
+  // const days = Math.floor(hours / 24);
+  // const finalTime = timeLeft < 0 ? 'TBD' : `${days > 0 ? days + " days" : ''} ${hours % 24} hour${hours % 24 !== 1 ? 's' : ''}`
 
   return (
     <ItemWrapper onPress={onPress}>
@@ -52,7 +52,7 @@ const Preview = ({ data, onPress }) => {
         source={{ uri: data.rocket.imageURL }}
       >
         <Title>{data.name}</Title>
-        <Time>{finalTime}</Time>
+        <Time>{data.windowstart}</Time>
       </Thumbnail>
     </ItemWrapper>
   )

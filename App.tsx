@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { NavigationContainer, ThemeProvider, useTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Dashboard from './src/screens/Dashboard';
-import { darkTheme, lightTheme } from './theme';
+import { darkTheme, lightTheme } from './src/theme';
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 import Details from './src/screens/Details';
 import Settings from './src/screens/Settings';
