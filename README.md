@@ -19,8 +19,6 @@ $ cd moonwalk
 
 $ yarn
 
-$ yarn build-ios
-
 $ react-native run-ios
 ```
 
@@ -41,6 +39,20 @@ Although not deployed on the Google Play Store yet, the app is able to run on An
 If you find a bug, feel free to open an issue or submit a pull request.
 
 New ideas are always welcome, if you have an idea to change or add a feature, let me know by opening an issue or messaging me on [Twitter](https://twitter.com/MaximeNory).
+
+## Standalone build
+
+```bash
+
+$ yarn build-ios
+
+```
+
+then, in XCode, right click on the moonwalk target -> "Add files to Moonwalk" -> select the asset folder, and make sure the 'create folder references' checkbox is ticked.
+
+You should be able to build the app with ⌘(cmd)+B.
+
+
 
 ## Licence
 
