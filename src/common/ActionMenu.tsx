@@ -80,7 +80,7 @@ const ActionMenu = ({ items }: Props) => {
                     </ThumbWrapper>
                   )}
                   {item.thumbImage && (
-                    <ThumbImage source={{ uri: item.thumbImage }} />
+                    <ThumbImage source={typeof item.thumbImage === "string" ? { uri: item.thumbImage } : item.thumbImage} />
                   )}
                   <Title style={{ color: colors.text }}>{item.title}</Title>
                 </View>

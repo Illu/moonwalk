@@ -6043,6 +6043,11 @@ react-native-appearance@^0.3.2:
     invariant "^2.2.4"
     use-subscription "^1.0.0"
 
+react-native-change-icon@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-change-icon/-/react-native-change-icon-2.0.1.tgz#4f9222360a4d8bd220e4f1ec688f4b614ef2f149"
+  integrity sha512-Q9vcAw6aHgAZV9SBdi+EfeuS9Z7lPSTZexQZd+g5V+Sa+vMzIsa3Airl15X129EwDE0QRLboDes61xJBTtLNZQ==
+
 react-native-firebase@^5.6.0:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.6.0.tgz#6f6123f53cb73477915dd55c55f3e1de91db38d2"

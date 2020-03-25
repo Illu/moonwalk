@@ -9,9 +9,15 @@ class AppState {
   }
 
   theme = Themes.automatic;
+  appIcon = "logo_white";
 
   setTheme = (newTheme: Themes) => {
     this.theme = newTheme;
+    this.saveData();
+  }
+
+  setAppIcon = (newIcon: string) => {
+    this.appIcon = newIcon;
     this.saveData();
   }
 
@@ -19,7 +25,9 @@ class AppState {
     try {
       const value = await AsyncStorage.getItem("@Moonwalk:settings");
       if (value !== null) {
-        this.theme = JSON.parse(value);
+        const data = JSON.parse(value);
+        this.theme = data.theme;
+        this.appIcon = data.appIcon;
       }
     } catch (error) { }
   }
@@ -28,16 +36,17 @@ class AppState {
     try {
       await AsyncStorage.setItem(
         "@Moonwalk:settings",
-        JSON.stringify(this.theme)
+        JSON.stringify({theme: this.theme, appIcon: this.appIcon})
       );
     } catch (error) { }
   }
-
 }
 
 decorate(AppState, {
   theme: observable,
+  appIcon: observable,
   setTheme: action,
+  setAppIcon: action,
 })
 
 export default createContext(new AppState())
