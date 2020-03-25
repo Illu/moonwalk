@@ -9,7 +9,7 @@ class AppState {
   }
 
   theme = Themes.automatic;
-  appIcon = "logo_white";
+  appIcon = "Default";
 
   setTheme = (newTheme: Themes) => {
     this.theme = newTheme;
@@ -27,7 +27,7 @@ class AppState {
       if (value !== null) {
         const data = JSON.parse(value);
         this.theme = data.theme;
-        this.appIcon = data.appIcon;
+        this.appIcon = data.appIcon || "Default";
       }
     } catch (error) { }
   }

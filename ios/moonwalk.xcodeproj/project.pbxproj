@@ -21,6 +21,8 @@
 		67972AC594724E01BFAA4A4B /* Quicksand-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9ED045F782AE487C87436AC8 /* Quicksand-SemiBold.ttf */; };
 		6CE12614E387450A94D9D6EE /* libPods-moonwalk-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3555F528CF8CBA0E6DE789FB /* libPods-moonwalk-tvOSTests.a */; };
 		87FAA3ED61884E6496A7BAA4 /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 038ADF0CC6D54B91AA7EB6CA /* Quicksand-Regular.ttf */; };
+		9C454662242C15A000814CC2 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 9C454661242C15A000814CC2 /* assets */; };
+		9C4BB37B242C0F07006DA12A /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 008F07F21AC5B25A0029DE68 /* main.jsbundle */; };
 		9C697327240C518500E12C34 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C697326240C518400E12C34 /* GoogleService-Info.plist */; };
 		9CC646D3242BCC2E0087DAC0 /* logo_lightblue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC646C9242BCC2B0087DAC0 /* logo_lightblue@2x.png */; };
 		9CC646D4242BCC2E0087DAC0 /* logo_milkyway@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC646CA242BCC2B0087DAC0 /* logo_milkyway@3x.png */; };
@@ -79,6 +81,7 @@
 		70F1D56C625C1DAD02FC1AAA /* Pods-moonwalkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moonwalkTests.debug.xcconfig"; path = "Target Support Files/Pods-moonwalkTests/Pods-moonwalkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7DC88DBDB1BA7FA91BBB132B /* Pods-moonwalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moonwalk.debug.xcconfig"; path = "Target Support Files/Pods-moonwalk/Pods-moonwalk.debug.xcconfig"; sourceTree = "<group>"; };
 		931F241EEFA54D361B361815 /* libPods-moonwalkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-moonwalkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C454661242C15A000814CC2 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		9C697326240C518400E12C34 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9CC646C9242BCC2B0087DAC0 /* logo_lightblue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_lightblue@2x.png"; sourceTree = "<group>"; };
 		9CC646CA242BCC2B0087DAC0 /* logo_milkyway@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_milkyway@3x.png"; sourceTree = "<group>"; };
@@ -157,6 +160,7 @@
 		13B07FAE1A68108700A75B9A /* moonwalk */ = {
 			isa = PBXGroup;
 			children = (
+				9C454661242C15A000814CC2 /* assets */,
 				9CC646C6242BCA930087DAC0 /* App Icons */,
 				9C697326240C518400E12C34 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -404,10 +408,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C4BB37B242C0F07006DA12A /* main.jsbundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				9CC646D7242BCC2E0087DAC0 /* logo_white@2x.png in Resources */,
 				9C697327240C518500E12C34 /* GoogleService-Info.plist in Resources */,
 				9CC646D8242BCC2E0087DAC0 /* logo_white@3x.png in Resources */,
+				9C454662242C15A000814CC2 /* assets in Resources */,
 				9CC646DB242BCC2E0087DAC0 /* logo_milkyway@2x.png in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				BC481920048245AD848BF5C1 /* Quicksand-Bold.ttf in Resources */,
@@ -455,7 +461,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		0EE899863A19A5351A803489 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
