@@ -10,6 +10,7 @@ import Preview from '../components/Preview';
 import Loader from '../common/Loader';
 import ErrorCard from '../common/ErrorCard';
 import firebase from 'react-native-firebase'
+import HeaderTitleLogo from '../common/HeaderTitleLogo';
 
 const Wrapper = styled.SafeAreaView`
   align-items: center;
@@ -56,6 +57,7 @@ const Dashboard = observer(() => {
 
   return (
     <Wrapper>
+      <HeaderTitleLogo />
       <ScrollView scrollEnabled={true} style={{ width: "100%" }} contentContainerStyle={{ flex: 1 }} refreshControl={
         <RefreshControl refreshing={launchesStore.state === STATES.LOADING} onRefresh={loadData} tintColor={colors.text} />}
       >

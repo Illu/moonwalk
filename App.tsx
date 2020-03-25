@@ -31,13 +31,13 @@ const NewsNav = createNativeStackNavigator();
 const SearchNav = createNativeStackNavigator();
 
 const HomeStack = () => {
-  const { colors } = useTheme();
   return (
     <HomeNav.Navigator >
       <HomeNav.Screen options={{
         headerTranslucent: false,
         headerHideShadow: true,
-        headerStyle: { backgroundColor: colors.background },
+        headerTitle: '',
+        headerStyle: { backgroundColor: 'transparent' },
         headerRight: HeaderSettingsButton,
       }}
         name="Home" component={Dashboard} />
