@@ -7,7 +7,7 @@ A simple way to stay up to date with upcoming space launches, built with [React-
 ## Preview
 
 <p align="center">
-  <img src="https://maximenory.com/public/mwpreview.png" />
+  <img src="https://maximenory.com/public/mwpreview2.png" />
 </p>
 
 ## Installation
@@ -18,8 +18,6 @@ If you want to test the app on a simulator running locally, there's nothing more
 $ cd moonwalk
 
 $ yarn
-
-$ yarn build-ios
 
 $ react-native run-ios
 ```
@@ -34,6 +32,8 @@ Although not deployed on the Google Play Store yet, the app is able to run on An
 
 [MobX](https://mobx.js.org/)
 
+[TypeScript](https://www.typescriptlang.org/)
+
 [Styled-Components](https://www.styled-components.com/)
 
 ## Contribute
@@ -42,8 +42,28 @@ If you find a bug, feel free to open an issue or submit a pull request.
 
 New ideas are always welcome, if you have an idea to change or add a feature, let me know by opening an issue or messaging me on [Twitter](https://twitter.com/MaximeNory).
 
+## Standalone Build
+
+```bash
+
+$ yarn build-ios
+
+```
+
+To see the assets (Images) in your build, open the XCode project, right click on the moonwalk target -> "Add files to Moonwalk" -> select the asset folder, and make sure the 'create folder references' checkbox is ticked.
+
+You should be able to build the app with ⌘(cmd)+B.
+
+## Donate
+
+This app doesn't contain ads. If you like my work, feel free to [buy me a coffee](https://paypal.me/maximenory) 😊
+
 ## Licence
 
 MIT License
 
 See [LICENSE](LICENSE)
+
+<p align="center">
+  <img width="200" src="https://maximenory.com/public/mwlogo.png" />
+</p>
