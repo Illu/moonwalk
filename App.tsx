@@ -42,7 +42,7 @@ const HomeStack = () => {
       }}
         name="Home" component={Dashboard} />
       <HomeNav.Screen name="Details" component={Details} />
-      <HomeNav.Screen name="Settings" component={Settings} />
+      <HomeNav.Screen name="Settings" component={Settings} options={{headerBackTitle: "Home"}} />
       <HomeNav.Screen name="Notifications" component={NotificationsSettings} />
       <HomeNav.Screen name="Appearance" component={AppearanceSettings} />
       <HomeNav.Screen name="Icon" component={AppIconSettings} />
