@@ -4,9 +4,9 @@ import Label from "../common/Label";
 import { MONTHS } from "../constants";
 import { useTheme } from "@react-navigation/native";
 
-const Wrapper = styled.View`
+const Wrapper = styled.View<{isFirst: boolean}>`
   padding: 30px 20px;
-  border-bottom-width: 1px;
+  border-top-width: ${({isFirst}) => isFirst ? 0 : 1}px;
 `;
 
 const DateWrapper = styled.View`
@@ -38,11 +38,11 @@ const Desc = styled.Text`
   ${({ bold }) => bold && "font-weight: bold;"}
 `;
 
-export default ({ data }) => {
+export default ({ data, isFirst = false }) => {
   const launchTime = new Date(data.netstamp * 1000);
   const {colors} = useTheme();
   return (
-    <Wrapper style={{backgroundColor: colors.secondary, borderBottomColor: colors.uiAccent}}>
+    <Wrapper style={{backgroundColor: colors.secondary, borderColor: colors.uiAccent}} isFirst={isFirst}>
       <Row>
         <DateWrapper style={{backgroundColor: colors.accentBackground}}>
           {data.netstamp === 0 ? (
@@ -60,7 +60,6 @@ export default ({ data }) => {
           <Label numberOfLines={2} text={data.lsp.name.length < 50 ? data.lsp.name : data.lsp.abbrev} />
         </ContentWrapper>
       </Row>
-      
     </Wrapper>
   );
 };

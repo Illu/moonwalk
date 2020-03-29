@@ -54,7 +54,7 @@ const News: React.FC<Props> = observer(() => {
         return (
           <View key={article.id + index}>
             {showTitle && <Title style={{color: colors.text}}>{daysDiff === 0 ? "Today" : daysDiff === 1 ? "Yesterday" : "Older"}</Title>}
-            <ArticlePreview article={article} timePosted={timePosted} />
+            <ArticlePreview article={article} timePosted={timePosted} isFirst={showTitle} />
           </View>
         )
       }

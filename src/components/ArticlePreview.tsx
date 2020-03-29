@@ -4,13 +4,13 @@ import {Linking} from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import firebase from 'react-native-firebase'
 
-const Wrapper = styled.TouchableOpacity`
+const Wrapper = styled.TouchableOpacity<{isFirst: boolean}>`
   width: 100%;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   padding: 10px 16px;
-  border-bottom-width: 1px;
+  border-top-width: ${({isFirst}) => isFirst ? 0 : 1}px;
 `;
 
 const Thumbnail = styled.ImageBackground`
@@ -44,9 +44,10 @@ const Dot = styled.View`
 interface Props {
   article: any;
   timePosted: number;
+  isFirst?: boolean;
 }
 
-const ArticlePreview: React.FC<Props> = ({ article, timePosted }) => {
+const ArticlePreview: React.FC<Props> = ({ article, timePosted, isFirst = false }) => {
   const { colors } = useTheme();
 
   const onArticlePress = () => {
@@ -55,7 +56,7 @@ const ArticlePreview: React.FC<Props> = ({ article, timePosted }) => {
   }
   
   return (
-    <Wrapper style={{backgroundColor: colors.secondary, borderColor: colors.uiAccent}} onPress={onArticlePress}>
+    <Wrapper style={{backgroundColor: colors.secondary, borderColor: colors.uiAccent}} onPress={onArticlePress} isFirst={isFirst}>
       <Thumbnail source={{ uri: article.featured_image }} />
       <DetailsWrapper>
         <Title style={{ color: colors.text }}>{article.title}</Title>

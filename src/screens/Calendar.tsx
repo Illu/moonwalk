@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import Launches from '../stores/Launches';
 import styled from 'styled-components/native';
 import { useTheme } from '@react-navigation/native';
-import { FlatList, Text, RefreshControl, TouchableOpacity, ActivityIndicator, Button, View } from 'react-native';
+import { FlatList, RefreshControl, TouchableOpacity, ActivityIndicator, Button, View } from 'react-native';
 import { STATES } from '../constants';
 import CalendarCard from '../components/CalendarCard';
 import Loader from '../common/Loader';
@@ -73,7 +73,7 @@ const Calendar: React.FC<Props> = observer(({ navigation }) => {
                 <>
                   {showTitle && <Title style={{ color: colors.text }}>{sectionTitles[titleIndex - 1]}</Title>}
                   <TouchableOpacity key={item.id} onPress={() => navigation.navigate('Details', { data: item })}>
-                    <CalendarCard data={item} />
+                    <CalendarCard data={item} isFirst={showTitle}/>
                   </TouchableOpacity>
                 </>
               )
