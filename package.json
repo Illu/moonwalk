@@ -2,6 +2,8 @@
   "name": "moonwalk",
   "version": "2.0.0",
   "private": true,
+  "repository": "https://github.com/Illu/moonwalk",
+  "author": "Maxime Nory",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
