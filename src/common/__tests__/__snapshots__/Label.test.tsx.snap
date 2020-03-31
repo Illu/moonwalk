@@ -28,7 +28,7 @@ exports[`Label renders correctly 1`] = `
     style={
       Array [
         Object {
-          "color": "#FFFFFF",
+          "color": "#ffffff",
           "fontSize": 12,
           "fontWeight": "bold",
         },
@@ -68,7 +68,7 @@ exports[`Label renders correctly with a different color 1`] = `
     style={
       Array [
         Object {
-          "color": "#FFFFFF",
+          "color": "#ffffff",
           "fontSize": 12,
           "fontWeight": "bold",
         },
