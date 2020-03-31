@@ -58,3 +58,4 @@ buck-out/
 # Custom
 
 GoogleService-Info.plist
+coverage

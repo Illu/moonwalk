@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignSelf": "flex-start",
+        "borderRadius": 5,
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 10,
+        "paddingBottom": 2,
+        "paddingLeft": 5,
+        "paddingRight": 5,
+        "paddingTop": 2,
+      },
+      Object {
+        "backgroundColor": undefined,
+      },
+      Object {},
+    ]
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "color": "#FFFFFF",
+          "fontSize": 12,
+          "fontWeight": "bold",
+        },
+      ]
+    }
+  >
+    $_LABEL_TEXT_$
+  </Text>
+</View>
+`;
+
+exports[`Label renders correctly with a different color 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignSelf": "flex-start",
+        "borderRadius": 5,
+        "marginBottom": 0,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 10,
+        "paddingBottom": 2,
+        "paddingLeft": 5,
+        "paddingRight": 5,
+        "paddingTop": 2,
+      },
+      Object {
+        "backgroundColor": "salmon",
+      },
+      Object {},
+    ]
+  }
+>
+  <Text
+    numberOfLines={1}
+    style={
+      Array [
+        Object {
+          "color": "#FFFFFF",
+          "fontSize": 12,
+          "fontWeight": "bold",
+        },
+      ]
+    }
+  >
+    $_LABEL_TEXT_$
+  </Text>
+</View>
+`;
