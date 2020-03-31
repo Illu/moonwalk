@@ -1,7 +1,7 @@
-import { decorate, observable, action } from "mobx"
+import { decorate, observable, action } from "mobx";
 import { createContext } from "react";
-import AsyncStorage from '@react-native-community/async-storage';
-import {Themes} from '../types';
+import AsyncStorage from "@react-native-community/async-storage";
+import { Themes } from "../types";
 
 class AppState {
   constructor() {
@@ -14,12 +14,12 @@ class AppState {
   setTheme = (newTheme: Themes) => {
     this.theme = newTheme;
     this.saveData();
-  }
+  };
 
   setAppIcon = (newIcon: string) => {
     this.appIcon = newIcon;
     this.saveData();
-  }
+  };
 
   initStore = async () => {
     try {
@@ -29,17 +29,17 @@ class AppState {
         this.theme = data.theme;
         this.appIcon = data.appIcon || "Default";
       }
-    } catch (error) { }
-  }
+    } catch (error) {}
+  };
 
   saveData = async () => {
     try {
       await AsyncStorage.setItem(
         "@Moonwalk:settings",
-        JSON.stringify({theme: this.theme, appIcon: this.appIcon})
+        JSON.stringify({ theme: this.theme, appIcon: this.appIcon })
       );
-    } catch (error) { }
-  }
+    } catch (error) {}
+  };
 }
 
 decorate(AppState, {
@@ -47,6 +47,6 @@ decorate(AppState, {
   appIcon: observable,
   setTheme: action,
   setAppIcon: action,
-})
+});
 
-export default createContext(new AppState())
+export default createContext(new AppState());

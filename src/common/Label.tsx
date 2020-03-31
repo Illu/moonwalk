@@ -12,15 +12,17 @@ const Wrapper = styled.View`
 const LabelText = styled.Text`
   font-weight: bold;
   font-size: 12px;
-  color : #FFFFFF;
+  color: #ffffff;
 `;
 
 export default ({ text, numberOfLines = 1, color = null, style = null }) => {
-
-  const {colors} = useTheme();
+  const { colors } = useTheme();
 
   return (
-  <Wrapper style={[{backgroundColor: color || colors.accent}, {...style}]}>
-    <LabelText numberOfLines={numberOfLines}>{text}</LabelText>
-  </Wrapper>
-)};
+    <Wrapper
+      style={[{ backgroundColor: color || colors.accent }, { ...style }]}
+    >
+      <LabelText numberOfLines={numberOfLines}>{text}</LabelText>
+    </Wrapper>
+  );
+};

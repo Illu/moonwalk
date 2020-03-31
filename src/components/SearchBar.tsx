@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components/native';
-import { useSafeArea } from 'react-native-safe-area-context';
-import { useTheme } from '@react-navigation/native';
-import Icon from '../common/Icon';
+import React from "react";
+import styled from "styled-components/native";
+import { useSafeArea } from "react-native-safe-area-context";
+import { useTheme } from "@react-navigation/native";
+import Icon from "../common/Icon";
 
 const Wrapper = styled.View<{ insetBottom: number }>`
   justify-content: center;
@@ -23,18 +23,29 @@ const IconWrapper = styled.View`
   left: 24px;
 `;
 
-
 const SearchBar = ({ launchSearch }) => {
   const insets = useSafeArea();
   const { colors } = useTheme();
   return (
-    <Wrapper insetBottom={insets.bottom} >
-      <SearchInput autoCorrect={false} returnKeyType="search" onSubmitEditing={({ nativeEvent }) => launchSearch(nativeEvent.text)} placeholder="Search" placeholderTextColor={colors.placeholderText} style={{ backgroundColor: colors.inputBackground, color: colors.text }} />
-      <IconWrapper >
-        <Icon color={colors.text} name="Search" color={colors.placeholderText} size={20} />
+    <Wrapper insetBottom={insets.bottom}>
+      <SearchInput
+        autoCorrect={false}
+        returnKeyType="search"
+        onSubmitEditing={({ nativeEvent }) => launchSearch(nativeEvent.text)}
+        placeholder="Search"
+        placeholderTextColor={colors.placeholderText}
+        style={{ backgroundColor: colors.inputBackground, color: colors.text }}
+      />
+      <IconWrapper>
+        <Icon
+          color={colors.text}
+          name="Search"
+          color={colors.placeholderText}
+          size={20}
+        />
       </IconWrapper>
     </Wrapper>
-  )
-}
+  );
+};
 
 export default SearchBar;

@@ -4,9 +4,9 @@ import Label from "../common/Label";
 import { MONTHS } from "../constants";
 import { useTheme } from "@react-navigation/native";
 
-const Wrapper = styled.View<{isFirst: boolean}>`
+const Wrapper = styled.View<{ isFirst: boolean }>`
   padding: 30px 20px;
-  border-top-width: ${({isFirst}) => isFirst ? 0 : 1}px;
+  border-top-width: ${({ isFirst }) => (isFirst ? 0 : 1)}px;
 `;
 
 const DateWrapper = styled.View`
@@ -40,24 +40,39 @@ const Desc = styled.Text`
 
 export default ({ data, isFirst = false }) => {
   const launchTime = new Date(data.netstamp * 1000);
-  const {colors} = useTheme();
+  const { colors } = useTheme();
   return (
-    <Wrapper style={{backgroundColor: colors.secondary, borderColor: colors.uiAccent}} isFirst={isFirst}>
+    <Wrapper
+      style={{
+        backgroundColor: colors.secondary,
+        borderColor: colors.uiAccent,
+      }}
+      isFirst={isFirst}
+    >
       <Row>
-        <DateWrapper style={{backgroundColor: colors.accentBackground}}>
+        <DateWrapper style={{ backgroundColor: colors.accentBackground }}>
           {data.netstamp === 0 ? (
-            <Day style={{color: colors.text}}>TBD</Day>
+            <Day style={{ color: colors.text }}>TBD</Day>
           ) : (
             <>
-              <Day style={{color: colors.text}}>{launchTime.getDate()}</Day>
-              <Day style={{color: colors.text}}>{MONTHS[launchTime.getMonth()]}</Day>
+              <Day style={{ color: colors.text }}>{launchTime.getDate()}</Day>
+              <Day style={{ color: colors.text }}>
+                {MONTHS[launchTime.getMonth()]}
+              </Day>
             </>
           )}
         </DateWrapper>
         <ContentWrapper>
-          <Desc bold style={{color: colors.text}}>{data.name}</Desc>
-          <Desc numberOfLines={1} style={{color: colors.text}}>{data.location.name}</Desc>
-          <Label numberOfLines={2} text={data.lsp.name.length < 50 ? data.lsp.name : data.lsp.abbrev} />
+          <Desc bold style={{ color: colors.text }}>
+            {data.name}
+          </Desc>
+          <Desc numberOfLines={1} style={{ color: colors.text }}>
+            {data.location.name}
+          </Desc>
+          <Label
+            numberOfLines={2}
+            text={data.lsp.name.length < 50 ? data.lsp.name : data.lsp.abbrev}
+          />
         </ContentWrapper>
       </Row>
     </Wrapper>

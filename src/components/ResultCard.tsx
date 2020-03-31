@@ -15,19 +15,24 @@ const Title = styled.Text`
   margin-bottom: 5px;
 `;
 
-const Subtitle = styled.Text`
-`;
+const Subtitle = styled.Text``;
 
 const ResultCard = ({ data, showDetails }) => {
   const { name, net } = data;
   const { colors } = useTheme();
 
   return (
-    <Wrapper onPress={() => showDetails(data)} style={{backgroundColor: colors.secondary, borderBottomColor: colors.uiAccent}}>
-      <Title style={{color: colors.text}}>{name}</Title>
-      <Subtitle style={{color: colors.text}}>{net}</Subtitle>
+    <Wrapper
+      onPress={() => showDetails(data)}
+      style={{
+        backgroundColor: colors.secondary,
+        borderBottomColor: colors.uiAccent,
+      }}
+    >
+      <Title style={{ color: colors.text }}>{name}</Title>
+      <Subtitle style={{ color: colors.text }}>{net}</Subtitle>
     </Wrapper>
   );
-}
+};
 
 export default ResultCard;

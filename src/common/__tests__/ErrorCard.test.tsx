@@ -2,7 +2,7 @@ import React from "react";
 import ErrorCard from "../ErrorCard";
 import renderer from "react-test-renderer";
 
-jest.mock('../../common/Icon', () => 'Icon');
+jest.mock("../../common/Icon", () => "Icon");
 
 describe("ErrorCard", () => {
   it("renders correctly with a default message", () => {

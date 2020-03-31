@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components/native';
-import { useTheme } from '@react-navigation/native';
-import { ScrollView, Linking, View, Animated } from 'react-native';
-import Icon from '../common/Icon';
-import Label from '../common/Label';
-import Countdown from '../common/Countdown';
-import ActionMenu from '../common/ActionMenu';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components/native";
+import { useTheme } from "@react-navigation/native";
+import { ScrollView, Linking, View, Animated } from "react-native";
+import Icon from "../common/Icon";
+import Label from "../common/Label";
+import Countdown from "../common/Countdown";
+import ActionMenu from "../common/ActionMenu";
 import openMap from "react-native-open-maps";
-import firebase from 'react-native-firebase'
+import firebase from "react-native-firebase";
 
 const IMAGE_HEIGHT = 400;
 
@@ -63,11 +63,9 @@ interface Props {
 }
 
 const Details: React.FC<Props> = ({ route, navigation }) => {
-
   useEffect(() => {
     firebase.analytics().logEvent("SEE_DETAILS", { value: data.name });
-  }, [])
-
+  }, []);
 
   const [scrollY] = useState(new Animated.Value(0));
   const { colors } = useTheme();
@@ -78,36 +76,38 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
   const actionItems = [
     [
       {
-        title: 'Livestream',
-        icon: 'ChevronRight',
-        preview: !videoLink && 'Unavailable',
-        thumbIcon: !videoLink ? 'VideoOff' : 'Video',
-        thumbColor: '#fa8435',
+        title: "Livestream",
+        icon: "ChevronRight",
+        preview: !videoLink && "Unavailable",
+        thumbIcon: !videoLink ? "VideoOff" : "Video",
+        thumbColor: "#fa8435",
         disabled: !videoLink,
         action: () => {
-          firebase.analytics().logEvent("OPEN_LIVESTREAM", { value: data.name });
+          firebase
+            .analytics()
+            .logEvent("OPEN_LIVESTREAM", { value: data.name });
           Linking.openURL(videoLink);
         },
       },
       {
-        title: 'Location',
-        icon: 'ChevronRight',
-        thumbIcon: 'Pin',
-        thumbColor: '#2dcd55',
+        title: "Location",
+        icon: "ChevronRight",
+        thumbIcon: "Pin",
+        thumbColor: "#2dcd55",
         action: () => {
           const { longitude, latitude } = data.location.pads[0];
           firebase.analytics().logEvent("OPEN_MAPS", { value: data.name });
           openMap({ longitude, latitude });
         },
         disabled: !data.location.pads[0],
-        preview: !data.location.pads[0] && 'Unavailable'
+        preview: !data.location.pads[0] && "Unavailable",
       },
       {
-        title: 'Wikipedia',
-        icon: 'ChevronRight',
-        preview: !wikiLink && 'Unavailable',
-        thumbIcon: 'Globe',
-        thumbColor: '#1889ff',
+        title: "Wikipedia",
+        icon: "ChevronRight",
+        preview: !wikiLink && "Unavailable",
+        thumbIcon: "Globe",
+        thumbColor: "#1889ff",
         disabled: !wikiLink,
         action: () => {
           Linking.openURL(wikiLink),
@@ -115,17 +115,20 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
         },
       },
     ],
-  ]
+  ];
 
   const ImageScale = scrollY.interpolate({
     inputRange: [-100, 0, 200],
     outputRange: [1.4, 1.2, 1],
-    extrapolate: 'clamp'
-  })
+    extrapolate: "clamp",
+  });
 
   return (
-    <View style={{overflow: 'hidden'}}>
-      <Image source={{ uri: data.rocket.imageURL }} style={{ transform: [{ scale: ImageScale }] }}></Image>
+    <View style={{ overflow: "hidden" }}>
+      <Image
+        source={{ uri: data.rocket.imageURL }}
+        style={{ transform: [{ scale: ImageScale }] }}
+      ></Image>
       <Animated.ScrollView
         contentContainerStyle={{ paddingTop: IMAGE_HEIGHT }}
         onScroll={Animated.event(
@@ -143,9 +146,11 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
             <DescWrapper style={{ backgroundColor: colors.secondary }}>
               <Row>
                 <Icon name="Pin" color={colors.accent} />
-                <Location numberOfLines={2} style={{ color: colors.text }}>{data.location.name}</Location>
+                <Location numberOfLines={2} style={{ color: colors.text }}>
+                  {data.location.name}
+                </Location>
               </Row>
-              {data.missions.map(mission => (
+              {data.missions.map((mission) => (
                 <View key={mission.id}>
                   <Label text={mission.typeName} />
                   <View style={{ marginTop: 10 }}>
@@ -161,7 +166,7 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
         </View>
       </Animated.ScrollView>
     </View>
-  )
-}
+  );
+};
 
 export default Details;

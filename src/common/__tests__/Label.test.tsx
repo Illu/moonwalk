@@ -13,7 +13,7 @@ describe("Label", () => {
   it("renders correctly with a different color", () => {
     const props = {
       text: "$_LABEL_TEXT_$",
-      color: "salmon"
+      color: "salmon",
     };
     const tree = renderer.create(<Label {...props} />).toJSON();
     expect(tree).toMatchSnapshot();

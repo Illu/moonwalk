@@ -30,10 +30,9 @@ const Unit = styled.Text`
 
 let timer;
 
-const Countdown = ({wsstamp}: {wsstamp: number}) => {
-  
+const Countdown = ({ wsstamp }: { wsstamp: number }) => {
   const [timeLeft, setTimeLeft] = useState(0);
-  const {colors} = useTheme();
+  const { colors } = useTheme();
 
   useEffect(() => {
     updateTimeLeft();
@@ -46,42 +45,47 @@ const Countdown = ({wsstamp}: {wsstamp: number}) => {
     }
     return () => {
       clearInterval(timer);
-    }
-  }, [])
+    };
+  }, []);
 
   const updateTimeLeft = () => {
     const now = new Date();
     const timeLeft = wsstamp * 1000 - now.getTime();
     setTimeLeft(timeLeft);
-  }
+  };
 
   const seconds = Math.floor(timeLeft / 1000);
   const minutes = Math.floor(seconds / 60);
   const hours = Math.floor(minutes / 60);
   const days = Math.floor(hours / 24);
   const NoData = timeLeft <= 0;
-  
+
   return (
-    <Wrapper style={{backgroundColor: colors.secondary}}>
+    <Wrapper style={{ backgroundColor: colors.secondary }}>
       <UnitWrapper>
-        <Number style={{color: colors.text}}>{NoData ? "-" : days}</Number>
+        <Number style={{ color: colors.text }}>{NoData ? "-" : days}</Number>
         <Unit>{`day${days !== 1 ? "s" : ""}`}</Unit>
       </UnitWrapper>
       <UnitWrapper>
-        <Number style={{color: colors.text}}>{NoData ? "-" : hours % 24}</Number>
+        <Number style={{ color: colors.text }}>
+          {NoData ? "-" : hours % 24}
+        </Number>
         <Unit>{`hour${minutes % 24 !== 1 ? "s" : ""}`}</Unit>
       </UnitWrapper>
       <UnitWrapper>
-        <Number style={{color: colors.text}}>{NoData ? "-" : minutes % 60}</Number>
+        <Number style={{ color: colors.text }}>
+          {NoData ? "-" : minutes % 60}
+        </Number>
         <Unit>{`minute${minutes % 60 !== 1 ? "s" : ""}`}</Unit>
       </UnitWrapper>
       <UnitWrapper>
-        <Number style={{color: colors.text}}>{NoData ? "-" : seconds % 60}</Number>
+        <Number style={{ color: colors.text }}>
+          {NoData ? "-" : seconds % 60}
+        </Number>
         <Unit>{`second${seconds % 60 !== 1 ? "s" : " "}`}</Unit>
       </UnitWrapper>
     </Wrapper>
   );
-}
-
+};
 
 export default Countdown;

@@ -1,5 +1,5 @@
-import React from 'react';
-import * as Svg from '../../assets/icons'
+import React from "react";
+import * as Svg from "../../assets/icons";
 
 interface Props {
   name: string;
@@ -7,15 +7,9 @@ interface Props {
   color?: string;
 }
 
-const Icon: React.FC<Props> = ({ name, size = 22, color = 'white' }) => {
+const Icon: React.FC<Props> = ({ name, size = 22, color = "white" }) => {
   const SvgIcon = (Svg as any)[name];
-  return (
-    <SvgIcon
-      width={size}
-      height={size}
-      color={color}
-    />
-  )
+  return <SvgIcon width={size} height={size} color={color} />;
 };
 
 export default Icon;

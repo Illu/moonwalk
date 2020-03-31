@@ -24,7 +24,7 @@ export const MONTHS = [
   "OCT",
   "SEP",
   "NOV",
-  "DEC"
+  "DEC",
 ];
 
 export const MONTHS_FULL = [
@@ -39,5 +39,5 @@ export const MONTHS_FULL = [
   "September",
   "October",
   "November",
-  "December"
+  "December",
 ];

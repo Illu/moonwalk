@@ -10,7 +10,9 @@
     "start": "react-native start",
     "build-ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --assets-dest ./ios --dev=false --platform='ios'",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prettier-format": "prettier --write '**/*.{js,jsx,ts,tsx,vue,json,yml,yaml,css,scss,less,md,mdx,graphql}'",
+    "prettier-check": "prettier --debug-check '**/*.{js,jsx,ts,tsx,vue,json,yml,yaml,css,scss,less,md,mdx,graphql}'"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.8.1",
@@ -48,6 +50,7 @@
     "eslint": "^6.8.0",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.58.0",
+    "prettier": "^2.0.2",
     "react-test-renderer": "16.9.0"
   },
   "jest": {

@@ -1,18 +1,18 @@
-import { decorate, observable, action } from "mobx"
-import { STATES, API_URL } from '../constants';
+import { decorate, observable, action } from "mobx";
+import { STATES, API_URL } from "../constants";
 import { createContext } from "react";
-import { Platform } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
+import { Platform } from "react-native";
+import AsyncStorage from "@react-native-community/async-storage";
 import PushNotification from "react-native-push-notification";
-import PushNotificationIOS from "@react-native-community/push-notification-ios"
-import firebase from 'react-native-firebase'
+import PushNotificationIOS from "@react-native-community/push-notification-ios";
+import firebase from "react-native-firebase";
 
 class Launches {
   state = STATES.IDLE;
   launches = [];
   notifications = {
     enabled: false,
-    delay: 10
+    delay: 10,
   };
 
   initApp = async () => {
@@ -27,27 +27,29 @@ class Launches {
   loadNextLaunches = (numberOfLaunches = 10) => {
     this.state = STATES.LOADING;
     fetch(`${API_URL}next/${numberOfLaunches}`)
-      .then(data => data.json())
-      .then(data => {
+      .then((data) => data.json())
+      .then((data) => {
         this.launches = data.launches;
         this.state = STATES.SUCCESS;
       })
-      .catch(err => {
+      .catch((err) => {
         firebase.analytics().logEvent("LOAD_LAUNCHES_ERROR", {});
         this.state = STATES.ERROR;
       });
-  }
+  };
 
-  loadMoreLaunches = numberOfLaunches => {
-    firebase.analytics().logEvent("LOAD_MORE_LAUNCHES", {value: numberOfLaunches});
+  loadMoreLaunches = (numberOfLaunches) => {
+    firebase
+      .analytics()
+      .logEvent("LOAD_MORE_LAUNCHES", { value: numberOfLaunches });
     this.state = STATES.LOADING;
     fetch(`${API_URL}next/${numberOfLaunches}?offset=${this.launches.length}`)
-      .then(data => data.json())
-      .then(data => {
+      .then((data) => data.json())
+      .then((data) => {
         this.launches = this.launches.concat(data.launches);
         this.state = STATES.SUCCESS;
       })
-      .catch(err => {
+      .catch((err) => {
         firebase.analytics().logEvent("LOAD_LAUNCHES_ERROR", {});
         this.state = STATES.ERROR;
       });
@@ -59,13 +61,17 @@ class Launches {
         "@Moonwalk:notifications",
         JSON.stringify(this.notifications)
       );
-    } catch (error) { }
+    } catch (error) {}
   };
 
   toggleNotifications = Platform.select({
     ios: async () => {
       this.notifications.enabled = !this.notifications.enabled;
-      firebase.analytics().logEvent("TOGGLE_NOTIFICATIONS", {value: this.notifications.enabled});
+      firebase
+        .analytics()
+        .logEvent("TOGGLE_NOTIFICATIONS", {
+          value: this.notifications.enabled,
+        });
       this.storeNotificationSettings();
       if (this.notifications.enabled) {
         PushNotificationIOS.requestPermissions();
@@ -77,49 +83,50 @@ class Launches {
     android: () => {
       this.notifications.enabled = !this.notifications.enabled;
       this.storeNotificationSettings();
-    }
+    },
   });
 
   changeNotificationDelay = (time: number) => {
     if (this.notifications.delay + time >= 0) {
       this.notifications.delay += time;
-      firebase.analytics().logEvent("SET_NOTIFICATION_DELAY", {value: this.notifications.delay});
+      firebase
+        .analytics()
+        .logEvent("SET_NOTIFICATION_DELAY", {
+          value: this.notifications.delay,
+        });
       this.storeNotificationSettings();
     }
   };
 
   scheduleNotification = Platform.select({
-    ios: data => {
+    ios: (data) => {
       if (this.notifications.enabled) {
         PushNotificationIOS.getScheduledLocalNotifications(
-          plannedNotifications => {
+          (plannedNotifications) => {
             if (plannedNotifications.length > 0) {
               PushNotificationIOS.cancelAllLocalNotifications();
             }
-            const fireDate = new Date((data.wsstamp - this.notifications.delay * 60) * 1000)
+            const fireDate = new Date(
+              (data.wsstamp - this.notifications.delay * 60) * 1000
+            );
             PushNotificationIOS.scheduleLocalNotification({
               fireDate: fireDate.toISOString(),
-              alertBody: `🚀 ${data.name} will launch in just ${
-                this.notifications.delay
-              } minutes!`
+              alertBody: `🚀 ${data.name} will launch in just ${this.notifications.delay} minutes!`,
             });
           }
         );
       }
     },
-    android: data => {
+    android: (data) => {
       if (this.notifications.enabled) {
         PushNotification.cancelAllLocalNotifications();
         PushNotification.localNotificationSchedule({
           date: new Date(data.isostart),
-          message: `🚀 ${data.name} will launch in just ${
-            this.notifications.delay
-          } minutes!`
+          message: `🚀 ${data.name} will launch in just ${this.notifications.delay} minutes!`,
         });
       }
-    }
+    },
   });
-
 }
 
 decorate(Launches, {
@@ -130,6 +137,6 @@ decorate(Launches, {
   changeNotificationDelay: action,
   scheduleNotification: action,
   initApp: action,
-})
+});
 
-export default createContext(new Launches())
+export default createContext(new Launches());

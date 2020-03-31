@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components/native';
-import { Dimensions, StyleSheet, Platform } from 'react-native';
-import SnapCarousel, { ParallaxImage } from 'react-native-snap-carousel'
+import React from "react";
+import styled from "styled-components/native";
+import { Dimensions, StyleSheet, Platform } from "react-native";
+import SnapCarousel, { ParallaxImage } from "react-native-snap-carousel";
 
 const ItemWrapper = styled.TouchableOpacity`
   border-radius: 30px;
@@ -36,10 +36,9 @@ interface Props {
   onItemPress: (item: any) => void;
 }
 
-const screenWidth = Dimensions.get('window').width;
+const screenWidth = Dimensions.get("window").width;
 
 const Carousel: React.FC<Props> = ({ launches, onItemPress }) => {
-
   const renderItem = ({ item, index }, parallaxProps) => {
     const now = new Date();
     const timeLeft = item.wsstamp * 1000 - now.getTime();
@@ -47,7 +46,12 @@ const Carousel: React.FC<Props> = ({ launches, onItemPress }) => {
     const minutes = Math.floor(seconds / 60);
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
-    const finalTime = timeLeft < 0 ? 'TBD' : `${days > 0 ? days + " days" : ''} ${hours % 24} hour${hours % 24 !== 1 ? 's' : ''}`
+    const finalTime =
+      timeLeft < 0
+        ? "TBD"
+        : `${days > 0 ? days + " days" : ""} ${hours % 24} hour${
+            hours % 24 !== 1 ? "s" : ""
+          }`;
 
     return (
       <ItemWrapper onPress={() => onItemPress(item)}>
@@ -61,8 +65,8 @@ const Carousel: React.FC<Props> = ({ launches, onItemPress }) => {
         <Title>{item.name}</Title>
         <Time>{finalTime}</Time>
       </ItemWrapper>
-    )
-  }
+    );
+  };
 
   return (
     <SnapCarousel
@@ -75,25 +79,24 @@ const Carousel: React.FC<Props> = ({ launches, onItemPress }) => {
       inactiveSlideScale={0.9}
       inactiveSlideOpacity={0.5}
     />
-  )
-
-}
+  );
+};
 const styles = StyleSheet.create({
   imageContainer: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
     marginBottom: Platform.select({ ios: 0, android: 1 }), // Prevent a random Android rendering issue
-    backgroundColor: '#000',
+    backgroundColor: "#000",
     borderRadius: 30,
-    opacity: 0.8
+    opacity: 0.8,
   },
   image: {
     ...StyleSheet.absoluteFillObject,
-    resizeMode: 'cover',
+    resizeMode: "cover",
   },
-})
+});
 
-export default Carousel
+export default Carousel;
