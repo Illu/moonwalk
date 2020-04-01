@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import { useTheme } from "@react-navigation/native";
 import Icon from "./Icon";
 import { View } from "react-native";
@@ -74,7 +74,7 @@ const ActionMenu = ({ items }: Props) => {
         >
           {subItems.map((item, i) => (
             <Row
-              key={item.title}
+              key={`${item.title}${i}`}
               style={{
                 borderColor: colors.uiAccent,
                 borderTopWidth: i !== 0 ? 0.5 : 0,
