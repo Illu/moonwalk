@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultCard renders correctly 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": undefined,
+      "borderBottomColor": undefined,
+      "borderBottomWidth": 1,
+      "height": 100,
+      "justifyContent": "center",
+      "opacity": 1,
+      "paddingBottom": 20,
+      "paddingLeft": 20,
+      "paddingRight": 20,
+      "paddingTop": 20,
+      "width": "100%",
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontWeight": "bold",
+          "marginBottom": 5,
+        },
+        Object {
+          "color": "rgb(28, 28, 30)",
+        },
+      ]
+    }
+  >
+    $_TEST_NAME_$
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {},
+        Object {
+          "color": "rgb(28, 28, 30)",
+        },
+      ]
+    }
+  >
+    $_TEST_NET_DATE_$
+  </Text>
+</View>
+`;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import { useTheme } from "@react-navigation/native";
 
 const Wrapper = styled.TouchableOpacity`
