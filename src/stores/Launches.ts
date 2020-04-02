@@ -67,11 +67,9 @@ class Launches {
   toggleNotifications = Platform.select({
     ios: async () => {
       this.notifications.enabled = !this.notifications.enabled;
-      firebase
-        .analytics()
-        .logEvent("TOGGLE_NOTIFICATIONS", {
-          value: this.notifications.enabled,
-        });
+      firebase.analytics().logEvent("TOGGLE_NOTIFICATIONS", {
+        value: this.notifications.enabled,
+      });
       this.storeNotificationSettings();
       if (this.notifications.enabled) {
         PushNotificationIOS.requestPermissions();
@@ -89,11 +87,9 @@ class Launches {
   changeNotificationDelay = (time: number) => {
     if (this.notifications.delay + time >= 0) {
       this.notifications.delay += time;
-      firebase
-        .analytics()
-        .logEvent("SET_NOTIFICATION_DELAY", {
-          value: this.notifications.delay,
-        });
+      firebase.analytics().logEvent("SET_NOTIFICATION_DELAY", {
+        value: this.notifications.delay,
+      });
       this.storeNotificationSettings();
     }
   };

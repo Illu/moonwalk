@@ -54,12 +54,10 @@ const ArticlePreview: React.FC<Props> = ({
   const { colors } = useTheme();
 
   const onArticlePress = () => {
-    firebase
-      .analytics()
-      .logEvent("OPEN_NEWS_ARTICLE", {
-        title: article.title,
-        site: article.news_site_long,
-      });
+    firebase.analytics().logEvent("OPEN_NEWS_ARTICLE", {
+      title: article.title,
+      site: article.news_site_long,
+    });
     Linking.openURL(article.url);
   };
 
