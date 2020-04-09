@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 import React, { useState, useEffect } from "react";
-import { Animated, Dimensions, View, TouchableOpacity } from "react-native";
+import { Animated, Dimensions, View } from "react-native";
 import { useSafeArea } from "react-native-safe-area-context";
 import { useTheme } from "@react-navigation/native";
 import Icon from "../common/Icon";
