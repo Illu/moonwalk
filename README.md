@@ -19,6 +19,8 @@ $ cd moonwalk
 
 $ yarn
 
+$ cd ios && pod install && cd ..
+
 $ react-native run-ios
 ```
 
@@ -47,9 +49,7 @@ New ideas are always welcome, if you have an idea to change or add a feature, le
 ## Standalone Build
 
 ```bash
-
 $ yarn build-ios
-
 ```
 
 To see the assets (Images) in your build, open the XCode project, right click on the moonwalk target -> "Add files to Moonwalk" -> select the asset folder, and make sure the 'create folder references' checkbox is ticked.
