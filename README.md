@@ -12,7 +12,9 @@ A simple way to stay up to date with upcoming space launches, built with [React-
 
 ## Installation
 
-If you want to test the app on a simulator running locally, there's nothing more simple:
+If you want to test the app on a simulator running locally, follow these instructions:
+
+First, you'll need to create or import a `GoogleService-Info.plist` file in the `ios` folder. Next, use the following commands:
 
 ```bash
 $ cd moonwalk
@@ -20,6 +22,8 @@ $ cd moonwalk
 $ yarn
 
 $ cd ios && pod install && cd ..
+
+$ yarn build-ios
 
 $ react-native run-ios
 ```
