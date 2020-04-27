@@ -56,10 +56,6 @@ To see the assets (Images) in your build, open the XCode project, right click on
 
 You should be able to build the app with ⌘(cmd)+B.
 
-## Donate
-
-This app doesn't contain ads. If you like my work, feel free to [buy me a coffee](https://paypal.me/maximenory) 😊
-
 ## Licence
 
 MIT License
