@@ -19,6 +19,7 @@ import { createNativeStackNavigator } from "react-native-screens/native-stack";
 import { enableScreens } from "react-native-screens";
 import HeaderSettingsButton from "./src/components/HeaderSettingsButton";
 import NotificationsSettings from "./src/screens/NotificationsSettings";
+import BrowserSettings from "./src/screens/BrowserSettings";
 import AppearanceSettings from "./src/screens/AppearanceSettings";
 import Licenses from "./src/screens/Licenses";
 import AppState from "./src/stores/AppState";
@@ -57,6 +58,7 @@ const HomeStack = () => {
       <HomeNav.Screen name="Notifications" component={NotificationsSettings} />
       <HomeNav.Screen name="Appearance" component={AppearanceSettings} />
       <HomeNav.Screen name="Icon" component={AppIconSettings} />
+      <HomeNav.Screen name="Browser" component={BrowserSettings} />
       <HomeNav.Screen
         name="Licenses"
         options={{

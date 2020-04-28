@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components/native";
 import { useTheme } from "@react-navigation/native";
 import { ScrollView, Linking, View, Animated } from "react-native";
@@ -8,6 +8,8 @@ import Countdown from "../common/Countdown";
 import ActionMenu from "../common/ActionMenu";
 import openMap from "react-native-open-maps";
 import firebase from "react-native-firebase";
+import { openLink } from "../helpers/OpenLink";
+import AppState from "../stores/AppState";
 
 const IMAGE_HEIGHT = 400;
 
@@ -69,6 +71,8 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
 
   const [scrollY] = useState(new Animated.Value(0));
   const { colors } = useTheme();
+  const appStateStore = useContext(AppState);
+
   const { data } = route.params;
   const videoLink = data.vidURLs.length > 0 && data.vidURLs[0];
   const wikiLink = data.missions[0]?.wikiURL;
@@ -110,8 +114,8 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
         thumbColor: "#1889ff",
         disabled: !wikiLink,
         action: () => {
-          Linking.openURL(wikiLink),
-            firebase.analytics().logEvent("OPEN_WIKI", { value: data.name });
+          openLink(wikiLink, appStateStore.browser);
+          firebase.analytics().logEvent("OPEN_WIKI", { value: data.name });
         },
       },
     ],

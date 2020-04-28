@@ -1,8 +1,9 @@
 import styled from "styled-components/native";
-import React from "react";
-import { Linking } from "react-native";
+import React, {useContext} from "react";
 import { useTheme } from "@react-navigation/native";
 import firebase from "react-native-firebase";
+import { openLink } from "../helpers/OpenLink";
+import AppState from "../stores/AppState";
 
 const Wrapper = styled.TouchableOpacity<{ isFirst: boolean }>`
   width: 100%;
@@ -52,13 +53,14 @@ const ArticlePreview: React.FC<Props> = ({
   isFirst = false,
 }) => {
   const { colors } = useTheme();
+  const appStateStore = useContext(AppState);
 
   const onArticlePress = () => {
     firebase.analytics().logEvent("OPEN_NEWS_ARTICLE", {
       title: article.title,
       site: article.news_site_long,
     });
-    Linking.openURL(article.url);
+    openLink(article.url, appStateStore.browser);
   };
 
   return (

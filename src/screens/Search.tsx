@@ -9,6 +9,8 @@ import { STATES } from "../constants";
 import Search from "../stores/Search";
 import { useTheme } from "@react-navigation/native";
 import firebase from "react-native-firebase";
+import { openLink } from "../helpers/OpenLink";
+import AppState from "../stores/AppState";
 
 const ContentWrapper = styled.SafeAreaView`
   flex: 1;
@@ -40,6 +42,7 @@ const SearchScreen = observer(({ navigation }) => {
     navigation.navigate("Details", { data });
   };
   const searchStore = useContext(Search);
+  const appStateStore = useContext(AppState);
   const { colors } = useTheme();
   const { results, searchLaunches, totalResults, state } = searchStore;
 
@@ -64,7 +67,7 @@ const SearchScreen = observer(({ navigation }) => {
           </>
         )}
         <TouchableOpacity
-          onPress={() => Linking.openURL("https://launchlibrary.net/")}
+          onPress={() => openLink("https://launchlibrary.net/", appStateStore.browser)}
         >
           <Footer style={{ color: colors.secondaryText }}>
             Data provided by the Launch Library

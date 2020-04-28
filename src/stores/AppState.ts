@@ -1,7 +1,7 @@
 import { decorate, observable, action } from "mobx";
 import { createContext } from "react";
 import AsyncStorage from "@react-native-community/async-storage";
-import { Themes } from "../types";
+import { Themes, Browsers } from "../types";
 
 class AppState {
   constructor() {
@@ -9,6 +9,7 @@ class AppState {
   }
 
   theme = Themes.automatic;
+  browser = Browsers.inApp;
   appIcon = "Default";
 
   setTheme = (newTheme: Themes) => {
@@ -21,6 +22,10 @@ class AppState {
     this.saveData();
   };
 
+  setBrowser = (browser: Browsers) => {
+    this.browser = browser;
+  }
+
   initStore = async () => {
     try {
       const value = await AsyncStorage.getItem("@Moonwalk:settings");
@@ -28,6 +33,7 @@ class AppState {
         const data = JSON.parse(value);
         this.theme = data.theme;
         this.appIcon = data.appIcon || "Default";
+        this.browser = data.browser || Browsers.inApp;
       }
     } catch (error) {}
   };
@@ -36,7 +42,7 @@ class AppState {
     try {
       await AsyncStorage.setItem(
         "@Moonwalk:settings",
-        JSON.stringify({ theme: this.theme, appIcon: this.appIcon })
+        JSON.stringify({ theme: this.theme, appIcon: this.appIcon, browser: this.browser })
       );
     } catch (error) {}
   };
@@ -44,6 +50,7 @@ class AppState {
 
 decorate(AppState, {
   theme: observable,
+  browser: observable,
   appIcon: observable,
   setTheme: action,
   setAppIcon: action,

@@ -3,3 +3,8 @@ export enum Themes {
   light,
   dark,
 }
+
+export enum Browsers {
+  safari,
+  inApp,
+}

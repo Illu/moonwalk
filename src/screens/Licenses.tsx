@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import styled from "styled-components/native";
 import { useTheme } from "@react-navigation/native";
-import { ScrollView, View, Linking } from "react-native";
+import { ScrollView, View } from "react-native";
 import LicensesData from "../Licenses.json";
 import Icon from "../common/Icon";
 import Label from "../common/Label";
 import firebase from "react-native-firebase";
+import { openLink } from "../helpers/OpenLink";
+import AppState from "../stores/AppState";
 
 const ItemWrapper = styled.TouchableOpacity`
   border-bottom-width: 0.5px;
@@ -33,6 +35,7 @@ const Licenses = () => {
   }, []);
 
   const { colors } = useTheme();
+  const appStateStore = useContext(AppState);
 
   return (
     <ScrollView contentContainerStyle={{ paddingTop: 40 }}>
@@ -45,7 +48,7 @@ const Licenses = () => {
             borderColor: colors.uiAccent,
           }}
           onPress={() =>
-            Linking.openURL(`https://www.npmjs.com/package/${lib.name}`)
+            openLink(`https://www.npmjs.com/package/${lib.name}`, appStateStore.browser)
           }
         >
           <View>
