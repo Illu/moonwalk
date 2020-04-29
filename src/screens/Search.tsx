@@ -20,6 +20,7 @@ const ContentWrapper = styled.SafeAreaView`
 const Footer = styled.Text`
   font-size: 14px;
   margin: 20px 0;
+  color: ${({ theme }) => theme.secondaryText};
 `;
 
 const ScrollWrapper = styled.ScrollView`
@@ -31,6 +32,7 @@ const ResultCount = styled.Text`
   font-size: 16px;
   font-weight: bold;
   margin: 10px 0;
+  color: ${({ theme }) => theme.text};
 `;
 
 const SearchScreen = observer(({ navigation }) => {
@@ -43,7 +45,6 @@ const SearchScreen = observer(({ navigation }) => {
   };
   const searchStore = useContext(Search);
   const appStateStore = useContext(AppState);
-  const { colors } = useTheme();
   const { results, searchLaunches, totalResults, state } = searchStore;
 
   const launchSearch = (text: string) => {
@@ -58,7 +59,7 @@ const SearchScreen = observer(({ navigation }) => {
         {state === STATES.LOADING && <Loader />}
         {results.length >= 0 && state === STATES.SUCCESS && (
           <>
-            <ResultCount style={{ color: colors.text }}>
+            <ResultCount>
               {totalResults || 0} results
             </ResultCount>
             {results.map((data) => (
@@ -69,7 +70,7 @@ const SearchScreen = observer(({ navigation }) => {
         <TouchableOpacity
           onPress={() => openLink("https://launchlibrary.net/", appStateStore.browser)}
         >
-          <Footer style={{ color: colors.secondaryText }}>
+          <Footer>
             Data provided by the Launch Library
           </Footer>
         </TouchableOpacity>

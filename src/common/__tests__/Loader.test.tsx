@@ -1,10 +1,10 @@
 import React from "react";
 import Loader from "../Loader";
-import renderer from "react-test-renderer";
+import TestRenderer from "../../helpers/testRenderer";
 
 describe("Loader", () => {
   it("renders correctly", () => {
-    const tree = renderer.create(<Loader />).toJSON();
+    const tree = TestRenderer(<Loader />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

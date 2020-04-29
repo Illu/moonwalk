@@ -25,6 +25,7 @@ const Title = styled.Text`
   margin: 20px 16px 10px 16px;
   font-size: 20px;
   font-weight: bold;
+  color: ${({ theme }) => theme.text};
 `;
 
 interface Props {
@@ -84,7 +85,7 @@ const Calendar: React.FC<Props> = observer(({ navigation }) => {
             return (
               <>
                 {showTitle && (
-                  <Title style={{ color: colors.text }}>
+                  <Title>
                     {sectionTitles[titleIndex - 1]}
                   </Title>
                 )}

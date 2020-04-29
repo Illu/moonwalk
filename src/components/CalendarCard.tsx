@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import Label from "../common/Label";
 import { MONTHS } from "../constants";
-import { useTheme } from "@react-navigation/native";
 
 const Wrapper = styled.View<{ isFirst: boolean }>`
   padding: 30px 20px;
   border-top-width: ${({ isFirst }) => (isFirst ? 0 : 1)}px;
+  background: ${({ theme }) => theme.secondary};
+  border-color: ${({ theme }) => theme.uiAccent};
 `;
 
 const DateWrapper = styled.View`
@@ -15,11 +16,13 @@ const DateWrapper = styled.View`
   align-items: center;
   justify-content: center;
   height: 50px;
+  background: ${({ theme }) => theme.accentBackground};
 `;
 
 const Day = styled.Text`
   font-weight: bold;
   font-size: ${({ large }) => (large ? 20 : 13)}px;
+  color: ${({ theme }) => theme.text};
 `;
 
 const ContentWrapper = styled.View`
@@ -35,38 +38,34 @@ const Row = styled.View`
 const Desc = styled.Text`
   color: white;
   font-size: 15px;
+  color: ${({ theme }) => theme.text};
   ${({ bold }) => bold && "font-weight: bold;"}
 `;
 
 export default ({ data, isFirst = false }) => {
   const launchTime = new Date(data.netstamp * 1000);
-  const { colors } = useTheme();
   return (
     <Wrapper
-      style={{
-        backgroundColor: colors.secondary,
-        borderColor: colors.uiAccent,
-      }}
       isFirst={isFirst}
     >
       <Row>
-        <DateWrapper style={{ backgroundColor: colors.accentBackground }}>
+        <DateWrapper>
           {data.netstamp === 0 ? (
-            <Day style={{ color: colors.text }}>TBD</Day>
+            <Day>TBD</Day>
           ) : (
-            <>
-              <Day style={{ color: colors.text }}>{launchTime.getDate()}</Day>
-              <Day style={{ color: colors.text }}>
-                {MONTHS[launchTime.getMonth()]}
-              </Day>
-            </>
-          )}
+              <>
+                <Day>{launchTime.getDate()}</Day>
+                <Day>
+                  {MONTHS[launchTime.getMonth()]}
+                </Day>
+              </>
+            )}
         </DateWrapper>
         <ContentWrapper>
-          <Desc bold style={{ color: colors.text }}>
+          <Desc bold>
             {data.name}
           </Desc>
-          <Desc numberOfLines={1} style={{ color: colors.text }}>
+          <Desc numberOfLines={1}>
             {data.location.name}
           </Desc>
           <Label

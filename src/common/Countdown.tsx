@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 import { useTheme } from "@react-navigation/native";
 
 const Wrapper = styled.View`
-  background: red;
+  background: ${({theme}) => theme.secondary};
   margin: 0px 20px;
   border-radius: 10px;
   align-items: center;
@@ -19,6 +19,7 @@ const UnitWrapper = styled.View`
 
 const Number = styled.Text`
   font-size: 26px;
+  color: ${({theme}) => theme.text};
   font-weight: bold;
 `;
 
@@ -32,7 +33,6 @@ let timer;
 
 const Countdown = ({ wsstamp }: { wsstamp: number }) => {
   const [timeLeft, setTimeLeft] = useState(0);
-  const { colors } = useTheme();
 
   useEffect(() => {
     updateTimeLeft();
@@ -61,25 +61,25 @@ const Countdown = ({ wsstamp }: { wsstamp: number }) => {
   const NoData = timeLeft <= 0;
 
   return (
-    <Wrapper style={{ backgroundColor: colors.secondary }}>
+    <Wrapper>
       <UnitWrapper>
-        <Number style={{ color: colors.text }}>{NoData ? "-" : days}</Number>
+        <Number>{NoData ? "-" : days}</Number>
         <Unit>{`day${days !== 1 ? "s" : ""}`}</Unit>
       </UnitWrapper>
       <UnitWrapper>
-        <Number style={{ color: colors.text }}>
+        <Number>
           {NoData ? "-" : hours % 24}
         </Number>
         <Unit>{`hour${minutes % 24 !== 1 ? "s" : ""}`}</Unit>
       </UnitWrapper>
       <UnitWrapper>
-        <Number style={{ color: colors.text }}>
+        <Number>
           {NoData ? "-" : minutes % 60}
         </Number>
         <Unit>{`minute${minutes % 60 !== 1 ? "s" : ""}`}</Unit>
       </UnitWrapper>
       <UnitWrapper>
-        <Number style={{ color: colors.text }}>
+        <Number>
           {NoData ? "-" : seconds % 60}
         </Number>
         <Unit>{`second${seconds % 60 !== 1 ? "s" : " "}`}</Unit>

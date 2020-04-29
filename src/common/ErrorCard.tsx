@@ -8,6 +8,7 @@ const Wrapper = styled(Animated.View)`
   margin: 40px;
   border-radius: 10px;
   padding: 20px;
+  background: ${({theme}) => theme.secondary};
 `;
 
 const Title = styled.Text`
@@ -15,11 +16,13 @@ const Title = styled.Text`
   font-weight: bold;
   font-size: 20px;
   margin-left: 10px;
+  color: ${({theme}) => theme.text};
 `;
 
 const Desc = styled.Text`
   text-align: center;
   margin: 10px;
+  color: ${({theme}) => theme.text};
 `;
 
 const Row = styled.View`
@@ -48,7 +51,6 @@ const ErrorCard = ({ message, onRetry }: Props) => {
   return (
     <Wrapper
       style={{
-        backgroundColor: colors.secondary,
         opacity: appearAnim,
         transform: [
           {
@@ -62,9 +64,9 @@ const ErrorCard = ({ message, onRetry }: Props) => {
     >
       <Row>
         <Icon name="Alert" color={colors.text} />
-        <Title style={{ color: colors.text }}>Error</Title>
+        <Title>Error</Title>
       </Row>
-      <Desc style={{ color: colors.text }}>
+      <Desc>
         {message || "Something went wrong"}
       </Desc>
       <Button title="Try again" onPress={onRetry} />

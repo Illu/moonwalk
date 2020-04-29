@@ -4,9 +4,8 @@ exports[`ActionMenu renders correctly 1`] = `
 <View
   style={
     Array [
-      Object {},
       Object {
-        "backgroundColor": "rgb(242, 242, 242)",
+        "backgroundColor": "#f1f2f7",
       },
     ]
   }
@@ -15,6 +14,7 @@ exports[`ActionMenu renders correctly 1`] = `
     style={
       Array [
         Object {
+          "backgroundColor": "#fff",
           "borderRadius": 10,
           "marginBottom": 20,
           "marginLeft": 20,
@@ -24,9 +24,6 @@ exports[`ActionMenu renders correctly 1`] = `
           "paddingLeft": 16,
           "paddingRight": 0,
           "paddingTop": 0,
-        },
-        Object {
-          "backgroundColor": undefined,
         },
       ]
     }
@@ -45,7 +42,7 @@ exports[`ActionMenu renders correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "borderColor": undefined,
+          "borderColor": "#c3c4c6",
           "borderTopWidth": 0,
           "flexDirection": "row",
           "justifyContent": "space-between",
@@ -69,10 +66,8 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
-                "fontSize": 16,
-              },
-              Object {
                 "color": "rgb(28, 28, 30)",
+                "fontSize": 16,
               },
             ]
           }
@@ -108,7 +103,7 @@ exports[`ActionMenu renders correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "borderColor": undefined,
+          "borderColor": "#c3c4c6",
           "borderTopWidth": 0.5,
           "flexDirection": "row",
           "justifyContent": "space-between",
@@ -132,10 +127,8 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
-                "fontSize": 16,
-              },
-              Object {
                 "color": "rgb(28, 28, 30)",
+                "fontSize": 16,
               },
             ]
           }
@@ -162,6 +155,7 @@ exports[`ActionMenu renders correctly 1`] = `
     style={
       Array [
         Object {
+          "backgroundColor": "#fff",
           "borderRadius": 10,
           "marginBottom": 20,
           "marginLeft": 20,
@@ -171,9 +165,6 @@ exports[`ActionMenu renders correctly 1`] = `
           "paddingLeft": 16,
           "paddingRight": 0,
           "paddingTop": 0,
-        },
-        Object {
-          "backgroundColor": undefined,
         },
       ]
     }
@@ -192,7 +183,7 @@ exports[`ActionMenu renders correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "borderColor": undefined,
+          "borderColor": "#c3c4c6",
           "borderTopWidth": 0,
           "flexDirection": "row",
           "justifyContent": "space-between",
@@ -216,10 +207,8 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
-                "fontSize": 16,
-              },
-              Object {
                 "color": "rgb(28, 28, 30)",
+                "fontSize": 16,
               },
             ]
           }
@@ -255,7 +244,7 @@ exports[`ActionMenu renders correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "borderColor": undefined,
+          "borderColor": "#c3c4c6",
           "borderTopWidth": 0.5,
           "flexDirection": "row",
           "justifyContent": "space-between",
@@ -279,10 +268,8 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
-                "fontSize": 16,
-              },
-              Object {
                 "color": "rgb(28, 28, 30)",
+                "fontSize": 16,
               },
             ]
           }
@@ -302,11 +289,9 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
+                "color": "#c3c4c6",
                 "fontSize": 16,
                 "marginRight": 5,
-              },
-              Object {
-                "color": undefined,
               },
             ]
           }
@@ -333,7 +318,7 @@ exports[`ActionMenu renders correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "borderColor": undefined,
+          "borderColor": "#c3c4c6",
           "borderTopWidth": 0.5,
           "flexDirection": "row",
           "justifyContent": "space-between",
@@ -357,10 +342,8 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
-                "fontSize": 16,
-              },
-              Object {
                 "color": "rgb(28, 28, 30)",
+                "fontSize": 16,
               },
             ]
           }
@@ -387,6 +370,7 @@ exports[`ActionMenu renders correctly 1`] = `
     style={
       Array [
         Object {
+          "backgroundColor": "#fff",
           "borderRadius": 10,
           "marginBottom": 20,
           "marginLeft": 20,
@@ -396,9 +380,6 @@ exports[`ActionMenu renders correctly 1`] = `
           "paddingLeft": 16,
           "paddingRight": 0,
           "paddingTop": 0,
-        },
-        Object {
-          "backgroundColor": undefined,
         },
       ]
     }
@@ -417,7 +398,7 @@ exports[`ActionMenu renders correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "borderColor": undefined,
+          "borderColor": "#c3c4c6",
           "borderTopWidth": 0,
           "flexDirection": "row",
           "justifyContent": "space-between",
@@ -463,10 +444,8 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
-                "fontSize": 16,
-              },
-              Object {
                 "color": "rgb(28, 28, 30)",
+                "fontSize": 16,
               },
             ]
           }
@@ -502,7 +481,7 @@ exports[`ActionMenu renders correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "borderColor": undefined,
+          "borderColor": "#c3c4c6",
           "borderTopWidth": 0.5,
           "flexDirection": "row",
           "justifyContent": "space-between",
@@ -543,10 +522,8 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
-                "fontSize": 16,
-              },
-              Object {
                 "color": "rgb(28, 28, 30)",
+                "fontSize": 16,
               },
             ]
           }
@@ -582,7 +559,7 @@ exports[`ActionMenu renders correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "borderColor": undefined,
+          "borderColor": "#c3c4c6",
           "borderTopWidth": 0.5,
           "flexDirection": "row",
           "justifyContent": "space-between",
@@ -619,10 +596,8 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
-                "fontSize": 16,
-              },
-              Object {
                 "color": "rgb(28, 28, 30)",
+                "fontSize": 16,
               },
             ]
           }

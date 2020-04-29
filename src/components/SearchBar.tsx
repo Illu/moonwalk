@@ -16,6 +16,8 @@ const SearchInput = styled.TextInput`
   border-radius: 10px;
   width: 100%;
   font-size: 20px;
+  background: ${({ theme }) => theme.inputBackground};
+  color: ${({ theme }) => theme.text};
 `;
 
 const IconWrapper = styled.View`
@@ -34,11 +36,9 @@ const SearchBar = ({ launchSearch }) => {
         onSubmitEditing={({ nativeEvent }) => launchSearch(nativeEvent.text)}
         placeholder="Search"
         placeholderTextColor={colors.placeholderText}
-        style={{ backgroundColor: colors.inputBackground, color: colors.text }}
       />
       <IconWrapper>
         <Icon
-          color={colors.text}
           name="Search"
           color={colors.placeholderText}
           size={20}

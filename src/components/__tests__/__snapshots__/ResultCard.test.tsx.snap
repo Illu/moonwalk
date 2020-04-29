@@ -14,9 +14,9 @@ exports[`ResultCard renders correctly 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": undefined,
-      "borderBottomColor": undefined,
+      "backgroundColor": "#fff",
       "borderBottomWidth": 1,
+      "borderColor": "#c3c4c6",
       "height": 100,
       "justifyContent": "center",
       "opacity": 1,
@@ -32,11 +32,9 @@ exports[`ResultCard renders correctly 1`] = `
     style={
       Array [
         Object {
+          "color": "rgb(28, 28, 30)",
           "fontWeight": "bold",
           "marginBottom": 5,
-        },
-        Object {
-          "color": "rgb(28, 28, 30)",
         },
       ]
     }
@@ -46,7 +44,6 @@ exports[`ResultCard renders correctly 1`] = `
   <Text
     style={
       Array [
-        Object {},
         Object {
           "color": "rgb(28, 28, 30)",
         },

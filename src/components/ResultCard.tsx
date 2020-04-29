@@ -8,14 +8,19 @@ const Wrapper = styled.TouchableOpacity`
   width: 100%;
   justify-content: center;
   border-bottom-width: 1px;
+  background: ${({ theme }) => theme.secondary};
+  border-color: ${({ theme }) => theme.uiAccent};
 `;
 
 const Title = styled.Text`
   font-weight: bold;
+  color: ${({ theme }) => theme.text};
   margin-bottom: 5px;
 `;
 
-const Subtitle = styled.Text``;
+const Subtitle = styled.Text`
+  color: ${({ theme }) => theme.text};
+`;
 
 const ResultCard = ({ data, showDetails }) => {
   const { name, net } = data;
@@ -24,13 +29,9 @@ const ResultCard = ({ data, showDetails }) => {
   return (
     <Wrapper
       onPress={() => showDetails(data)}
-      style={{
-        backgroundColor: colors.secondary,
-        borderBottomColor: colors.uiAccent,
-      }}
     >
-      <Title style={{ color: colors.text }}>{name}</Title>
-      <Subtitle style={{ color: colors.text }}>{net}</Subtitle>
+      <Title>{name}</Title>
+      <Subtitle>{net}</Subtitle>
     </Wrapper>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import ResultCard from "../ResultCard";
-import renderer from "react-test-renderer";
+import TestRenderer from "../../helpers/testRenderer";
 
 describe("ResultCard", () => {
   it("renders correctly", () => {
@@ -11,7 +11,7 @@ describe("ResultCard", () => {
       },
       showDetails: jest.fn(),
     };
-    const tree = renderer.create(<ResultCard {...props} />).toJSON();
+    const tree = TestRenderer(<ResultCard {...props} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

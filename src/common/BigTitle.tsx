@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
 import { TouchableOpacity } from "react-native";
-import { useTheme } from "@react-navigation/native";
 
 const Wrapper = styled.View`
   flex-direction: row;
@@ -13,9 +12,12 @@ const Wrapper = styled.View`
 const TitleText = styled.Text`
   font-size: 22px;
   font-weight: bold;
+  color: ${({theme}) => theme.text};
 `;
 
-const SeeMoreText = styled.Text``;
+const SeeMoreText = styled.Text`
+  color: ${({theme}) => theme.text};
+`;
 
 const BigTitle = ({
   title,
@@ -24,14 +26,13 @@ const BigTitle = ({
   title: string;
   onSeeMore?: () => void;
 }) => {
-  const { colors } = useTheme();
 
   return (
     <Wrapper>
-      <TitleText style={{ color: colors.text }}>{title}</TitleText>
+      <TitleText>{title}</TitleText>
       {onSeeMore && (
         <TouchableOpacity onPress={onSeeMore}>
-          <SeeMoreText style={{ color: colors.text }}>See more</SeeMoreText>
+          <SeeMoreText>See more</SeeMoreText>
         </TouchableOpacity>
       )}
     </Wrapper>

@@ -14,6 +14,7 @@ const Title = styled.Text`
   margin: 20px 16px 10px 16px;
   font-size: 20px;
   font-weight: bold;
+  color: ${({ theme }) => theme.text};
 `;
 
 interface Props {
@@ -68,7 +69,7 @@ const News: React.FC<Props> = observer(() => {
         return (
           <View key={article.id + index}>
             {showTitle && (
-              <Title style={{ color: colors.text }}>
+              <Title>
                 {daysDiff === 0
                   ? "Today"
                   : daysDiff === 1

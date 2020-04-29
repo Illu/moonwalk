@@ -7,28 +7,34 @@ import { View } from "react-native";
 // --ActionMenu--
 // Takes an items object to display an organised menu.
 
-const Wrapper = styled.View``;
+const Wrapper = styled.View`
+  background: ${({ theme }) => theme.background};
+`;
 
 const Row = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 20px 16px 20px 0;
+  border-color: ${({theme}) => theme.uiAccent};
 `;
 
 const PreviewText = styled.Text`
   font-size: 16px;
   margin-right: 5px;
+  color: ${({theme}) => theme.uiAccent};
 `;
 
 const Title = styled.Text`
   font-size: 16px;
+  color: ${({theme}) => theme.text};
 `;
 
 const CategoryWrapper = styled.View`
   margin: 20px;
   border-radius: 10px;
   padding: 0 0 0 16px;
+  background: ${({ theme }) => theme.secondary};
 `;
 
 const ThumbWrapper = styled.View`
@@ -66,17 +72,15 @@ const ActionMenu = ({ items }: Props) => {
   const { colors } = useTheme();
 
   return (
-    <Wrapper style={{ backgroundColor: colors.background }}>
+    <Wrapper>
       {items.map((subItems, index) => (
         <CategoryWrapper
           key={index}
-          style={{ backgroundColor: colors.secondary }}
         >
           {subItems.map((item, i) => (
             <Row
               key={`${item.title}${i}`}
               style={{
-                borderColor: colors.uiAccent,
                 borderTopWidth: i !== 0 ? 0.5 : 0,
               }}
               onPress={item.action}
@@ -97,11 +101,11 @@ const ActionMenu = ({ items }: Props) => {
                     }
                   />
                 )}
-                <Title style={{ color: colors.text }}>{item.title}</Title>
+                <Title>{item.title}</Title>
               </View>
               <View style={{ flexDirection: "row", alignItems: "center" }}>
                 {item.preview && (
-                  <PreviewText style={{ color: colors.uiAccent }}>
+                  <PreviewText>
                     {item.preview}
                   </PreviewText>
                 )}

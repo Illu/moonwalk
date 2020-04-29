@@ -15,14 +15,19 @@ const ItemWrapper = styled.TouchableOpacity`
   padding: 20px;
   justify-content: space-between;
   align-items: center;
+  background: ${({ theme }) => theme.secondary};
+  border-color: ${({ theme }) => theme.uiAccent};
 `;
 
-const ItemTitle = styled.Text``;
+const ItemTitle = styled.Text`
+  color: ${({ theme }) => theme.text};
+`;
 
 const Title = styled.Text`
   font-size: 20px;
   margin: 0 0 10px 20px;
   font-weight: bold;
+  color: ${({ theme }) => theme.text};
 `;
 
 const Row = styled.View`
@@ -39,20 +44,16 @@ const Licenses = () => {
 
   return (
     <ScrollView contentContainerStyle={{ paddingTop: 40 }}>
-      <Title style={{ color: colors.text }}>Open-Source Libraries used</Title>
+      <Title>Open-Source Libraries used</Title>
       {LicensesData.map((lib, index) => (
         <ItemWrapper
           key={index}
-          style={{
-            backgroundColor: colors.secondary,
-            borderColor: colors.uiAccent,
-          }}
           onPress={() =>
             openLink(`https://www.npmjs.com/package/${lib.name}`, appStateStore.browser)
           }
         >
           <View>
-            <ItemTitle style={{ color: colors.text }}>{lib.name}</ItemTitle>
+            <ItemTitle>{lib.name}</ItemTitle>
             <Row>
               <Label text={lib.licenseType} />
               <Label

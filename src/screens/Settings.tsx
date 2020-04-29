@@ -10,12 +10,13 @@ import * as StoreReview from "react-native-store-review";
 import styled from "styled-components/native";
 import Package from "../../package.json";
 import firebase from "react-native-firebase";
-import SelectionModal from "../components/SelectionModal";
+import SelectionModal from "../common/SelectionModal";
 import { openLink } from "../helpers/OpenLink";
 
 const BottomText = styled.Text`
   text-align: center;
   margin-bottom: 10px;
+  color: ${({ theme }) => theme.secondaryText};
 `;
 
 const Settings = observer(() => {
@@ -143,7 +144,7 @@ const Settings = observer(() => {
       )}
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <ActionMenu items={items} />
-        <BottomText style={{ color: colors.secondaryText }}>
+        <BottomText>
           2020 - Maxime Nory
         </BottomText>
       </ScrollView>

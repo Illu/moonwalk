@@ -12,6 +12,7 @@ const ToggleWrapper = styled.View`
   border-radius: 10px;
   align-items: center;
   justify-content: space-between;
+  background: ${({ theme }) => theme.secondary};
 `;
 
 const NotifWrapper = styled.View`
@@ -20,14 +21,17 @@ const NotifWrapper = styled.View`
   margin: 15px 20px;
   border-radius: 10px;
   align-items: center;
+  background: ${({ theme }) => theme.secondary};
 `;
 
 const ToggleTitle = styled.Text`
   font-size: 16px;
+  color: ${({ theme }) => theme.text};
 `;
 
 const Notice = styled.Text`
   margin: 0 20px;
+  color: ${({ theme }) => theme.placeholderText};
   font-size: 13px;
 `;
 
@@ -35,6 +39,7 @@ const Title = styled.Text`
   margin: 20px 20px 0 20px;
   font-size: 20px;
   font-weight: bold;
+  color: ${({ theme }) => theme.text};
 `;
 
 const Row = styled.View`
@@ -51,10 +56,12 @@ const Button = styled.TouchableOpacity`
 
 const ButtonText = styled.Text`
   font-size: 30px;
+  color: ${({ theme }) => theme.accent};
 `;
 
 const DelayText = styled.Text`
   font-size: 16px;
+  color: ${({ theme }) => theme.text};
 `;
 
 const NotificationsSettings = observer(() => {
@@ -71,8 +78,8 @@ const NotificationsSettings = observer(() => {
 
   return (
     <ScrollView>
-      <ToggleWrapper style={{ backgroundColor: colors.secondary }}>
-        <ToggleTitle style={{ color: colors.text }}>
+      <ToggleWrapper>
+        <ToggleTitle>
           Enable Notifications
         </ToggleTitle>
         <Switch
@@ -80,13 +87,12 @@ const NotificationsSettings = observer(() => {
           onValueChange={launchesStore.toggleNotifications}
         />
       </ToggleWrapper>
-      <Notice style={{ color: colors.placeholderText }}>
+      <Notice>
         Moonwalk is an ad-free App, and will only send notifications about
         upcoming rocket launches.
       </Notice>
       <Title
         style={{
-          color: colors.text,
           opacity: launchesStore.notifications.enabled ? 1 : 0.3,
         }}
       >
@@ -94,7 +100,6 @@ const NotificationsSettings = observer(() => {
       </Title>
       <NotifWrapper
         style={{
-          backgroundColor: colors.secondary,
           opacity: launchesStore.notifications.enabled ? 1 : 0.3,
         }}
       >
@@ -104,17 +109,15 @@ const NotificationsSettings = observer(() => {
             hitSlop={touchableHitSlop}
             onPress={() => launchesStore.changeNotificationDelay(-5)}
           >
-            <ButtonText style={{ color: colors.accent }}>-</ButtonText>
+            <ButtonText>-</ButtonText>
           </Button>
-          <DelayText
-            style={{ color: colors.text }}
-          >{`${launchesStore.notifications.delay} minutes before launch`}</DelayText>
+          <DelayText>{`${launchesStore.notifications.delay} minutes before launch`}</DelayText>
           <Button
             disabled={!launchesStore.notifications.enabled}
             hitSlop={touchableHitSlop}
             onPress={() => launchesStore.changeNotificationDelay(5)}
           >
-            <ButtonText style={{ color: colors.accent }}>+</ButtonText>
+            <ButtonText>+</ButtonText>
           </Button>
         </Row>
       </NotifWrapper>

@@ -25,18 +25,21 @@ const Title = styled.Text`
   font-size: 28px;
   padding: 24px 16px;
   text-align: center;
+  color: ${({ theme }) => theme.text};
 `;
 
 const ContentWrapper = styled.View`
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   margin-top: -30px;
+  background: ${({ theme }) => theme.background};
 `;
 
 const Location = styled.Text`
   margin-left: 10px;
   font-size: 13px;
   padding-right: 20px;
+  color: ${({ theme }) => theme.text};
 `;
 
 const Row = styled.View`
@@ -47,17 +50,20 @@ const Row = styled.View`
 const DescText = styled.Text`
   margin-bottom: 16px;
   font-size: 17px;
+  color: ${({ theme }) => theme.text};
 `;
 
 const DescWrapper = styled.View`
   padding: 20px;
   margin: 16px 0;
+  background: ${({ theme }) => theme.secondary};
 `;
 
 const Subtitle = styled.Text`
   margin: 30px 0 0 20px;
   font-size: 25px;
   font-weight: bold;
+  color: ${({ theme }) => theme.text};
 `;
 
 interface Props {
@@ -143,14 +149,14 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
         )}
       >
         <View style={{ backgroundColor: colors.background }}>
-          <ContentWrapper style={{ backgroundColor: colors.background }}>
-            <Title style={{ color: colors.text }}>{data.name}</Title>
+          <ContentWrapper>
+            <Title>{data.name}</Title>
             <Countdown wsstamp={data.wsstamp} />
-            <Subtitle style={{ color: colors.text }}>Mission</Subtitle>
-            <DescWrapper style={{ backgroundColor: colors.secondary }}>
+            <Subtitle>Mission</Subtitle>
+            <DescWrapper>
               <Row>
                 <Icon name="Pin" color={colors.accent} />
-                <Location numberOfLines={2} style={{ color: colors.text }}>
+                <Location numberOfLines={2}>
                   {data.location.name}
                 </Location>
               </Row>
@@ -158,7 +164,7 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
                 <View key={mission.id}>
                   <Label text={mission.typeName} />
                   <View style={{ marginTop: 10 }}>
-                    <DescText style={{ color: colors.text }} key={mission.id}>
+                    <DescText>
                       {mission.description}
                     </DescText>
                   </View>

@@ -4,7 +4,7 @@ exports[`ErrorCard renders correctly with a custom message 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": undefined,
+      "backgroundColor": "#fff",
       "borderRadius": 10,
       "marginBottom": 40,
       "marginLeft": 40,
@@ -42,13 +42,11 @@ exports[`ErrorCard renders correctly with a custom message 1`] = `
       style={
         Array [
           Object {
+            "color": "rgb(28, 28, 30)",
             "fontSize": 20,
             "fontWeight": "bold",
             "marginLeft": 10,
             "textAlign": "center",
-          },
-          Object {
-            "color": "rgb(28, 28, 30)",
           },
         ]
       }
@@ -60,14 +58,12 @@ exports[`ErrorCard renders correctly with a custom message 1`] = `
     style={
       Array [
         Object {
+          "color": "rgb(28, 28, 30)",
           "marginBottom": 10,
           "marginLeft": 10,
           "marginRight": 10,
           "marginTop": 10,
           "textAlign": "center",
-        },
-        Object {
-          "color": "rgb(28, 28, 30)",
         },
       ]
     }
@@ -123,7 +119,7 @@ exports[`ErrorCard renders correctly with a default message 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": undefined,
+      "backgroundColor": "#fff",
       "borderRadius": 10,
       "marginBottom": 40,
       "marginLeft": 40,
@@ -161,13 +157,11 @@ exports[`ErrorCard renders correctly with a default message 1`] = `
       style={
         Array [
           Object {
+            "color": "rgb(28, 28, 30)",
             "fontSize": 20,
             "fontWeight": "bold",
             "marginLeft": 10,
             "textAlign": "center",
-          },
-          Object {
-            "color": "rgb(28, 28, 30)",
           },
         ]
       }
@@ -179,14 +173,12 @@ exports[`ErrorCard renders correctly with a default message 1`] = `
     style={
       Array [
         Object {
+          "color": "rgb(28, 28, 30)",
           "marginBottom": 10,
           "marginLeft": 10,
           "marginRight": 10,
           "marginTop": 10,
           "textAlign": "center",
-        },
-        Object {
-          "color": "rgb(28, 28, 30)",
         },
       ]
     }

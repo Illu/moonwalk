@@ -1,6 +1,6 @@
 import React from "react";
 import ActionMenu from "../ActionMenu";
-import renderer from "react-test-renderer";
+import TestRenderer from "../../helpers/testRenderer";
 
 jest.mock("../Icon", () => "Icon");
 
@@ -55,7 +55,7 @@ describe("ActionMenu", () => {
         ],
       ],
     };
-    const tree = renderer.create(<ActionMenu {...props} />).toJSON();
+    const tree = TestRenderer(<ActionMenu {...props} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
