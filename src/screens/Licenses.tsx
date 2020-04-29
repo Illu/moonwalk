@@ -49,7 +49,10 @@ const Licenses = () => {
         <ItemWrapper
           key={index}
           onPress={() =>
-            openLink(`https://www.npmjs.com/package/${lib.name}`, appStateStore.browser)
+            openLink(
+              `https://www.npmjs.com/package/${lib.name}`,
+              appStateStore.browser
+            )
           }
         >
           <View>

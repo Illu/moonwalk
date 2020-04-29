@@ -45,29 +45,21 @@ const Desc = styled.Text`
 export default ({ data, isFirst = false }) => {
   const launchTime = new Date(data.netstamp * 1000);
   return (
-    <Wrapper
-      isFirst={isFirst}
-    >
+    <Wrapper isFirst={isFirst}>
       <Row>
         <DateWrapper>
           {data.netstamp === 0 ? (
             <Day>TBD</Day>
           ) : (
-              <>
-                <Day>{launchTime.getDate()}</Day>
-                <Day>
-                  {MONTHS[launchTime.getMonth()]}
-                </Day>
-              </>
-            )}
+            <>
+              <Day>{launchTime.getDate()}</Day>
+              <Day>{MONTHS[launchTime.getMonth()]}</Day>
+            </>
+          )}
         </DateWrapper>
         <ContentWrapper>
-          <Desc bold>
-            {data.name}
-          </Desc>
-          <Desc numberOfLines={1}>
-            {data.location.name}
-          </Desc>
+          <Desc bold>{data.name}</Desc>
+          <Desc numberOfLines={1}>{data.location.name}</Desc>
           <Label
             numberOfLines={2}
             text={data.lsp.name.length < 50 ? data.lsp.name : data.lsp.abbrev}

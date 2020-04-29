@@ -24,7 +24,7 @@ class AppState {
 
   setBrowser = (browser: Browsers) => {
     this.browser = browser;
-  }
+  };
 
   initStore = async () => {
     try {
@@ -42,7 +42,11 @@ class AppState {
     try {
       await AsyncStorage.setItem(
         "@Moonwalk:settings",
-        JSON.stringify({ theme: this.theme, appIcon: this.appIcon, browser: this.browser })
+        JSON.stringify({
+          theme: this.theme,
+          appIcon: this.appIcon,
+          browser: this.browser,
+        })
       );
     } catch (error) {}
   };

@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 import { useTheme } from "@react-navigation/native";
 
 const Wrapper = styled.View`
-  background: ${({theme}) => theme.secondary};
+  background: ${({ theme }) => theme.secondary};
   margin: 0px 20px;
   border-radius: 10px;
   align-items: center;
@@ -19,7 +19,7 @@ const UnitWrapper = styled.View`
 
 const Number = styled.Text`
   font-size: 26px;
-  color: ${({theme}) => theme.text};
+  color: ${({ theme }) => theme.text};
   font-weight: bold;
 `;
 
@@ -67,21 +67,15 @@ const Countdown = ({ wsstamp }: { wsstamp: number }) => {
         <Unit>{`day${days !== 1 ? "s" : ""}`}</Unit>
       </UnitWrapper>
       <UnitWrapper>
-        <Number>
-          {NoData ? "-" : hours % 24}
-        </Number>
+        <Number>{NoData ? "-" : hours % 24}</Number>
         <Unit>{`hour${minutes % 24 !== 1 ? "s" : ""}`}</Unit>
       </UnitWrapper>
       <UnitWrapper>
-        <Number>
-          {NoData ? "-" : minutes % 60}
-        </Number>
+        <Number>{NoData ? "-" : minutes % 60}</Number>
         <Unit>{`minute${minutes % 60 !== 1 ? "s" : ""}`}</Unit>
       </UnitWrapper>
       <UnitWrapper>
-        <Number>
-          {NoData ? "-" : seconds % 60}
-        </Number>
+        <Number>{NoData ? "-" : seconds % 60}</Number>
         <Unit>{`second${seconds % 60 !== 1 ? "s" : " "}`}</Unit>
       </UnitWrapper>
     </Wrapper>

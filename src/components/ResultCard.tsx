@@ -27,9 +27,7 @@ const ResultCard = ({ data, showDetails }) => {
   const { colors } = useTheme();
 
   return (
-    <Wrapper
-      onPress={() => showDetails(data)}
-    >
+    <Wrapper onPress={() => showDetails(data)}>
       <Title>{name}</Title>
       <Subtitle>{net}</Subtitle>
     </Wrapper>

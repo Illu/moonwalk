@@ -1,8 +1,5 @@
 import React, { useContext } from "react";
-import {
-  NavigationContainer,
-  useTheme,
-} from "@react-navigation/native";
+import { NavigationContainer, useTheme } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Dashboard from "./src/screens/Dashboard";
 import { darkTheme, lightTheme } from "./src/theme";
@@ -23,7 +20,7 @@ import Licenses from "./src/screens/Licenses";
 import AppState from "./src/stores/AppState";
 import { Themes } from "./src/types";
 import { observer } from "mobx-react";
-import {ThemeProvider} from 'styled-components/native';
+import { ThemeProvider } from "styled-components/native";
 import AppIconSettings from "./src/screens/AppIconSettings";
 
 enableScreens();

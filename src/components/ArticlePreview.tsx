@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import firebase from "react-native-firebase";
 import { openLink } from "../helpers/OpenLink";
 import AppState from "../stores/AppState";
@@ -11,8 +11,8 @@ const Wrapper = styled.TouchableOpacity<{ isFirst: boolean }>`
   justify-content: center;
   padding: 10px 16px;
   border-top-width: ${({ isFirst }) => (isFirst ? 0 : 1)}px;
-  background: ${({theme}) => theme.secondary};
-  border-color: ${({theme}) => theme.uiAccent};
+  background: ${({ theme }) => theme.secondary};
+  border-color: ${({ theme }) => theme.uiAccent};
 `;
 
 const Thumbnail = styled.ImageBackground`
@@ -27,11 +27,11 @@ const Title = styled.Text`
   text-align: left;
   padding-bottom: 5px;
   font-weight: 700;
-  color: ${({theme}) => theme.text};
+  color: ${({ theme }) => theme.text};
 `;
 
 const Subtitle = styled.Text`
-  color: ${({theme}) => theme.secondaryText};
+  color: ${({ theme }) => theme.secondaryText};
 `;
 
 const DetailsWrapper = styled.View`
@@ -43,7 +43,7 @@ const Dot = styled.View`
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background: ${({theme}) => theme.accent};
+  background: ${({ theme }) => theme.accent};
 `;
 
 interface Props {
@@ -68,16 +68,12 @@ const ArticlePreview: React.FC<Props> = ({
   };
 
   return (
-    <Wrapper
-      onPress={onArticlePress}
-      isFirst={isFirst}
-    >
+    <Wrapper onPress={onArticlePress} isFirst={isFirst}>
       <Thumbnail source={{ uri: article.featured_image }} />
       <DetailsWrapper>
         <Title>{article.title}</Title>
         <Subtitle>
-          {article.news_site_long}{" "}
-          <Dot /> {timePosted}
+          {article.news_site_long} <Dot /> {timePosted}
         </Subtitle>
       </DetailsWrapper>
     </Wrapper>

@@ -38,11 +38,7 @@ const SearchBar = ({ launchSearch }) => {
         placeholderTextColor={colors.placeholderText}
       />
       <IconWrapper>
-        <Icon
-          name="Search"
-          color={colors.placeholderText}
-          size={20}
-        />
+        <Icon name="Search" color={colors.placeholderText} size={20} />
       </IconWrapper>
     </Wrapper>
   );

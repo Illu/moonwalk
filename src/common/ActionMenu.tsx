@@ -16,18 +16,18 @@ const Row = styled.TouchableOpacity`
   justify-content: space-between;
   align-items: center;
   padding: 20px 16px 20px 0;
-  border-color: ${({theme}) => theme.uiAccent};
+  border-color: ${({ theme }) => theme.uiAccent};
 `;
 
 const PreviewText = styled.Text`
   font-size: 16px;
   margin-right: 5px;
-  color: ${({theme}) => theme.uiAccent};
+  color: ${({ theme }) => theme.uiAccent};
 `;
 
 const Title = styled.Text`
   font-size: 16px;
-  color: ${({theme}) => theme.text};
+  color: ${({ theme }) => theme.text};
 `;
 
 const CategoryWrapper = styled.View`
@@ -74,9 +74,7 @@ const ActionMenu = ({ items }: Props) => {
   return (
     <Wrapper>
       {items.map((subItems, index) => (
-        <CategoryWrapper
-          key={index}
-        >
+        <CategoryWrapper key={index}>
           {subItems.map((item, i) => (
             <Row
               key={`${item.title}${i}`}
@@ -104,11 +102,7 @@ const ActionMenu = ({ items }: Props) => {
                 <Title>{item.title}</Title>
               </View>
               <View style={{ flexDirection: "row", alignItems: "center" }}>
-                {item.preview && (
-                  <PreviewText>
-                    {item.preview}
-                  </PreviewText>
-                )}
+                {item.preview && <PreviewText>{item.preview}</PreviewText>}
                 <Icon name={item.icon} color={colors.uiAccent} size={25} />
               </View>
             </Row>

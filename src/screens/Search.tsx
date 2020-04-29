@@ -59,20 +59,18 @@ const SearchScreen = observer(({ navigation }) => {
         {state === STATES.LOADING && <Loader />}
         {results.length >= 0 && state === STATES.SUCCESS && (
           <>
-            <ResultCount>
-              {totalResults || 0} results
-            </ResultCount>
+            <ResultCount>{totalResults || 0} results</ResultCount>
             {results.map((data) => (
               <ResultCard key={data.id} data={data} showDetails={showDetails} />
             ))}
           </>
         )}
         <TouchableOpacity
-          onPress={() => openLink("https://launchlibrary.net/", appStateStore.browser)}
+          onPress={() =>
+            openLink("https://launchlibrary.net/", appStateStore.browser)
+          }
         >
-          <Footer>
-            Data provided by the Launch Library
-          </Footer>
+          <Footer>Data provided by the Launch Library</Footer>
         </TouchableOpacity>
       </ScrollWrapper>
     </ContentWrapper>

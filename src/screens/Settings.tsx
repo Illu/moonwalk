@@ -46,8 +46,8 @@ const Settings = observer(() => {
           appStateStore.theme === Themes.automatic
             ? "Automatic"
             : appStateStore.theme === Themes.light
-              ? "Light"
-              : "Dark",
+            ? "Light"
+            : "Dark",
         action: () => navigation.navigate("Appearance"),
       },
       {
@@ -60,7 +60,10 @@ const Settings = observer(() => {
         title: "Open Links in",
         icon: "ChevronRight",
         action: () => setModalVisible(true),
-        preview: appStateStore.browser === Browsers.safari ? "Safari" : "In-App Safari",
+        preview:
+          appStateStore.browser === Browsers.safari
+            ? "Safari"
+            : "In-App Safari",
       },
     ],
     [
@@ -126,27 +129,36 @@ const Settings = observer(() => {
     {
       icon: "Compass",
       title: "In-App Browser",
-      action: () => { appStateStore.setBrowser(Browsers.inApp) },
+      action: () => {
+        appStateStore.setBrowser(Browsers.inApp);
+      },
       id: Browsers.inApp,
     },
     {
       icon: "Compass",
       title: "Safari",
-      action: () => { appStateStore.setBrowser(Browsers.safari) },
+      action: () => {
+        appStateStore.setBrowser(Browsers.safari);
+      },
       id: Browsers.safari,
     },
-  ]
+  ];
 
   return (
     <View style={{ flex: 1 }}>
       {modalVisible && (
-        <SelectionModal closeModal={() => { setModalVisible(false) }} title="Open Links in..." actions={modalActions} selected={appStateStore.browser} />
+        <SelectionModal
+          closeModal={() => {
+            setModalVisible(false);
+          }}
+          title="Open Links in..."
+          actions={modalActions}
+          selected={appStateStore.browser}
+        />
       )}
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <ActionMenu items={items} />
-        <BottomText>
-          2020 - Maxime Nory
-        </BottomText>
+        <BottomText>2020 - Maxime Nory</BottomText>
       </ScrollView>
     </View>
   );

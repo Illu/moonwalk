@@ -12,11 +12,11 @@ const Wrapper = styled.View`
 const TitleText = styled.Text`
   font-size: 22px;
   font-weight: bold;
-  color: ${({theme}) => theme.text};
+  color: ${({ theme }) => theme.text};
 `;
 
 const SeeMoreText = styled.Text`
-  color: ${({theme}) => theme.text};
+  color: ${({ theme }) => theme.text};
 `;
 
 const BigTitle = ({
@@ -26,7 +26,6 @@ const BigTitle = ({
   title: string;
   onSeeMore?: () => void;
 }) => {
-
   return (
     <Wrapper>
       <TitleText>{title}</TitleText>

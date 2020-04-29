@@ -156,17 +156,13 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
             <DescWrapper>
               <Row>
                 <Icon name="Pin" color={colors.accent} />
-                <Location numberOfLines={2}>
-                  {data.location.name}
-                </Location>
+                <Location numberOfLines={2}>{data.location.name}</Location>
               </Row>
               {data.missions.map((mission) => (
                 <View key={mission.id}>
                   <Label text={mission.typeName} />
                   <View style={{ marginTop: 10 }}>
-                    <DescText>
-                      {mission.description}
-                    </DescText>
+                    <DescText>{mission.description}</DescText>
                   </View>
                 </View>
               ))}

@@ -84,11 +84,7 @@ const Calendar: React.FC<Props> = observer(({ navigation }) => {
             if (showTitle) titleIndex++;
             return (
               <>
-                {showTitle && (
-                  <Title>
-                    {sectionTitles[titleIndex - 1]}
-                  </Title>
-                )}
+                {showTitle && <Title>{sectionTitles[titleIndex - 1]}</Title>}
                 <TouchableOpacity
                   key={item.id}
                   onPress={() => navigation.navigate("Details", { data: item })}

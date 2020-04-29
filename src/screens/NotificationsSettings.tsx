@@ -79,9 +79,7 @@ const NotificationsSettings = observer(() => {
   return (
     <ScrollView>
       <ToggleWrapper>
-        <ToggleTitle>
-          Enable Notifications
-        </ToggleTitle>
+        <ToggleTitle>Enable Notifications</ToggleTitle>
         <Switch
           value={launchesStore.notifications.enabled}
           onValueChange={launchesStore.toggleNotifications}
