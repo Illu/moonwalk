@@ -13,7 +13,7 @@ export const openLink = async (
         dismissButtonStyle: "done",
         readerMode: false,
         animated: true,
-        modalPresentationStyle: "automatic",
+        modalPresentationStyle: "overFullScreen",
         modalTransitionStyle: "coverVertical",
         modalEnabled: true,
         enableBarCollapsing: true,
