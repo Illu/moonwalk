@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import styled from "styled-components/native";
-import { useTheme, useNavigation } from "@react-navigation/native";
+import { useTheme, useNavigation, useFocusEffect } from "@react-navigation/native";
 import { observer } from "mobx-react";
 import Launches from "../stores/Launches";
 import { ScrollView, RefreshControl, View } from "react-native";
@@ -11,6 +11,7 @@ import Loader from "../common/Loader";
 import ErrorCard from "../common/ErrorCard";
 import firebase from "react-native-firebase";
 import HeaderTitleLogo from "../common/HeaderTitleLogo";
+import useAppState from "../hooks/useAppState";
 
 const Wrapper = styled.SafeAreaView`
   align-items: center;
@@ -31,6 +32,10 @@ const Dashboard = observer(() => {
     firebase.analytics().setCurrentScreen("DASHBOARD");
     launchesStore.initApp();
   }, []);
+
+  useAppState({
+    onForeground: () => loadData(),
+  });
 
   const data = launchesStore.launches.length > 0 && launchesStore.launches[0];
   const renderScreenContent = () => {
