@@ -15,4 +15,6 @@ export {default as Github} from './github.svg';
 export {default as Circle} from './circle.svg';
 export {default as CheckCircle} from './check-circle.svg';
 export {default as Alert} from './alert-circle.svg';
+export {default as Clock} from './clock.svg';
 export {default as Compass} from './compass.svg';
+export {default as Briefcase} from './briefcase.svg';

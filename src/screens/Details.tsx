@@ -35,9 +35,9 @@ const ContentWrapper = styled.View`
   background: ${({ theme }) => theme.background};
 `;
 
-const Location = styled.Text`
+const PinLabel = styled.Text`
   margin-left: 10px;
-  font-size: 13px;
+  font-size: 14px;
   padding-right: 20px;
   color: ${({ theme }) => theme.text};
 `;
@@ -45,6 +45,7 @@ const Location = styled.Text`
 const Row = styled.View`
   flex-direction: row;
   align-items: center;
+  margin-bottom: 10px;
 `;
 
 const DescText = styled.Text`
@@ -132,7 +133,7 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
     outputRange: [1.4, 1.2, 1],
     extrapolate: "clamp",
   });
-
+  console.log("data", data);
   return (
     <View style={{ overflow: "hidden" }}>
       <Image
@@ -154,10 +155,6 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
             <Countdown wsstamp={data.wsstamp} />
             <Subtitle>Mission</Subtitle>
             <DescWrapper>
-              <Row>
-                <Icon name="Pin" color={colors.accent} />
-                <Location numberOfLines={2}>{data.location.name}</Location>
-              </Row>
               {data.missions.map((mission) => (
                 <View key={mission.id}>
                   <Label text={mission.typeName} />
@@ -166,6 +163,24 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
                   </View>
                 </View>
               ))}
+              {data.lsp.name && (
+                <Row>
+                  <Icon name="Briefcase" color={colors.accent} size={20} />
+                  <PinLabel numberOfLines={2}>{data.lsp.name}</PinLabel>
+                </Row>
+              )}
+              {data.net && (
+                <Row>
+                  <Icon name="Clock" color={colors.accent} size={20} />
+                  <PinLabel numberOfLines={2}>{data.net}</PinLabel>
+                </Row>
+              )}
+              {data.location.name && (
+                <Row>
+                  <Icon name="Pin" color={colors.accent} size={20} />
+                  <PinLabel numberOfLines={2}>{data.location.name}</PinLabel>
+                </Row>
+              )}
             </DescWrapper>
             <ActionMenu items={actionItems} />
           </ContentWrapper>

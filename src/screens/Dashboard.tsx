@@ -1,6 +1,10 @@
 import React, { useEffect, useContext } from "react";
 import styled from "styled-components/native";
-import { useTheme, useNavigation, useFocusEffect } from "@react-navigation/native";
+import {
+  useTheme,
+  useNavigation,
+  useFocusEffect,
+} from "@react-navigation/native";
 import { observer } from "mobx-react";
 import Launches from "../stores/Launches";
 import { ScrollView, RefreshControl, View } from "react-native";
