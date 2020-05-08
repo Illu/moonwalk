@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectionModal renders correctly 1`] = `
+<Modal
+  animationType="fade"
+  hardwareAccelerated={false}
+  presentationStyle="overFullScreen"
+  transparent={true}
+  visible={true}
+>
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgba(0, 0, 0, 0.5)",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "flex-end",
+          "paddingBottom": 8,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 8,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Object {
+          "transform": Array [
+            Object {
+              "translateY": 300,
+            },
+          ],
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#fff",
+              "borderRadius": 10,
+              "justifyContent": "center",
+              "marginBottom": 5,
+              "marginLeft": 10,
+              "marginRight": 10,
+              "marginTop": 5,
+              "minHeight": 50,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#666",
+                "paddingBottom": 15,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 15,
+              },
+            ]
+          }
+        >
+          $_TITLE_TEXT_$
+        </Text>
+        <View
+          accessible={true}
+          focusable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "borderColor": "#c3c4c6",
+              "borderTopWidth": 1,
+              "flexDirection": "row",
+              "opacity": 1,
+              "paddingBottom": 15,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 15,
+              "width": "100%",
+            }
+          }
+        >
+          <Icon
+            name="$_ICON_NAME_$"
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#0a84ff",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontSize": 16,
+                  "marginLeft": 20,
+                },
+              ]
+            }
+          >
+            $_TITLE_TEXT_$
+          </Text>
+          <Icon
+            name="CheckCircle"
+          />
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#fff",
+              "borderRadius": 10,
+              "justifyContent": "center",
+              "marginBottom": 5,
+              "marginLeft": 10,
+              "marginRight": 10,
+              "marginTop": 5,
+              "minHeight": 50,
+            },
+          ]
+        }
+      >
+        <View
+          accessible={true}
+          focusable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "borderColor": "#c3c4c6",
+              "borderTopWidth": 0,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "opacity": 1,
+              "paddingBottom": 15,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 15,
+              "width": "100%",
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "alignSelf": "center",
+                  "color": "#0a84ff",
+                  "fontSize": 15,
+                  "fontWeight": "bold",
+                },
+              ]
+            }
+          >
+            Cancel
+          </Text>
+        </View>
+      </View>
+    </View>
+  </RCTSafeAreaView>
+</Modal>
+`;
