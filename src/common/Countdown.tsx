@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components/native";
-import { useTheme } from "@react-navigation/native";
+import { getStatusMessage } from "../helpers/status";
 
 const Wrapper = styled.View`
   background: ${({ theme }) => theme.secondary};
@@ -29,9 +29,20 @@ const Unit = styled.Text`
   color: #aaa;
 `;
 
+const StatusText = styled.Text`
+  color: ${({ theme }) => theme.text};
+  font-size: 20px;
+`;
+
 let timer;
 
-const Countdown = ({ wsstamp }: { wsstamp: number }) => {
+const Countdown = ({
+  wsstamp,
+  status,
+}: {
+  wsstamp: number;
+  status?: number;
+}) => {
   const [timeLeft, setTimeLeft] = useState(0);
 
   useEffect(() => {
@@ -62,22 +73,28 @@ const Countdown = ({ wsstamp }: { wsstamp: number }) => {
 
   return (
     <Wrapper>
-      <UnitWrapper>
-        <Number>{NoData ? "-" : days}</Number>
-        <Unit>{`day${days !== 1 ? "s" : ""}`}</Unit>
-      </UnitWrapper>
-      <UnitWrapper>
-        <Number>{NoData ? "-" : hours % 24}</Number>
-        <Unit>{`hour${minutes % 24 !== 1 ? "s" : ""}`}</Unit>
-      </UnitWrapper>
-      <UnitWrapper>
-        <Number>{NoData ? "-" : minutes % 60}</Number>
-        <Unit>{`minute${minutes % 60 !== 1 ? "s" : ""}`}</Unit>
-      </UnitWrapper>
-      <UnitWrapper>
-        <Number>{NoData ? "-" : seconds % 60}</Number>
-        <Unit>{`second${seconds % 60 !== 1 ? "s" : " "}`}</Unit>
-      </UnitWrapper>
+      {NoData ? (
+        <StatusText>{getStatusMessage(status)}</StatusText>
+      ) : (
+        <>
+          <UnitWrapper>
+            <Number>{NoData ? "-" : days}</Number>
+            <Unit>{`day${days !== 1 ? "s" : ""}`}</Unit>
+          </UnitWrapper>
+          <UnitWrapper>
+            <Number>{NoData ? "-" : hours % 24}</Number>
+            <Unit>{`hour${minutes % 24 !== 1 ? "s" : ""}`}</Unit>
+          </UnitWrapper>
+          <UnitWrapper>
+            <Number>{NoData ? "-" : minutes % 60}</Number>
+            <Unit>{`minute${minutes % 60 !== 1 ? "s" : ""}`}</Unit>
+          </UnitWrapper>
+          <UnitWrapper>
+            <Number>{NoData ? "-" : seconds % 60}</Number>
+            <Unit>{`second${seconds % 60 !== 1 ? "s" : " "}`}</Unit>
+          </UnitWrapper>
+        </>
+      )}
     </Wrapper>
   );
 };

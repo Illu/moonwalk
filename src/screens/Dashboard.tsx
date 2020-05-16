@@ -61,7 +61,7 @@ const Dashboard = observer(() => {
               data={data}
               onPress={() => navigation.navigate("Details", { data })}
             />
-            <Countdown wsstamp={data.wsstamp} />
+            <Countdown wsstamp={data.wsstamp} status={data.status} />
           </>
         );
     }

@@ -9,7 +9,7 @@ class Search {
 
   searchLaunches = (str) => {
     this.state = STATES.LOADING;
-    fetch(`${API_URL}/${str}`)
+    fetch(`${API_URL}launch/${str}`)
       .then((data) => data.json())
       .then((data) => {
         this.results = data.launches || [];

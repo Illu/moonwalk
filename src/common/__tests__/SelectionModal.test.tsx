@@ -10,12 +10,14 @@ describe("SelectionModal", () => {
     const props = {
       closeModal: jest.fn(),
       title: "$_TITLE_TEXT_$",
-      actions: [{
-        title: "$_TITLE_TEXT_$",
-        icon: "$_ICON_NAME_$",
-        action: jest.fn(),
-        id: Browsers.safari
-      }],
+      actions: [
+        {
+          title: "$_TITLE_TEXT_$",
+          icon: "$_ICON_NAME_$",
+          action: jest.fn(),
+          id: Browsers.safari,
+        },
+      ],
       selected: Browsers.safari,
     };
     const tree = TestRenderer(<SelectionModal {...props} />).toJSON();

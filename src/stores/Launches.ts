@@ -26,7 +26,7 @@ class Launches {
 
   loadNextLaunches = (numberOfLaunches = 10) => {
     this.state = STATES.LOADING;
-    fetch(`${API_URL}next/${numberOfLaunches}`)
+    fetch(`${API_URL}launch/next/${numberOfLaunches}`)
       .then((data) => data.json())
       .then((data) => {
         this.launches = data.launches;
@@ -43,7 +43,9 @@ class Launches {
       .analytics()
       .logEvent("LOAD_MORE_LAUNCHES", { value: numberOfLaunches });
     this.state = STATES.LOADING;
-    fetch(`${API_URL}next/${numberOfLaunches}?offset=${this.launches.length}`)
+    fetch(
+      `${API_URL}launch/next/${numberOfLaunches}?offset=${this.launches.length}`
+    )
       .then((data) => data.json())
       .then((data) => {
         this.launches = this.launches.concat(data.launches);

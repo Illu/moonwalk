@@ -133,7 +133,7 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
     outputRange: [1.4, 1.2, 1],
     extrapolate: "clamp",
   });
-  console.log("data", data);
+
   return (
     <View style={{ overflow: "hidden" }}>
       <Image
@@ -152,7 +152,7 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
         <View style={{ backgroundColor: colors.background }}>
           <ContentWrapper>
             <Title>{data.name}</Title>
-            <Countdown wsstamp={data.wsstamp} />
+            <Countdown wsstamp={data.wsstamp} status={data.status} />
             <Subtitle>Mission</Subtitle>
             <DescWrapper>
               {data.missions.map((mission) => (
