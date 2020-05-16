@@ -4,6 +4,7 @@ import TestRenderer from "../../helpers/testRenderer";
 import { Browsers } from "../../types";
 
 jest.mock("../../common/Icon", () => "Icon");
+jest.useFakeTimers();
 
 describe("SelectionModal", () => {
   it("renders correctly", () => {

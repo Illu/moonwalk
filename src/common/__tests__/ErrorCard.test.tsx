@@ -3,6 +3,7 @@ import ErrorCard from "../ErrorCard";
 import TestRenderer from "../../helpers/testRenderer";
 
 jest.mock("../../common/Icon", () => "Icon");
+jest.useFakeTimers();
 
 describe("ErrorCard", () => {
   it("renders correctly with a default message", () => {
