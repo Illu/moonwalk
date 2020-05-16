@@ -11,8 +11,8 @@
     "build-ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --assets-dest ./ios --dev=false --platform='ios'",
     "test": "jest",
     "lint": "eslint .",
-    "prettier-format": "prettier --write '**/*.{js,jsx,ts,tsx,vue,json,yml,yaml,css,scss,less,md,mdx,graphql}'",
-    "prettier-check": "prettier --debug-check '**/*.{js,jsx,ts,tsx,vue,json,yml,yaml,css,scss,less,md,mdx,graphql}'"
+    "prettier-format": "prettier --write '**/*.{js,jsx,ts,tsx,vue,json,css,scss,less,md,mdx,graphql}'",
+    "prettier-check": "prettier --debug-check '**/*.{js,jsx,ts,tsx,vue,json,css,scss,less,md,mdx,graphql}'"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.8.1",

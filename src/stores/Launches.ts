@@ -109,7 +109,7 @@ class Launches {
             );
             PushNotificationIOS.scheduleLocalNotification({
               fireDate: fireDate.toISOString(),
-              alertBody: `🚀 ${data.name} will launch in just ${this.notifications.delay} minutes!`,
+              alertBody: `🚀 ${data.name} will launch in ${this.notifications.delay} minutes!`,
             });
           }
         );
@@ -120,7 +120,7 @@ class Launches {
         PushNotification.cancelAllLocalNotifications();
         PushNotification.localNotificationSchedule({
           date: new Date(data.isostart),
-          message: `🚀 ${data.name} will launch in just ${this.notifications.delay} minutes!`,
+          message: `🚀 ${data.name} will launch in ${this.notifications.delay} minutes!`,
         });
       }
     },
