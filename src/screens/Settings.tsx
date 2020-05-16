@@ -26,7 +26,6 @@ const Settings = observer(() => {
 
   const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
-  const { colors } = useTheme();
   const launchesStore = useContext(Launches);
   const appStateStore = useContext(AppState);
   const items = [
@@ -95,7 +94,10 @@ const Settings = observer(() => {
         icon: "ChevronRight",
         action: () => {
           firebase.analytics().logEvent("OPEN_ISSUE", {});
-          Linking.openURL("https://github.com/Illu/moonwalk/issues/new");
+          openLink(
+            "https://github.com/Illu/moonwalk/issues/new/choose",
+            appStateStore.browser
+          );
         },
       },
     ],
