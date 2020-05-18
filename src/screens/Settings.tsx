@@ -112,7 +112,7 @@ const Settings = observer(() => {
         icon: "Github",
         action: () => {
           firebase.analytics().logEvent("OPEN_SOURCECODE", {});
-          Linking.openURL("https://github.com/Illu/moonwalk");
+          openLink("https://github.com/Illu/moonwalk", appStateStore.browser);
         },
       },
       {
