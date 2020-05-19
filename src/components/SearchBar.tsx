@@ -25,7 +25,13 @@ const IconWrapper = styled.View`
   left: 24px;
 `;
 
-const SearchBar = ({ launchSearch }) => {
+interface Props {
+  launchSearch: () => void;
+  value: string;
+  onChangeText: (str: string) => void;
+}
+
+const SearchBar: React.FC<Props> = ({ launchSearch, onChangeText, value }) => {
   const insets = useSafeArea();
   const { colors } = useTheme();
   return (
@@ -35,7 +41,10 @@ const SearchBar = ({ launchSearch }) => {
         returnKeyType="search"
         onSubmitEditing={({ nativeEvent }) => launchSearch(nativeEvent.text)}
         placeholder="Search"
+        clearButtonMode="always"
+        onChangeText={onChangeText}
         placeholderTextColor={colors.placeholderText}
+        value={value}
       />
       <IconWrapper>
         <Icon name="Search" color={colors.placeholderText} size={20} />

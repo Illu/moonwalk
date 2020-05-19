@@ -18,3 +18,4 @@ export {default as Alert} from './alert-circle.svg';
 export {default as Clock} from './clock.svg';
 export {default as Compass} from './compass.svg';
 export {default as Briefcase} from './briefcase.svg';
+export {default as ArrowUpLeft} from './arrow-up-left.svg';

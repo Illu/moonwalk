@@ -1,16 +1,18 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react";
-import { TouchableOpacity, Linking } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import Searchbar from "../components/SearchBar";
 import ResultCard from "../components/ResultCard";
+import BigTitle from "../common/BigTitle";
 import Loader from "../common/Loader";
 import { STATES } from "../constants";
 import Search from "../stores/Search";
-import { useTheme } from "@react-navigation/native";
 import firebase from "react-native-firebase";
 import { openLink } from "../helpers/OpenLink";
 import AppState from "../stores/AppState";
+import Icon from "../common/Icon";
+import { useTheme } from "@react-navigation/native";
 
 const ContentWrapper = styled.SafeAreaView`
   flex: 1;
@@ -35,16 +37,48 @@ const ResultCount = styled.Text`
   color: ${({ theme }) => theme.text};
 `;
 
+const HistoryCard = styled.TouchableOpacity`
+  width: 100%;
+  background: ${({ theme }) => theme.secondary};
+  padding: 15px 20px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-color: ${({ theme }) => theme.uiAccent};
+`;
+
+const HistoryText = styled.Text`
+  color: ${({ theme }) => theme.text};
+`;
+
+const HintText = styled.Text`
+  color: ${({ theme }) => theme.text};
+  font-size: 15px;
+  margin: 15px 20px;
+  text-align: center;
+`;
+
+const HintTitle = styled.Text`
+  color: ${({ theme }) => theme.text};
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 100px;
+`;
+
 const SearchScreen = observer(({ navigation }) => {
+  const searchStore = useContext(Search);
+  const appStateStore = useContext(AppState);
+  const { colors } = useTheme();
+  const [searchStr, setSearchStr] = useState("");
+
   useEffect(() => {
     firebase.analytics().setCurrentScreen("SEARCH");
+    searchStore.initStore();
   }, []);
 
   const showDetails = (data) => {
     navigation.navigate("Details", { data });
   };
-  const searchStore = useContext(Search);
-  const appStateStore = useContext(AppState);
   const { results, searchLaunches, totalResults, state } = searchStore;
 
   const launchSearch = (text: string) => {
@@ -54,7 +88,14 @@ const SearchScreen = observer(({ navigation }) => {
 
   return (
     <ContentWrapper>
-      <Searchbar launchSearch={launchSearch} />
+      <Searchbar
+        launchSearch={launchSearch}
+        value={searchStr}
+        onChangeText={(str) => {
+          setSearchStr(str);
+          if (str.length === 0) searchStore.clearResults();
+        }}
+      />
       <ScrollWrapper contentContainerStyle={{ alignItems: "center" }}>
         {state === STATES.LOADING && <Loader />}
         {results.length >= 0 && state === STATES.SUCCESS && (
@@ -63,6 +104,39 @@ const SearchScreen = observer(({ navigation }) => {
             {results.map((data) => (
               <ResultCard key={data.id} data={data} showDetails={showDetails} />
             ))}
+          </>
+        )}
+        {state === STATES.IDLE && searchStore.history.length > 0 && (
+          <>
+            <BigTitle
+              title="Recent searches"
+              onAction={searchStore.clearHistory}
+              actionText="Clear"
+            />
+            {searchStore.history.map((item, index) => (
+              <HistoryCard
+                key={index}
+                style={{
+                  borderTopWidth: index !== 0 ? 0.5 : 0,
+                }}
+                onPress={() => {
+                  setSearchStr(item);
+                  searchLaunches(item);
+                }}
+              >
+                <HistoryText>{item}</HistoryText>
+                <Icon name="ArrowUpLeft" color={colors.uiAccent} />
+              </HistoryCard>
+            ))}
+          </>
+        )}
+        {state === STATES.IDLE && searchStore.history.length === 0 && (
+          <>
+            <HintTitle>Find a launch</HintTitle>
+            <HintText>
+              Search accross past and upcoming launches with a rocket or mission
+              name.
+            </HintText>
           </>
         )}
         <TouchableOpacity

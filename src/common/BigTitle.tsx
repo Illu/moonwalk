@@ -4,9 +4,10 @@ import { TouchableOpacity } from "react-native";
 
 const Wrapper = styled.View`
   flex-direction: row;
-  justify-content: space-between;
+  padding: 10px 20px;
   align-items: center;
-  margin: 10px 20px;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 const TitleText = styled.Text`
@@ -16,22 +17,25 @@ const TitleText = styled.Text`
 `;
 
 const SeeMoreText = styled.Text`
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.accent};
+  text-align: right;
 `;
 
 const BigTitle = ({
   title,
-  onSeeMore,
+  onAction,
+  actionText,
 }: {
   title: string;
-  onSeeMore?: () => void;
+  onAction?: () => void;
+  actionText?: string;
 }) => {
   return (
     <Wrapper>
       <TitleText>{title}</TitleText>
-      {onSeeMore && (
-        <TouchableOpacity onPress={onSeeMore}>
-          <SeeMoreText>See more</SeeMoreText>
+      {actionText && (
+        <TouchableOpacity onPress={onAction}>
+          <SeeMoreText>{actionText}</SeeMoreText>
         </TouchableOpacity>
       )}
     </Wrapper>

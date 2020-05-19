@@ -8,10 +8,11 @@ exports[`BigTitle renders correctly 1`] = `
         "alignItems": "center",
         "flexDirection": "row",
         "justifyContent": "space-between",
-        "marginBottom": 10,
-        "marginLeft": 20,
-        "marginRight": 20,
-        "marginTop": 10,
+        "paddingBottom": 10,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 10,
+        "width": "100%",
       },
     ]
   }
@@ -40,10 +41,11 @@ exports[`BigTitle renders correctly with the See More option 1`] = `
         "alignItems": "center",
         "flexDirection": "row",
         "justifyContent": "space-between",
-        "marginBottom": 10,
-        "marginLeft": 20,
-        "marginRight": 20,
-        "marginTop": 10,
+        "paddingBottom": 10,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 10,
+        "width": "100%",
       },
     ]
   }
@@ -61,34 +63,5 @@ exports[`BigTitle renders correctly with the See More option 1`] = `
   >
     $_TITLE_TEXT_$
   </Text>
-  <View
-    accessible={true}
-    focusable={true}
-    isTVSelectable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Object {
-        "opacity": 1,
-      }
-    }
-  >
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "rgb(28, 28, 30)",
-          },
-        ]
-      }
-    >
-      See more
-    </Text>
-  </View>
 </View>
 `;
