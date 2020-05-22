@@ -31,11 +31,13 @@ class Search {
   };
 
   addHistoryItem = (str) => {
-    this.history.unshift(str);
-    if (this.history.length > 4) {
-      this.history.pop();
+    if (this.history.indexOf(str) < 0) {
+      this.history.unshift(str);
+      if (this.history.length > 4) {
+        this.history.pop();
+      }
+      this.saveData();
     }
-    this.saveData();
   };
 
   searchLaunches = (str) => {
