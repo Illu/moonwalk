@@ -3,7 +3,7 @@ import { STATES, API_URL } from "../constants";
 import { createContext } from "react";
 import AsyncStorage from "@react-native-community/async-storage";
 
-class Search {
+export class Search {
   state = STATES.IDLE;
   results = [];
   totalResults = "";
