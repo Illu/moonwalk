@@ -67,7 +67,7 @@ const Dashboard = observer(() => {
     }
   };
 
-  if (data) {
+  if (data?.wsstamp) {
     launchesStore.scheduleNotification(data);
   }
 

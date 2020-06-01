@@ -104,13 +104,15 @@ class Launches {
             if (plannedNotifications.length > 0) {
               PushNotificationIOS.cancelAllLocalNotifications();
             }
-            const fireDate = new Date(
-              (data.wsstamp - this.notifications.delay * 60) * 1000
-            );
-            PushNotificationIOS.scheduleLocalNotification({
-              fireDate: fireDate.toISOString(),
-              alertBody: `🚀 ${data.name} will launch in ${this.notifications.delay} minutes!`,
-            });
+            if (data.wsstamp){
+              const fireDate = new Date(
+                (data.wsstamp - this.notifications.delay * 60) * 1000
+              );
+              PushNotificationIOS.scheduleLocalNotification({
+                fireDate: fireDate.toISOString(),
+                alertBody: `🚀 ${data.name} will launch in ${this.notifications.delay} minutes!`,
+              });
+            }
           }
         );
       }
