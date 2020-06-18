@@ -1,12 +1,13 @@
-import React, { useEffect, useContext } from "react";
-import styled from "styled-components/native";
 import { useTheme } from "@react-navigation/native";
+import React, { useEffect, useContext } from "react";
 import { ScrollView, View } from "react-native";
-import LicensesData from "../Licenses.json";
+import firebase from "react-native-firebase";
+import styled from "styled-components/native";
+
 import Icon from "../common/Icon";
 import Label from "../common/Label";
-import firebase from "react-native-firebase";
 import { openLink } from "../helpers/OpenLink";
+import LicensesData from "../Licenses.json";
 import AppState from "../stores/AppState";
 
 const ItemWrapper = styled.TouchableOpacity`

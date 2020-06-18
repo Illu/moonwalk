@@ -1,7 +1,8 @@
 import React from "react";
-import SelectionModal from "../SelectionModal";
+
 import TestRenderer from "../../helpers/testRenderer";
 import { Browsers } from "../../types";
+import SelectionModal from "../SelectionModal";
 
 jest.mock("../../common/Icon", () => "Icon");
 jest.useFakeTimers();

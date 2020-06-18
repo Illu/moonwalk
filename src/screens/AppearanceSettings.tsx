@@ -1,10 +1,11 @@
+import { observer } from "mobx-react";
 import React, { useContext } from "react";
 import { ScrollView } from "react-native";
+import firebase from "react-native-firebase";
+
 import ActionMenu from "../common/ActionMenu";
 import AppState from "../stores/AppState";
-import { observer } from "mobx-react";
 import { Themes } from "../types";
-import firebase from "react-native-firebase";
 
 const AppearanceSettings = observer(() => {
   const appStateStore = useContext(AppState);

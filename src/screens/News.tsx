@@ -1,21 +1,22 @@
-import React, { useContext, useEffect } from "react";
-import styled from "styled-components/native";
 import { useTheme, RouteProp } from "@react-navigation/native";
+import { observer } from "mobx-react";
+import React, { useContext, useEffect } from "react";
 import {
   ScrollView,
   RefreshControl,
   View,
   TouchableOpacity,
 } from "react-native";
-import { observer } from "mobx-react";
-import NewsStore from "../stores/News";
+import firebase from "react-native-firebase";
+import styled from "styled-components/native";
+
+import ErrorCard from "../common/ErrorCard";
+import Loader from "../common/Loader";
 import ArticlePreview from "../components/ArticlePreview";
 import { STATES } from "../constants";
-import Loader from "../common/Loader";
-import ErrorCard from "../common/ErrorCard";
-import firebase from "react-native-firebase";
 import { openLink } from "../helpers/OpenLink";
 import AppState from "../stores/AppState";
+import NewsStore from "../stores/News";
 
 const Title = styled.Text`
   margin: 20px 16px 10px 16px;
@@ -42,14 +43,14 @@ const News: React.FC<Props> = observer(() => {
 
   const isLoading = newsStore.state === STATES.LOADING;
 
-  const loadData = () => {
+  const loadData = useCallback(() => {
     newsStore.loadArticles();
-  };
+  });
 
   useEffect(() => {
     loadData();
     firebase.analytics().setCurrentScreen("NEWS");
-  }, []);
+  }, [loadData]);
 
   const currentTime = new Date().getTime() / 1000;
   let lastTime = -1;

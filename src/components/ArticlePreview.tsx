@@ -1,6 +1,7 @@
-import styled from "styled-components/native";
 import React, { useContext } from "react";
 import firebase from "react-native-firebase";
+import styled from "styled-components/native";
+
 import { openLink } from "../helpers/OpenLink";
 import AppState from "../stores/AppState";
 

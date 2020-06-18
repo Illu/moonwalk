@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components/native";
+
 import { getStatusMessage } from "../helpers/status";
 
 const Wrapper = styled.View`
@@ -52,7 +53,7 @@ const Countdown = ({ net, status }: { net: Date; status?: number }) => {
     return () => {
       clearInterval(timer);
     };
-  }, []);
+  }, [updateTimeLeft, wsstamp]);
 
   const updateTimeLeft = () => {
     const now = new Date();

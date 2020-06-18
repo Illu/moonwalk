@@ -1,6 +1,7 @@
+import AsyncStorage from "@react-native-community/async-storage";
 import { decorate, observable, action } from "mobx";
 import { createContext } from "react";
-import AsyncStorage from "@react-native-community/async-storage";
+
 import { Themes, Browsers } from "../types";
 
 class AppState {

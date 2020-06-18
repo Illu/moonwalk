@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components/native";
 import { Dimensions, StyleSheet, Platform } from "react-native";
 import SnapCarousel, { ParallaxImage } from "react-native-snap-carousel";
+import styled from "styled-components/native";
 
 const ItemWrapper = styled.TouchableOpacity`
   border-radius: 30px;

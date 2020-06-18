@@ -1,11 +1,12 @@
-import styled from "styled-components/native";
+import { useTheme } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
 import { Animated, Dimensions, View } from "react-native";
 import { useSafeArea } from "react-native-safe-area-context";
-import { useTheme } from "@react-navigation/native";
+import styled from "styled-components/native";
+
 import Icon from "../common/Icon";
-import { TABBAR_HEIGHT } from "../constants";
 import Pushable from "../common/Pushable";
+import { TABBAR_HEIGHT } from "../constants";
 
 const Wrapper = styled.View`
   height: ${TABBAR_HEIGHT}px;
@@ -52,7 +53,7 @@ const TabbarComponent = ({ props }) => {
       toValue: props.state.index,
       duration: 250,
     }).start();
-  }, [props.state.index]);
+  }, [props.state.index, switchAnim]);
 
   return (
     <View style={{ backgroundColor: colors.background }}>
