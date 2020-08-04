@@ -37,13 +37,14 @@ const StatusText = styled.Text`
 let timer;
 
 const Countdown = ({
-  wsstamp,
+  net,
   status,
 }: {
-  wsstamp: number;
+  net: Date;
   status?: number;
 }) => {
   const [timeLeft, setTimeLeft] = useState(0);
+  const wsstamp = new Date(net).getTime() / 1000
 
   useEffect(() => {
     updateTimeLeft();

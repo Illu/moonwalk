@@ -141,10 +141,10 @@ const SearchScreen = observer(({ navigation }) => {
         )}
         <TouchableOpacity
           onPress={() =>
-            openLink("https://launchlibrary.net/", appStateStore.browser)
+            openLink("https://thespacedevs.com/", appStateStore.browser)
           }
         >
-          <Footer>Data provided by the Launch Library</Footer>
+          <Footer>Data provided by Launch Library 2.0</Footer>
         </TouchableOpacity>
       </ScrollWrapper>
     </ContentWrapper>

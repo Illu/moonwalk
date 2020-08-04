@@ -43,12 +43,12 @@ const Desc = styled.Text`
 `;
 
 export default ({ data, isFirst = false }) => {
-  const launchTime = new Date(data.netstamp * 1000);
+  const launchTime = new Date(data.net);
   return (
     <Wrapper isFirst={isFirst}>
       <Row>
         <DateWrapper>
-          {data.netstamp === 0 ? (
+          {launchTime.getTime() / 1000 === 0 ? (
             <Day>TBD</Day>
           ) : (
             <>
@@ -59,10 +59,10 @@ export default ({ data, isFirst = false }) => {
         </DateWrapper>
         <ContentWrapper>
           <Desc bold>{data.name}</Desc>
-          <Desc numberOfLines={1}>{data.location.name}</Desc>
+          <Desc numberOfLines={1}>{data.pad.name}</Desc>
           <Label
             numberOfLines={2}
-            text={data.lsp.name.length < 50 ? data.lsp.name : data.lsp.abbrev}
+            text={data.launch_service_provider.name.length < 50 ? data.launch_service_provider.name : data.launch_service_provider.abbrev}
           />
         </ContentWrapper>
       </Row>

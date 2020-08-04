@@ -81,8 +81,11 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
   const appStateStore = useContext(AppState);
 
   const { data } = route.params;
-  const videoLink = data.vidURLs.length > 0 && data.vidURLs[0];
-  const wikiLink = data.missions[0]?.wikiURL;
+  const videoLink = data.vidURLs && data.vidURLs.length > 0 && data.vidURLs[0].url;
+  const wikiLink = data.launch_service_provider.wiki_url;
+  const lspAbbrev = data.launch_service_provider.abbrev ? data.launch_service_provider.abbrev : ""
+  const missionType = data.mission ? data.mission.type : "Unknown"
+  const missionDescription = data.mission ? data.mission.description : "No Description Available"
 
   const actionItems = [
     [
@@ -106,15 +109,15 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
         thumbIcon: "Pin",
         thumbColor: "#2dcd55",
         action: () => {
-          const { longitude, latitude } = data.location.pads[0];
+          const { latitude, longitude } = data.pad;
+          const lat = parseFloat(latitude)
+          const lon = parseFloat(longitude)
           firebase.analytics().logEvent("OPEN_MAPS", { value: data.name });
-          openMap({ longitude, latitude });
+          openMap({ latitude: lat, longitude: lon });
         },
-        disabled: !data.location.pads[0],
-        preview: !data.location.pads[0] && "Unavailable",
       },
       {
-        title: "Wikipedia",
+        title: `${lspAbbrev} Wikipedia`,
         icon: "ChevronRight",
         preview: !wikiLink && "Unavailable",
         thumbIcon: "Globe",
@@ -137,9 +140,9 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
   return (
     <View style={{ overflow: "hidden" }}>
       <Image
-        source={{ uri: data.rocket.imageURL }}
+        source={{ uri: data.image || data.rocket.configuration.image_url }}
         style={{ transform: [{ scale: ImageScale }] }}
-      ></Image>
+      />
       <Animated.ScrollView
         contentContainerStyle={{ paddingTop: IMAGE_HEIGHT }}
         onScroll={Animated.event(
@@ -152,33 +155,31 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
         <View style={{ backgroundColor: colors.background }}>
           <ContentWrapper>
             <Title>{data.name}</Title>
-            <Countdown wsstamp={data.wsstamp} status={data.status} />
+            <Countdown net={data.net} status={data.status.id} />
             <Subtitle>Mission</Subtitle>
             <DescWrapper>
-              {data.missions.map((mission) => (
-                <View key={mission.id}>
-                  <Label text={mission.typeName} />
-                  <View style={{ marginTop: 10 }}>
-                    <DescText>{mission.description}</DescText>
-                  </View>
+              <View>
+                <Label text={missionType} />
+                <View style={{ marginTop: 10 }}>
+                  <DescText>{missionDescription}</DescText>
                 </View>
-              ))}
-              {data.lsp.name && (
+              </View>
+              {data.launch_service_provider.name && (
                 <Row>
                   <Icon name="Briefcase" color={colors.accent} size={20} />
-                  <PinLabel numberOfLines={2}>{data.lsp.name}</PinLabel>
+                  <PinLabel numberOfLines={2}>{data.launch_service_provider.name}</PinLabel>
                 </Row>
               )}
               {data.net && (
                 <Row>
                   <Icon name="Clock" color={colors.accent} size={20} />
-                  <PinLabel numberOfLines={2}>{data.net}</PinLabel>
+                  <PinLabel numberOfLines={2}>{new Date(data.net).toLocaleString()}</PinLabel>
                 </Row>
               )}
-              {data.location.name && (
+              {data.pad.name && (
                 <Row>
                   <Icon name="Pin" color={colors.accent} size={20} />
-                  <PinLabel numberOfLines={2}>{data.location.name}</PinLabel>
+                  <PinLabel numberOfLines={2}>{data.pad.location.name}</PinLabel>
                 </Row>
               )}
             </DescWrapper>

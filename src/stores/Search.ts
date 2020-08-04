@@ -42,11 +42,11 @@ export class Search {
 
   searchLaunches = (str) => {
     this.state = STATES.LOADING;
-    fetch(`${API_URL}launch/${str}`)
+    fetch(`${API_URL}launch?search=${str}`)
       .then((data) => data.json())
       .then((data) => {
-        this.results = data.launches || [];
-        this.totalResults = data.total;
+        this.results = data.results || [];
+        this.totalResults = data.count;
         this.state = STATES.SUCCESS;
         this.addHistoryItem(str);
       })
