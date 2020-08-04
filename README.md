@@ -4,7 +4,7 @@
 ![license: MIT](https://img.shields.io/github/license/mdubourg001/ssgo?style=flat-square)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-A simple way to stay up to date with upcoming space launches, built with [React-Native](https://github.com/facebook/react-native), using the [Launch Library API](https://launchlibrary.net/) and the [Spaceflight News API](https://spaceflightnewsapi.net/).
+A simple way to stay up to date with upcoming space launches, built with [React-Native](https://github.com/facebook/react-native), using the [Launch Library 2](https://thespacedevs.com/) and the [Spaceflight News API](https://spaceflightnewsapi.net/).
 
 ## Preview
 
