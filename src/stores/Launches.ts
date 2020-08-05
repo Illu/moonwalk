@@ -104,9 +104,9 @@ class Launches {
             if (plannedNotifications.length > 0) {
               PushNotificationIOS.cancelAllLocalNotifications();
             }
-            if (data.wsstamp){
+            if (data.net){
               const fireDate = new Date(
-                (data.wsstamp - this.notifications.delay * 60) * 1000
+                (data.net - this.notifications.delay * 60) * 1000
               );
               PushNotificationIOS.scheduleLocalNotification({
                 fireDate: fireDate.toISOString(),
@@ -121,7 +121,7 @@ class Launches {
       if (this.notifications.enabled) {
         PushNotification.cancelAllLocalNotifications();
         PushNotification.localNotificationSchedule({
-          date: new Date(data.isostart),
+          date: new Date(data.net).toISOString(),
           message: `🚀 ${data.name} will launch in ${this.notifications.delay} minutes!`,
         });
       }
