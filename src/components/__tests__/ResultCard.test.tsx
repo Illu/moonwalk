@@ -7,7 +7,7 @@ describe("ResultCard", () => {
     const props = {
       data: {
         name: "$_TEST_NAME_$",
-        net: "$_TEST_NET_DATE_$",
+        net: "2020-08-05T02:00:00Z",
       },
       showDetails: jest.fn(),
     };
