@@ -251,9 +251,9 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
   - React-jsinspector (0.61.5)
-  - react-native-appearance (0.3.3):
+  - react-native-appearance (0.3.4):
     - React
-  - react-native-change-icon (2.0.1):
+  - react-native-change-icon (2.0.3):
     - React
   - react-native-safe-area-context (0.7.3):
     - React
@@ -292,11 +292,11 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
     - ReactCommon/jscallinvoker (= 0.61.5)
-  - RNCAsyncStorage (1.9.0):
+  - RNCAsyncStorage (1.11.0):
     - React
   - RNCMaskedView (0.1.10):
     - React
-  - RNCPushNotificationIOS (1.1.1):
+  - RNCPushNotificationIOS (1.4.0):
     - React
   - RNFirebase (5.6.0):
     - Firebase/Core
@@ -307,13 +307,13 @@ PODS:
     - Fabric
     - Firebase/Core
     - React
-  - RNGestureHandler (1.6.1):
+  - RNGestureHandler (1.7.0):
     - React
   - RNInAppBrowser (3.4.0):
     - React
-  - RNReanimated (1.8.0):
+  - RNReanimated (1.10.1):
     - React
-  - RNScreens (2.7.0):
+  - RNScreens (2.10.1):
     - React
   - RNStoreReview (0.1.5):
     - React
@@ -491,8 +491,8 @@ SPEC CHECKSUMS:
   React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
-  react-native-appearance: 98e4530857c366de634f58e5db91bf97feaa96ff
-  react-native-change-icon: 302fc037c8b7793352773f316268acf3fc29d6cd
+  react-native-appearance: 0f0e5fc2fcef70e03d48c8fe6b00b9158c2ba8aa
+  react-native-change-icon: d324658c16410baf6db9c1cfeffa49b80dd5697c
   react-native-safe-area-context: e200d4433aba6b7e60b52da5f37af11f7a0b0392
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
@@ -504,14 +504,14 @@ SPEC CHECKSUMS:
   React-RCTText: 9ccc88273e9a3aacff5094d2175a605efa854dbe
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
-  RNCAsyncStorage: 453cd7c335ec9ba3b877e27d02238956b76f3268
+  RNCAsyncStorage: d059c3ee71738c39834a627476322a5a8cd5bf36
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
-  RNCPushNotificationIOS: a0b6894f4ad9b93d9dac467fdf4d055660ac8a0d
+  RNCPushNotificationIOS: dc1c0c6aa18a128df123598149f42e848d26a4ac
   RNFirebase: 37daa9a346d070f9f6ee1f3b4aaf4c8e3b1d5d1c
-  RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
+  RNGestureHandler: b6b359bb800ae399a9c8b27032bdbf7c18f08a08
   RNInAppBrowser: c1a0dad2734458d79bcb6c8f4297ba8658a1da9f
-  RNReanimated: 955cf4068714003d2f1a6e2bae3fb1118f359aff
-  RNScreens: cf198f915f8a2bf163de94ca9f5bfc8d326c3706
+  RNReanimated: c2bb7438b57a3d987bb2e4e6e4bca94787e30b02
+  RNScreens: b748efec66e095134c7166ca333b628cd7e6f3e2
   RNStoreReview: 62d6afd7c37db711a594bbffca6b0ea3a812b7a8
   RNSVG: 67f1f12dae2cef6ed59a42cae74a6b8f5a9e7b46
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b

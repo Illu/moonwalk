@@ -1,6 +1,6 @@
 {
   "name": "react-native-change-icon",
-  "version": "2.0.1",
+  "version": "2.0.3",
   "summary": "React Native Change Application Icon Programmatically.",
   "description": "React Native Change Application Icon Programmatically.",
   "homepage": "https://github.com/skb1129/react-native-change-icon",
@@ -16,7 +16,7 @@
   },
   "source": {
     "git": "https://github.com/skb1129/react-native-change-icon.git",
-    "tag": "2.0.1"
+    "tag": "2.0.3"
   },
   "source_files": "ios/**/*.{h,m,swift}",
   "requires_arc": true,
