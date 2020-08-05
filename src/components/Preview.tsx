@@ -38,11 +38,11 @@ interface Props {
 const Preview = ({ data, onPress }): Props => (
   <ItemWrapper onPress={onPress}>
     <Thumbnail
-      source={{ uri: data.rocket.imageURL }}
+      source={{ uri: data.image || data.rocket.configuration.image_url }}
       imageStyle={{ opacity: 0.9 }}
     >
       <Title>{data.name}</Title>
-      <Time>{data.windowstart}</Time>
+      <Time>{new Date(data.net).toLocaleString()}</Time>
     </Thumbnail>
   </ItemWrapper>
 );

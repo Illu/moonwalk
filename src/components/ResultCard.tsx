@@ -29,7 +29,7 @@ const ResultCard = ({ data, showDetails }) => {
   return (
     <Wrapper onPress={() => showDetails(data)}>
       <Title>{name}</Title>
-      <Subtitle>{net}</Subtitle>
+      <Subtitle>{new Date(net).toLocaleString()}</Subtitle>
     </Wrapper>
   );
 };

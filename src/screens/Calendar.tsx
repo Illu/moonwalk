@@ -66,7 +66,7 @@ const Calendar: React.FC<Props> = observer(({ navigation }) => {
   }
 
   let titleIndex = 0;
-  const sectionTitles = ["Scheduled", "To be defined"];
+  const sectionTitles = ["Scheduled", "To be Determined"];
 
   return (
     <Wrapper>
@@ -80,7 +80,7 @@ const Calendar: React.FC<Props> = observer(({ navigation }) => {
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => {
             const showTitle =
-              titleIndex === 0 || (item.netstamp === 0 && titleIndex === 1);
+              titleIndex === 0 || (new Date(item.net).getTime() / 1000 === 0 && titleIndex === 1);
             if (showTitle) titleIndex++;
             return (
               <>

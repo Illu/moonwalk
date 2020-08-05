@@ -50,7 +50,7 @@ exports[`ResultCard renders correctly 1`] = `
       ]
     }
   >
-    $_TEST_NET_DATE_$
+    8/5/2020, 4:00:00 AM
   </Text>
 </View>
 `;

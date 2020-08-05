@@ -56,7 +56,7 @@ const Carousel: React.FC<Props> = ({ launches, onItemPress }) => {
     return (
       <ItemWrapper onPress={() => onItemPress(item)}>
         <ParallaxImage
-          source={{ uri: item.rocket.imageURL }}
+          source={{ uri: item.image || item.rocket.configuration.image_url }}
           containerStyle={styles.imageContainer}
           style={styles.image}
           parallaxFactor={0.2}

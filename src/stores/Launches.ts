@@ -26,10 +26,10 @@ class Launches {
 
   loadNextLaunches = (numberOfLaunches = 10) => {
     this.state = STATES.LOADING;
-    fetch(`${API_URL}launch/next/${numberOfLaunches}`)
+    fetch(`${API_URL}launch/upcoming?limit=${numberOfLaunches}&mode=detailed`)
       .then((data) => data.json())
       .then((data) => {
-        this.launches = data.launches;
+        this.launches = data.results;
         this.state = STATES.SUCCESS;
       })
       .catch((err) => {
@@ -44,11 +44,11 @@ class Launches {
       .logEvent("LOAD_MORE_LAUNCHES", { value: numberOfLaunches });
     this.state = STATES.LOADING;
     fetch(
-      `${API_URL}launch/next/${numberOfLaunches}?offset=${this.launches.length}`
+      `${API_URL}launch/upcoming?limit=${numberOfLaunches}&offset=${this.launches.length}&mode=detailed`
     )
       .then((data) => data.json())
       .then((data) => {
-        this.launches = this.launches.concat(data.launches);
+        this.launches = this.launches.concat(data.results);
         this.state = STATES.SUCCESS;
       })
       .catch((err) => {
@@ -104,9 +104,9 @@ class Launches {
             if (plannedNotifications.length > 0) {
               PushNotificationIOS.cancelAllLocalNotifications();
             }
-            if (data.wsstamp){
+            if (data.net){
               const fireDate = new Date(
-                (data.wsstamp - this.notifications.delay * 60) * 1000
+                (data.net - this.notifications.delay * 60) * 1000
               );
               PushNotificationIOS.scheduleLocalNotification({
                 fireDate: fireDate.toISOString(),
@@ -121,7 +121,7 @@ class Launches {
       if (this.notifications.enabled) {
         PushNotification.cancelAllLocalNotifications();
         PushNotification.localNotificationSchedule({
-          date: new Date(data.isostart),
+          date: new Date(data.net).toISOString(),
           message: `🚀 ${data.name} will launch in ${this.notifications.delay} minutes!`,
         });
       }
