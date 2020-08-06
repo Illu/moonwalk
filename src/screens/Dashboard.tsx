@@ -66,8 +66,7 @@ const Dashboard = observer(() => {
         );
     }
   };
-
-  if (data?.wsstamp) {
+  if (data?.net) {
     launchesStore.scheduleNotification(data);
   }
 

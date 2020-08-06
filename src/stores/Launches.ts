@@ -1,5 +1,5 @@
 import { decorate, observable, action } from "mobx";
-import { STATES, API_URL } from "../constants";
+import { STATES, API_URL, NOTIFICATIONS_MESSAGES } from "../constants";
 import { createContext } from "react";
 import { Platform } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
@@ -105,12 +105,23 @@ class Launches {
               PushNotificationIOS.cancelAllLocalNotifications();
             }
             if (data.net){
-              const fireDate = new Date(
-                (data.net - this.notifications.delay * 60) * 1000
-              );
+              const launchTime = new Date(data.net)
+              const ms = Date.parse(launchTime);
+
+              // Check if the launch already happened
+              if (ms <= Date.parse(new Date())){
+                return;
+              }
+
+              const fireDate = new Date(ms - this.notifications.delay * 60 * 1000)
+
+              const message = NOTIFICATIONS_MESSAGES[Math.floor(Math.random() * 4)]
+                .replace("$TIME$", this.notifications.delay)
+                .replace("$NAME$", data.name)
+
               PushNotificationIOS.scheduleLocalNotification({
                 fireDate: fireDate.toISOString(),
-                alertBody: `🚀 ${data.name} will launch in ${this.notifications.delay} minutes!`,
+                alertBody: message
               });
             }
           }
