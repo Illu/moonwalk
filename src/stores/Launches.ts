@@ -30,8 +30,12 @@ class Launches {
     fetch(`${API_URL}launch/upcoming?limit=${numberOfLaunches}&mode=detailed`)
       .then((data) => data.json())
       .then((data) => {
-        this.launches = data.results;
-        this.state = STATES.SUCCESS;
+        if (data.results){
+          this.launches = data.results;
+          this.state = STATES.SUCCESS;
+        } else {
+          this.state = STATES.ERROR;
+        }
       })
       .catch((err) => {
         firebase.analytics().logEvent("LOAD_LAUNCHES_ERROR", {});

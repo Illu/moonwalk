@@ -15,6 +15,7 @@ import AppState from "../stores/AppState";
 import Icon from "../common/Icon";
 import ArticlePreview from "../components/ArticlePreview";
 import Search from "../stores/Search";
+import ErrorCard from "../common/ErrorCard";
 
 const ContentWrapper = styled.SafeAreaView`
   flex: 1;
@@ -87,6 +88,7 @@ const SearchScreen = observer(({ navigation }) => {
     searchLaunches,
     totalResults,
     state,
+    clearResults
   } = searchStore;
 
   const launchSearch = (text: string) => {
@@ -101,7 +103,7 @@ const SearchScreen = observer(({ navigation }) => {
         value={searchStr}
         onChangeText={(str) => {
           setSearchStr(str);
-          if (str.length === 0) searchStore.clearResults();
+          if (str.length === 0) clearResults();
         }}
       />
       <ScrollWrapper contentContainerStyle={{ alignItems: "center" }}>
@@ -120,6 +122,7 @@ const SearchScreen = observer(({ navigation }) => {
               <ResultCount>Related news articles</ResultCount>
               {newsResults.map((data, index) => (
                 <ArticlePreview
+                  key={index}
                   article={data}
                   timePosted=""
                   isFirst={index === 0}
@@ -127,6 +130,9 @@ const SearchScreen = observer(({ navigation }) => {
               ))}
             </>
           )}
+        {state === STATES.ERROR && (
+          <ErrorCard message="An error occured, please try again later" onRetry={clearResults} />
+        )}
         {state === STATES.IDLE && searchStore.history.length > 0 && (
           <>
             <BigTitle

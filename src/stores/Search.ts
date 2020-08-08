@@ -53,12 +53,12 @@ export class Search {
       const launchResults = await results[0].json();
       const newsResults = await results[1].json();
 
-      this.launchResults = launchResults.results;
-      this.newsResults = newsResults.docs;
+      this.launchResults = launchResults.results || [];
+      this.newsResults = newsResults.docs || [];
       this.addHistoryItem(str);
 
       this.state = STATES.SUCCESS;
-      this.totalResults = `${(launchResults.count | 0) + (newsResults | 0)}`;
+      this.totalResults = `${launchResults.results.length + newsResults.docs.length}`;
     } catch (err) {
       this.state = STATES.ERROR;
     }
