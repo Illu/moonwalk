@@ -47,7 +47,7 @@ const ErrorCard = ({ message, onRetry }: Props) => {
       duration: 600,
       easing: Easing.out(Easing.quad),
     }).start();
-  }, [appearAnim]);
+  }, []);
 
   return (
     <Wrapper

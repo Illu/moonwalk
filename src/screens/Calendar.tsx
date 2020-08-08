@@ -37,15 +37,15 @@ const Calendar: React.FC<Props> = observer(({ navigation }) => {
   const { colors } = useTheme();
   const [page, setPage] = useState(0);
   const launchesStore = useContext(Launches);
-  const refreshCalendar = useCallback(() => {
+  const refreshCalendar = () => {
     setPage(0);
     launchesStore.loadNextLaunches(5);
-  });
+  };
 
   useEffect(() => {
     refreshCalendar();
     firebase.analytics().setCurrentScreen("CALENDAR");
-  }, [refreshCalendar]);
+  }, []);
 
   const loadMore = () => {
     const newPage = page + 1;

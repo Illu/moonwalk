@@ -28,15 +28,15 @@ const Dashboard = observer(() => {
   const navigation = useNavigation();
   const { colors } = useTheme();
 
-  const loadData = useCallback(() => {
+  const loadData = () => {
     launchesStore.loadNextLaunches();
-  });
+  };
 
   useEffect(() => {
     loadData();
     firebase.analytics().setCurrentScreen("DASHBOARD");
     launchesStore.initApp();
-  }, [launchesStore, loadData]);
+  }, []);
 
   useAppState({
     onForeground: () => loadData(),

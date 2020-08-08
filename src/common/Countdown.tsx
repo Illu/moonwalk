@@ -53,7 +53,7 @@ const Countdown = ({ net, status }: { net: Date; status?: number }) => {
     return () => {
       clearInterval(timer);
     };
-  }, [updateTimeLeft, wsstamp]);
+  }, []);
 
   const updateTimeLeft = () => {
     const now = new Date();

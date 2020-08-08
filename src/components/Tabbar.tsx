@@ -53,7 +53,7 @@ const TabbarComponent = ({ props }) => {
       toValue: props.state.index,
       duration: 250,
     }).start();
-  }, [props.state.index, switchAnim]);
+  }, [props.state.index]);
 
   return (
     <View style={{ backgroundColor: colors.background }}>

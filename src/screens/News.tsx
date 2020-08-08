@@ -43,14 +43,14 @@ const News: React.FC<Props> = observer(() => {
 
   const isLoading = newsStore.state === STATES.LOADING;
 
-  const loadData = useCallback(() => {
+  const loadData = () => {
     newsStore.loadArticles();
-  });
+  };
 
   useEffect(() => {
     loadData();
     firebase.analytics().setCurrentScreen("NEWS");
-  }, [loadData]);
+  }, []);
 
   const currentTime = new Date().getTime() / 1000;
   let lastTime = -1;

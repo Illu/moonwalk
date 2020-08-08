@@ -76,7 +76,7 @@ const SearchScreen = observer(({ navigation }) => {
   useEffect(() => {
     firebase.analytics().setCurrentScreen("SEARCH");
     searchStore.initStore();
-  }, [searchStore]);
+  }, []);
 
   const showDetails = (data) => {
     navigation.navigate("Details", { data });

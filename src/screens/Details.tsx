@@ -75,7 +75,7 @@ interface Props {
 const Details: React.FC<Props> = ({ route, navigation }) => {
   useEffect(() => {
     firebase.analytics().logEvent("SEE_DETAILS", { value: data.name });
-  }, [data.name]);
+  }, []);
 
   const [scrollY] = useState(new Animated.Value(0));
   const { colors } = useTheme();
