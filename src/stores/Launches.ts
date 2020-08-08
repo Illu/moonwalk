@@ -104,24 +104,28 @@ class Launches {
             if (plannedNotifications.length > 0) {
               PushNotificationIOS.cancelAllLocalNotifications();
             }
-            if (data.net){
-              const launchTime = new Date(data.net)
+            if (data.net) {
+              const launchTime = new Date(data.net);
               const ms = Date.parse(launchTime);
 
               // Check if the launch already happened
-              if (ms <= Date.parse(new Date())){
+              if (ms <= Date.parse(new Date())) {
                 return;
               }
 
-              const fireDate = new Date(ms - this.notifications.delay * 60 * 1000)
+              const fireDate = new Date(
+                ms - this.notifications.delay * 60 * 1000
+              );
 
-              const message = NOTIFICATIONS_MESSAGES[Math.floor(Math.random() * 4)]
+              const message = NOTIFICATIONS_MESSAGES[
+                Math.floor(Math.random() * 4)
+              ]
                 .replace("$TIME$", this.notifications.delay)
-                .replace("$NAME$", data.name)
+                .replace("$NAME$", data.name);
 
               PushNotificationIOS.scheduleLocalNotification({
                 fireDate: fireDate.toISOString(),
-                alertBody: message
+                alertBody: message,
               });
             }
           }

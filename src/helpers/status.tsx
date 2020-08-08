@@ -5,7 +5,7 @@ const STATUS_MESSAGES = [
   "Launch was a Failure",
   "Launch is in a Hold",
   "Launch is In-Flight",
-  "Launch was a partial Failure"
+  "Launch was a partial Failure",
 ];
 
 export const getStatusMessage = (statusNumber: number) =>

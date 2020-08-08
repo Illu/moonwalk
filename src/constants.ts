@@ -46,5 +46,5 @@ export const NOTIFICATIONS_MESSAGES = [
   "🚀 $NAME$ will launch in just $TIME$ minutes!",
   "🛰 $TIME$ minutes before $NAME$ launch!",
   "🚀 Launch Alert: $NAME$ will launch in $TIME$ minutes!",
-  "🛰 $NAME$ will launch in $TIME$ minutes!"
-]
+  "🛰 $NAME$ will launch in $TIME$ minutes!",
+];

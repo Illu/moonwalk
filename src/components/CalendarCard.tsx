@@ -62,7 +62,11 @@ export default ({ data, isFirst = false }) => {
           <Desc numberOfLines={1}>{data.pad.name}</Desc>
           <Label
             numberOfLines={2}
-            text={data.launch_service_provider.name.length < 50 ? data.launch_service_provider.name : data.launch_service_provider.abbrev}
+            text={
+              data.launch_service_provider.name.length < 50
+                ? data.launch_service_provider.name
+                : data.launch_service_provider.abbrev
+            }
           />
         </ContentWrapper>
       </Row>

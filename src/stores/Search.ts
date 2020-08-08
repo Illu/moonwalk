@@ -1,13 +1,14 @@
 import { decorate, observable, action } from "mobx";
-import { STATES, API_URL } from "../constants";
+import { STATES, API_URL, NEWS_API_URL } from "../constants";
 import { createContext } from "react";
 import AsyncStorage from "@react-native-community/async-storage";
 
 export class Search {
-  state = STATES.IDLE;
-  results = [];
-  totalResults = "";
-  history = [];
+  state: STATES = STATES.IDLE;
+  launchResults = [];
+  newsResults = [];
+  totalResults: string = "";
+  history: string[] = [];
 
   initStore = async () => {
     try {
@@ -40,19 +41,26 @@ export class Search {
     }
   };
 
-  searchLaunches = (str) => {
+  searchLaunches = async (str) => {
     this.state = STATES.LOADING;
-    fetch(`${API_URL}launch?search=${str}`)
-      .then((data) => data.json())
-      .then((data) => {
-        this.results = data.results || [];
-        this.totalResults = data.count;
-        this.state = STATES.SUCCESS;
-        this.addHistoryItem(str);
-      })
-      .catch((err) => {
-        this.state = STATES.ERROR;
-      });
+
+    try {
+      const results = await Promise.all([
+        fetch(`${API_URL}launch?search=${str}`),
+        fetch(`${NEWS_API_URL}/articles?search=${str}`),
+      ]);
+      const launchResults = await results[0].json();
+      const newsResults = await results[1].json();
+
+      this.launchResults = launchResults.results;
+      this.newsResults = newsResults.docs;
+      this.addHistoryItem(str);
+
+      this.state = STATES.SUCCESS;
+      this.totalResults = `${(launchResults.count | 0) + (newsResults | 0)}`;
+    } catch (err) {
+      this.state = STATES.ERROR;
+    }
   };
 
   clearHistory = () => {
@@ -61,14 +69,16 @@ export class Search {
   };
 
   clearResults = () => {
-    this.results = [];
+    this.newsResults = [];
+    this.launchResults = [];
     this.state = STATES.IDLE;
   };
 }
 
 decorate(Search, {
   state: observable,
-  results: observable,
+  launchResults: observable,
+  newsResults: observable,
   totalResults: observable,
   history: observable,
   clearResults: action,

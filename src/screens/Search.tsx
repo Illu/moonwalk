@@ -12,6 +12,7 @@ import firebase from "react-native-firebase";
 import { openLink } from "../helpers/OpenLink";
 import AppState from "../stores/AppState";
 import Icon from "../common/Icon";
+import ArticlePreview from "../components/ArticlePreview";
 import { useTheme } from "@react-navigation/native";
 
 const ContentWrapper = styled.SafeAreaView`
@@ -21,7 +22,7 @@ const ContentWrapper = styled.SafeAreaView`
 
 const Footer = styled.Text`
   font-size: 14px;
-  margin: 20px 0;
+  margin: 50px 0 0 0;
   color: ${({ theme }) => theme.secondaryText};
 `;
 
@@ -79,7 +80,13 @@ const SearchScreen = observer(({ navigation }) => {
   const showDetails = (data) => {
     navigation.navigate("Details", { data });
   };
-  const { results, searchLaunches, totalResults, state } = searchStore;
+  const {
+    launchResults,
+    newsResults,
+    searchLaunches,
+    totalResults,
+    state,
+  } = searchStore;
 
   const launchSearch = (text: string) => {
     firebase.analytics().logEvent("SEARCH", { value: text });
@@ -98,14 +105,27 @@ const SearchScreen = observer(({ navigation }) => {
       />
       <ScrollWrapper contentContainerStyle={{ alignItems: "center" }}>
         {state === STATES.LOADING && <Loader />}
-        {results.length >= 0 && state === STATES.SUCCESS && (
-          <>
-            <ResultCount>{totalResults || 0} results</ResultCount>
-            {results.map((data) => (
-              <ResultCard key={data.id} data={data} showDetails={showDetails} />
-            ))}
-          </>
-        )}
+        {(launchResults.length >= 0 || newsResults.length >= 0) &&
+          state === STATES.SUCCESS && (
+            <>
+              <ResultCount>{totalResults || 0} results</ResultCount>
+              {launchResults.map((data) => (
+                <ResultCard
+                  key={data.id}
+                  data={data}
+                  showDetails={showDetails}
+                />
+              ))}
+              <ResultCount>Related news articles</ResultCount>
+              {newsResults.map((data, index) => (
+                <ArticlePreview
+                  article={data}
+                  timePosted=""
+                  isFirst={index === 0}
+                />
+              ))}
+            </>
+          )}
         {state === STATES.IDLE && searchStore.history.length > 0 && (
           <>
             <BigTitle
@@ -134,8 +154,7 @@ const SearchScreen = observer(({ navigation }) => {
           <>
             <HintTitle>Find a launch</HintTitle>
             <HintText>
-              Search accross past and upcoming launches with a rocket or mission
-              name.
+              Search accross every space launches or news articles
             </HintText>
           </>
         )}
@@ -144,7 +163,7 @@ const SearchScreen = observer(({ navigation }) => {
             openLink("https://thespacedevs.com/", appStateStore.browser)
           }
         >
-          <Footer>Data provided by Launch Library 2.0</Footer>
+          <Footer>Data provided by the Launch Library 2.0</Footer>
         </TouchableOpacity>
       </ScrollWrapper>
     </ContentWrapper>

@@ -36,15 +36,9 @@ const StatusText = styled.Text`
 
 let timer;
 
-const Countdown = ({
-  net,
-  status,
-}: {
-  net: Date;
-  status?: number;
-}) => {
+const Countdown = ({ net, status }: { net: Date; status?: number }) => {
   const [timeLeft, setTimeLeft] = useState(0);
-  const wsstamp = new Date(net).getTime() / 1000
+  const wsstamp = new Date(net).getTime() / 1000;
 
   useEffect(() => {
     updateTimeLeft();

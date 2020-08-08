@@ -1,10 +1,9 @@
 ---
 name: Feature request
 about: Suggest an idea for Moonwalk
-title: ''
+title: ""
 labels: enhancement
 assignees: Illu
-
 ---
 
 **Is your feature request related to a problem? Please describe.**

@@ -81,11 +81,16 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
   const appStateStore = useContext(AppState);
 
   const { data } = route.params;
-  const videoLink = data.vidURLs && data.vidURLs.length > 0 && data.vidURLs[0].url;
+  const videoLink =
+    data.vidURLs && data.vidURLs.length > 0 && data.vidURLs[0].url;
   const wikiLink = data.launch_service_provider.wiki_url;
-  const lspAbbrev = data.launch_service_provider.abbrev ? data.launch_service_provider.abbrev : ""
-  const missionType = data.mission ? data.mission.type : "Unknown"
-  const missionDescription = data.mission ? data.mission.description : "No Description Available"
+  const lspAbbrev = data.launch_service_provider.abbrev
+    ? data.launch_service_provider.abbrev
+    : "";
+  const missionType = data.mission ? data.mission.type : "Unknown";
+  const missionDescription = data.mission
+    ? data.mission.description
+    : "No Description Available";
 
   const actionItems = [
     [
@@ -110,8 +115,8 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
         thumbColor: "#2dcd55",
         action: () => {
           const { latitude, longitude } = data.pad;
-          const lat = parseFloat(latitude)
-          const lon = parseFloat(longitude)
+          const lat = parseFloat(latitude);
+          const lon = parseFloat(longitude);
           firebase.analytics().logEvent("OPEN_MAPS", { value: data.name });
           openMap({ latitude: lat, longitude: lon });
         },
@@ -167,19 +172,25 @@ const Details: React.FC<Props> = ({ route, navigation }) => {
               {data.launch_service_provider.name && (
                 <Row>
                   <Icon name="Briefcase" color={colors.accent} size={20} />
-                  <PinLabel numberOfLines={2}>{data.launch_service_provider.name}</PinLabel>
+                  <PinLabel numberOfLines={2}>
+                    {data.launch_service_provider.name}
+                  </PinLabel>
                 </Row>
               )}
               {data.net && (
                 <Row>
                   <Icon name="Clock" color={colors.accent} size={20} />
-                  <PinLabel numberOfLines={2}>{new Date(data.net).toLocaleString()}</PinLabel>
+                  <PinLabel numberOfLines={2}>
+                    {new Date(data.net).toLocaleString()}
+                  </PinLabel>
                 </Row>
               )}
               {data.pad.name && (
                 <Row>
                   <Icon name="Pin" color={colors.accent} size={20} />
-                  <PinLabel numberOfLines={2}>{data.pad.location.name}</PinLabel>
+                  <PinLabel numberOfLines={2}>
+                    {data.pad.location.name}
+                  </PinLabel>
                 </Row>
               )}
             </DescWrapper>
