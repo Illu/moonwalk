@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { ScrollView, Switch } from "react-native";
 import { useTheme } from "@react-navigation/native";
-import Launches from "../stores/Launches";
 import { observer } from "mobx-react";
+import React, { useContext } from "react";
+import { ScrollView, Switch } from "react-native";
+import styled from "styled-components";
+
+import Launches from "../stores/Launches";
 
 const ToggleWrapper = styled.View`
   flex-direction: row;

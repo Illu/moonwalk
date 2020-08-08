@@ -1,5 +1,6 @@
-import InAppBrowser from "react-native-inappbrowser-reborn";
 import { Linking } from "react-native";
+import InAppBrowser from "react-native-inappbrowser-reborn";
+
 import { Browsers } from "../types";
 
 export const openLink = async (

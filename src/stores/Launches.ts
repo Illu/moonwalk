@@ -1,11 +1,12 @@
+import AsyncStorage from "@react-native-community/async-storage";
+import PushNotificationIOS from "@react-native-community/push-notification-ios";
 import { decorate, observable, action } from "mobx";
-import { STATES, API_URL, NOTIFICATIONS_MESSAGES } from "../constants";
 import { createContext } from "react";
 import { Platform } from "react-native";
-import AsyncStorage from "@react-native-community/async-storage";
-import PushNotification from "react-native-push-notification";
-import PushNotificationIOS from "@react-native-community/push-notification-ios";
 import firebase from "react-native-firebase";
+import PushNotification from "react-native-push-notification";
+
+import { STATES, API_URL, NOTIFICATIONS_MESSAGES } from "../constants";
 
 class Launches {
   state = STATES.IDLE;
@@ -29,8 +30,12 @@ class Launches {
     fetch(`${API_URL}launch/upcoming?limit=${numberOfLaunches}&mode=detailed`)
       .then((data) => data.json())
       .then((data) => {
-        this.launches = data.results;
-        this.state = STATES.SUCCESS;
+        if (data.results){
+          this.launches = data.results;
+          this.state = STATES.SUCCESS;
+        } else {
+          this.state = STATES.ERROR;
+        }
       })
       .catch((err) => {
         firebase.analytics().logEvent("LOAD_LAUNCHES_ERROR", {});

@@ -1,6 +1,7 @@
 import { decorate, observable } from "mobx";
-import { STATES, NEWS_API_URL } from "../constants";
 import { createContext } from "react";
+
+import { STATES, NEWS_API_URL } from "../constants";
 
 class News {
   state = STATES.IDLE;

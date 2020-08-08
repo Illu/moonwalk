@@ -1,7 +1,8 @@
-import React from "react";
-import styled from "styled-components/native";
-import { useSafeArea } from "react-native-safe-area-context";
 import { useTheme } from "@react-navigation/native";
+import React from "react";
+import { useSafeArea } from "react-native-safe-area-context";
+import styled from "styled-components/native";
+
 import Icon from "../common/Icon";
 
 const Wrapper = styled.View<{ insetBottom: number }>`

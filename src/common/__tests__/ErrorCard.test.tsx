@@ -1,6 +1,7 @@
 import React from "react";
-import ErrorCard from "../ErrorCard";
+
 import TestRenderer from "../../helpers/testRenderer";
+import ErrorCard from "../ErrorCard";
 
 jest.mock("../../common/Icon", () => "Icon");
 jest.useFakeTimers();

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components/native";
+
 import { getStatusMessage } from "../helpers/status";
 
 const Wrapper = styled.View`

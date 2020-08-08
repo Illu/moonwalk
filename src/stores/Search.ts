@@ -1,7 +1,8 @@
-import { decorate, observable, action } from "mobx";
-import { STATES, API_URL, NEWS_API_URL } from "../constants";
-import { createContext } from "react";
 import AsyncStorage from "@react-native-community/async-storage";
+import { decorate, observable, action } from "mobx";
+import { createContext } from "react";
+
+import { STATES, API_URL, NEWS_API_URL } from "../constants";
 
 export class Search {
   state: STATES = STATES.IDLE;
@@ -52,12 +53,12 @@ export class Search {
       const launchResults = await results[0].json();
       const newsResults = await results[1].json();
 
-      this.launchResults = launchResults.results;
-      this.newsResults = newsResults.docs;
+      this.launchResults = launchResults.results || [];
+      this.newsResults = newsResults.docs || [];
       this.addHistoryItem(str);
 
       this.state = STATES.SUCCESS;
-      this.totalResults = `${(launchResults.count | 0) + (newsResults | 0)}`;
+      this.totalResults = `${launchResults.results.length + newsResults.docs.length}`;
     } catch (err) {
       this.state = STATES.ERROR;
     }

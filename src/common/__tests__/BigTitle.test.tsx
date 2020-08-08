@@ -1,6 +1,7 @@
 import React from "react";
-import BigTitle from "../BigTitle";
+
 import TestRenderer from "../../helpers/testRenderer";
+import BigTitle from "../BigTitle";
 
 describe("BigTitle", () => {
   it("renders correctly", () => {

@@ -1,6 +1,7 @@
 import React from "react";
-import ActionMenu from "../ActionMenu";
+
 import TestRenderer from "../../helpers/testRenderer";
+import ActionMenu from "../ActionMenu";
 
 jest.mock("../Icon", () => "Icon");
 

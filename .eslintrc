@@ -1,0 +1,29 @@
+{
+    "extends": [
+        "@react-native-community",
+        "plugin:prettier/recommended",
+        "plugin:testing-library/recommended"
+    ],
+    "plugins": [
+        "import"
+    ],
+    "rules": {
+        "import/order": [
+            "error",
+            {
+                "groups": [
+                    "builtin",
+                    "external"
+                ],
+                "newlines-between": "always",
+                "pathGroupsExcludedImportTypes": [
+                    "builtin"
+                ],
+                "alphabetize": {
+                    "order": "asc",
+                    "caseInsensitive": true
+                }
+            }
+        ]
+    }
+}

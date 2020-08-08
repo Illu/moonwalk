@@ -1,17 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
-import { ScrollView, View, Linking } from "react-native";
-import ActionMenu from "../common/ActionMenu";
 import { useNavigation, useTheme } from "@react-navigation/native";
 import { observer } from "mobx-react";
-import Launches from "../stores/Launches";
-import AppState from "../stores/AppState";
-import { Themes, Browsers } from "../types";
+import React, { useContext, useEffect, useState } from "react";
+import { ScrollView, View, Linking } from "react-native";
+import firebase from "react-native-firebase";
 import * as StoreReview from "react-native-store-review";
 import styled from "styled-components/native";
+
 import Package from "../../package.json";
-import firebase from "react-native-firebase";
+import ActionMenu from "../common/ActionMenu";
 import SelectionModal from "../common/SelectionModal";
 import { openLink } from "../helpers/OpenLink";
+import AppState from "../stores/AppState";
+import Launches from "../stores/Launches";
+import { Themes, Browsers } from "../types";
 
 const BottomText = styled.Text`
   text-align: center;

@@ -1,16 +1,17 @@
+import { observer } from "mobx-react";
 import React, { useContext } from "react";
 import { ScrollView } from "react-native";
-import ActionMenu from "../common/ActionMenu";
-import AppState from "../stores/AppState";
-import { observer } from "mobx-react";
-import { Themes } from "../types";
-import firebase from "react-native-firebase";
 import { changeIcon } from "react-native-change-icon";
-import LogoWhiteImage from "../../ios/logo_white.png";
+import firebase from "react-native-firebase";
+
 import LogoBlackImage from "../../ios/logo_black.png";
-import LogoMilkywayImage from "../../ios/logo_milkyway.png";
 import LogoDarkblueImage from "../../ios/logo_darkblue.png";
 import LogoLightblueImage from "../../ios/logo_lightblue.png";
+import LogoMilkywayImage from "../../ios/logo_milkyway.png";
+import LogoWhiteImage from "../../ios/logo_white.png";
+import ActionMenu from "../common/ActionMenu";
+import AppState from "../stores/AppState";
+import { Themes } from "../types";
 
 const AppIconSettings = observer(() => {
   const appStateStore = useContext(AppState);

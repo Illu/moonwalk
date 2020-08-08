@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
-import Launches from "../stores/Launches";
-import styled from "styled-components/native";
 import { useTheme } from "@react-navigation/native";
+import { observer } from "mobx-react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   FlatList,
   RefreshControl,
@@ -10,12 +9,14 @@ import {
   Button,
   View,
 } from "react-native";
-import { STATES } from "../constants";
-import CalendarCard from "../components/CalendarCard";
-import Loader from "../common/Loader";
-import { observer } from "mobx-react";
-import ErrorCard from "../common/ErrorCard";
 import firebase from "react-native-firebase";
+import styled from "styled-components/native";
+
+import ErrorCard from "../common/ErrorCard";
+import Loader from "../common/Loader";
+import CalendarCard from "../components/CalendarCard";
+import { STATES } from "../constants";
+import Launches from "../stores/Launches";
 
 const Wrapper = styled.View`
   flex: 1;

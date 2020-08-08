@@ -1,13 +1,14 @@
-import React, { useEffect, useState, useContext } from "react";
-import styled from "styled-components/native";
 import { useTheme } from "@react-navigation/native";
+import React, { useEffect, useState, useContext } from "react";
 import { ScrollView, Linking, View, Animated } from "react-native";
+import firebase from "react-native-firebase";
+import openMap from "react-native-open-maps";
+import styled from "styled-components/native";
+
+import ActionMenu from "../common/ActionMenu";
+import Countdown from "../common/Countdown";
 import Icon from "../common/Icon";
 import Label from "../common/Label";
-import Countdown from "../common/Countdown";
-import ActionMenu from "../common/ActionMenu";
-import openMap from "react-native-open-maps";
-import firebase from "react-native-firebase";
 import { openLink } from "../helpers/OpenLink";
 import AppState from "../stores/AppState";
 
