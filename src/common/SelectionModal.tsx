@@ -1,9 +1,10 @@
+import { useTheme } from "@react-navigation/native";
 import React, { useEffect } from "react";
 import { Modal, Animated } from "react-native";
 import styled from "styled-components/native";
-import { useTheme } from "@react-navigation/native";
-import Icon from "./Icon";
+
 import { Browsers } from "../types";
+import Icon from "./Icon";
 
 const Wrapper = styled.SafeAreaView`
   background: rgba(0, 0, 0, 0.5);

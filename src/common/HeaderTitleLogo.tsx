@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { Dimensions } from "react-native";
+import { useColorScheme } from "react-native-appearance";
 import styled from "styled-components/native";
+
 import BlackLogo from "../../assets/Images/logo_black.png";
 import WhiteLogo from "../../assets/Images/logo_white.png";
-import { useColorScheme } from "react-native-appearance";
 import AppState from "../stores/AppState";
 import { Themes } from "../types";
 

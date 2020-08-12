@@ -1,7 +1,8 @@
-import React from "react";
-import Icon from "../common/Icon";
 import { useTheme, useNavigation } from "@react-navigation/native";
+import React from "react";
 import { TouchableOpacity } from "react-native";
+
+import Icon from "../common/Icon";
 
 const HeaderSettingsButton = () => {
   const { colors } = useTheme();

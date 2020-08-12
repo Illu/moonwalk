@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components/native";
-import { Animated, Button, Easing } from "react-native";
 import { useTheme } from "@react-navigation/native";
+import React, { useState, useEffect } from "react";
+import { Animated, Button, Easing } from "react-native";
+import styled from "styled-components/native";
+
 import Icon from "../common/Icon";
 
 const Wrapper = styled(Animated.View)`

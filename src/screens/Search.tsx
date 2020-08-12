@@ -1,19 +1,21 @@
-import React, { useEffect, useContext, useState } from "react";
-import styled from "styled-components";
+import { useTheme } from "@react-navigation/native";
 import { observer } from "mobx-react";
-import { TouchableOpacity, View } from "react-native";
-import Searchbar from "../components/SearchBar";
-import ResultCard from "../components/ResultCard";
+import React, { useEffect, useContext, useState } from "react";
+import { TouchableOpacity } from "react-native";
+import firebase from "react-native-firebase";
+import styled from "styled-components";
+
 import BigTitle from "../common/BigTitle";
 import Loader from "../common/Loader";
+import ResultCard from "../components/ResultCard";
+import Searchbar from "../components/SearchBar";
 import { STATES } from "../constants";
-import Search from "../stores/Search";
-import firebase from "react-native-firebase";
 import { openLink } from "../helpers/OpenLink";
 import AppState from "../stores/AppState";
 import Icon from "../common/Icon";
 import ArticlePreview from "../components/ArticlePreview";
-import { useTheme } from "@react-navigation/native";
+import Search from "../stores/Search";
+import ErrorCard from "../common/ErrorCard";
 
 const ContentWrapper = styled.SafeAreaView`
   flex: 1;
@@ -86,6 +88,7 @@ const SearchScreen = observer(({ navigation }) => {
     searchLaunches,
     totalResults,
     state,
+    clearResults
   } = searchStore;
 
   const launchSearch = (text: string) => {
@@ -100,7 +103,7 @@ const SearchScreen = observer(({ navigation }) => {
         value={searchStr}
         onChangeText={(str) => {
           setSearchStr(str);
-          if (str.length === 0) searchStore.clearResults();
+          if (str.length === 0) clearResults();
         }}
       />
       <ScrollWrapper contentContainerStyle={{ alignItems: "center" }}>
@@ -119,6 +122,7 @@ const SearchScreen = observer(({ navigation }) => {
               <ResultCount>Related news articles</ResultCount>
               {newsResults.map((data, index) => (
                 <ArticlePreview
+                  key={index}
                   article={data}
                   timePosted=""
                   isFirst={index === 0}
@@ -126,6 +130,9 @@ const SearchScreen = observer(({ navigation }) => {
               ))}
             </>
           )}
+        {state === STATES.ERROR && (
+          <ErrorCard message="An error occured, please try again later" onRetry={clearResults} />
+        )}
         {state === STATES.IDLE && searchStore.history.length > 0 && (
           <>
             <BigTitle

@@ -1,21 +1,22 @@
-import React, { useEffect, useContext } from "react";
-import styled from "styled-components/native";
 import {
   useTheme,
   useNavigation,
   useFocusEffect,
 } from "@react-navigation/native";
 import { observer } from "mobx-react";
-import Launches from "../stores/Launches";
+import React, { useEffect, useContext } from "react";
 import { ScrollView, RefreshControl, View } from "react-native";
-import Countdown from "../common/Countdown";
-import { STATES } from "../constants";
-import Preview from "../components/Preview";
-import Loader from "../common/Loader";
-import ErrorCard from "../common/ErrorCard";
 import firebase from "react-native-firebase";
+import styled from "styled-components/native";
+
+import Countdown from "../common/Countdown";
+import ErrorCard from "../common/ErrorCard";
 import HeaderTitleLogo from "../common/HeaderTitleLogo";
+import Loader from "../common/Loader";
+import Preview from "../components/Preview";
+import { STATES } from "../constants";
 import useAppState from "../hooks/useAppState";
+import Launches from "../stores/Launches";
 
 const Wrapper = styled.SafeAreaView`
   align-items: center;

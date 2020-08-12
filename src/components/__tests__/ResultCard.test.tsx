@@ -1,6 +1,7 @@
 import React from "react";
-import ResultCard from "../ResultCard";
+
 import TestRenderer from "../../helpers/testRenderer";
+import ResultCard from "../ResultCard";
 
 describe("ResultCard", () => {
   it("renders correctly", () => {

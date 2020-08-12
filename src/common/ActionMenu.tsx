@@ -1,8 +1,9 @@
-import React from "react";
-import styled from "styled-components/native";
 import { useTheme } from "@react-navigation/native";
-import Icon from "./Icon";
+import React from "react";
 import { View } from "react-native";
+import styled from "styled-components/native";
+
+import Icon from "./Icon";
 
 // --ActionMenu--
 // Takes an items object to display an organised menu.
