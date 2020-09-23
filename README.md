@@ -12,6 +12,18 @@ A simple way to stay up to date with upcoming space launches, built with [React-
   <img src="https://maximenory.com/public/mwpreview2.png" />
 </p>
 
+## Stack
+
+[React-Native](https://github.com/facebook/react-native)
+
+[React-Navigation](https://reactnavigation.org/)
+
+[MobX](https://mobx.js.org/)
+
+[TypeScript](https://www.typescriptlang.org/)
+
+[Styled-Components](https://www.styled-components.com/)
+
 ## Installation
 
 If you want to test the app on a simulator running locally, follow these instructions:
@@ -33,18 +45,6 @@ $ react-native run-ios
 The Android version will come once the mock-ups are finished. The iOS App currently uses a style inspired by the [Apple Design Resources](https://developer.apple.com/design/resources/).
 
 <!-- Although not deployed on the Google Play Store yet, the app is able to run on Android devices. To run the app, simply use the `react-native run-android` command. (This is an ongoing feature, expect some layout issues). -->
-
-## Stack
-
-[React-Native](https://github.com/facebook/react-native)
-
-[React-Navigation](https://reactnavigation.org/)
-
-[MobX](https://mobx.js.org/)
-
-[TypeScript](https://www.typescriptlang.org/)
-
-[Styled-Components](https://www.styled-components.com/)
 
 ## Contribute
 
