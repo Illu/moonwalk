@@ -21,8 +21,8 @@ export const MONTHS = [
   "JUN",
   "JUL",
   "AUG",
-  "OCT",
   "SEP",
+  "OCT",
   "NOV",
   "DEC",
 ];
