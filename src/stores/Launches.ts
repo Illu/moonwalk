@@ -30,7 +30,7 @@ class Launches {
     fetch(`${API_URL}launch/upcoming?limit=${numberOfLaunches}&mode=detailed`)
       .then((data) => data.json())
       .then((data) => {
-        if (data.results){
+        if (data.results) {
           this.launches = data.results;
           this.state = STATES.SUCCESS;
         } else {
@@ -111,21 +111,26 @@ class Launches {
             }
             if (data.net) {
               const launchTime = new Date(data.net);
-              const ms = Date.parse(launchTime);
+              const launchTimestamp = Date.parse(`${launchTime}`);
+
+              const notificationTimestamp =
+                launchTimestamp - this.notifications.delay * 60 * 1000;
 
               // Check if the launch already happened
-              if (ms <= Date.parse(new Date())) {
+              // or if the notification has already been sent
+              if (
+                launchTimestamp <= Date.parse(`${new Date()}`) ||
+                notificationTimestamp <= Date.parse(`${new Date()}`)
+              ) {
                 return;
               }
 
-              const fireDate = new Date(
-                ms - this.notifications.delay * 60 * 1000
-              );
+              const fireDate = new Date(notificationTimestamp);
 
               const message = NOTIFICATIONS_MESSAGES[
                 Math.floor(Math.random() * 4)
               ]
-                .replace("$TIME$", this.notifications.delay)
+                .replace("$TIME$", `${this.notifications.delay}`)
                 .replace("$NAME$", data.name);
 
               PushNotificationIOS.scheduleLocalNotification({

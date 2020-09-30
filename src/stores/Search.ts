@@ -58,7 +58,9 @@ export class Search {
       this.addHistoryItem(str);
 
       this.state = STATES.SUCCESS;
-      this.totalResults = `${launchResults.results.length + newsResults.docs.length}`;
+      this.totalResults = `${
+        launchResults.results.length + newsResults.docs.length
+      }`;
     } catch (err) {
       this.state = STATES.ERROR;
     }

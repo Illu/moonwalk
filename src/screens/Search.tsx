@@ -88,7 +88,7 @@ const SearchScreen = observer(({ navigation }) => {
     searchLaunches,
     totalResults,
     state,
-    clearResults
+    clearResults,
   } = searchStore;
 
   const launchSearch = (text: string) => {
@@ -131,7 +131,10 @@ const SearchScreen = observer(({ navigation }) => {
             </>
           )}
         {state === STATES.ERROR && (
-          <ErrorCard message="An error occured, please try again later" onRetry={clearResults} />
+          <ErrorCard
+            message="An error occured, please try again later"
+            onRetry={clearResults}
+          />
         )}
         {state === STATES.IDLE && searchStore.history.length > 0 && (
           <>
