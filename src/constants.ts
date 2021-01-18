@@ -10,7 +10,7 @@ export const TABBAR_HEIGHT = 70;
 
 export const API_URL = "https://ll.thespacedevs.com/2.0.0/";
 
-export const NEWS_API_URL = "https://spaceflightnewsapi.net/api/v1/";
+export const NEWS_API_URL = "https://spaceflightnewsapi.net/api/v2/";
 
 export const MONTHS = [
   "JAN",

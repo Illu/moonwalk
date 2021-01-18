@@ -63,18 +63,18 @@ const ArticlePreview: React.FC<Props> = ({
   const onArticlePress = () => {
     firebase.analytics().logEvent("OPEN_NEWS_ARTICLE", {
       title: article.title,
-      site: article.news_site_long,
+      site: article.newsSite,
     });
     openLink(article.url, appStateStore.browser);
   };
 
   return (
     <Wrapper onPress={onArticlePress} isFirst={isFirst}>
-      <Thumbnail source={{ uri: article.featured_image }} />
+      <Thumbnail source={{ uri: article.imageUrl }} />
       <DetailsWrapper>
         <Title>{article.title}</Title>
         <Subtitle>
-          {article.news_site_long} <Dot /> {timePosted}
+          {article.newsSite} <Dot /> {timePosted}
         </Subtitle>
       </DetailsWrapper>
     </Wrapper>
