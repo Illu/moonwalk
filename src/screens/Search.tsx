@@ -24,7 +24,6 @@ const ContentWrapper = styled.SafeAreaView`
 
 const Footer = styled.Text`
   font-size: 14px;
-  margin: 50px 0 0 0;
   color: ${({ theme }) => theme.secondaryText};
 `;
 
@@ -57,7 +56,7 @@ const HistoryText = styled.Text`
 const HintText = styled.Text`
   color: ${({ theme }) => theme.text};
   font-size: 15px;
-  margin: 15px 20px;
+  margin: 15px 20px 50px;
   text-align: center;
 `;
 
@@ -173,7 +172,14 @@ const SearchScreen = observer(({ navigation }) => {
             openLink("https://thespacedevs.com/", appStateStore.browser)
           }
         >
-          <Footer>Data provided by the Launch Library 2.0</Footer>
+          <Footer>Launch data provided by the Launch Library 2.0</Footer>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            openLink("https://spaceflightnewsapi.net/", appStateStore.browser)
+          }
+        >
+          <Footer>News provided by the Spaceflight News API</Footer>
         </TouchableOpacity>
       </ScrollWrapper>
     </ContentWrapper>
