@@ -24,6 +24,7 @@ const ContentWrapper = styled.SafeAreaView`
 
 const Footer = styled.Text`
   font-size: 14px;
+  margin-top: 10px;
   color: ${({ theme }) => theme.secondaryText};
 `;
 
