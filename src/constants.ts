@@ -8,7 +8,7 @@ export enum STATES {
 export const HEADER_HEIGHT = 50;
 export const TABBAR_HEIGHT = 70;
 
-export const API_URL = "https://ll.thespacedevs.com/2.0.0/";
+export const API_URL = "https://ll.thespacedevs.com/2.1.0/";
 
 export const NEWS_API_URL = "https://spaceflightnewsapi.net/api/v2/";
 
