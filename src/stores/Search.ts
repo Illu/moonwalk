@@ -48,18 +48,18 @@ export class Search {
     try {
       const results = await Promise.all([
         fetch(`${API_URL}launch?search=${str}`),
-        fetch(`${NEWS_API_URL}/articles?search=${str}`),
+        fetch(`${NEWS_API_URL}/articles?title_contains=${str}`),
       ]);
       const launchResults = await results[0].json();
       const newsResults = await results[1].json();
 
       this.launchResults = launchResults.results || [];
-      this.newsResults = newsResults.docs || [];
+      this.newsResults = newsResults || [];
       this.addHistoryItem(str);
 
       this.state = STATES.SUCCESS;
       this.totalResults = `${
-        launchResults.results.length + newsResults.docs.length
+        launchResults.results.length + newsResults.length
       }`;
     } catch (err) {
       this.state = STATES.ERROR;
