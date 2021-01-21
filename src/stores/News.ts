@@ -12,7 +12,7 @@ class News {
     fetch(`${NEWS_API_URL}/articles`)
       .then((data) => data.json())
       .then((data) => {
-        this.news = data.docs;
+        this.news = data;
         this.state = STATES.SUCCESS;
       })
       .catch((err) => {

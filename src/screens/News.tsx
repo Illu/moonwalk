@@ -72,7 +72,8 @@ const News: React.FC<Props> = observer(() => {
         />
       )}
       {newsStore.news.map((article, index) => {
-        const timeDiff = currentTime - article.date_published;
+        const datePublished = new Date(article.publishedAt).getTime() / 1000;
+        const timeDiff = currentTime - datePublished;
         const daysDiff = Math.floor(timeDiff / 60 / 60 / 24);
         const timePosted =
           daysDiff > 0
