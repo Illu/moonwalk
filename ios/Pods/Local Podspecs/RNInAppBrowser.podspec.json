@@ -1,6 +1,6 @@
 {
   "name": "RNInAppBrowser",
-  "version": "3.4.0",
+  "version": "3.5.1",
   "summary": "InAppBrowser for React Native",
   "description": "InAppBrowser for React Native",
   "license": "MIT",
@@ -8,7 +8,7 @@
   "homepage": "https://github.com/proyecto26/react-native-inappbrowser",
   "source": {
     "git": "git@github.com:proyecto26/react-native-inappbrowser.git",
-    "tag": "v3.4.0"
+    "tag": "v3.5.1"
   },
   "requires_arc": true,
   "platforms": {
@@ -23,7 +23,7 @@
   "source_files": "ios/**/*.{h,m}",
   "exclude_files": "android/**/*",
   "dependencies": {
-    "React": [
+    "React-Core": [
 
     ]
   }
