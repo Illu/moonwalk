@@ -1,7 +1,7 @@
 # [Moonwalk](https://itunes.apple.com/us/app/moonwalk-rocket-launches/id1439376174)
 
 [![iTunes App Store](https://img.shields.io/itunes/v/1439376174.svg?style=flat-square)](https://itunes.apple.com/us/app/moonwalk-rocket-launches/id1439376174)
-![license: MIT](https://img.shields.io/github/license/mdubourg001/ssgo?style=flat-square)
+![license: MIT](https://img.shields.io/github/license/illu/moonwalk?style=flat-square)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 ![tests](https://github.com/Illu/moonwalk/workflows/tests/badge.svg)
 
