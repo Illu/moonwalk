@@ -1,10 +1,6 @@
-import {
-  useTheme,
-  useNavigation,
-  useFocusEffect,
-} from "@react-navigation/native";
+import { useTheme, useNavigation } from "@react-navigation/native";
 import { observer } from "mobx-react";
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useCallback } from "react";
 import { ScrollView, RefreshControl, View } from "react-native";
 import firebase from "react-native-firebase";
 import styled from "styled-components/native";
@@ -28,15 +24,15 @@ const Dashboard = observer(() => {
   const navigation = useNavigation();
   const { colors } = useTheme();
 
-  const loadData = () => {
+  const loadData = useCallback(() => {
     launchesStore.loadNextLaunches();
-  };
+  }, [launchesStore]);
 
   useEffect(() => {
     loadData();
     firebase.analytics().setCurrentScreen("DASHBOARD");
     launchesStore.initApp();
-  }, []);
+  }, [launchesStore, loadData]);
 
   useAppState({
     onForeground: () => loadData(),
@@ -72,7 +68,7 @@ const Dashboard = observer(() => {
   }
 
   return (
-    <Wrapper>
+    <Wrapper testID="dashboard">
       <HeaderTitleLogo />
       <ScrollView
         scrollEnabled={true}

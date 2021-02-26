@@ -8,6 +8,7 @@
         "import"
     ],
     "rules": {
+        "react-native/no-inline-styles": "off",
         "import/order": [
             "error",
             {

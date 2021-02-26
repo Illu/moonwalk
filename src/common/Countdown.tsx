@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 import { getStatusMessage } from "../helpers/status";
 
 const Wrapper = styled.View`
-  background: ${({ theme }) => theme.secondary};
+  background: ${({ theme }) => theme.colors.secondary};
   margin: 0px 20px;
   border-radius: 10px;
   align-items: center;
@@ -20,7 +20,7 @@ const UnitWrapper = styled.View`
 
 const Number = styled.Text`
   font-size: 26px;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
   font-weight: bold;
 `;
 
@@ -31,7 +31,7 @@ const Unit = styled.Text`
 `;
 
 const StatusText = styled.Text`
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
   font-size: 20px;
 `;
 
@@ -53,7 +53,7 @@ const Countdown = ({ net, status }: { net: Date; status?: number }) => {
     return () => {
       clearInterval(timer);
     };
-  }, []);
+  }, [updateTimeLeft, wsstamp]);
 
   const updateTimeLeft = () => {
     const now = new Date();

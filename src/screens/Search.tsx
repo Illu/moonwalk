@@ -6,16 +6,16 @@ import firebase from "react-native-firebase";
 import styled from "styled-components";
 
 import BigTitle from "../common/BigTitle";
+import ErrorCard from "../common/ErrorCard";
+import Icon from "../common/Icon";
 import Loader from "../common/Loader";
+import ArticlePreview from "../components/ArticlePreview";
 import ResultCard from "../components/ResultCard";
 import Searchbar from "../components/SearchBar";
 import { STATES } from "../constants";
 import { openLink } from "../helpers/OpenLink";
 import AppState from "../stores/AppState";
-import Icon from "../common/Icon";
-import ArticlePreview from "../components/ArticlePreview";
 import Search from "../stores/Search";
-import ErrorCard from "../common/ErrorCard";
 
 const ContentWrapper = styled.SafeAreaView`
   flex: 1;
@@ -25,7 +25,7 @@ const ContentWrapper = styled.SafeAreaView`
 const Footer = styled.Text`
   font-size: 14px;
   margin-top: 10px;
-  color: ${({ theme }) => theme.secondaryText};
+  color: ${({ theme }) => theme.colors.secondaryText};
 `;
 
 const ScrollWrapper = styled.ScrollView`
@@ -37,32 +37,32 @@ const ResultCount = styled.Text`
   font-size: 16px;
   font-weight: bold;
   margin: 10px 0;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const HistoryCard = styled.TouchableOpacity`
   width: 100%;
-  background: ${({ theme }) => theme.secondary};
+  background: ${({ theme }) => theme.colors.secondary};
   padding: 15px 20px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border-color: ${({ theme }) => theme.uiAccent};
+  border-color: ${({ theme }) => theme.colors.uiAccent};
 `;
 
 const HistoryText = styled.Text`
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const HintText = styled.Text`
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
   font-size: 15px;
   margin: 15px 20px 50px;
   text-align: center;
 `;
 
 const HintTitle = styled.Text`
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
   font-weight: bold;
   font-size: 20px;
   margin-top: 100px;
@@ -77,7 +77,7 @@ const SearchScreen = observer(({ navigation }) => {
   useEffect(() => {
     firebase.analytics().setCurrentScreen("SEARCH");
     searchStore.initStore();
-  }, []);
+  }, [searchStore]);
 
   const showDetails = (data) => {
     navigation.navigate("Details", { data });

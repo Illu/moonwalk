@@ -11,18 +11,18 @@ import { ThemeProvider } from "styled-components/native";
 import HeaderSettingsButton from "./src/components/HeaderSettingsButton";
 import Tabbar from "./src/components/Tabbar";
 import AppearanceSettings from "./src/screens/AppearanceSettings";
+import AppIconSettings from "./src/screens/AppIconSettings";
 import Calendar from "./src/screens/Calendar";
 import Dashboard from "./src/screens/Dashboard";
-import { darkTheme, lightTheme } from "./src/theme";
 import Details from "./src/screens/Details";
-import Settings from "./src/screens/Settings";
-import News from "./src/screens/News";
-import Search from "./src/screens/Search";
-import NotificationsSettings from "./src/screens/NotificationsSettings";
 import Licenses from "./src/screens/Licenses";
+import News from "./src/screens/News";
+import NotificationsSettings from "./src/screens/NotificationsSettings";
+import Search from "./src/screens/Search";
+import Settings from "./src/screens/Settings";
 import AppState from "./src/stores/AppState";
+import { darkTheme, lightTheme } from "./src/theme";
 import { Themes } from "./src/types";
-import AppIconSettings from "./src/screens/AppIconSettings";
 
 enableScreens();
 
@@ -143,7 +143,7 @@ const App = observer(() => {
 
   return (
     <AppearanceProvider>
-      <ThemeProvider theme={theme.colors}>
+      <ThemeProvider theme={theme}>
         <NavigationContainer theme={theme}>
           <StatusBar barStyle={statusBarStyle} />
           <Tab.Navigator tabBar={Tabbar}>

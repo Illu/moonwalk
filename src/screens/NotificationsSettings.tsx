@@ -13,7 +13,7 @@ const ToggleWrapper = styled.View`
   border-radius: 10px;
   align-items: center;
   justify-content: space-between;
-  background: ${({ theme }) => theme.secondary};
+  background: ${({ theme }) => theme.colors.secondary};
 `;
 
 const NotifWrapper = styled.View`
@@ -22,17 +22,17 @@ const NotifWrapper = styled.View`
   margin: 15px 20px;
   border-radius: 10px;
   align-items: center;
-  background: ${({ theme }) => theme.secondary};
+  background: ${({ theme }) => theme.colors.secondary};
 `;
 
 const ToggleTitle = styled.Text`
   font-size: 16px;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const Notice = styled.Text`
   margin: 0 20px;
-  color: ${({ theme }) => theme.placeholderText};
+  color: ${({ theme }) => theme.colors.placeholderText};
   font-size: 13px;
 `;
 
@@ -40,7 +40,7 @@ const Title = styled.Text`
   margin: 20px 20px 0 20px;
   font-size: 20px;
   font-weight: bold;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const Row = styled.View`
@@ -57,12 +57,12 @@ const Button = styled.TouchableOpacity`
 
 const ButtonText = styled.Text`
   font-size: 30px;
-  color: ${({ theme }) => theme.accent};
+  color: ${({ theme }) => theme.colors.accent};
 `;
 
 const DelayText = styled.Text`
   font-size: 16px;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const NotificationsSettings = observer(() => {

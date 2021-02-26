@@ -16,19 +16,19 @@ const ItemWrapper = styled.TouchableOpacity`
   padding: 20px;
   justify-content: space-between;
   align-items: center;
-  background: ${({ theme }) => theme.secondary};
-  border-color: ${({ theme }) => theme.uiAccent};
+  background: ${({ theme }) => theme.colors.secondary};
+  border-color: ${({ theme }) => theme.colors.uiAccent};
 `;
 
 const ItemTitle = styled.Text`
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const Title = styled.Text`
   font-size: 20px;
   margin: 0 0 10px 20px;
   font-weight: bold;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const Row = styled.View`

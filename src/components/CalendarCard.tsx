@@ -7,8 +7,8 @@ import { MONTHS } from "../constants";
 const Wrapper = styled.View<{ isFirst: boolean }>`
   padding: 30px 20px;
   border-top-width: ${({ isFirst }) => (isFirst ? 0 : 1)}px;
-  background: ${({ theme }) => theme.secondary};
-  border-color: ${({ theme }) => theme.uiAccent};
+  background: ${({ theme }) => theme.colors.secondary};
+  border-color: ${({ theme }) => theme.colors.uiAccent};
 `;
 
 const DateWrapper = styled.View`
@@ -17,13 +17,13 @@ const DateWrapper = styled.View`
   align-items: center;
   justify-content: center;
   height: 50px;
-  background: ${({ theme }) => theme.accentBackground};
+  background: ${({ theme }) => theme.colors.accentBackground};
 `;
 
 const Day = styled.Text`
   font-weight: bold;
   font-size: ${({ large }) => (large ? 20 : 13)}px;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const ContentWrapper = styled.View`
@@ -39,7 +39,7 @@ const Row = styled.View`
 const Desc = styled.Text`
   color: white;
   font-size: 15px;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
   ${({ bold }) => bold && "font-weight: bold;"}
 `;
 

@@ -13,13 +13,13 @@ const Wrapper = styled.View`
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  background: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.colors.background};
 `;
 
 const Title = styled.Text`
   font-size: 30px;
   font-weight: bold;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const Accent = styled.View`
@@ -29,7 +29,7 @@ const Accent = styled.View`
   position: absolute;
   bottom: 0;
   left: 20px;
-  background: ${({ theme }) => theme.accent};
+  background: ${({ theme }) => theme.colors.accent};
 `;
 
 interface Props {

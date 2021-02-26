@@ -12,8 +12,8 @@ const Wrapper = styled.TouchableOpacity<{ isFirst: boolean }>`
   justify-content: center;
   padding: 10px 16px;
   border-top-width: ${({ isFirst }) => (isFirst ? 0 : 1)}px;
-  background: ${({ theme }) => theme.secondary};
-  border-color: ${({ theme }) => theme.uiAccent};
+  background: ${({ theme }) => theme.colors.secondary};
+  border-color: ${({ theme }) => theme.colors.uiAccent};
 `;
 
 const Thumbnail = styled.ImageBackground`
@@ -28,11 +28,11 @@ const Title = styled.Text`
   text-align: left;
   padding-bottom: 5px;
   font-weight: 700;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const Subtitle = styled.Text`
-  color: ${({ theme }) => theme.secondaryText};
+  color: ${({ theme }) => theme.colors.secondaryText};
 `;
 
 const DetailsWrapper = styled.View`
@@ -44,7 +44,7 @@ const Dot = styled.View`
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background: ${({ theme }) => theme.accent};
+  background: ${({ theme }) => theme.colors.accent};
 `;
 
 interface Props {

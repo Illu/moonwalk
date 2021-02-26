@@ -1,6 +1,6 @@
-import { useTheme, RouteProp } from "@react-navigation/native";
+import { useTheme } from "@react-navigation/native";
 import { observer } from "mobx-react";
-import React, { useContext, useEffect } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import {
   ScrollView,
   RefreshControl,
@@ -22,14 +22,14 @@ const Title = styled.Text`
   margin: 20px 16px 10px 16px;
   font-size: 20px;
   font-weight: bold;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const Footer = styled.Text`
   font-size: 14px;
   margin: 20px 0;
   text-align: center;
-  color: ${({ theme }) => theme.secondaryText};
+  color: ${({ theme }) => theme.colors.secondaryText};
 `;
 
 interface Props {
@@ -43,14 +43,14 @@ const News: React.FC<Props> = observer(() => {
 
   const isLoading = newsStore.state === STATES.LOADING;
 
-  const loadData = () => {
+  const loadData = useCallback(() => {
     newsStore.loadArticles();
-  };
+  }, [newsStore]);
 
   useEffect(() => {
     loadData();
     firebase.analytics().setCurrentScreen("NEWS");
-  }, []);
+  }, [loadData]);
 
   const currentTime = new Date().getTime() / 1000;
   let lastTime = -1;

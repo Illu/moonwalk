@@ -1,0 +1,39 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "esModuleInterop": true,
+    "strict": true,
+    "noEmit": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,
+    "noImplicitThis": true,
+    "strictBindCallApply": true,
+    "noImplicitAny": true,
+    "strictPropertyInitialization": true,
+    "strictFunctionTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedParameters": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "typeRoots": ["node_modules/@types"],
+    "allowSyntheticDefaultImports": true,
+    "useDefineForClassFields": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "lib": ["es6"],
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "react-native.config.js"
+  ]
+}

@@ -19,7 +19,7 @@ const ButtonsWrapper = styled.View`
   min-height: 50px;
   border-radius: 10px;
   margin: 5px 10px;
-  background: ${({ theme }) => theme.secondary};
+  background: ${({ theme }) => theme.colors.secondary};
 `;
 
 const Button = styled.TouchableOpacity<{ border: boolean }>`
@@ -28,26 +28,26 @@ const Button = styled.TouchableOpacity<{ border: boolean }>`
   align-items: center;
   flex-direction: row;
   border-top-width: ${({ border }) => (border ? 1 : 0)}px;
-  border-color: ${({ theme }) => theme.uiAccent};
+  border-color: ${({ theme }) => theme.colors.uiAccent};
 `;
 
 const ButtonTitle = styled.Text`
   margin-left: 20px;
   flex: 1;
   font-size: 16px;
-  color: ${({ theme }) => theme.accent};
+  color: ${({ theme }) => theme.colors.accent};
 `;
 
 const CancelTitle = styled.Text`
   font-weight: bold;
   font-size: 15px;
   align-self: center;
-  color: ${({ theme }) => theme.accent};
+  color: ${({ theme }) => theme.colors.accent};
 `;
 
 const ModalTitle = styled.Text`
   padding: 15px 0;
-  color: ${({ theme }) => theme.secondaryText};
+  color: ${({ theme }) => theme.colors.secondaryText};
 `;
 
 interface Action {

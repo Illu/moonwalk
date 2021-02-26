@@ -17,8 +17,8 @@ const SearchInput = styled.TextInput`
   border-radius: 10px;
   width: 100%;
   font-size: 20px;
-  background: ${({ theme }) => theme.inputBackground};
-  color: ${({ theme }) => theme.text};
+  background: ${({ theme }) => theme.colors.inputBackground};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const IconWrapper = styled.View`

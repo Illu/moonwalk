@@ -1,4 +1,3 @@
-import { useTheme } from "@react-navigation/native";
 import React from "react";
 import styled from "styled-components/native";
 
@@ -8,23 +7,22 @@ const Wrapper = styled.TouchableOpacity`
   width: 100%;
   justify-content: center;
   border-bottom-width: 1px;
-  background: ${({ theme }) => theme.secondary};
-  border-color: ${({ theme }) => theme.uiAccent};
+  background: ${({ theme }) => theme.colors.secondary};
+  border-color: ${({ theme }) => theme.colors.uiAccent};
 `;
 
 const Title = styled.Text`
   font-weight: bold;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
   margin-bottom: 5px;
 `;
 
 const Subtitle = styled.Text`
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const ResultCard = ({ data, showDetails }) => {
   const { name, net } = data;
-  const { colors } = useTheme();
 
   return (
     <Wrapper onPress={() => showDetails(data)}>

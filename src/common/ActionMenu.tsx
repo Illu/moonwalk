@@ -9,7 +9,7 @@ import Icon from "./Icon";
 // Takes an items object to display an organised menu.
 
 const Wrapper = styled.View`
-  background: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.colors.background};
 `;
 
 const Row = styled.TouchableOpacity`
@@ -17,25 +17,25 @@ const Row = styled.TouchableOpacity`
   justify-content: space-between;
   align-items: center;
   padding: 20px 16px 20px 0;
-  border-color: ${({ theme }) => theme.uiAccent};
+  border-color: ${({ theme }) => theme.colors.uiAccent};
 `;
 
 const PreviewText = styled.Text`
   font-size: 16px;
   margin-right: 5px;
-  color: ${({ theme }) => theme.uiAccent};
+  color: ${({ theme }) => theme.colors.uiAccent};
 `;
 
 const Title = styled.Text`
   font-size: 16px;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const CategoryWrapper = styled.View`
   margin: 20px;
   border-radius: 10px;
   padding: 0 0 0 16px;
-  background: ${({ theme }) => theme.secondary};
+  background: ${({ theme }) => theme.colors.secondary};
 `;
 
 const ThumbWrapper = styled.View`

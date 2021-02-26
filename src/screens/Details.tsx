@@ -26,21 +26,21 @@ const Title = styled.Text`
   font-size: 28px;
   padding: 24px 16px;
   text-align: center;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const ContentWrapper = styled.View`
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   margin-top: -30px;
-  background: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.colors.background};
 `;
 
 const PinLabel = styled.Text`
   margin-left: 10px;
   font-size: 14px;
   padding-right: 20px;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const Row = styled.View`
@@ -52,36 +52,36 @@ const Row = styled.View`
 const DescText = styled.Text`
   margin-bottom: 16px;
   font-size: 17px;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const DescWrapper = styled.View`
   padding: 20px;
   margin: 16px 0;
-  background: ${({ theme }) => theme.secondary};
+  background: ${({ theme }) => theme.colors.secondary};
 `;
 
 const Subtitle = styled.Text`
   margin: 30px 0 0 20px;
   font-size: 25px;
   font-weight: bold;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 interface Props {
   route: any;
 }
 
-const Details: React.FC<Props> = ({ route, navigation }) => {
+const Details: React.FC<Props> = ({ route }) => {
+  const { data } = route.params;
   useEffect(() => {
     firebase.analytics().logEvent("SEE_DETAILS", { value: data.name });
-  }, []);
+  }, [data.name]);
 
   const [scrollY] = useState(new Animated.Value(0));
   const { colors } = useTheme();
   const appStateStore = useContext(AppState);
 
-  const { data } = route.params;
   const videoLink =
     data.vidURLs && data.vidURLs.length > 0 && data.vidURLs[0].url;
   const wikiLink = data.launch_service_provider.wiki_url;

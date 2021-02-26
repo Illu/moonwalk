@@ -13,11 +13,11 @@ const Wrapper = styled.View`
 const TitleText = styled.Text`
   font-size: 22px;
   font-weight: bold;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const SeeMoreText = styled.Text`
-  color: ${({ theme }) => theme.accent};
+  color: ${({ theme }) => theme.colors.accent};
   text-align: right;
 `;
 

@@ -17,7 +17,7 @@ import { Themes, Browsers } from "../types";
 const BottomText = styled.Text`
   text-align: center;
   margin-bottom: 10px;
-  color: ${({ theme }) => theme.secondaryText};
+  color: ${({ theme }) => theme.colors.secondaryText};
 `;
 
 const Settings = observer(() => {
