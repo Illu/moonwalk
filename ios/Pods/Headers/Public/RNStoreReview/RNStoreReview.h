@@ -1,1 +1,0 @@
-../../../../../node_modules/react-native-store-review/ios/RNStoreReview.h
