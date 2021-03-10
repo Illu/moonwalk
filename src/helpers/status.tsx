@@ -8,5 +8,5 @@ const STATUS_MESSAGES = [
   "Launch was a partial Failure",
 ];
 
-export const getStatusMessage = (statusNumber: number) =>
+export const getStatusMessage = (statusNumber: number = -1) =>
   STATUS_MESSAGES[statusNumber - 1] || "Unknown Status";

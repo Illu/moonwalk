@@ -17,7 +17,7 @@ exports[`Label renders correctly 1`] = `
         "paddingTop": 2,
       },
       Object {
-        "backgroundColor": undefined,
+        "backgroundColor": "#0a84ff",
       },
       Object {},
     ]

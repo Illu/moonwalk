@@ -21,7 +21,7 @@ exports[`BigTitle renders correctly 1`] = `
     style={
       Array [
         Object {
-          "color": "rgb(28, 28, 30)",
+          "color": "#000",
           "fontSize": 22,
           "fontWeight": "bold",
         },
@@ -54,7 +54,7 @@ exports[`BigTitle renders correctly with the See More option 1`] = `
     style={
       Array [
         Object {
-          "color": "rgb(28, 28, 30)",
+          "color": "#000",
           "fontSize": 22,
           "fontWeight": "bold",
         },

@@ -1,9 +1,13 @@
+import * as navigation from "@react-navigation/native";
 import React from "react";
 
 import TestRenderer from "../../helpers/testRenderer";
+import { lightTheme } from "../../theme";
 import ActionMenu from "../ActionMenu";
 
 jest.mock("../Icon", () => "Icon");
+jest.spyOn(navigation, "useTheme");
+navigation.useTheme.mockImplementation(() => lightTheme);
 
 describe("ActionMenu", () => {
   it("renders correctly", () => {

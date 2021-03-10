@@ -11,7 +11,6 @@ import LogoMilkywayImage from "../../ios/logo_milkyway.png";
 import LogoWhiteImage from "../../ios/logo_white.png";
 import ActionMenu from "../common/ActionMenu";
 import AppState from "../stores/AppState";
-import { Themes } from "../types";
 
 const AppIconSettings = observer(() => {
   const appStateStore = useContext(AppState);
@@ -61,7 +60,7 @@ const AppIconSettings = observer(() => {
   ];
 
   return (
-    <ScrollView>
+    <ScrollView testID="AppIconSettings">
       <ActionMenu items={items} />
     </ScrollView>
   );

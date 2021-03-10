@@ -66,7 +66,7 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
-                "color": "rgb(28, 28, 30)",
+                "color": "#000",
                 "fontSize": 16,
               },
             ]
@@ -84,6 +84,7 @@ exports[`ActionMenu renders correctly 1`] = `
         }
       >
         <Icon
+          color="#c3c4c6"
           name="$_TEST_ICON_$"
           size={25}
         />
@@ -127,7 +128,7 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
-                "color": "rgb(28, 28, 30)",
+                "color": "#000",
                 "fontSize": 16,
               },
             ]
@@ -145,6 +146,7 @@ exports[`ActionMenu renders correctly 1`] = `
         }
       >
         <Icon
+          color="#c3c4c6"
           name="$_TEST_ICON_$"
           size={25}
         />
@@ -207,7 +209,7 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
-                "color": "rgb(28, 28, 30)",
+                "color": "#000",
                 "fontSize": 16,
               },
             ]
@@ -225,6 +227,7 @@ exports[`ActionMenu renders correctly 1`] = `
         }
       >
         <Icon
+          color="#c3c4c6"
           name="$_TEST_ICON_$"
           size={25}
         />
@@ -268,7 +271,7 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
-                "color": "rgb(28, 28, 30)",
+                "color": "#000",
                 "fontSize": 16,
               },
             ]
@@ -299,6 +302,7 @@ exports[`ActionMenu renders correctly 1`] = `
           $_PREVIEW_TEXT_$
         </Text>
         <Icon
+          color="#c3c4c6"
           name="$_TEST_ICON_$"
           size={25}
         />
@@ -342,7 +346,7 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
-                "color": "rgb(28, 28, 30)",
+                "color": "#000",
                 "fontSize": 16,
               },
             ]
@@ -360,6 +364,7 @@ exports[`ActionMenu renders correctly 1`] = `
         }
       >
         <Icon
+          color="#c3c4c6"
           name="$_TEST_ICON_$"
           size={25}
         />
@@ -444,7 +449,7 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
-                "color": "rgb(28, 28, 30)",
+                "color": "#000",
                 "fontSize": 16,
               },
             ]
@@ -462,6 +467,7 @@ exports[`ActionMenu renders correctly 1`] = `
         }
       >
         <Icon
+          color="#c3c4c6"
           name="$_TEST_ICON_$"
           size={25}
         />
@@ -522,7 +528,7 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
-                "color": "rgb(28, 28, 30)",
+                "color": "#000",
                 "fontSize": 16,
               },
             ]
@@ -540,6 +546,7 @@ exports[`ActionMenu renders correctly 1`] = `
         }
       >
         <Icon
+          color="#c3c4c6"
           name="$_TEST_ICON_$"
           size={25}
         />
@@ -596,7 +603,7 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
-                "color": "rgb(28, 28, 30)",
+                "color": "#000",
                 "fontSize": 16,
               },
             ]
@@ -614,6 +621,7 @@ exports[`ActionMenu renders correctly 1`] = `
         }
       >
         <Icon
+          color="#c3c4c6"
           name="$_TEST_ICON_$"
           size={25}
         />

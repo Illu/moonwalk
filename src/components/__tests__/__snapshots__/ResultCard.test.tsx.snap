@@ -32,7 +32,7 @@ exports[`ResultCard renders correctly 1`] = `
     style={
       Array [
         Object {
-          "color": "rgb(28, 28, 30)",
+          "color": "#000",
           "fontWeight": "bold",
           "marginBottom": 5,
         },
@@ -45,7 +45,7 @@ exports[`ResultCard renders correctly 1`] = `
     style={
       Array [
         Object {
-          "color": "rgb(28, 28, 30)",
+          "color": "#000",
         },
       ]
     }

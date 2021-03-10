@@ -1,6 +1,6 @@
-import { useTheme } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
 import { observer } from "mobx-react";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import {
   FlatList,
   RefreshControl,
@@ -29,18 +29,15 @@ const Title = styled.Text`
   color: ${({ theme }) => theme.colors.text};
 `;
 
-interface Props {
-  route: any;
-}
-
-const Calendar: React.FC<Props> = observer(({ navigation }) => {
+const Calendar = observer(() => {
   const { colors } = useTheme();
+  const navigation = useNavigation();
   const [page, setPage] = useState(0);
   const launchesStore = useContext(Launches);
-  const refreshCalendar = () => {
+  const refreshCalendar = useCallback(() => {
     setPage(0);
     launchesStore.loadNextLaunches(5);
-  };
+  }, [launchesStore]);
 
   useEffect(() => {
     refreshCalendar();
@@ -70,7 +67,7 @@ const Calendar: React.FC<Props> = observer(({ navigation }) => {
   const sectionTitles = ["Scheduled", "To be Determined"];
 
   return (
-    <Wrapper>
+    <Wrapper testID="Calendar">
       {launchesStore.state === STATES.LOADING &&
       launchesStore.numberOfLaunches < 5 ? (
         <Loader />

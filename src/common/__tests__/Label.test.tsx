@@ -1,7 +1,12 @@
+import * as navigation from "@react-navigation/native";
 import React from "react";
 
 import TestRenderer from "../../helpers/testRenderer";
+import { lightTheme } from "../../theme";
 import Label from "../Label";
+
+jest.spyOn(navigation, "useTheme");
+navigation.useTheme.mockImplementation(() => lightTheme);
 
 describe("Label", () => {
   it("renders correctly", () => {

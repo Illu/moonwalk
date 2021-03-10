@@ -96,6 +96,7 @@ exports[`SelectionModal renders correctly 1`] = `
           }
         >
           <Icon
+            color="#0a84ff"
             name="$_ICON_NAME_$"
           />
           <Text
@@ -115,6 +116,7 @@ exports[`SelectionModal renders correctly 1`] = `
             $_TITLE_TEXT_$
           </Text>
           <Icon
+            color="#0a84ff"
             name="CheckCircle"
           />
         </View>

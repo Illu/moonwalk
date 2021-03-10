@@ -37,7 +37,7 @@ const AppearanceSettings = observer(() => {
   ];
 
   return (
-    <ScrollView>
+    <ScrollView testID="AppearanceSettings">
       <ActionMenu items={items} />
     </ScrollView>
   );

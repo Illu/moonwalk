@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/native";
 
 import Label from "../common/Label";
 import { MONTHS } from "../constants";

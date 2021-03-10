@@ -35,14 +35,14 @@ exports[`ErrorCard renders correctly with a custom message 1`] = `
     }
   >
     <Icon
-      color="rgb(28, 28, 30)"
+      color="#000"
       name="Alert"
     />
     <Text
       style={
         Array [
           Object {
-            "color": "rgb(28, 28, 30)",
+            "color": "#000",
             "fontSize": 20,
             "fontWeight": "bold",
             "marginLeft": 10,
@@ -58,7 +58,7 @@ exports[`ErrorCard renders correctly with a custom message 1`] = `
     style={
       Array [
         Object {
-          "color": "rgb(28, 28, 30)",
+          "color": "#000",
           "marginBottom": 10,
           "marginLeft": 10,
           "marginRight": 10,
@@ -150,14 +150,14 @@ exports[`ErrorCard renders correctly with a default message 1`] = `
     }
   >
     <Icon
-      color="rgb(28, 28, 30)"
+      color="#000"
       name="Alert"
     />
     <Text
       style={
         Array [
           Object {
-            "color": "rgb(28, 28, 30)",
+            "color": "#000",
             "fontSize": 20,
             "fontWeight": "bold",
             "marginLeft": 10,
@@ -173,7 +173,7 @@ exports[`ErrorCard renders correctly with a default message 1`] = `
     style={
       Array [
         Object {
-          "color": "rgb(28, 28, 30)",
+          "color": "#000",
           "marginBottom": 10,
           "marginLeft": 10,
           "marginRight": 10,

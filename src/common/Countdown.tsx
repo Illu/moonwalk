@@ -35,7 +35,7 @@ const StatusText = styled.Text`
   font-size: 20px;
 `;
 
-let timer;
+let timer: NodeJS.Timeout;
 
 const Countdown = ({ net, status }: { net: Date; status?: number }) => {
   const [timeLeft, setTimeLeft] = useState(0);
