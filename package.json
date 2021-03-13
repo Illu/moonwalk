@@ -9,7 +9,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "build-ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --assets-dest ./ios --dev=false --platform='ios'",
-    "test": "jest",
+    "test": "TZ=America/New_York jest",
     "lint": "eslint .",
     "prettier-format": "prettier --write '**/*.{js,jsx,ts,tsx,vue,json,css,scss,less,md,mdx,graphql}'",
     "prettier-check": "prettier --debug-check '**/*.{js,jsx,ts,tsx,vue,json,css,scss,less,md,mdx,graphql}'"
@@ -76,7 +76,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && jest"
+      "pre-commit": "lint-staged && yarn test"
     }
   },
   "lint-staged": {

@@ -50,7 +50,7 @@ exports[`ResultCard renders correctly 1`] = `
       ]
     }
   >
-    8/5/2020, 04:00:00
+    8/4/2020, 22:00:00
   </Text>
 </View>
 `;
