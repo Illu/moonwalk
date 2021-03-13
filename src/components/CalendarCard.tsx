@@ -20,8 +20,8 @@ const DateWrapper = styled.View`
   background: ${({ theme }) => theme.colors.accentBackground};
 `;
 
-const Day = styled.Text`
-  font-weight: bold;
+const Day = styled.Text<{ bold: boolean; large: boolean }>`
+  ${({ bold }) => bold && "font-weight: bold;"}
   font-size: ${({ large }) => (large ? 20 : 13)}px;
   color: ${({ theme }) => theme.colors.text};
 `;
@@ -36,7 +36,7 @@ const Row = styled.View`
   justify-content: space-between;
 `;
 
-const Desc = styled.Text`
+const Desc = styled.Text<{ bold: boolean }>`
   color: white;
   font-size: 15px;
   color: ${({ theme }) => theme.colors.text};
@@ -59,7 +59,9 @@ export default ({ data, isFirst = false }) => {
           )}
         </DateWrapper>
         <ContentWrapper>
-          <Desc bold>{data.name}</Desc>
+          <Desc testID="CalendarCardName" bold>
+            {data.name}
+          </Desc>
           <Desc numberOfLines={1}>{data.pad.name}</Desc>
           <Label
             numberOfLines={2}

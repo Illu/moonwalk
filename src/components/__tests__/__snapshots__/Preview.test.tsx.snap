@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Preview renders correctly 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#000000",
+      "borderRadius": 30,
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "justifyContent": "space-between",
+      "marginBottom": 20,
+      "marginLeft": 20,
+      "marginRight": 20,
+      "marginTop": 20,
+      "opacity": 1,
+      "overflow": "hidden",
+    }
+  }
+>
+  <View
+    accessibilityIgnoresInvertColors={true}
+    style={
+      Array [
+        Object {
+          "height": "100%",
+          "justifyContent": "space-between",
+        },
+      ]
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": "IMAGE_URL",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          Object {
+            "height": undefined,
+            "width": undefined,
+          },
+          Object {
+            "opacity": 0.9,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "white",
+            "fontSize": 20,
+            "fontWeight": "bold",
+            "marginBottom": 20,
+            "marginLeft": 20,
+            "marginRight": 20,
+            "marginTop": 20,
+          },
+        ]
+      }
+    >
+      NAME
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-end",
+            "color": "white",
+            "fontSize": 20,
+            "fontWeight": "bold",
+            "marginBottom": 20,
+            "marginLeft": 20,
+            "marginRight": 20,
+            "marginTop": 20,
+          },
+        ]
+      }
+    >
+      1/1/2000, 00:00:00
+    </Text>
+  </View>
+</View>
+`;

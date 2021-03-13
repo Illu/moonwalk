@@ -35,7 +35,7 @@ interface Props {
   onPress: () => void;
 }
 
-const Preview = ({ data, onPress }): Props => (
+const Preview = ({ data, onPress }: Props) => (
   <ItemWrapper onPress={onPress}>
     <Thumbnail
       source={{ uri: data.image || data.rocket.configuration.image_url }}

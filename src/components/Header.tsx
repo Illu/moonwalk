@@ -1,6 +1,6 @@
 import { useTheme, useNavigation } from "@react-navigation/native";
 import React from "react";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native";
 import { Svg, Circle, Path } from "react-native-svg";
 import styled from "styled-components/native";
 
@@ -42,7 +42,7 @@ const Header: React.FC<Props> = ({ title }) => {
 
   return (
     <Wrapper>
-      <Title>{title}</Title>
+      <Title testID="HeaderTitle">{title}</Title>
       <TouchableOpacity onPress={() => navigation.navigate("Settings")}>
         <Svg
           xmlns="http://www.w3.org/2000/svg"
