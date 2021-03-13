@@ -3,6 +3,9 @@ import React from "react";
 import TestRenderer from "../../helpers/testRenderer";
 import ResultCard from "../ResultCard";
 
+const localeSpy = jest.spyOn(Date, "toLocaleString");
+localeSpy.mockImplementation(jest.fn(() => "1/1/2020, 20:00:00"));
+
 describe("ResultCard", () => {
   it("renders correctly", () => {
     const props = {
