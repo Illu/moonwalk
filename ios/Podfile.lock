@@ -313,7 +313,7 @@ PODS:
     - React-Core
   - RNReanimated (1.13.2):
     - React-Core
-  - RNScreens (2.18.0):
+  - RNScreens (2.18.1):
     - React-Core
   - RNStoreReview (0.1.5):
     - React
@@ -511,7 +511,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNInAppBrowser: 48b95ba7a4eaff5cc223bca338d3e319561dbd1b
   RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
-  RNScreens: f0d7a2a440a8ba9f4574ca1ddb3368f473891be4
+  RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
   RNStoreReview: 62d6afd7c37db711a594bbffca6b0ea3a812b7a8
   RNSVG: 67f1f12dae2cef6ed59a42cae74a6b8f5a9e7b46
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
