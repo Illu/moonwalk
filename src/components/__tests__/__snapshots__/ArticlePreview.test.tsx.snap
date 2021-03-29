@@ -1,0 +1,247 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArticlePreview renders correctly 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "borderColor": "#c3c4c6",
+      "borderTopWidth": 1,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "opacity": 1,
+      "paddingBottom": 10,
+      "paddingLeft": 16,
+      "paddingRight": 16,
+      "paddingTop": 10,
+      "width": "100%",
+    }
+  }
+>
+  <View
+    accessibilityIgnoresInvertColors={true}
+    style={
+      Array [
+        Object {
+          "borderRadius": 10,
+          "height": 100,
+          "marginRight": 10,
+          "overflow": "hidden",
+          "width": 100,
+        },
+      ]
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": undefined,
+        }
+      }
+      style={
+        Array [
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          Object {
+            "height": undefined,
+            "width": undefined,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "paddingBottom": 10,
+          "paddingLeft": 5,
+          "paddingRight": 5,
+          "paddingTop": 10,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000",
+            "fontWeight": "700",
+            "paddingBottom": 5,
+            "textAlign": "left",
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#666",
+          },
+        ]
+      }
+    >
+       
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#0a84ff",
+              "borderRadius": 5,
+              "height": 10,
+              "width": 10,
+            },
+          ]
+        }
+      />
+       
+      0
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`ArticlePreview renders correctly at the top of the list 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "borderColor": "#c3c4c6",
+      "borderTopWidth": 0,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "opacity": 1,
+      "paddingBottom": 10,
+      "paddingLeft": 16,
+      "paddingRight": 16,
+      "paddingTop": 10,
+      "width": "100%",
+    }
+  }
+>
+  <View
+    accessibilityIgnoresInvertColors={true}
+    style={
+      Array [
+        Object {
+          "borderRadius": 10,
+          "height": 100,
+          "marginRight": 10,
+          "overflow": "hidden",
+          "width": 100,
+        },
+      ]
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": undefined,
+        }
+      }
+      style={
+        Array [
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          Object {
+            "height": undefined,
+            "width": undefined,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "paddingBottom": 10,
+          "paddingLeft": 5,
+          "paddingRight": 5,
+          "paddingTop": 10,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000",
+            "fontWeight": "700",
+            "paddingBottom": 5,
+            "textAlign": "left",
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#666",
+          },
+        ]
+      }
+    >
+       
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#0a84ff",
+              "borderRadius": 5,
+              "height": 10,
+              "width": 10,
+            },
+          ]
+        }
+      />
+       
+      0
+    </Text>
+  </View>
+</View>
+`;
