@@ -294,7 +294,7 @@ PODS:
     - ReactCommon/jscallinvoker (= 0.61.5)
   - RNCAsyncStorage (1.12.1):
     - React-Core
-  - RNCMaskedView (0.1.10):
+  - RNCMaskedView (0.1.11):
     - React
   - RNCPushNotificationIOS (1.8.0):
     - React-Core
@@ -505,7 +505,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
   RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
-  RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
+  RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNCPushNotificationIOS: 61a7c72bd1ebad3568025957d001e0f0e7b32191
   RNFirebase: 37daa9a346d070f9f6ee1f3b4aaf4c8e3b1d5d1c
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
