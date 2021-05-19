@@ -31,6 +31,7 @@ const HomeNav = createNativeStackNavigator();
 const CalendarNav = createNativeStackNavigator();
 const NewsNav = createNativeStackNavigator();
 const SearchNav = createNativeStackNavigator();
+const SettingsNav = createNativeStackNavigator();
 
 const HomeStack = () => {
   return (
@@ -47,11 +48,7 @@ const HomeStack = () => {
         component={Dashboard}
       />
       <HomeNav.Screen name="Details" component={Details} />
-      <HomeNav.Screen
-        name="Settings"
-        component={Settings}
-        options={{ headerBackTitle: "Home" }}
-      />
+      <HomeNav.Screen name="Settings" component={SettingsStack} />
       <HomeNav.Screen name="Notifications" component={NotificationsSettings} />
       <HomeNav.Screen name="Appearance" component={AppearanceSettings} />
       <HomeNav.Screen name="Icon" component={AppIconSettings} />
@@ -64,6 +61,24 @@ const HomeStack = () => {
         component={Licenses}
       />
     </HomeNav.Navigator>
+  );
+};
+
+const SettingsStack = () => {
+  const { colors } = useTheme();
+
+  return (
+    <SettingsNav.Navigator>
+      <SettingsNav.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          headerLargeTitle: true,
+          headerHideShadow: true,
+          headerStyle: { backgroundColor: colors.background },
+        }}
+      />
+    </SettingsNav.Navigator>
   );
 };
 
@@ -151,6 +166,7 @@ const App = observer(() => {
             <Tab.Screen name="Calendar" component={CalendarStack} />
             <Tab.Screen name="News" component={NewsStack} />
             <Tab.Screen name="Search" component={SearchStack} />
+            <Tab.Screen name="Settings" component={SettingsStack} />
           </Tab.Navigator>
         </NavigationContainer>
       </ThemeProvider>

@@ -2,6 +2,7 @@ import { useTheme } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
 import { Animated, Dimensions, View } from "react-native";
 import { useSafeArea } from "react-native-safe-area-context";
+import AppearanceSettings from "screens/AppearanceSettings";
 import styled from "styled-components/native";
 
 import Icon from "../common/Icon";
@@ -43,9 +44,11 @@ const TabbarComponent = ({ props }) => {
 
   const tabbarWidth = width - 32;
 
+  const TAB_COUNT = 5;
+
   const indicatorPosition = switchAnim.interpolate({
     inputRange: [0, props.state.routeNames.length - 1],
-    outputRange: [0, tabbarWidth - tabbarWidth / 4],
+    outputRange: [0, tabbarWidth - tabbarWidth / TAB_COUNT],
   });
 
   useEffect(() => {
@@ -73,13 +76,13 @@ const TabbarComponent = ({ props }) => {
               }
             }}
           >
-            <IconWrapper style={{ width: tabbarWidth / 4 }}>
+            <IconWrapper style={{ width: tabbarWidth / TAB_COUNT }}>
               <Icon color={colors.text} name={route} />
             </IconWrapper>
           </Pushable>
         ))}
         <TabIndicatorWrapper
-          style={{ left: indicatorPosition, width: tabbarWidth / 4 }}
+          style={{ left: indicatorPosition, width: tabbarWidth / TAB_COUNT }}
           insetBottom={insets.bottom}
         >
           <TabIndicator style={{ backgroundColor: colors.accent }} />
