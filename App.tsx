@@ -49,17 +49,6 @@ const HomeStack = () => {
       />
       <HomeNav.Screen name="Details" component={Details} />
       <HomeNav.Screen name="Settings" component={SettingsStack} />
-      <HomeNav.Screen name="Notifications" component={NotificationsSettings} />
-      <HomeNav.Screen name="Appearance" component={AppearanceSettings} />
-      <HomeNav.Screen name="Icon" component={AppIconSettings} />
-      <HomeNav.Screen
-        name="Licenses"
-        options={{
-          headerLargeTitle: true,
-          headerHideShadow: true,
-        }}
-        component={Licenses}
-      />
     </HomeNav.Navigator>
   );
 };
@@ -77,6 +66,20 @@ const SettingsStack = () => {
           headerHideShadow: true,
           headerStyle: { backgroundColor: colors.background },
         }}
+      />
+      <SettingsNav.Screen
+        name="Notifications"
+        component={NotificationsSettings}
+      />
+      <SettingsNav.Screen name="Appearance" component={AppearanceSettings} />
+      <SettingsNav.Screen name="Icon" component={AppIconSettings} />
+      <SettingsNav.Screen
+        name="Licenses"
+        options={{
+          headerLargeTitle: true,
+          headerHideShadow: true,
+        }}
+        component={Licenses}
       />
     </SettingsNav.Navigator>
   );
