@@ -26,6 +26,14 @@ const Desc = styled.Text`
   color: ${({ theme }) => theme.colors.text};
 `;
 
+const Detail = styled.Text`
+  text-align: center;
+  margin: 10px;
+  color: ${({ theme }) => theme.colors.secondaryText};
+  font-size: 11;
+  font-style: italic;
+`;
+
 const Row = styled.View`
   flex-direction: row;
   justify-content: center;
@@ -35,9 +43,10 @@ const Row = styled.View`
 interface Props {
   onRetry: () => any;
   message?: string;
+  detail?: string | null;
 }
 
-const ErrorCard = ({ message, onRetry }: Props) => {
+const ErrorCard = ({ message, onRetry, detail }: Props) => {
   const { colors } = useTheme();
   const [appearAnim] = useState(new Animated.Value(0));
 
@@ -68,6 +77,7 @@ const ErrorCard = ({ message, onRetry }: Props) => {
         <Title>Error</Title>
       </Row>
       <Desc>{message || "Something went wrong"}</Desc>
+      {detail && <Detail>{detail}</Detail>}
       <Button title="Try again" onPress={onRetry} />
     </Wrapper>
   );

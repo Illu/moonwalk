@@ -48,6 +48,7 @@ const Dashboard = observer(() => {
         return (
           <ErrorCard
             message="Something went wrong while retrieving launch data"
+            detail={launchesStore.error}
             onRetry={() => loadData()}
           />
         );

@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 import PushNotificationIOS from "@react-native-community/push-notification-ios";
 import { decorate, observable, action } from "mobx";
 import { createContext } from "react";
-import { Platform } from "react-native";
+import { Alert, Platform } from "react-native";
 import firebase from "react-native-firebase";
 import PushNotification from "react-native-push-notification";
 
@@ -15,6 +15,7 @@ class Launches {
     enabled: false,
     delay: 10,
   };
+  error = null;
 
   initApp = async () => {
     try {
@@ -27,6 +28,7 @@ class Launches {
 
   loadNextLaunches = (numberOfLaunches = 10) => {
     this.state = STATES.LOADING;
+    this.error = null;
     fetch(`${API_URL}launch/upcoming?limit=${numberOfLaunches}&mode=detailed`)
       .then((data) => data.json())
       .then((data) => {
@@ -35,9 +37,12 @@ class Launches {
           this.state = STATES.SUCCESS;
         } else {
           this.state = STATES.ERROR;
+          if (data.detail) {
+            this.error = data.detail;
+          }
         }
       })
-      .catch((err) => {
+      .catch(() => {
         firebase.analytics().logEvent("LOAD_LAUNCHES_ERROR", {});
         this.state = STATES.ERROR;
       });
@@ -56,7 +61,7 @@ class Launches {
         this.launches = this.launches.concat(data.results);
         this.state = STATES.SUCCESS;
       })
-      .catch((err) => {
+      .catch(() => {
         firebase.analytics().logEvent("LOAD_LAUNCHES_ERROR", {});
         this.state = STATES.ERROR;
       });
@@ -155,6 +160,7 @@ class Launches {
 }
 
 decorate(Launches, {
+  error: observable,
   state: observable,
   launches: observable,
   notifications: observable,

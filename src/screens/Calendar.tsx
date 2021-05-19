@@ -58,6 +58,7 @@ const Calendar = observer(() => {
         <ErrorCard
           onRetry={() => refreshCalendar()}
           message="Could not retrieve upcoming launches, make sure your device is online. If you think this is a bug, go to settings and tap 'Report an issue', or send me a message on Twitter."
+          detail={launchesStore.error}
         />
       </Wrapper>
     );
