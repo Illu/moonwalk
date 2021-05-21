@@ -69,7 +69,7 @@ const Settings = observer(() => {
     [
       {
         title: "Rate the App",
-        icon: "ChevronRight",
+        icon: "Star",
         action: () => {
           if (StoreReview.isAvailable) {
             firebase.analytics().logEvent("OPEN_REVIEW", { mode: "in-app" });
@@ -161,7 +161,7 @@ const Settings = observer(() => {
       )}
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <ActionMenu items={items} />
-        <BottomText>2020 - Maxime Nory</BottomText>
+        <BottomText>2021 - Maxime Nory</BottomText>
       </ScrollView>
     </View>
   );

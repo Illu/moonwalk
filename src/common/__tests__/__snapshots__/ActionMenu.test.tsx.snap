@@ -516,7 +516,7 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
-                "borderRadius": 10,
+                "borderRadius": 18,
                 "height": 70,
                 "marginRight": 20,
                 "width": 70,
@@ -591,7 +591,7 @@ exports[`ActionMenu renders correctly 1`] = `
           style={
             Array [
               Object {
-                "borderRadius": 10,
+                "borderRadius": 18,
                 "height": 70,
                 "marginRight": 20,
                 "width": 70,

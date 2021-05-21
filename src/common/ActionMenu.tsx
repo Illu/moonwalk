@@ -48,7 +48,7 @@ const ThumbWrapper = styled.View`
 `;
 
 const ThumbImage = styled.Image`
-  border-radius: 10px;
+  border-radius: 18px;
   height: 70px;
   width: 70px;
   margin-right: 20px;

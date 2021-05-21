@@ -82,6 +82,7 @@ const TabbarComponent = ({ props }) => {
       <Wrapper insetBottom={insets.bottom}>
         {props.state.routeNames.map((route, index) => (
           <Animated.View
+            key={route}
             style={{
               opacity: appearAnims[index],
               transform: [
@@ -90,7 +91,6 @@ const TabbarComponent = ({ props }) => {
             }}
           >
             <Pushable
-              key={route}
               onPress={() => {
                 const isFocused = props.state.index === index;
                 const event = props.navigation.emit({

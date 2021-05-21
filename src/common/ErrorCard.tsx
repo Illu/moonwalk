@@ -30,7 +30,7 @@ const Detail = styled.Text`
   text-align: center;
   margin: 10px;
   color: ${({ theme }) => theme.colors.secondaryText};
-  font-size: 11;
+  font-size: 11px;
   font-style: italic;
 `;
 
