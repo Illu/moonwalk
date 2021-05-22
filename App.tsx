@@ -78,6 +78,7 @@ const SettingsStack = () => {
         options={{
           headerLargeTitle: true,
           headerHideShadow: true,
+          headerStyle: { backgroundColor: colors.background },
         }}
         component={Licenses}
       />

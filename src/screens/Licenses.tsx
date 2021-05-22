@@ -25,9 +25,8 @@ const ItemTitle = styled.Text`
 `;
 
 const Title = styled.Text`
-  font-size: 20px;
-  margin: 0 0 10px 20px;
-  font-weight: bold;
+  font-size: 17px;
+  margin: 0 20px 20px 20px;
   color: ${({ theme }) => theme.colors.text};
 `;
 
@@ -44,8 +43,11 @@ const Licenses = () => {
   const appStateStore = useContext(AppState);
 
   return (
-    <ScrollView contentContainerStyle={{ paddingTop: 40 }}>
-      <Title>Open-Source Libraries used</Title>
+    <ScrollView contentContainerStyle={{ paddingTop: 10 }}>
+      <Title>
+        Moonwalk is made possible thanks to the following Open-Source libraries
+        and tools
+      </Title>
       {LicensesData.map((lib, index) => (
         <ItemWrapper
           key={index}
@@ -62,7 +64,7 @@ const Licenses = () => {
               <Label text={lib.licenseType} />
               <Label
                 style={{ marginLeft: 5 }}
-                text={lib.comment}
+                text={lib.installedVersion}
                 color="#2dcd55"
               />
             </Row>

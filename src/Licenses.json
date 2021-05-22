@@ -7,7 +7,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "https://github.com/react-native-community/react-native-async-storage.git",
-    "comment": "1.8.1"
+    "remoteVersion": "1.12.1",
+    "installedVersion": "1.8.1",
+    "author": "Krzysztof Borowy"
   },
   {
     "department": "kessler",
@@ -17,7 +19,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/react-native-community/react-native-masked-view.git",
-    "comment": "0.1.7"
+    "remoteVersion": "0.1.11",
+    "installedVersion": "0.1.6",
+    "author": "Mike Nedosekin"
   },
   {
     "department": "kessler",
@@ -27,7 +31,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/react-native-community/push-notification-ios.git",
-    "comment": "1.1.0"
+    "remoteVersion": "1.8.0",
+    "installedVersion": "1.1.0",
+    "author": "Rafael Lincoln"
   },
   {
     "department": "kessler",
@@ -36,8 +42,9 @@
     "licensePeriod": "perpetual",
     "material": "material",
     "licenseType": "MIT",
-    "link": "https://github.com/react-navigation/react-navigation/tree/master/packages/bottom-tabs",
-    "comment": "5.2.2"
+    "link": "git+https://github.com/react-navigation/react-navigation.git",
+    "remoteVersion": "5.11.11",
+    "installedVersion": "5.1.0"
   },
   {
     "department": "kessler",
@@ -46,8 +53,9 @@
     "licensePeriod": "perpetual",
     "material": "material",
     "licenseType": "MIT",
-    "link": "https://github.com/react-navigation/react-navigation/tree/master/packages/native",
-    "comment": "5.1.1"
+    "link": "git+https://github.com/react-navigation/react-navigation.git",
+    "remoteVersion": "5.9.4",
+    "installedVersion": "5.0.0"
   },
   {
     "department": "kessler",
@@ -56,8 +64,9 @@
     "licensePeriod": "perpetual",
     "material": "material",
     "licenseType": "MIT",
-    "link": "https://github.com/react-navigation/react-navigation/tree/master/packages/stack",
-    "comment": "5.2.3"
+    "link": "git+https://github.com/react-navigation/react-navigation.git",
+    "remoteVersion": "5.14.5",
+    "installedVersion": "5.0.0"
   },
   {
     "department": "kessler",
@@ -67,7 +76,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/mobxjs/mobx.git",
-    "comment": "5.15.4"
+    "remoteVersion": "5.15.7",
+    "installedVersion": "5.15.4",
+    "author": "Michel Weststrate"
   },
   {
     "department": "kessler",
@@ -77,7 +88,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/mobxjs/mobx-react.git",
-    "comment": "6.1.8"
+    "remoteVersion": "6.3.1",
+    "installedVersion": "6.1.7",
+    "author": "Michel Weststrate"
   },
   {
     "department": "kessler",
@@ -87,7 +100,8 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/facebook/react.git",
-    "comment": "16.9.0"
+    "remoteVersion": "16.9.0",
+    "installedVersion": "16.9.0"
   },
   {
     "department": "kessler",
@@ -97,7 +111,8 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+ssh://git@github.com/facebook/react-native.git",
-    "comment": "0.61.5"
+    "remoteVersion": "0.61.5",
+    "installedVersion": "0.61.5"
   },
   {
     "department": "kessler",
@@ -107,7 +122,33 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/expo/react-native-appearance.git",
-    "comment": "0.3.3"
+    "remoteVersion": "0.3.4",
+    "installedVersion": "0.3.2",
+    "author": "Brent Vatne"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "react-native-change-icon",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/skb1129/react-native-change-icon.git",
+    "remoteVersion": "2.0.3",
+    "installedVersion": "2.0.1",
+    "author": "Surya Kant Bansal"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "react-native-firebase",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "Apache-2.0",
+    "link": "git+https://github.com/invertase/react-native-firebase.git",
+    "remoteVersion": "5.6.0",
+    "installedVersion": "5.6.0",
+    "author": "Invertase"
   },
   {
     "department": "kessler",
@@ -117,7 +158,21 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/software-mansion/react-native-gesture-handler.git",
-    "comment": "1.6.1"
+    "remoteVersion": "1.10.3",
+    "installedVersion": "1.5.6",
+    "author": "Krzysztof Magiera"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "react-native-inappbrowser-reborn",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git@github.com:proyecto26/react-native-inappbrowser.git",
+    "remoteVersion": "3.5.1",
+    "installedVersion": "3.4.0",
+    "author": "Juan David Nicholls Cardona"
   },
   {
     "department": "kessler",
@@ -127,7 +182,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/brh55/react-native-open-maps.git",
-    "comment": "0.3.5"
+    "remoteVersion": "0.3.6",
+    "installedVersion": "0.3.5",
+    "author": "Brandon Him"
   },
   {
     "department": "kessler",
@@ -137,7 +194,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+ssh://git@github.com/zo0r/react-native-push-notification.git",
-    "comment": "3.1.9"
+    "remoteVersion": "3.5.2",
+    "installedVersion": "3.1.9",
+    "author": "zo0r"
   },
   {
     "department": "kessler",
@@ -147,7 +206,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/software-mansion/react-native-reanimated.git",
-    "comment": "1.7.0"
+    "remoteVersion": "1.13.3",
+    "installedVersion": "1.7.0",
+    "author": "Krzysztof Magiera"
   },
   {
     "department": "kessler",
@@ -157,7 +218,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/th3rdwave/react-native-safe-area-context.git",
-    "comment": "0.7.3"
+    "remoteVersion": "0.7.3",
+    "installedVersion": "0.7.2",
+    "author": "Janic Duplessis"
   },
   {
     "department": "kessler",
@@ -167,17 +230,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/kmagiera/react-native-screens.git",
-    "comment": "2.4.0"
-  },
-  {
-    "department": "kessler",
-    "relatedTo": "stuff",
-    "name": "react-native-snap-carousel",
-    "licensePeriod": "perpetual",
-    "material": "material",
-    "licenseType": "BSD-3-Clause",
-    "link": "github.com/archriss/react-native-snap-carousel",
-    "comment": "3.8.4"
+    "remoteVersion": "2.18.1",
+    "installedVersion": "2.0.0-beta.2",
+    "author": "Krzysztof Magiera"
   },
   {
     "department": "kessler",
@@ -187,7 +242,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git://github.com/oblador/react-native-store-review.git",
-    "comment": "0.1.5"
+    "remoteVersion": "0.1.5",
+    "installedVersion": "0.1.5",
+    "author": "Joel Arvidsson"
   },
   {
     "department": "kessler",
@@ -197,7 +254,8 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/react-native-community/react-native-svg.git",
-    "comment": "11.0.1"
+    "remoteVersion": "11.0.1",
+    "installedVersion": "11.0.1"
   },
   {
     "department": "kessler",
@@ -207,7 +265,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/kristerkari/react-native-svg-transformer.git",
-    "comment": "0.14.3"
+    "remoteVersion": "0.14.3",
+    "installedVersion": "0.14.3",
+    "author": "Krister Kari"
   },
   {
     "department": "kessler",
@@ -217,7 +277,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+ssh://git@github.com/react-navigation/react-navigation.git",
-    "comment": "4.3.2"
+    "remoteVersion": "4.4.4",
+    "installedVersion": "4.3.2",
+    "author": "Adam Miskiewicz"
   },
   {
     "department": "kessler",
@@ -227,7 +289,8 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/react-navigation/react-navigation-stack.git",
-    "comment": "2.3.4"
+    "remoteVersion": "2.10.4",
+    "installedVersion": "2.3.4"
   },
   {
     "department": "kessler",
@@ -237,86 +300,8 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/styled-components/styled-components.git",
-    "comment": "5.0.1"
-  },
-  {
-    "department": "kessler",
-    "relatedTo": "stuff",
-    "name": "@babel/core",
-    "licensePeriod": "perpetual",
-    "material": "material",
-    "licenseType": "MIT",
-    "link": "https://github.com/babel/babel/tree/master/packages/babel-core",
-    "comment": "7.9.0"
-  },
-  {
-    "department": "kessler",
-    "relatedTo": "stuff",
-    "name": "@babel/runtime",
-    "licensePeriod": "perpetual",
-    "material": "material",
-    "licenseType": "MIT",
-    "link": "git+https://github.com/babel/babel.git",
-    "comment": "7.9.2"
-  },
-  {
-    "department": "kessler",
-    "relatedTo": "stuff",
-    "name": "@react-native-community/eslint-config",
-    "licensePeriod": "perpetual",
-    "material": "material",
-    "licenseType": "MIT",
-    "link": "git+ssh://git@github.com/facebook/react-native.git",
-    "comment": "0.0.7"
-  },
-  {
-    "department": "kessler",
-    "relatedTo": "stuff",
-    "name": "babel-jest",
-    "licensePeriod": "perpetual",
-    "material": "material",
-    "licenseType": "MIT",
-    "link": "git+https://github.com/facebook/jest.git",
-    "comment": "25.1.0"
-  },
-  {
-    "department": "kessler",
-    "relatedTo": "stuff",
-    "name": "eslint",
-    "licensePeriod": "perpetual",
-    "material": "material",
-    "licenseType": "MIT",
-    "link": "git+https://github.com/eslint/eslint.git",
-    "comment": "6.8.0"
-  },
-  {
-    "department": "kessler",
-    "relatedTo": "stuff",
-    "name": "jest",
-    "licensePeriod": "perpetual",
-    "material": "material",
-    "licenseType": "MIT",
-    "link": "git+https://github.com/facebook/jest.git",
-    "comment": "25.1.0"
-  },
-  {
-    "department": "kessler",
-    "relatedTo": "stuff",
-    "name": "metro-react-native-babel-preset",
-    "licensePeriod": "perpetual",
-    "material": "material",
-    "licenseType": "MIT",
-    "link": "git+ssh://git@github.com/facebook/metro.git",
-    "comment": "0.58.0"
-  },
-  {
-    "department": "kessler",
-    "relatedTo": "stuff",
-    "name": "react-test-renderer",
-    "licensePeriod": "perpetual",
-    "material": "material",
-    "licenseType": "MIT",
-    "link": "git+https://github.com/facebook/react.git",
-    "comment": "16.9.0"
+    "remoteVersion": "5.3.0",
+    "installedVersion": "5.0.1",
+    "author": "Glen Maddern"
   }
 ]
