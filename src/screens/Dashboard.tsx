@@ -29,7 +29,7 @@ const Dashboard = observer(() => {
   }, [launchesStore]);
 
   useEffect(() => {
-    // loadData();
+    loadData();
     launchesStore.initApp();
   }, [launchesStore, loadData]);
 

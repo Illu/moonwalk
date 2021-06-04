@@ -43,16 +43,6 @@ $ yarn build-ios
 $ react-native run-ios
 ```
 
-### iOS 14
-
-If you want to see images on iOS 14, you'll need to apply the following patch:
-
-```
-sed -ie "s/_currentFrame.CGImage;/_currentFrame.CGImage ;} else { [super displayLayer:layer];/" node_modules/react-native/Libraries/Image/RCTUIImageViewAnimated.m
-```
-
-For more informations about this patch, take a look at [this GitHub comment](https://github.com/facebook/react-native/issues/29279#issuecomment-658244428).
-
 ### Android
 
 I don't plan to release an Android version of Moonwalk at the current time.
