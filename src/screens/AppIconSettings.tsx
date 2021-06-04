@@ -2,7 +2,7 @@ import { observer } from "mobx-react";
 import React, { useContext } from "react";
 import { ScrollView } from "react-native";
 import { changeIcon } from "react-native-change-icon";
-import firebase from "react-native-firebase";
+import analytics from '@react-native-firebase/analytics';
 
 import LogoBlackImage from "../../ios/logo_black.png";
 import LogoDarkblueImage from "../../ios/logo_darkblue.png";
@@ -21,7 +21,7 @@ const AppIconSettings = observer(() => {
         appStateStore.setAppIcon(newIconName);
       }
     });
-    firebase.analytics().logEvent("SWITCH_ICON", { value: newIconName });
+    analytics().logEvent("SWITCH_ICON", { value: newIconName });
   };
 
   const items = [

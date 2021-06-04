@@ -2,7 +2,7 @@ import { useTheme, useNavigation } from "@react-navigation/native";
 import { observer } from "mobx-react";
 import React, { useEffect, useContext, useCallback } from "react";
 import { ScrollView, RefreshControl, View } from "react-native";
-import firebase from "react-native-firebase";
+import analytics from '@react-native-firebase/analytics';
 import styled from "styled-components/native";
 
 import Countdown from "../common/Countdown";
@@ -29,8 +29,7 @@ const Dashboard = observer(() => {
   }, [launchesStore]);
 
   useEffect(() => {
-    loadData();
-    firebase.analytics().setCurrentScreen("DASHBOARD");
+    // loadData();
     launchesStore.initApp();
   }, [launchesStore, loadData]);
 

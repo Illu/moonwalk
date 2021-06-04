@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-community/async-storage";
-import { decorate, observable, action } from "mobx";
+import { makeAutoObservable, observable, action } from "mobx";
 import { createContext } from "react";
 
 import { STATES, API_URL, NEWS_API_URL } from "../constants";
@@ -11,6 +11,10 @@ export class Search {
   totalResults: string = "";
   history: string[] = [];
 
+  constructor() {
+    makeAutoObservable(this)
+  }
+
   initStore = async () => {
     try {
       const value = await AsyncStorage.getItem("@Moonwalk:search");
@@ -18,7 +22,7 @@ export class Search {
         const data = JSON.parse(value);
         this.history = data.history;
       }
-    } catch (error) {}
+    } catch (error) { }
   };
 
   saveData = async () => {
@@ -29,7 +33,7 @@ export class Search {
           history: this.history,
         })
       );
-    } catch (error) {}
+    } catch (error) { }
   };
 
   addHistoryItem = (str) => {
@@ -58,9 +62,8 @@ export class Search {
       this.addHistoryItem(str);
 
       this.state = STATES.SUCCESS;
-      this.totalResults = `${
-        launchResults.results.length + newsResults.length
-      }`;
+      this.totalResults = `${launchResults.results.length + newsResults.length
+        }`;
     } catch (err) {
       this.state = STATES.ERROR;
     }
@@ -78,13 +81,13 @@ export class Search {
   };
 }
 
-decorate(Search, {
-  state: observable,
-  launchResults: observable,
-  newsResults: observable,
-  totalResults: observable,
-  history: observable,
-  clearResults: action,
-});
+// makeObservable(Search, {
+//   state: observable,
+//   launchResults: observable,
+//   newsResults: observable,
+//   totalResults: observable,
+//   history: observable,
+//   clearResults: action,
+// });
 
 export default createContext(new Search());

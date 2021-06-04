@@ -1,7 +1,7 @@
 import { useTheme } from "@react-navigation/native";
 import React, { useEffect, useContext } from "react";
 import { ScrollView, View } from "react-native";
-import firebase from "react-native-firebase";
+import analytics from '@react-native-firebase/analytics';
 import styled from "styled-components/native";
 
 import Icon from "../common/Icon";
@@ -35,9 +35,6 @@ const Row = styled.View`
 `;
 
 const Licenses = () => {
-  useEffect(() => {
-    firebase.analytics().setCurrentScreen("LICENSES");
-  }, []);
 
   const { colors } = useTheme();
   const appStateStore = useContext(AppState);

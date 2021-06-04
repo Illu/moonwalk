@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import firebase from "react-native-firebase";
+import analytics from '@react-native-firebase/analytics';
 import styled from "styled-components/native";
 
 import { openLink } from "../helpers/OpenLink";
@@ -61,7 +61,7 @@ const ArticlePreview: React.FC<Props> = ({
   const appStateStore = useContext(AppState);
 
   const onArticlePress = () => {
-    firebase.analytics().logEvent("OPEN_NEWS_ARTICLE", {
+    analytics().logEvent("OPEN_NEWS_ARTICLE", {
       title: article.title,
       site: article.newsSite,
     });

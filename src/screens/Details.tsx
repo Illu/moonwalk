@@ -1,7 +1,7 @@
 import { useTheme } from "@react-navigation/native";
 import React, { useEffect, useState, useContext } from "react";
 import { ScrollView, Linking, View, Animated } from "react-native";
-import firebase from "react-native-firebase";
+import analytics from '@react-native-firebase/analytics';
 import openMap from "react-native-open-maps";
 import styled from "styled-components/native";
 
@@ -75,7 +75,7 @@ interface Props {
 const Details: React.FC<Props> = ({ route }) => {
   const { data } = route.params;
   useEffect(() => {
-    firebase.analytics().logEvent("SEE_DETAILS", { value: data.name });
+    analytics().logEvent("SEE_DETAILS", { value: data.name });
   }, [data.name]);
 
   const [scrollY] = useState(new Animated.Value(0));
@@ -103,8 +103,7 @@ const Details: React.FC<Props> = ({ route }) => {
         thumbColor: "#fa8435",
         disabled: !videoLink,
         action: () => {
-          firebase
-            .analytics()
+          analytics()
             .logEvent("OPEN_LIVESTREAM", { value: data.name });
           Linking.openURL(videoLink);
         },
@@ -118,7 +117,7 @@ const Details: React.FC<Props> = ({ route }) => {
           const { latitude, longitude } = data.pad;
           const lat = parseFloat(latitude);
           const lon = parseFloat(longitude);
-          firebase.analytics().logEvent("OPEN_MAPS", { value: data.name });
+          analytics().logEvent("OPEN_MAPS", { value: data.name });
           openMap({ latitude: lat, longitude: lon });
         },
       },
@@ -131,7 +130,7 @@ const Details: React.FC<Props> = ({ route }) => {
         disabled: !wikiLink,
         action: () => {
           openLink(wikiLink, appStateStore.browser);
-          firebase.analytics().logEvent("OPEN_WIKI", { value: data.name });
+          analytics().logEvent("OPEN_WIKI", { value: data.name });
         },
       },
     ],

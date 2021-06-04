@@ -1,9 +1,9 @@
 import AsyncStorage from "@react-native-community/async-storage";
 import PushNotificationIOS from "@react-native-community/push-notification-ios";
-import { decorate, observable, action } from "mobx";
+import { makeAutoObservable, observable, action } from "mobx";
 import { createContext } from "react";
-import { Alert, Platform } from "react-native";
-import firebase from "react-native-firebase";
+import { Platform } from "react-native";
+import analytics from '@react-native-firebase/analytics';
 import PushNotification from "react-native-push-notification";
 
 import { STATES, API_URL, NOTIFICATIONS_MESSAGES } from "../constants";
@@ -17,13 +17,18 @@ class Launches {
   };
   error = null;
 
+  constructor() {
+    makeAutoObservable(this)
+  }
+
+
   initApp = async () => {
     try {
       const value = await AsyncStorage.getItem("@Moonwalk:notifications");
       if (value !== null) {
         this.notifications = JSON.parse(value);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
 
   loadNextLaunches = (numberOfLaunches = 10) => {
@@ -43,15 +48,13 @@ class Launches {
         }
       })
       .catch(() => {
-        firebase.analytics().logEvent("LOAD_LAUNCHES_ERROR", {});
+        analytics().logEvent("LOAD_LAUNCHES_ERROR", {});
         this.state = STATES.ERROR;
       });
   };
 
   loadMoreLaunches = (numberOfLaunches) => {
-    firebase
-      .analytics()
-      .logEvent("LOAD_MORE_LAUNCHES", { value: numberOfLaunches });
+    analytics().logEvent("LOAD_MORE_LAUNCHES", { value: numberOfLaunches });
     this.state = STATES.LOADING;
     fetch(
       `${API_URL}launch/upcoming?limit=${numberOfLaunches}&offset=${this.launches.length}&mode=detailed`
@@ -62,7 +65,7 @@ class Launches {
         this.state = STATES.SUCCESS;
       })
       .catch(() => {
-        firebase.analytics().logEvent("LOAD_LAUNCHES_ERROR", {});
+        analytics().logEvent("LOAD_LAUNCHES_ERROR", {});
         this.state = STATES.ERROR;
       });
   };
@@ -73,13 +76,13 @@ class Launches {
         "@Moonwalk:notifications",
         JSON.stringify(this.notifications)
       );
-    } catch (error) {}
+    } catch (error) { }
   };
 
   toggleNotifications = Platform.select({
     ios: async () => {
       this.notifications.enabled = !this.notifications.enabled;
-      firebase.analytics().logEvent("TOGGLE_NOTIFICATIONS", {
+      analytics().logEvent("TOGGLE_NOTIFICATIONS", {
         value: this.notifications.enabled,
       });
       this.storeNotificationSettings();
@@ -99,7 +102,7 @@ class Launches {
   changeNotificationDelay = (time: number) => {
     if (this.notifications.delay + time >= 0) {
       this.notifications.delay += time;
-      firebase.analytics().logEvent("SET_NOTIFICATION_DELAY", {
+      analytics().logEvent("SET_NOTIFICATION_DELAY", {
         value: this.notifications.delay,
       });
       this.storeNotificationSettings();
@@ -159,15 +162,15 @@ class Launches {
   });
 }
 
-decorate(Launches, {
-  error: observable,
-  state: observable,
-  launches: observable,
-  notifications: observable,
-  toggleNotifications: action,
-  changeNotificationDelay: action,
-  scheduleNotification: action,
-  initApp: action,
-});
+// makeObservable(Launches, {
+//   error: observable,
+//   state: observable,
+//   launches: observable,
+//   notifications: observable,
+//   toggleNotifications: action,
+//   changeNotificationDelay: action,
+//   scheduleNotification: action,
+//   initApp: action,
+// });
 
 export default createContext(new Launches());

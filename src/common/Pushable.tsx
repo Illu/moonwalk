@@ -12,6 +12,7 @@ const Pushable: React.FC<Props> = ({ children, onPress }) => {
     Animated.timing(pressAnim, {
       toValue: 0.8,
       duration: 100,
+      useNativeDriver: true,
     }).start();
   };
 
@@ -19,6 +20,7 @@ const Pushable: React.FC<Props> = ({ children, onPress }) => {
     Animated.timing(pressAnim, {
       toValue: 1,
       duration: 100,
+      useNativeDriver: true,
     }).start();
   };
   return (

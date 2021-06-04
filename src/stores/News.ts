@@ -1,4 +1,4 @@
-import { decorate, observable } from "mobx";
+import { makeAutoObservable, observable } from "mobx";
 import { createContext } from "react";
 
 import { STATES, NEWS_API_URL } from "../constants";
@@ -6,6 +6,10 @@ import { STATES, NEWS_API_URL } from "../constants";
 class News {
   state = STATES.IDLE;
   news = [];
+
+  constructor() {
+    makeAutoObservable(this)
+  }
 
   loadArticles = () => {
     this.state = STATES.LOADING;
@@ -21,9 +25,9 @@ class News {
   };
 }
 
-decorate(News, {
-  state: observable,
-  news: observable,
-});
+// makeObservable(News, {
+//   state: observable,
+//   news: observable,
+// });
 
 export default createContext(new News());

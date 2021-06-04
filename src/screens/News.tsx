@@ -7,7 +7,7 @@ import {
   View,
   TouchableOpacity,
 } from "react-native";
-import firebase from "react-native-firebase";
+import analytics from '@react-native-firebase/analytics';
 import styled from "styled-components/native";
 
 import ErrorCard from "../common/ErrorCard";
@@ -49,7 +49,6 @@ const News: React.FC<Props> = observer(() => {
 
   useEffect(() => {
     loadData();
-    firebase.analytics().setCurrentScreen("NEWS");
   }, [loadData]);
 
   const currentTime = new Date().getTime() / 1000;
@@ -90,8 +89,8 @@ const News: React.FC<Props> = observer(() => {
                 {daysDiff === 0
                   ? "Today"
                   : daysDiff === 1
-                  ? "Yesterday"
-                  : "Older"}
+                    ? "Yesterday"
+                    : "Older"}
               </Title>
             )}
             <ArticlePreview

@@ -9,7 +9,7 @@ import {
   Button,
   View,
 } from "react-native";
-import firebase from "react-native-firebase";
+import analytics from '@react-native-firebase/analytics';
 import styled from "styled-components/native";
 
 import ErrorCard from "../common/ErrorCard";
@@ -41,7 +41,6 @@ const Calendar = observer(() => {
 
   useEffect(() => {
     refreshCalendar();
-    firebase.analytics().setCurrentScreen("CALENDAR");
   }, []);
 
   const loadMore = () => {
@@ -70,7 +69,7 @@ const Calendar = observer(() => {
   return (
     <Wrapper testID="Calendar">
       {launchesStore.state === STATES.LOADING &&
-      launchesStore.numberOfLaunches < 5 ? (
+        launchesStore.numberOfLaunches < 5 ? (
         <Loader />
       ) : (
         <FlatList

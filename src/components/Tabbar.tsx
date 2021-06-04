@@ -1,12 +1,12 @@
-import { useTheme } from "@react-navigation/native";
-import React, { useState, useEffect } from "react";
-import { Animated, Dimensions, View } from "react-native";
-import { useSafeArea } from "react-native-safe-area-context";
-import styled from "styled-components/native";
+import {useTheme} from '@react-navigation/native';
+import React, {useState, useEffect} from 'react';
+import {Animated, Dimensions, View} from 'react-native';
+import {useSafeArea} from 'react-native-safe-area-context';
+import styled from 'styled-components/native';
 
-import Icon from "../common/Icon";
-import Pushable from "../common/Pushable";
-import { TABBAR_HEIGHT } from "../constants";
+import Icon from '../common/Icon';
+import Pushable from '../common/Pushable';
+import {TABBAR_HEIGHT} from '../constants';
 
 const Wrapper = styled.View`
   height: ${TABBAR_HEIGHT}px;
@@ -14,7 +14,7 @@ const Wrapper = styled.View`
   flex-direction: row;
   margin-left: 16px;
   margin-right: 16px;
-  margin-bottom: ${({ insetBottom }) => insetBottom}px;
+  margin-bottom: ${({insetBottom}) => insetBottom}px;
 `;
 
 const IconWrapper = styled.View`
@@ -35,14 +35,14 @@ const TabIndicator = styled.View`
   border-radius: 2px;
 `;
 
-const TabbarComponent = ({ props }) => {
+const TabbarComponent = ({props}) => {
   const insets = useSafeArea();
-  const { colors } = useTheme();
+  const {colors} = useTheme();
   const [switchAnim] = useState(new Animated.Value(0));
 
   const [appearAnims, setAppearAnims] = useState<Animated.Value[]>([]);
 
-  const { width } = Dimensions.get("window");
+  const {width} = Dimensions.get('window');
 
   const tabbarWidth = width - 32;
 
@@ -74,52 +74,48 @@ const TabbarComponent = ({ props }) => {
     Animated.spring(switchAnim, {
       toValue: props.state.index,
       duration: 250,
+      useNativeDriver: false,
     }).start();
   }, [props.state.index]);
 
   return (
-    <View style={{ backgroundColor: colors.background }}>
+    <View style={{backgroundColor: colors.background}}>
       <Wrapper insetBottom={insets.bottom}>
         {props.state.routeNames.map((route, index) => (
           <Animated.View
             key={route}
             style={{
               opacity: appearAnims[index],
-              transform: [
-                { scale: appearAnims.length ? appearAnims[index] : 0 },
-              ],
-            }}
-          >
+              transform: [{scale: appearAnims.length ? appearAnims[index] : 0}],
+            }}>
             <Pushable
               onPress={() => {
                 const isFocused = props.state.index === index;
                 const event = props.navigation.emit({
-                  type: "tabPress",
+                  type: 'tabPress',
                   target: route.key,
                   canPreventDefault: true,
                 });
                 if (!isFocused && !event.defaultPrevented) {
                   props.navigation.navigate(route);
                 }
-              }}
-            >
-              <IconWrapper style={{ width: tabbarWidth / TAB_COUNT }}>
+              }}>
+              <IconWrapper style={{width: tabbarWidth / TAB_COUNT}}>
                 <Icon color={colors.text} name={route} />
               </IconWrapper>
             </Pushable>
           </Animated.View>
         ))}
         <TabIndicatorWrapper
-          style={{ left: indicatorPosition, width: tabbarWidth / TAB_COUNT }}
-          insetBottom={insets.bottom}
-        >
-          <TabIndicator style={{ backgroundColor: colors.accent }} />
+          style={{left: indicatorPosition, width: tabbarWidth / TAB_COUNT}}
+          insetBottom={insets.bottom}>
+          <TabIndicator style={{backgroundColor: colors.accent}} />
         </TabIndicatorWrapper>
       </Wrapper>
     </View>
   );
 };
 
-const Tabbar: React.FC = (routeProps) => <TabbarComponent props={routeProps} />;
+const Tabbar: React.FC = routeProps => <TabbarComponent props={routeProps} />;
 
 export default Tabbar;

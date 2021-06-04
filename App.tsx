@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer, useTheme } from "@react-navigation/native";
 import { observer } from "mobx-react";
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { StatusBar } from "react-native";
 import { AppearanceProvider, useColorScheme } from "react-native-appearance";
 import { enableScreens } from "react-native-screens";
@@ -23,6 +23,7 @@ import Settings from "./src/screens/Settings";
 import AppState from "./src/stores/AppState";
 import { darkTheme, lightTheme } from "./src/theme";
 import { Themes } from "./src/types";
+import analytics from '@react-native-firebase/analytics';
 
 enableScreens();
 
@@ -142,6 +143,9 @@ const App = observer(() => {
   const scheme = useColorScheme();
   const appStateStore = useContext(AppState);
 
+  const navigationRef = useRef();
+  const routeNameRef = useRef();
+
   let theme;
   let statusBarStyle;
   if (appStateStore.theme === Themes.automatic) {
@@ -163,7 +167,29 @@ const App = observer(() => {
   return (
     <AppearanceProvider>
       <ThemeProvider theme={theme}>
-        <NavigationContainer theme={theme}>
+        <NavigationContainer
+          theme={theme}
+          ref={navigationRef}
+          onReady={() =>
+            (routeNameRef.current = navigationRef.current.getCurrentRoute().name)
+          }
+          onStateChange={async () => {
+            const previousRouteName = routeNameRef.current;
+            const currentRouteName = navigationRef.current.getCurrentRoute().name;
+
+            if (previousRouteName !== currentRouteName) {
+              // The line below uses the expo-firebase-analytics tracker
+              // https://docs.expo.io/versions/latest/sdk/firebase-analytics/
+              // Change this line to use another Mobile analytics SDK
+              await analytics().logScreenView({
+                screen_name: currentRouteName,
+                screen_class: currentRouteName,
+              });
+            }
+
+            // Save the current route name for later comparison
+            routeNameRef.current = currentRouteName;
+          }}>
           <StatusBar barStyle={statusBarStyle} />
           <Tab.Navigator tabBar={Tabbar}>
             <Tab.Screen name="Home" component={HomeStack} />

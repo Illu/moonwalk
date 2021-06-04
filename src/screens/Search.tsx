@@ -2,7 +2,7 @@ import { useTheme } from "@react-navigation/native";
 import { observer } from "mobx-react";
 import React, { useEffect, useContext, useState } from "react";
 import { TouchableOpacity } from "react-native";
-import firebase from "react-native-firebase";
+import analytics from '@react-native-firebase/analytics';
 import styled from "styled-components";
 
 import BigTitle from "../common/BigTitle";
@@ -75,7 +75,6 @@ const SearchScreen = observer(({ navigation }) => {
   const [searchStr, setSearchStr] = useState("");
 
   useEffect(() => {
-    firebase.analytics().setCurrentScreen("SEARCH");
     searchStore.initStore();
   }, [searchStore]);
 
@@ -92,7 +91,7 @@ const SearchScreen = observer(({ navigation }) => {
   } = searchStore;
 
   const launchSearch = (text: string) => {
-    firebase.analytics().logEvent("SEARCH", { value: text });
+    analytics().logEvent("SEARCH", { value: text });
     searchLaunches(text);
   };
 

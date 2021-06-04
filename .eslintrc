@@ -1,31 +1,31 @@
 {
-    "extends": [
-        "@react-native-community",
-        "plugin:prettier/recommended",
-        "plugin:testing-library/recommended"
-    ],
-    "plugins": [
-        "import"
-    ],
-    "rules": {
-        "react-native/no-inline-styles": "off",
-        "react-hooks/exhaustive-deps": "off",
-        "import/order": [
-            "error",
-            {
-                "groups": [
-                    "builtin",
-                    "external"
-                ],
-                "newlines-between": "always",
-                "pathGroupsExcludedImportTypes": [
-                    "builtin"
-                ],
-                "alphabetize": {
-                    "order": "asc",
-                    "caseInsensitive": true
-                }
-            }
-        ]
-    }
+  "extends": [
+      "@react-native-community",
+      "plugin:prettier/recommended",
+      "plugin:testing-library/recommended"
+  ],
+  "plugins": [
+      "import"
+  ],
+  "rules": {
+      "react-native/no-inline-styles": "off",
+      "react-hooks/exhaustive-deps": "off",
+      "import/order": [
+          "error",
+          {
+              "groups": [
+                  "builtin",
+                  "external"
+              ],
+              "newlines-between": "always",
+              "pathGroupsExcludedImportTypes": [
+                  "builtin"
+              ],
+              "alphabetize": {
+                  "order": "asc",
+                  "caseInsensitive": true
+              }
+          }
+      ]
+  }
 }

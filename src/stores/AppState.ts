@@ -1,11 +1,12 @@
 import AsyncStorage from "@react-native-community/async-storage";
-import { decorate, observable, action } from "mobx";
+import { makeObservable, observable, action, makeAutoObservable } from "mobx";
 import { createContext } from "react";
 
 import { Themes, Browsers } from "../types";
 
 class AppState {
   constructor() {
+    makeAutoObservable(this)
     this.initStore();
   }
 
@@ -36,7 +37,7 @@ class AppState {
         this.appIcon = data.appIcon || "Default";
         this.browser = data.browser || Browsers.inApp;
       }
-    } catch (error) {}
+    } catch (error) { }
   };
 
   saveData = async () => {
@@ -49,16 +50,16 @@ class AppState {
           browser: this.browser,
         })
       );
-    } catch (error) {}
+    } catch (error) { }
   };
 }
 
-decorate(AppState, {
-  theme: observable,
-  browser: observable,
-  appIcon: observable,
-  setTheme: action,
-  setAppIcon: action,
-});
+// makeObservable(AppState, {
+//   theme: observable,
+//   browser: observable,
+//   appIcon: observable,
+//   setTheme: action,
+//   setAppIcon: action,
+// });
 
 export default createContext(new AppState());

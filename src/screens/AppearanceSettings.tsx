@@ -1,7 +1,7 @@
 import { observer } from "mobx-react";
 import React, { useContext } from "react";
 import { ScrollView } from "react-native";
-import firebase from "react-native-firebase";
+import analytics from '@react-native-firebase/analytics';
 
 import ActionMenu from "../common/ActionMenu";
 import AppState from "../stores/AppState";
@@ -12,7 +12,7 @@ const AppearanceSettings = observer(() => {
 
   const switchTheme = (newTheme: Themes) => {
     appStateStore.setTheme(newTheme);
-    firebase.analytics().logEvent("SWITCH_THEME", { value: newTheme });
+    analytics().logEvent("SWITCH_THEME", { value: newTheme });
   };
 
   const items = [
