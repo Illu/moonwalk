@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-community/async-storage";
-import { makeObservable, observable, action, makeAutoObservable } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { createContext } from "react";
 
 import { Themes, Browsers } from "../types";
@@ -53,13 +53,5 @@ class AppState {
     } catch (error) { }
   };
 }
-
-// makeObservable(AppState, {
-//   theme: observable,
-//   browser: observable,
-//   appIcon: observable,
-//   setTheme: action,
-//   setAppIcon: action,
-// });
 
 export default createContext(new AppState());

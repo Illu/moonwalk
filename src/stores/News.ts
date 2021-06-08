@@ -1,4 +1,4 @@
-import { makeAutoObservable, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { createContext } from "react";
 
 import { STATES, NEWS_API_URL } from "../constants";
@@ -24,10 +24,5 @@ class News {
       });
   };
 }
-
-// makeObservable(News, {
-//   state: observable,
-//   news: observable,
-// });
 
 export default createContext(new News());

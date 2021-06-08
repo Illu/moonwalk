@@ -42,6 +42,11 @@ export const MONTHS_FULL = [
   "December",
 ];
 
+export enum CALENDAR_TABS {
+  LAUNCHES = "Launches",
+  EVENTS = "Events",
+};
+
 export const NOTIFICATIONS_MESSAGES = [
   "🚀 $NAME$ will launch in just $TIME$ minutes!",
   "🛰 $TIME$ minutes before $NAME$ launch!",

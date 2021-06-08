@@ -7,19 +7,44 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   Button,
-  View,
+  View
 } from "react-native";
-import analytics from '@react-native-firebase/analytics';
 import styled from "styled-components/native";
 
 import ErrorCard from "../common/ErrorCard";
 import Loader from "../common/Loader";
 import CalendarCard from "../components/CalendarCard";
-import { STATES } from "../constants";
+import { CALENDAR_TABS, STATES } from "../constants";
 import Launches from "../stores/Launches";
+import Events from "../stores/Events";
+import EventPreview from "../components/EventPreview";
 
 const Wrapper = styled.View`
   flex: 1;
+`;
+
+const Row = styled.View`
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  margin: 10px 0;
+`;
+
+const TabButton = styled.TouchableOpacity<{ selected: boolean }>`
+  padding: 5px 20px;
+  margin: 0 10px;
+  height: 30px;
+  width: 30%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: ${({ selected, theme }) => selected ? theme.colors.uiAccent : theme.colors.secondary};
+`;
+
+const TabButtonTitle = styled.Text<{ selected: boolean }>`
+  flex: 1;
+  font-size: 16px;
+  color: ${({ theme, selected }) => selected ? theme.colors.text : theme.colors.secondaryText};
 `;
 
 const Title = styled.Text`
@@ -33,10 +58,18 @@ const Calendar = observer(() => {
   const { colors } = useTheme();
   const navigation = useNavigation();
   const [page, setPage] = useState(0);
+  const [selectedTab, setSelectedTab] = useState(CALENDAR_TABS.LAUNCHES)
   const launchesStore = useContext(Launches);
+  const eventsStore = useContext(Events);
+
   const refreshCalendar = useCallback(() => {
+    if (selectedTab === CALENDAR_TABS.LAUNCHES) {
     setPage(0);
     launchesStore.loadNextLaunches(5);
+  } else if (selectedTab === CALENDAR_TABS.EVENTS) {
+    eventsStore.loadEvents()
+  }
+
   }, [launchesStore]);
 
   useEffect(() => {
@@ -49,15 +82,24 @@ const Calendar = observer(() => {
     launchesStore.loadMoreLaunches(5);
   };
 
+  const switchTab = (newTab: CALENDAR_TABS) => {
+    console.log('current', selectedTab)
+    console.log('new', newTab)
+    if (newTab === CALENDAR_TABS.EVENTS) {
+      eventsStore.loadEvents();
+    }
+    setSelectedTab(newTab)
+  }
+
   const showMoreEnabled = page < 5;
 
-  if (launchesStore.state === STATES.ERROR) {
+  if (launchesStore.state === STATES.ERROR || eventsStore.state === STATES.ERROR) {
     return (
       <Wrapper>
         <ErrorCard
           onRetry={() => refreshCalendar()}
-          message="Could not retrieve upcoming launches, make sure your device is online. If you think this is a bug, go to settings and tap 'Report an issue', or send me a message on Twitter."
-          detail={launchesStore.error}
+          message="Could not retrieve upcoming launches or events, make sure your device is online. If you think this is a bug, go to settings and tap 'Report an issue', or send me a message on Twitter."
+          detail={launchesStore.error || eventsStore.error}
         />
       </Wrapper>
     );
@@ -68,9 +110,36 @@ const Calendar = observer(() => {
 
   return (
     <Wrapper testID="Calendar">
-      {launchesStore.state === STATES.LOADING &&
-        launchesStore.numberOfLaunches < 5 ? (
+      <Row>
+        <TabButton selected={selectedTab === CALENDAR_TABS.LAUNCHES} onPress={() => switchTab(CALENDAR_TABS.LAUNCHES)}>
+          <TabButtonTitle selected={selectedTab === CALENDAR_TABS.LAUNCHES}>Launches</TabButtonTitle>
+        </TabButton>
+        <TabButton selected={selectedTab === CALENDAR_TABS.EVENTS} onPress={() => switchTab(CALENDAR_TABS.EVENTS)}>
+          <TabButtonTitle selected={selectedTab === CALENDAR_TABS.EVENTS}>Events</TabButtonTitle>
+        </TabButton>
+      </Row>
+      {((launchesStore.state === STATES.LOADING &&
+        launchesStore.numberOfLaunches < 5) || eventsStore.state === STATES.LOADING) ? (
         <Loader />
+      ) : selectedTab === CALENDAR_TABS.EVENTS ? (
+        <FlatList
+          style={{ paddingTop: 20 }}
+          data={eventsStore.events}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => 
+              <EventPreview event={item} timePosted={{}} />
+          }
+          ListFooterComponent={() => (
+            <View style={{ margin: 20 }}/>
+          )}
+          refreshControl={
+            <RefreshControl
+              refreshing={eventsStore.state === STATES.LOADING && page === 0}
+              onRefresh={refreshCalendar}
+              tintColor={colors.text}
+            />
+          }
+        />
       ) : (
         <FlatList
           style={{ paddingTop: 20 }}
