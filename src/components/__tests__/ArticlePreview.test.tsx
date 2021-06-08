@@ -3,6 +3,8 @@ import React from "react";
 import TestRenderer from "../../helpers/testRenderer";
 import ArticlePreview from "../ArticlePreview";
 
+jest.mock("../../helpers/OpenLink", () => ({openLink: jest.fn()}))
+
 describe("ArticlePreview", () => {
   it("renders correctly", () => {
     const tree = TestRenderer(

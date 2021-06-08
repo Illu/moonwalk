@@ -4,6 +4,7 @@ import React from "react";
 import Dashboard from "../Dashboard";
 
 jest.mock("../../common/HeaderTitleLogo", () => "HeaderTitleLogo");
+jest.mock("../../hooks/useAppState", () => jest.fn())
 
 jest.mock("@react-navigation/native", () => {
   return {

@@ -1,10 +1,9 @@
 import AsyncStorage from "@react-native-community/async-storage";
 import PushNotificationIOS from "@react-native-community/push-notification-ios";
-import { makeAutoObservable, observable, action } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { createContext } from "react";
-import { Platform } from "react-native";
+import { Alert, Platform } from "react-native";
 import analytics from '@react-native-firebase/analytics';
-import PushNotification from "react-native-push-notification";
 
 import { STATES, API_URL, NOTIFICATIONS_MESSAGES } from "../constants";
 
@@ -150,27 +149,12 @@ class Launches {
         );
       }
     },
-    android: (data) => {
+    android: () => {
       if (this.notifications.enabled) {
-        PushNotification.cancelAllLocalNotifications();
-        PushNotification.localNotificationSchedule({
-          date: new Date(data.net).toISOString(),
-          message: `🚀 ${data.name} will launch in ${this.notifications.delay} minutes!`,
-        });
+        Alert.alert("You aren't supposed to see this, Android friend 👀")
       }
     },
   });
 }
-
-// makeObservable(Launches, {
-//   error: observable,
-//   state: observable,
-//   launches: observable,
-//   notifications: observable,
-//   toggleNotifications: action,
-//   changeNotificationDelay: action,
-//   scheduleNotification: action,
-//   initApp: action,
-// });
 
 export default createContext(new Launches());

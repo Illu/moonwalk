@@ -1,6 +1,7 @@
 import { useTheme } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
 import { Animated, Button, Easing } from "react-native";
+import { TapGestureHandler } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 
 import Icon from "../common/Icon";
@@ -55,6 +56,7 @@ const ErrorCard = ({ message, onRetry, detail }: Props) => {
       toValue: 1,
       duration: 600,
       easing: Easing.out(Easing.quad),
+      useNativeDriver: false
     }).start();
   }, [appearAnim]);
 

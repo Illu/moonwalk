@@ -2,7 +2,6 @@ import { useTheme, useNavigation } from "@react-navigation/native";
 import { observer } from "mobx-react";
 import React, { useEffect, useContext, useCallback } from "react";
 import { ScrollView, RefreshControl, View } from "react-native";
-import analytics from '@react-native-firebase/analytics';
 import styled from "styled-components/native";
 
 import Countdown from "../common/Countdown";

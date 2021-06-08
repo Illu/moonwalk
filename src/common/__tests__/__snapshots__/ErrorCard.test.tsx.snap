@@ -72,10 +72,9 @@ exports[`ErrorCard renders correctly with a custom message 1`] = `
   </Text>
   <View
     accessibilityRole="button"
-    accessibilityStates={Array []}
+    accessibilityState={Object {}}
     accessible={true}
     focusable={true}
-    isTVSelectable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -102,7 +101,7 @@ exports[`ErrorCard renders correctly with a custom message 1`] = `
             Object {
               "color": "#007AFF",
               "fontSize": 18,
-              "padding": 8,
+              "margin": 8,
               "textAlign": "center",
             },
           ]
@@ -187,10 +186,9 @@ exports[`ErrorCard renders correctly with a default message 1`] = `
   </Text>
   <View
     accessibilityRole="button"
-    accessibilityStates={Array []}
+    accessibilityState={Object {}}
     accessible={true}
     focusable={true}
-    isTVSelectable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -217,7 +215,7 @@ exports[`ErrorCard renders correctly with a default message 1`] = `
             Object {
               "color": "#007AFF",
               "fontSize": 18,
-              "padding": 8,
+              "margin": 8,
               "textAlign": "center",
             },
           ]
