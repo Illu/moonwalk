@@ -43,7 +43,7 @@ const HomeStack = () => {
           headerHideShadow: true,
           headerTitle: "",
           headerStyle: { backgroundColor: "transparent" },
-          headerRight: HeaderSettingsButton,
+          // headerRight: HeaderSettingsButton,
         }}
         name="Home"
         component={Dashboard}
