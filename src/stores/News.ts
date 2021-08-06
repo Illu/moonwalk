@@ -13,7 +13,7 @@ class News {
 
   loadArticles = () => {
     this.state = STATES.LOADING;
-    fetch(`${NEWS_API_URL}/articles`)
+    fetch(`${NEWS_API_URL}articles`)
       .then((data) => data.json())
       .then((data) => {
         this.news = data;

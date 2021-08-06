@@ -52,7 +52,7 @@ export class Search {
     try {
       const results = await Promise.all([
         fetch(`${API_URL}launch?search=${str}`),
-        fetch(`${NEWS_API_URL}/articles?title_contains=${str}`),
+        fetch(`${NEWS_API_URL}articles?title_contains=${str}`),
       ]);
       const launchResults = await results[0].json();
       const newsResults = await results[1].json();
