@@ -48,7 +48,7 @@ const HomeStack = () => {
         name="Home"
         component={Dashboard}
       />
-      <HomeNav.Screen name="Details" component={Details} />
+      <HomeNav.Screen name="Details" component={Details} options={{headerBackTitle: "Back"}} />
       <HomeNav.Screen name="Settings" component={SettingsStack} />
     </HomeNav.Navigator>
   );
@@ -93,7 +93,7 @@ const CalendarStack = () => {
     <CalendarNav.Navigator>
       <CalendarNav.Screen
         options={{
-          headerLargeTitle: true,
+          headerLargeTitle: false,
           headerHideShadow: true,
           headerStyle: { backgroundColor: colors.background },
         }}
